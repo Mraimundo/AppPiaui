@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/shared/components/app_bar_default_widget.dart';
+import 'package:piaui_app/app/shared/components/bottom_app_bar_widget.dart';
 import 'edition_page_controller.dart';
 
 class EditionPagePage extends StatefulWidget {
@@ -18,11 +20,11 @@ class _EditionPagePageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
+      appBar: AppBarDefaultWidget(),
       body: Column(
-        children: <Widget>[],
+        children: <Widget>[
+          BottomAppBarWidget()
+        ],
       ),
     );
   }
