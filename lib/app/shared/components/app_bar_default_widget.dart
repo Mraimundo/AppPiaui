@@ -17,24 +17,19 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   Widget appbarDefault() {
     return AppBar(
       backgroundColor: AppColors.appBar,
-      title: ListTile(
-        leading: FlutterLogo(
+      title: FlutterLogo(size: 40),
+      actions: <Widget>[
+        Icon(
+          Icons.search,
           size: 40,
+          color: AppColors.textColorBlack,
         ),
-        trailing: Wrap(
-          spacing: 20,
-          children: <Widget>[
-            Icon(
-              Icons.search,
-              size: 40,
-            ),
-            Icon(
-              Icons.perm_identity,
-              size: 40,
-            ),
-          ],
+        Icon(
+          Icons.perm_identity,
+          size: 40,
+          color: AppColors.textColorBlack,
         ),
-      ),
+      ],
     );
   }
 
