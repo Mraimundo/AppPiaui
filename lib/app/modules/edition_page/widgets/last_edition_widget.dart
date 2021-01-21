@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/edition_page/edition_page_controller.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-class LastEditionWidget extends StatelessWidget {
+class LastEditionWidget extends StatefulWidget {
+  @override
+  _LastEditionWidgetState createState() => _LastEditionWidgetState();
+}
+
+class _LastEditionWidgetState
+    extends ModularState<LastEditionWidget, EditionPageController> {
+  EditionPageController controller = Modular.get<EditionPageController>();
+
   @override
   Widget build(BuildContext context) {
+    controller.init();
     return Row(
       children: [
         Expanded(
@@ -21,6 +32,7 @@ class LastEditionWidget extends StatelessWidget {
                         child: Container(
                           color: Colors.red,
                           height: 420,
+                          child: Container(),
                         ),
                       ),
                       Padding(

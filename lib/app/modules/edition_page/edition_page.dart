@@ -7,20 +7,19 @@ import 'package:piaui_app/app/modules/edition_page/widgets/return_library_widget
 import 'package:piaui_app/app/modules/edition_page/widgets/row_grid_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar_default_widget.dart';
 import 'package:piaui_app/app/shared/components/bottom_app_bar_widget.dart';
-import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'edition_page_controller.dart';
 
-class EditionPagePage extends StatefulWidget {
+class EditionPage extends StatefulWidget {
   final String title;
-  const EditionPagePage({Key key, this.title = "EditionPage"})
+  const EditionPage({Key key, this.title = "EditionPage"})
       : super(key: key);
 
   @override
-  _EditionPagePageState createState() => _EditionPagePageState();
+  _EditionPageState createState() => _EditionPageState();
 }
 
-class _EditionPagePageState
-    extends ModularState<EditionPagePage, EditionPageController> {
+class _EditionPageState
+    extends ModularState<EditionPage, EditionPageController> {
   //use 'controller' variable to access controller
   @override
   Widget build(BuildContext context) {
