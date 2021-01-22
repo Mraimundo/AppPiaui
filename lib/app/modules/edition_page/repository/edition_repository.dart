@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:piaui_app/app/modules/edition_page/edition_model.dart';
+import 'package:piaui_app/app/modules/edition_page/models/edition_model.dart';
 import 'package:piaui_app/app/shared/repositories/interfaces/repository_interface.dart';
 
 class EditionRepository implements IRepository {
@@ -7,7 +7,7 @@ class EditionRepository implements IRepository {
 
   EditionRepository(this.dio);
 
-  List<EditionModel> editions = [];
+  List<EditionModel> editions = <EditionModel>[];
 
   @override
   Future<List<EditionModel>> findAll() async {
@@ -21,7 +21,6 @@ class EditionRepository implements IRepository {
       }
     } catch (error) {
       print("Error: " + error.toString());
-      return editions;
     }
     return editions;
   }

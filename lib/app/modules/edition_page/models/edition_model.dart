@@ -24,6 +24,7 @@ class Acf {
   bool ocultarEsquinas;
   bool ocultarApp;
   String mes;
+  String numberEdition;
   String ano;
   Capa capa;
   bool indice;
@@ -37,11 +38,27 @@ class Acf {
   List<LayoutHomepageLateralDireita> layoutHomepageLateralDireita;
   List<LayoutHomepageLateralEsquerda> layoutHomepageLateralEsquerda;
 
+  Map<String, String> _meses = {
+    "01": "Janeiro",
+    "02": "Fevereiro",
+    "03": "Março",
+    "04": "Abril",
+    "05": "Maio",
+    "06": "Junho",
+    "07": "Julho",
+    "08": "Agosto",
+    "09": "Setembro",
+    "10": "Outubro",
+    "11": "Novembro",
+    "12": "Dezembro"
+  };
+
   Acf(
       {this.ocultarHome,
       this.ocultarEsquinas,
       this.ocultarApp,
       this.mes,
+      this.numberEdition,
       this.ano,
       this.capa,
       this.indice,
@@ -59,7 +76,8 @@ class Acf {
     ocultarHome = json['ocultar_home'];
     ocultarEsquinas = json['ocultar_esquinas'];
     ocultarApp = json['ocultar_app'];
-    mes = json['mes'];
+    mes = _meses[json['mes']];
+    numberEdition = json['apple_id'].toString().replaceAll('piaui_', '');
     ano = json['ano'];
     capa = json['capa'] != null ? new Capa.fromJson(json['capa']) : null;
     indice = json['indice'];
@@ -70,20 +88,20 @@ class Acf {
     publicarApp = json['publicar_app'].cast<String>();
     materias = json['materias'];
     if (json['layout_homepage'] != null) {
-      layoutHomepage = new List<LayoutHomepage>();
+      layoutHomepage = <LayoutHomepage>[];
       json['layout_homepage'].forEach((v) {
         layoutHomepage.add(new LayoutHomepage.fromJson(v));
       });
     }
     if (json['layout_homepage_lateral_direita'] != null) {
-      layoutHomepageLateralDireita = new List<LayoutHomepageLateralDireita>();
+      layoutHomepageLateralDireita = <LayoutHomepageLateralDireita>[];
       json['layout_homepage_lateral_direita'].forEach((v) {
         layoutHomepageLateralDireita
             .add(new LayoutHomepageLateralDireita.fromJson(v));
       });
     }
     if (json['layout_homepage_lateral_esquerda'] != null) {
-      layoutHomepageLateralEsquerda = new List<LayoutHomepageLateralEsquerda>();
+      layoutHomepageLateralEsquerda = <LayoutHomepageLateralEsquerda>[];
       json['layout_homepage_lateral_esquerda'].forEach((v) {
         layoutHomepageLateralEsquerda
             .add(new LayoutHomepageLateralEsquerda.fromJson(v));
