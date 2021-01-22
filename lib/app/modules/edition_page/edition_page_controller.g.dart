@@ -9,25 +9,40 @@ part of 'edition_page_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EditionPageController on _EditionPageControllerBase, Store {
-  final _$editionsAtom = Atom(name: '_EditionPageControllerBase.editions');
+  final _$isLoadingAtom = Atom(name: '_EditionPageControllerBase.isLoading');
 
   @override
-  ObservableFuture<dynamic> get editions {
-    _$editionsAtom.reportRead();
-    return super.editions;
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
   }
 
   @override
-  set editions(ObservableFuture<dynamic> value) {
-    _$editionsAtom.reportWrite(value, super.editions, () {
-      super.editions = value;
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
+  final _$_editionsAtom = Atom(name: '_EditionPageControllerBase._editions');
+
+  @override
+  List<EditionModel> get _editions {
+    _$_editionsAtom.reportRead();
+    return super._editions;
+  }
+
+  @override
+  set _editions(List<EditionModel> value) {
+    _$_editionsAtom.reportWrite(value, super._editions, () {
+      super._editions = value;
     });
   }
 
   @override
   String toString() {
     return '''
-editions: ${editions}
+isLoading: ${isLoading}
     ''';
   }
 }
