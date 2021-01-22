@@ -34,7 +34,7 @@ abstract class _EditionPageControllerBase with Store {
     return _editions;
   }
 
-  EditionModel get firstEdition {
+  EditionModel get lastEdition {
     return _editions.first;
   }
 }

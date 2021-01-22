@@ -13,11 +13,12 @@ class _LastEditionWidgetState
     extends ModularState<LastEditionWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
+    double vHeight = MediaQuery.of(context).size.height;
+    double vWidth = MediaQuery.of(context).size.width;
     return Row(
       children: [
         Expanded(
           child: Container(
-              height: 630,
               color: AppColors.appBackground,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
@@ -25,44 +26,46 @@ class _LastEditionWidgetState
                   color: Colors.white,
                   child: Observer(builder: (ctx) {
                     if (!controller.isLoading) {
+                      print('VHeight = ' + vHeight.toString());
                       return Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
                             child: Container(
                               color: Colors.red,
-                              width: MediaQuery.of(context).size.width,
-                              child: Column(
-                                children: [
-                                  Image.network(
-                                    controller.firstEdition.acf.capa.url,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ],
+                              height: vHeight * 0.6,
+                              width: vWidth,
+                              child: Image.network(
+                                controller.lastEdition.acf.capa.url,
+                                fit: BoxFit.fill,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 32),
+                            padding: const EdgeInsets.all(32),
                             child: Container(
                               color: Colors.white,
-                              height: 60,
                               child: Align(
                                 child: Text(
-                                    'Edição #${controller.firstEdition.acf.numberEdition}: ${controller.firstEdition.acf.mes} de ${controller.firstEdition.acf.ano}'),
+                                  'Edição #${controller.lastEdition.acf.numberEdition}: ${controller.lastEdition.acf.mes} de ${controller.lastEdition.acf.ano}',
+                                  style: TextStyle(fontSize: 20),
+                                ),
                                 alignment: Alignment.centerLeft,
                               ),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(32, 0, 32, 16),
+                            padding: const EdgeInsets.fromLTRB(32, 0, 32, 32),
                             child: Container(
                               color: AppColors.bottomAppBar,
-                              height: 60,
+                              height: vHeight * 0.08,
                               child: Align(
                                 child: Text(
                                   'Ler revista agora',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                                 alignment: Alignment.center,
                               ),
