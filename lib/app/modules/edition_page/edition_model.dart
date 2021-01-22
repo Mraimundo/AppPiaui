@@ -70,20 +70,20 @@ class Acf {
     publicarApp = json['publicar_app'].cast<String>();
     materias = json['materias'];
     if (json['layout_homepage'] != null) {
-      layoutHomepage = new List<LayoutHomepage>();
+      layoutHomepage = <LayoutHomepage>[];
       json['layout_homepage'].forEach((v) {
         layoutHomepage.add(new LayoutHomepage.fromJson(v));
       });
     }
     if (json['layout_homepage_lateral_direita'] != null) {
-      layoutHomepageLateralDireita = new List<LayoutHomepageLateralDireita>();
+      layoutHomepageLateralDireita = <LayoutHomepageLateralDireita>[];
       json['layout_homepage_lateral_direita'].forEach((v) {
         layoutHomepageLateralDireita
             .add(new LayoutHomepageLateralDireita.fromJson(v));
       });
     }
     if (json['layout_homepage_lateral_esquerda'] != null) {
-      layoutHomepageLateralEsquerda = new List<LayoutHomepageLateralEsquerda>();
+      layoutHomepageLateralEsquerda = <LayoutHomepageLateralEsquerda>[];
       json['layout_homepage_lateral_esquerda'].forEach((v) {
         layoutHomepageLateralEsquerda
             .add(new LayoutHomepageLateralEsquerda.fromJson(v));

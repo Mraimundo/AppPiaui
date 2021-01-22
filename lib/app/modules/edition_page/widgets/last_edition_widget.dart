@@ -10,11 +10,8 @@ class LastEditionWidget extends StatefulWidget {
 
 class _LastEditionWidgetState
     extends ModularState<LastEditionWidget, EditionPageController> {
-  EditionPageController controller = Modular.get<EditionPageController>();
-
   @override
   Widget build(BuildContext context) {
-    controller.init();
     return Row(
       children: [
         Expanded(
@@ -30,10 +27,23 @@ class _LastEditionWidgetState
                       Padding(
                         padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
                         child: Container(
-                          color: Colors.red,
-                          height: 420,
-                          child: Container(),
-                        ),
+                            color: Colors.red,
+                            height: 420,
+                            width: MediaQuery.of(context).size.width,
+                            child: FutureBuilder(
+                              future: controller.repository.findAll(),
+                              builder: (context, snapshot) {
+                                return Visibility(
+                                  visible: snapshot.hasData,
+                                  child: Image.network(
+                                    controller
+                                        .repository.editions[0].acf.capa.url,
+                                    fit: BoxFit.fill,
+                                  ),
+                                  replacement: CircularProgressIndicator(),
+                                );
+                              },
+                            )),
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 32),
