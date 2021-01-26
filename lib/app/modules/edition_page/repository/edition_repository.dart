@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:piaui_app/app/modules/edition_page/models/edition_model.dart';
+import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/repositories/interfaces/repository_interface.dart';
 
 class EditionRepository implements IRepository {

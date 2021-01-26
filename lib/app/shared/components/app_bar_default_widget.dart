@@ -17,6 +17,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   Widget appbarDefault() {
     return AppBar(
       backgroundColor: AppColors.appBar,
+      elevation: 0,
       title: FlutterLogo(size: 40),
       actions: <Widget>[
         IconButton(

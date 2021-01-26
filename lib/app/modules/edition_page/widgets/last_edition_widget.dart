@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/edition_page/edition_page_controller.dart';
+import 'package:piaui_app/app/modules/edition_page/components/image_shimmer.dart';
+import 'package:piaui_app/app/modules/edition_page/components/skeleton_last_edition.dart';
+import 'package:piaui_app/app/modules/edition_page/controller/edition_page_controller.dart';
+import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:shimmer/shimmer.dart';
 
 class LastEditionWidget extends StatefulWidget {
   @override
@@ -26,28 +30,25 @@ class _LastEditionWidgetState
                   color: Colors.white,
                   child: Observer(builder: (ctx) {
                     if (!controller.isLoading) {
-                      print('VHeight = ' + vHeight.toString());
+                      Acf edicoes = controller.lastEdition.acf;
                       return Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
                             child: Container(
-                              color: Colors.red,
+                              color: Colors.grey,
                               height: vHeight * 0.6,
                               width: vWidth,
-                              child: Image.network(
-                                controller.lastEdition.acf.capa.url,
-                                fit: BoxFit.fill,
-                              ),
+                              child: ImageShimmer(url: edicoes.capa.url),
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(32),
+                            padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
                             child: Container(
                               color: Colors.white,
                               child: Align(
                                 child: Text(
-                                  'Edição #${controller.lastEdition.acf.numberEdition}: ${controller.lastEdition.acf.mes} de ${controller.lastEdition.acf.ano}',
+                                  'Edição #${edicoes.numberEdition}: ${edicoes.mes} de ${edicoes.ano}',
                                   style: TextStyle(fontSize: 20),
                                 ),
                                 alignment: Alignment.centerLeft,
@@ -55,19 +56,22 @@ class _LastEditionWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(32, 0, 32, 32),
-                            child: Container(
-                              color: AppColors.bottomAppBar,
-                              height: vHeight * 0.08,
-                              child: Align(
-                                child: Text(
-                                  'Ler revista agora',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 17),
+                            padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
+                            child: FlatButton(
+                              onPressed: () {  },
+                              child: Container(
+                                color: AppColors.bottomAppBar,
+                                height: vHeight * 0.08,
+                                child: Align(
+                                  child: Text(
+                                    'Ler revista agora',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 17),
+                                  ),
+                                  alignment: Alignment.center,
                                 ),
-                                alignment: Alignment.center,
                               ),
                             ),
                           ),
@@ -75,7 +79,7 @@ class _LastEditionWidgetState
                       );
                     } else {
                       //You'll put a shimmer here!
-                      return Text('');
+                      return SkeletonLastEdition();
                     }
                   }),
                 ),

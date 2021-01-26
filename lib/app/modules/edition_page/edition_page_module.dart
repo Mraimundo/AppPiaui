@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/edition_page/edition_page.dart';
+
+import 'view/edition_page.dart';
 
 class EditionPageModule extends ChildModule {
   @override

@@ -1,11 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/edition_page/components/image_shimmer.dart';
+import 'package:piaui_app/app/modules/edition_page/controller/edition_page_controller.dart';
+import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
 
-class RowGridWidget extends StatelessWidget {
+class RowGridDoubleWidget extends StatefulWidget {
+  final int index;
+
+  const RowGridDoubleWidget({Key key, this.index}) : super(key: key);
+
+  @override
+  _RowGridDoubleWidgetState createState() => _RowGridDoubleWidgetState();
+}
+
+class _RowGridDoubleWidgetState
+    extends ModularState<RowGridDoubleWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
     final double rowHeight = 250;
-    final double rowWidth = 205;
+    final double rowWidth = MediaQuery.of(context).size.width / 2.2;
     final double rowFontsize = 11;
+    const framePadding = EdgeInsets.fromLTRB(0, 8, 0, 8);
+    CrossAxisAlignment columAlignH = CrossAxisAlignment.center;
+    MainAxisAlignment columAlignV = MainAxisAlignment.end;
+    CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
+    MainAxisAlignment rowAlignH = MainAxisAlignment.spaceEvenly;
+    Acf editionPair = controller.editions[widget.index].acf;
+    Acf editionOdd = controller.editions[widget.index+1].acf;
     return Row(
       children: [
         Column(
@@ -16,23 +37,24 @@ class RowGridWidget extends StatelessWidget {
               color: Colors.blue,
               width: MediaQuery.of(context).size.width,
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: rowAlignV,
+                mainAxisAlignment: rowAlignH,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(16, 8, 0, 8),
+                    padding: framePadding,
                     child: Container(
                       color: Colors.white,
                       height: rowHeight,
                       width: rowWidth,
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: columAlignH,
+                        mainAxisAlignment: columAlignV,
                         children: [
                           Container(
-                            color: Colors.red,
+                            color: Colors.grey,
                             height: rowHeight * 0.80,
                             width: rowWidth * 0.85,
+                            child: ImageShimmer(url: editionPair.capa.url),
                           ),
                           Container(
                             color: Colors.white,
@@ -40,7 +62,7 @@ class RowGridWidget extends StatelessWidget {
                             width: rowWidth * 0.85,
                             child: Align(
                               child: Text(
-                                'Edição #171: Dezembro de 2020',
+                                'Edição ${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
                                 style: TextStyle(fontSize: rowFontsize),
                               ),
                             ),
@@ -50,19 +72,20 @@ class RowGridWidget extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(0, 8, 16, 8),
+                    padding: framePadding,
                     child: Container(
                       color: Colors.white,
                       height: rowHeight,
                       width: rowWidth,
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: columAlignH,
+                        mainAxisAlignment: columAlignV,
                         children: [
                           Container(
-                            color: Colors.red,
+                            color: Colors.grey,
                             height: rowHeight * 0.80,
                             width: rowWidth * 0.85,
+                            child: ImageShimmer(url: editionOdd.capa.url),
                           ),
                           Container(
                             color: Colors.white,
@@ -70,7 +93,7 @@ class RowGridWidget extends StatelessWidget {
                             width: rowWidth * 0.85,
                             child: Align(
                               child: Text(
-                                'Edição #170: Novembro de 2020',
+                                'Edição ${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
                                 style: TextStyle(fontSize: rowFontsize),
                               ),
                             ),

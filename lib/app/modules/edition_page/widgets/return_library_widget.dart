@@ -8,12 +8,15 @@ class ReturnLibraryWidget extends StatelessWidget {
       children: [
         Expanded(
           child: Container(
-            height: 60,
+            height: 70,
             color: AppColors.appBackground,
             child: Align(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
-                child: Text('Voltar para a biblioteca de revistas'),
+                child: Text(
+                  'Voltar para a biblioteca de revistas',
+                  style: TextStyle(decoration: TextDecoration.underline),
+                ),
               ),
               alignment: Alignment.centerLeft,
             ),

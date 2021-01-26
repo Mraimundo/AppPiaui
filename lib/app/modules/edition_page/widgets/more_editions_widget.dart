@@ -13,7 +13,13 @@ class MoreEditionsWidget extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Align(
-                child: Text('Mais edições'),
+                child: Text(
+                  'MAIS EDIÇÕES',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30,
+                  ),
+                ),
                 alignment: Alignment.center,
               ),
             ),
