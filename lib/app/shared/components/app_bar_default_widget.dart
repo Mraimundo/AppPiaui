@@ -11,29 +11,34 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
 
   @override
   Widget build(BuildContext context) {
-    return appbarDefault();
+    return appbarDefault(context);
   }
 
-  Widget appbarDefault() {
+  Widget appbarDefault(BuildContext context) {
+    double iconSize = 60;
     return AppBar(
       backgroundColor: AppColors.appBar,
       elevation: 0,
-      title: FlutterLogo(size: 40),
+      title: Container(
+        child: Image.asset('assets/images/piaui_logo.jpg', fit: BoxFit.fill),
+        color: Colors.white,
+        height: MediaQuery.of(context).size.height/15,
+        width: MediaQuery.of(context).size.width / 5,
+      ),
       actions: <Widget>[
         IconButton(
-          icon: Icon(
-            Icons.search,
-            size: 40,
-            color: AppColors.textColorBlack,
-          ),
+          padding: EdgeInsets.zero,
+          constraints: BoxConstraints(),
+          icon: Image.asset('assets/images/icon_lupa.png'),
+          iconSize: iconSize,
+          alignment: Alignment.centerRight,
           onPressed: () {},
         ),
         IconButton(
-          icon: Icon(
-            Icons.perm_identity,
-            size: 40,
-            color: AppColors.textColorBlack,
-          ),
+          padding: EdgeInsets.fromLTRB(0, 4, 8, 4),
+          constraints: BoxConstraints(),
+          icon: Image.asset('assets/images/icon_profile.png'),
+          iconSize: iconSize,
           onPressed: () {},
         ),
       ],
@@ -42,5 +47,5 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
 
   @override
   // TODO: implement child
-  Widget get child => appbarDefault();
+  Widget get child => AppBarDefaultWidget();
 }

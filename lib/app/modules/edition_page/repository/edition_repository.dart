@@ -24,4 +24,20 @@ class EditionRepository implements IRepository {
     }
     return editions;
   }
+
+  @override
+  Future<List<EditionModel>> findByPage(int page) async {
+    try {
+      var response = await dio.get('wp-json/acf/v3/edicao?page=$page');
+      if (response.statusCode == 200) {
+        for (var json in response.data) {
+          final singleEdition = EditionModel.fromJson(json);
+          editions.add(singleEdition);
+        }
+      }
+    } catch (error) {
+      print("Error: " + error.toString());
+    }
+    return editions;
+  }
 }

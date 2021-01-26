@@ -6,7 +6,6 @@ import 'package:piaui_app/app/modules/edition_page/components/skeleton_last_edit
 import 'package:piaui_app/app/modules/edition_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
-import 'package:shimmer/shimmer.dart';
 
 class LastEditionWidget extends StatefulWidget {
   @override
