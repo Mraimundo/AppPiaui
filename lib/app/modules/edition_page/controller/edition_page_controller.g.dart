@@ -39,10 +39,26 @@ mixin _$EditionPageController on _EditionPageControllerBase, Store {
     });
   }
 
+  final _$itemCountAtom = Atom(name: '_EditionPageControllerBase.itemCount');
+
+  @override
+  int get itemCount {
+    _$itemCountAtom.reportRead();
+    return super.itemCount;
+  }
+
+  @override
+  set itemCount(int value) {
+    _$itemCountAtom.reportWrite(value, super.itemCount, () {
+      super.itemCount = value;
+    });
+  }
+
   @override
   String toString() {
     return '''
-isLoading: ${isLoading}
+isLoading: ${isLoading},
+itemCount: ${itemCount}
     ''';
   }
 }

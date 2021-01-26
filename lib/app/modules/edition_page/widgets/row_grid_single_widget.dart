@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/edition_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/edition_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
+import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridSingleWidget extends StatefulWidget {
 
@@ -33,7 +34,7 @@ class _RowGridSingleWidgetState extends ModularState<RowGridSingleWidget, Editio
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              color: Colors.blue,
+              color: AppColors.appBackground,
               width: MediaQuery.of(context).size.width,
               child: Row(
                 crossAxisAlignment: rowAlignV,
@@ -60,8 +61,9 @@ class _RowGridSingleWidgetState extends ModularState<RowGridSingleWidget, Editio
                             height: rowHeight * 0.15,
                             width: rowWidth * 0.85,
                             child: Align(
+                              alignment: Alignment.centerLeft,
                               child: Text(
-                                'Edição ${edition.numberEdition}: ${edition.mes} de ${edition.ano}',
+                                'Edição #${edition.numberEdition}: ${edition.mes} de ${edition.ano}',
                                 style: TextStyle(fontSize: rowFontsize),
                               ),
                             ),

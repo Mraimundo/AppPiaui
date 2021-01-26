@@ -60,20 +60,18 @@ class _EditionPageState
                           builder: (_) {
                             List<Widget> content = <Widget>[];
                             if (!controller.isLoading) {
-                              int nEditions = controller.editions.length;
                               int items = controller.itemCount;
-                              if (nEditions % 2 == 0) {
+                              if (items % 2 == 0) {
                                 for (var i = 1; i < items; i += 2) {
                                   content.add(RowGridDoubleWidget(index: i));
                                 }
                               } else {
-                                for (var i = 1; i < items; i += 2) {
+                                for (var i = 1; i < items-1; i += 2) {
                                   content.add(RowGridDoubleWidget(index: i));
                                 }
-                                nEditions++;
-                                content
-                                    .add(RowGridSingleWidget(index: nEditions));
+                                content.add(RowGridSingleWidget(index: items));
                               }
+
                               return Column(children: content);
                             } else {
                               return SkeletonRowGrid();

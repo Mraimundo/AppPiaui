@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/edition_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
@@ -12,42 +13,67 @@ class _LoadMoreWidgetState
     extends ModularState<LoadMoreWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            height: 120,
-            color: Colors.white,
-            child: Padding(
-                padding: const EdgeInsets.fromLTRB(125, 26, 125, 26),
-                child: FlatButton(
-                  color: AppColors.bottomAppBar,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'CARREGAR MAIS',
-                        style: TextStyle(color: AppColors.textColorWhite),
+    return Observer(
+      builder: (_) {
+        if (!controller.isLoading) {
+          int numberEditions = controller.editions.length;
+          int items = controller.itemCount;
+          return Visibility(
+            visible: items < numberEditions-1,
+            replacement: Container(),
+            child: Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    height: 120,
+                    color: AppColors.appBackground,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(125, 26, 125, 26),
+                      child: FlatButton(
+                        color: AppColors.bottomAppBar,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'CARREGAR MAIS',
+                              style: TextStyle(color: AppColors.textColorWhite),
+                            ),
+                            Icon(
+                              Icons.keyboard_arrow_down,
+                              color: AppColors.textColorWhite,
+                              size: 30,
+                            )
+                          ],
+                        ),
+                        onPressed: () {
+                          if (numberEditions % 2 == 0) {
+                            if (items < numberEditions - 2) {
+                              controller.itemCount += 2;
+                              print('ItemCount ${controller.itemCount}');
+                            } else {
+                              if (items <= numberEditions) {
+                                controller.itemCount++;
+                                print('ItemCount ${controller.itemCount}');
+                              }
+                            }
+                          } else {
+                            if (items <= numberEditions) {
+                              controller.itemCount++;
+                              print('ItemCount ${controller.itemCount}');
+                            }
+                          }
+                        },
                       ),
-                      Icon(
-                        Icons.keyboard_arrow_down,
-                        color: AppColors.textColorWhite,
-                        size: 30,
-                      )
-                    ],
+                    ),
                   ),
-                  onPressed: () {
-                    int numberEditions = controller.editions.length;
-                    int items = controller.itemCount;
-                    if (items < numberEditions) {
-                      controller.itemCount += 2;
-                    } else {
-                    }
-                  },
-                )),
-          ),
-        ),
-      ],
+                ),
+              ],
+            ),
+          );
+        } else {
+          return Container();
+        }
+      },
     );
   }
 }

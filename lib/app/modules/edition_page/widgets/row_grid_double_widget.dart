@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/edition_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/edition_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
+import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridDoubleWidget extends StatefulWidget {
   final int index;
@@ -34,7 +35,7 @@ class _RowGridDoubleWidgetState
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              color: Colors.blue,
+              color: AppColors.appBackground,
               width: MediaQuery.of(context).size.width,
               child: Row(
                 crossAxisAlignment: rowAlignV,
@@ -61,8 +62,9 @@ class _RowGridDoubleWidgetState
                             height: rowHeight * 0.15,
                             width: rowWidth * 0.85,
                             child: Align(
+                              alignment: Alignment.centerLeft,
                               child: Text(
-                                'Edição ${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
+                                'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
                                 style: TextStyle(fontSize: rowFontsize),
                               ),
                             ),
@@ -92,8 +94,9 @@ class _RowGridDoubleWidgetState
                             height: rowHeight * 0.15,
                             width: rowWidth * 0.85,
                             child: Align(
+                              alignment: Alignment.centerLeft,
                               child: Text(
-                                'Edição ${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
+                                'Edição #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
                                 style: TextStyle(fontSize: rowFontsize),
                               ),
                             ),
