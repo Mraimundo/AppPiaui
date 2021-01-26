@@ -51,7 +51,7 @@ class _RowGridSingleWidgetState extends ModularState<RowGridSingleWidget, Editio
                         mainAxisAlignment: columAlignV,
                         children: [
                           Container(
-                            color: Colors.red,
+                            color: Colors.grey,
                             height: rowHeight * 0.80,
                             width: rowWidth * 0.85,
                             child: ImageShimmer(url: edition.capa.url),
