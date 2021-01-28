@@ -48,7 +48,7 @@ class _LoadMoreWidgetState
                           ],
                         ),
                         onPressed: () {
-                          print(controller.loadPage);
+                          print("Loading new page? R: ${controller.loadPage}");
                           if (!controller.loadPage) {
                             if (numberEditions % 2 == 0) {
                               if (items < numberEditions - 2) {
