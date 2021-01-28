@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
@@ -13,15 +12,21 @@ class EditionPageController = _EditionPageControllerBase
 abstract class _EditionPageControllerBase with Store {
   EditionRepository _repository;
   List<EditionModel> _listEditonLocal = <EditionModel>[];
+  List<EditionModel> _pages = [];
 
   @observable
   bool isLoading = false;
 
   @observable
-  List<EditionModel> _editions;
+  List<EditionModel> _editionsSiglePage;
 
   @observable
   int itemCount = 6;
+
+  @observable
+  int _pageCount = 1;
+
+  bool loadPage = false;
 
   _EditionPageControllerBase(this._repository) {
     init();
@@ -29,42 +34,31 @@ abstract class _EditionPageControllerBase with Store {
 
   init() async {
     isLoading = true;
-    _listEditonLocal = await _repository.findAll();
-    _editions = _listEditonLocal.asObservable();
-    loadImages();
+    _listEditonLocal = await _repository.findByPage(_pageCount);
+    _editionsSiglePage = _listEditonLocal.asObservable();
     isLoading = false;
   }
 
-  List<EditionModel> get editions {
-    return _editions;
+  List<EditionModel> get editionsSinglePage {
+    return _editionsSiglePage;
   }
 
   EditionModel get lastEdition {
-    return _editions.first;
+    return _editionsSiglePage.first;
   }
 
-  List<Image> images = <Image>[];
+  List<EditionModel> get editionsMultiPage {
+    _pages = editionsSinglePage;
+    return _pages;
+  }
 
-  List<Image> loadImages() {
-    for (var i = 0; i < _editions.length; i++) {
-      bool imgLoaded = false;
-      Image img;
-      img = Image.network(
-        _editions[i].acf.capa.url,
-        fit: BoxFit.fill,
-        loadingBuilder: (BuildContext context, Widget child,
-            ImageChunkEvent loadingProgress) {
-          if (loadingProgress == null) {
-            imgLoaded = true;
-            return child;
-          }
-          return Container();
-        },
-      );
-      if (imgLoaded) {
-        images.add(img);
-      }
-    }
-    return images;
+  @action
+  nextPage() async {
+    _pageCount += 1;
+    _listEditonLocal.clear();
+    loadPage = true;
+    _listEditonLocal = await _repository.findByPage(_pageCount);
+    editionsSinglePage.addAll(_listEditonLocal.asObservable());
+    loadPage = false;
   }
 }

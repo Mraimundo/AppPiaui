@@ -13,13 +13,15 @@ class _LoadMoreWidgetState
     extends ModularState<LoadMoreWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
+    int rows = 6;
+
     return Observer(
       builder: (_) {
         if (!controller.isLoading) {
-          int numberEditions = controller.editions.length;
+          int numberEditions = controller.editionsSinglePage.length;
           int items = controller.itemCount;
           return Visibility(
-            visible: items < numberEditions-1,
+            visible: items < numberEditions - 1 && !controller.loadPage,
             replacement: Container(),
             child: Row(
               children: [
@@ -46,20 +48,30 @@ class _LoadMoreWidgetState
                           ],
                         ),
                         onPressed: () {
-                          if (numberEditions % 2 == 0) {
-                            if (items < numberEditions - 2) {
-                              controller.itemCount += 2;
-                              print('ItemCount ${controller.itemCount}');
+                          print(controller.loadPage);
+                          if (!controller.loadPage) {
+                            if (numberEditions % 2 == 0) {
+                              if (items < numberEditions - 2) {
+                                controller.itemCount += 2;
+                                rows += 2;
+                                if (rows >= 8) {
+                                  controller.nextPage();
+                                  rows = 0;
+                                }
+                                //controller.nextPage();
+                                print('ItemCount ${controller.itemCount}');
+                                print('rows = $rows');
+                              } else {
+                                if (items <= numberEditions) {
+                                  controller.itemCount++;
+                                  print('ItemCount ${controller.itemCount}');
+                                }
+                              }
                             } else {
                               if (items <= numberEditions) {
                                 controller.itemCount++;
                                 print('ItemCount ${controller.itemCount}');
                               }
-                            }
-                          } else {
-                            if (items <= numberEditions) {
-                              controller.itemCount++;
-                              print('ItemCount ${controller.itemCount}');
                             }
                           }
                         },

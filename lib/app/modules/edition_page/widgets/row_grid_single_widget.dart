@@ -26,7 +26,7 @@ class _RowGridSingleWidgetState extends ModularState<RowGridSingleWidget, Editio
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.center;
-    Acf edition = controller.editions[widget.index].acf;
+    Acf edition = controller.editionsSinglePage[widget.index].acf;
     return Row(
       children: [
         Column(

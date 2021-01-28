@@ -24,18 +24,19 @@ mixin _$EditionPageController on _EditionPageControllerBase, Store {
     });
   }
 
-  final _$_editionsAtom = Atom(name: '_EditionPageControllerBase._editions');
+  final _$_editionsSiglePageAtom =
+      Atom(name: '_EditionPageControllerBase._editionsSiglePage');
 
   @override
-  List<EditionModel> get _editions {
-    _$_editionsAtom.reportRead();
-    return super._editions;
+  List<EditionModel> get _editionsSiglePage {
+    _$_editionsSiglePageAtom.reportRead();
+    return super._editionsSiglePage;
   }
 
   @override
-  set _editions(List<EditionModel> value) {
-    _$_editionsAtom.reportWrite(value, super._editions, () {
-      super._editions = value;
+  set _editionsSiglePage(List<EditionModel> value) {
+    _$_editionsSiglePageAtom.reportWrite(value, super._editionsSiglePage, () {
+      super._editionsSiglePage = value;
     });
   }
 
@@ -52,6 +53,29 @@ mixin _$EditionPageController on _EditionPageControllerBase, Store {
     _$itemCountAtom.reportWrite(value, super.itemCount, () {
       super.itemCount = value;
     });
+  }
+
+  final _$_pageCountAtom = Atom(name: '_EditionPageControllerBase._pageCount');
+
+  @override
+  int get _pageCount {
+    _$_pageCountAtom.reportRead();
+    return super._pageCount;
+  }
+
+  @override
+  set _pageCount(int value) {
+    _$_pageCountAtom.reportWrite(value, super._pageCount, () {
+      super._pageCount = value;
+    });
+  }
+
+  final _$nextPageAsyncAction =
+      AsyncAction('_EditionPageControllerBase.nextPage');
+
+  @override
+  Future nextPage() {
+    return _$nextPageAsyncAction.run(() => super.nextPage());
   }
 
   @override

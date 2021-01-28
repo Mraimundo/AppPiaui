@@ -26,8 +26,8 @@ class _RowGridDoubleWidgetState
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.spaceEvenly;
-    Acf editionPair = controller.editions[widget.index].acf;
-    Acf editionOdd = controller.editions[widget.index+1].acf;
+    Acf editionPair = controller.editionsSinglePage[widget.index].acf;
+    Acf editionOdd = controller.editionsSinglePage[widget.index+1].acf;
     return Row(
       children: [
         Column(

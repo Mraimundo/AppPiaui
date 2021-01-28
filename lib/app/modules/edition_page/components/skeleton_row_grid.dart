@@ -21,7 +21,7 @@ class SkeletonRowGrid extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              color: Colors.blue,
+              color: AppColors.appBackground,
               width: MediaQuery.of(context).size.width,
               child: Row(
                 crossAxisAlignment: rowAlignV,

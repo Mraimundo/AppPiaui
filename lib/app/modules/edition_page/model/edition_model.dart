@@ -27,13 +27,13 @@ class Acf {
   String numberEdition;
   String ano;
   Capa capa;
-  bool indice;
+  var indice;
   String valor;
   String colaboradoresTextEditor;
   String appleId;
   String playstoreId;
-  List<String> publicarApp;
-  bool materias;
+  var publicarApp;
+  var materias;
   List<LayoutHomepage> layoutHomepage;
   List<LayoutHomepageLateralDireita> layoutHomepageLateralDireita;
   List<LayoutHomepageLateralEsquerda> layoutHomepageLateralEsquerda;
@@ -85,7 +85,7 @@ class Acf {
     colaboradoresTextEditor = json['colaboradores_text_editor'];
     appleId = json['apple_id'];
     playstoreId = json['playstore_id'];
-    publicarApp = json['publicar_app'].cast<String>();
+    publicarApp = json['publicar_app'];
     materias = json['materias'];
     if (json['layout_homepage'] != null) {
       layoutHomepage = <LayoutHomepage>[];
@@ -304,14 +304,14 @@ class LayoutHomepage {
   String linkPublicacao;
   var publicacoesRelacionadasModular;
   String linkPublicacaoDois;
-  bool publicacoesRelacionadasModularDois;
+  var publicacoesRelacionadasModularDois;
   String linkPublicacaoTres;
   bool publicacoesRelacionadasModularTres;
   String linkLupa;
   String tituloCustomizada;
   String gravataCustomizada;
   String descricaoCustomizada;
-  String imagemDeDestaqueCustomizada;
+  var imagemDeDestaqueCustomizada;
   bool arquivovideoCustomizada;
   String autorCustomizada;
   String linkLupaDois;
