@@ -15,31 +15,52 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   }
 
   Widget appbarDefault(BuildContext context) {
-    double iconSize = 60;
+    double iconSize = 50;
     return AppBar(
       backgroundColor: AppColors.appBar,
       elevation: 0,
-      title: Container(
-        child: Image.asset('assets/images/piaui_logo.jpg', fit: BoxFit.fill),
-        color: Colors.white,
-        height: MediaQuery.of(context).size.height/15,
-        width: MediaQuery.of(context).size.width / 5,
+      title: FlatButton(
+        padding: EdgeInsets.zero,
+        onPressed: () {  },
+        child: Container(
+          child: Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
+          color: Colors.white,
+          height: MediaQuery.of(context).size.height / 14,
+          width: MediaQuery.of(context).size.width / 5,
+        ),
       ),
       actions: <Widget>[
         IconButton(
           padding: EdgeInsets.zero,
-          constraints: BoxConstraints(),
-          icon: Image.asset('assets/images/icon_lupa.png'),
+          icon: Container(
+            child: Image.asset('assets/images/icon_lupa.png', fit: BoxFit.contain),
+            //color: Colors.black,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+          ),
           iconSize: iconSize,
           alignment: Alignment.centerRight,
           onPressed: () {},
         ),
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+        ),
         IconButton(
-          padding: EdgeInsets.fromLTRB(0, 4, 8, 4),
-          constraints: BoxConstraints(),
-          icon: Image.asset('assets/images/icon_profile.png'),
+          padding: EdgeInsets.zero,
+          icon: Container(
+            padding: EdgeInsets.all(4),
+            child: Image.asset('assets/images/icon_menu.png', fit: BoxFit.contain),
+            //color: Colors.black,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+          ),
           iconSize: iconSize,
+          alignment: Alignment.centerRight,
           onPressed: () {},
+        ),
+        Container(
+          color: Colors.white,
+          padding: EdgeInsets.symmetric(horizontal: 7),
         ),
       ],
     );
