@@ -15,7 +15,10 @@ class ReturnLibraryWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(16.0),
                 child: Text(
                   'Voltar para a biblioteca de revistas',
-                  style: TextStyle(decoration: TextDecoration.underline),
+                  style: TextStyle(
+                    decoration: TextDecoration.underline,
+                    fontSize: 16,
+                  ),
                 ),
               ),
               alignment: Alignment.centerLeft,

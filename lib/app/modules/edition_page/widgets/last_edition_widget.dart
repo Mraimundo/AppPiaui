@@ -48,7 +48,7 @@ class _LastEditionWidgetState
                               child: Align(
                                 child: Text(
                                   'Edição #${edicoes.numberEdition}: ${edicoes.mes} de ${edicoes.ano}',
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(fontSize: 25),
                                 ),
                                 alignment: Alignment.centerLeft,
                               ),
@@ -57,7 +57,7 @@ class _LastEditionWidgetState
                           Padding(
                             padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
                             child: FlatButton(
-                              onPressed: () {  },
+                              onPressed: () {},
                               child: Container(
                                 color: AppColors.bottomAppBar,
                                 height: vHeight * 0.08,
@@ -67,7 +67,7 @@ class _LastEditionWidgetState
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 17),
+                                        fontSize: 22),
                                   ),
                                   alignment: Alignment.center,
                                 ),

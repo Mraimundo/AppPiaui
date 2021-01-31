@@ -11,13 +11,17 @@ class BottomAppBarWidget extends StatelessWidget {
         child: ListTile(
             title: Text(
               '1 ano de revista piauí com 52% de desconto!',
-              style: TextStyle(color: AppColors.textColorWhite, fontSize: 14),
+              style: TextStyle(color: AppColors.textColorWhite, fontSize: 17),
             ),
             trailing: OutlineButton(
               borderSide: BorderSide(color: AppColors.textColorWhite),
+              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               child: Text(
                 'Assine agora',
-                style: TextStyle(color: AppColors.textColorWhite),
+                style: TextStyle(
+                    color: AppColors.textColorWhite,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18),
               ),
               onPressed: () {},
             )),

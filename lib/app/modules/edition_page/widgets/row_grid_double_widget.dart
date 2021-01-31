@@ -18,16 +18,16 @@ class _RowGridDoubleWidgetState
     extends ModularState<RowGridDoubleWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
-    final double rowHeight = 250;
+    final double rowHeight = 255;
     final double rowWidth = MediaQuery.of(context).size.width / 2.2;
-    final double rowFontsize = 11;
+    final double rowFontsize = 15;
     const framePadding = EdgeInsets.fromLTRB(0, 8, 0, 8);
     CrossAxisAlignment columAlignH = CrossAxisAlignment.center;
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.spaceEvenly;
     Acf editionPair = controller.editionsSinglePage[widget.index].acf;
-    Acf editionOdd = controller.editionsSinglePage[widget.index+1].acf;
+    Acf editionOdd = controller.editionsSinglePage[widget.index + 1].acf;
     return Row(
       children: [
         Column(

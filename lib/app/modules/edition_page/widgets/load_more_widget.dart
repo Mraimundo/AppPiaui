@@ -38,12 +38,15 @@ class _LoadMoreWidgetState
                           children: [
                             Text(
                               'CARREGAR MAIS',
-                              style: TextStyle(color: AppColors.textColorWhite),
+                              style: TextStyle(
+                                  color: AppColors.textColorWhite,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
                             ),
                             Icon(
                               Icons.keyboard_arrow_down,
                               color: AppColors.textColorWhite,
-                              size: 30,
+                              size: 35,
                             )
                           ],
                         ),
