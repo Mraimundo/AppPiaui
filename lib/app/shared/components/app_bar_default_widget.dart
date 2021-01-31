@@ -21,19 +21,31 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
       elevation: 0,
       title: FlatButton(
         padding: EdgeInsets.zero,
-        onPressed: () {  },
-        child: Container(
-          child: Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
-          color: Colors.white,
-          height: MediaQuery.of(context).size.height / 14,
-          width: MediaQuery.of(context).size.width / 5,
+        onPressed: () {},
+        child: Visibility(
+          visible: MediaQuery.of(context).orientation == Orientation.portrait,
+          child: Container(
+            child:
+                Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
+            color: Colors.white,
+            height: MediaQuery.of(context).size.height / 14,
+            width: MediaQuery.of(context).size.width / 5,
+          ),
+          replacement: Container(
+            child:
+                Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
+            color: Colors.white,
+            height: MediaQuery.of(context).size.height / 8,
+            width: MediaQuery.of(context).size.width / 8,
+          ),
         ),
       ),
       actions: <Widget>[
         IconButton(
           padding: EdgeInsets.zero,
           icon: Container(
-            child: Image.asset('assets/images/icon_lupa.png', fit: BoxFit.contain),
+            child:
+                Image.asset('assets/images/icon_lupa.png', fit: BoxFit.contain),
             //color: Colors.black,
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
@@ -49,7 +61,8 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
           padding: EdgeInsets.zero,
           icon: Container(
             padding: EdgeInsets.all(4),
-            child: Image.asset('assets/images/icon_menu.png', fit: BoxFit.contain),
+            child:
+                Image.asset('assets/images/icon_menu.png', fit: BoxFit.contain),
             //color: Colors.black,
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,

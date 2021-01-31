@@ -9,9 +9,17 @@ class BottomAppBarWidget extends StatelessWidget {
       height: 80,
       child: Align(
         child: ListTile(
-            title: Text(
-              '1 ano de revista piauí com 52% de desconto!',
-              style: TextStyle(color: AppColors.textColorWhite, fontSize: 17),
+            title: Visibility(
+              visible:
+                  MediaQuery.of(context).orientation == Orientation.portrait,
+              child: Text(
+                '1 ano de revista piauí com 52% de desconto!',
+                style: TextStyle(color: AppColors.textColorWhite, fontSize: 17),
+              ),
+              replacement: Text(
+                '1 ano de revista piauí com 52% de desconto!',
+                style: TextStyle(color: AppColors.textColorWhite, fontSize: 36),
+              ),
             ),
             trailing: OutlineButton(
               borderSide: BorderSide(color: AppColors.textColorWhite),
