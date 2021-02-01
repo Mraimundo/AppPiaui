@@ -55,23 +55,49 @@ class _LastEditionWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-                            child: FlatButton(
-                              onPressed: () {},
-                              child: Container(
-                                color: AppColors.bottomAppBar,
-                                height: vHeight * 0.08,
-                                child: Align(
-                                  child: Text(
-                                    'Ler revista agora',
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 22),
+                            padding: const EdgeInsets.fromLTRB(32, 0, 32, 32),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FlatButton(
+                                  onPressed: () {},
+                                  padding: EdgeInsets.zero,
+                                  child: Container(
+                                    color: AppColors.bottomAppBar,
+                                    height: vHeight * 0.08,
+                                    width: vWidth / 2.7,
+                                    child: Align(
+                                      child: Text(
+                                        'Comprar R\$28',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 22),
+                                      ),
+                                      alignment: Alignment.center,
+                                    ),
                                   ),
-                                  alignment: Alignment.center,
                                 ),
-                              ),
+                                FlatButton(
+                                  onPressed: () {},
+                                  padding: EdgeInsets.zero,
+                                  child: Container(
+                                    color: AppColors.darkButton,
+                                    height: vHeight * 0.08,
+                                    width: vWidth / 2.7,
+                                    child: Align(
+                                      child: Text(
+                                        'Ler prévia',
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 22),
+                                      ),
+                                      alignment: Alignment.center,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

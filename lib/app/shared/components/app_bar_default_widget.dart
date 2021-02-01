@@ -15,7 +15,6 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   }
 
   Widget appbarDefault(BuildContext context) {
-    double iconSize = 50;
     return AppBar(
       backgroundColor: AppColors.appBar,
       elevation: 0,
@@ -27,16 +26,16 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
           child: Container(
             child:
                 Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
-            color: Colors.white,
-            height: MediaQuery.of(context).size.height / 14,
-            width: MediaQuery.of(context).size.width / 5,
+            //color: Colors.black,
+            height: MediaQuery.of(context).size.height / 20,
+            width: MediaQuery.of(context).size.width / 6,
           ),
           replacement: Container(
             child:
                 Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
-            color: Colors.white,
-            height: MediaQuery.of(context).size.height / 8,
-            width: MediaQuery.of(context).size.width / 8,
+            //color: Colors.white,
+            height: MediaQuery.of(context).size.height / 12,
+            width: MediaQuery.of(context).size.width / 10,
           ),
         ),
       ),
@@ -47,15 +46,15 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
             child:
                 Image.asset('assets/images/icon_lupa.png', fit: BoxFit.contain),
             //color: Colors.black,
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).orientation == Orientation.portrait
+                ? MediaQuery.of(context).size.height / 25
+                : MediaQuery.of(context).size.height / 14,
           ),
-          iconSize: iconSize,
           alignment: Alignment.centerRight,
           onPressed: () {},
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 5),
+          padding: EdgeInsets.symmetric(horizontal: 3),
         ),
         IconButton(
           padding: EdgeInsets.zero,
@@ -64,10 +63,10 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
             child:
                 Image.asset('assets/images/icon_menu.png', fit: BoxFit.contain),
             //color: Colors.black,
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).orientation == Orientation.portrait
+                ? MediaQuery.of(context).size.height / 25
+                : MediaQuery.of(context).size.height / 14,
           ),
-          iconSize: iconSize,
           alignment: Alignment.centerRight,
           onPressed: () {},
         ),
