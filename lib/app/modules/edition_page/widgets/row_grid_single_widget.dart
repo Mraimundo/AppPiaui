@@ -6,7 +6,6 @@ import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridSingleWidget extends StatefulWidget {
-
   final int index;
 
   const RowGridSingleWidget({Key key, this.index}) : super(key: key);
@@ -15,7 +14,8 @@ class RowGridSingleWidget extends StatefulWidget {
   _RowGridSingleWidgetState createState() => _RowGridSingleWidgetState();
 }
 
-class _RowGridSingleWidgetState extends ModularState<RowGridSingleWidget, EditionPageController> {
+class _RowGridSingleWidgetState
+    extends ModularState<RowGridSingleWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
     final double rowHeight = 250;
@@ -52,13 +52,11 @@ class _RowGridSingleWidgetState extends ModularState<RowGridSingleWidget, Editio
                         children: [
                           Container(
                             color: Colors.grey,
-                            height: rowHeight * 0.80,
                             width: rowWidth * 0.85,
                             child: ImageShimmer(url: edition.capa.url),
                           ),
                           Container(
                             color: Colors.white,
-                            height: rowHeight * 0.15,
                             width: rowWidth * 0.85,
                             child: Align(
                               alignment: Alignment.centerLeft,
