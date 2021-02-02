@@ -43,7 +43,7 @@ class SkeletonLastEdition extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(32, 0, 32, 32),
                     child: Container(
-                      color: AppColors.bottomAppBar,
+                      color: Colors.grey,
                       height: vHeight * 0.08,
                       child: Align(
                         child: Shimmer.fromColors(

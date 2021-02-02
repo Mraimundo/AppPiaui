@@ -30,13 +30,16 @@ class _LastEditionWidgetState
                   child: Observer(builder: (ctx) {
                     if (!controller.isLoading) {
                       Acf edicoes = controller.lastEdition.acf;
+                      print('vHeight $vHeight');
                       return Column(
                         children: <Widget>[
                           Padding(
                             padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
                             child: Container(
                               color: Colors.grey,
-                              height: vHeight * 0.6,
+                              height: vHeight < 764.5
+                                  ? vHeight * 0.6
+                                  : vHeight * 0.5,
                               width: vWidth,
                               child: ImageShimmer(url: edicoes.capa.url),
                             ),
