@@ -45,19 +45,21 @@ class _RowGridDoubleWidgetState
                     padding: framePadding,
                     child: Container(
                       color: Colors.white,
-                      padding: EdgeInsets.all(10),
+                      height: rowHeight,
+                      width: rowWidth,
                       child: Column(
                         crossAxisAlignment: columAlignH,
                         mainAxisAlignment: columAlignV,
                         children: [
                           Container(
                             color: Colors.grey,
+                            height: rowHeight * 0.80,
                             width: rowWidth * 0.85,
                             child: ImageShimmer(url: editionPair.capa.url),
                           ),
                           Container(
                             color: Colors.white,
-                            height: rowHeight * 0.20,
+                            height: rowHeight * 0.15,
                             width: rowWidth * 0.85,
                             child: Align(
                               alignment: Alignment.centerLeft,
@@ -75,19 +77,21 @@ class _RowGridDoubleWidgetState
                     padding: framePadding,
                     child: Container(
                       color: Colors.white,
-                      padding: EdgeInsets.all(10),
+                      height: rowHeight,
+                      width: rowWidth,
                       child: Column(
                         crossAxisAlignment: columAlignH,
                         mainAxisAlignment: columAlignV,
                         children: [
                           Container(
                             color: Colors.grey,
+                            height: rowHeight * 0.80,
                             width: rowWidth * 0.85,
                             child: ImageShimmer(url: editionOdd.capa.url),
                           ),
                           Container(
                             color: Colors.white,
-                            height: rowHeight * 0.20,
+                            height: rowHeight * 0.15,
                             width: rowWidth * 0.85,
                             child: Align(
                               alignment: Alignment.centerLeft,

@@ -36,6 +36,7 @@ class _LastEditionWidgetState
                             padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
                             child: Container(
                               color: Colors.grey,
+                              height: vHeight * 0.6,
                               width: vWidth,
                               child: ImageShimmer(url: edicoes.capa.url),
                             ),
