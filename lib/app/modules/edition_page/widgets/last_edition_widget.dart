@@ -85,7 +85,7 @@ class _LastEditionWidgetState
                                   onPressed: () {},
                                   padding: EdgeInsets.zero,
                                   child: Container(
-                                    color: AppColors.darkButton,
+                                    color: AppColors.dark,
                                     height: vHeight * 0.08,
                                     width: vWidth / 2.7,
                                     child: Align(

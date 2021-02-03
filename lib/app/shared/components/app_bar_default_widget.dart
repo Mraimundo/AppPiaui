@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
@@ -16,6 +17,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
 
   Widget appbarDefault(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: AppColors.appBar,
       elevation: 0,
       title: FlatButton(
@@ -24,6 +26,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
         child: Visibility(
           visible: MediaQuery.of(context).orientation == Orientation.portrait,
           child: Container(
+            padding: EdgeInsets.zero,
             child:
                 Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
             //color: Colors.black,
@@ -68,7 +71,9 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
                 : MediaQuery.of(context).size.height / 14,
           ),
           alignment: Alignment.centerRight,
-          onPressed: () {},
+          onPressed: () {
+            Modular.to.pushNamed('/menu');
+          },
         ),
         Container(
           color: Colors.white,

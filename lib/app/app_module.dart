@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:piaui_app/app/modules/edition_page/edition_page_module.dart';
 import 'package:piaui_app/app/modules/edition_page/repository/edition_repository.dart';
 import 'package:piaui_app/app/modules/home/home_controller.dart';
+import 'package:piaui_app/app/modules/menu/controller/menu_controller.dart';
+import 'package:piaui_app/app/modules/menu/menu_module.dart';
 import 'package:piaui_app/app/shared/utils/constants.dart';
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -15,6 +17,7 @@ class AppModule extends MainModule {
   List<Bind> get binds => [
         Bind((i) => AppController()),
         Bind((i) => HomeController()),
+        Bind((i) => MenuController()),
         Bind((i) => EditionPageController(i.get<EditionRepository>())),
         Bind((i) => EditionRepository(i.get<Dio>())),
         Bind((i) => Dio(BaseOptions(baseUrl: URL_BASE))),
@@ -23,6 +26,7 @@ class AppModule extends MainModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute, module: EditionPageModule()),
+        ModularRouter('/menu', module: MenuModule())
       ];
 
   @override
