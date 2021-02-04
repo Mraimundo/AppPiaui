@@ -9,18 +9,26 @@ part of 'app_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AppController on _AppControllerBase, Store {
-  final _$valueAtom = Atom(name: '_AppControllerBase.value');
+  Computed<bool> _$menuStatusComputed;
 
   @override
-  int get value {
-    _$valueAtom.reportRead();
-    return super.value;
+  bool get menuStatus =>
+      (_$menuStatusComputed ??= Computed<bool>(() => super.menuStatus,
+              name: '_AppControllerBase.menuStatus'))
+          .value;
+
+  final _$menuPressedAtom = Atom(name: '_AppControllerBase.menuPressed');
+
+  @override
+  bool get menuPressed {
+    _$menuPressedAtom.reportRead();
+    return super.menuPressed;
   }
 
   @override
-  set value(int value) {
-    _$valueAtom.reportWrite(value, super.value, () {
-      super.value = value;
+  set menuPressed(bool value) {
+    _$menuPressedAtom.reportWrite(value, super.menuPressed, () {
+      super.menuPressed = value;
     });
   }
 
@@ -28,11 +36,11 @@ mixin _$AppController on _AppControllerBase, Store {
       ActionController(name: '_AppControllerBase');
 
   @override
-  void increment() {
+  dynamic menu() {
     final _$actionInfo = _$_AppControllerBaseActionController.startAction(
-        name: '_AppControllerBase.increment');
+        name: '_AppControllerBase.menu');
     try {
-      return super.increment();
+      return super.menu();
     } finally {
       _$_AppControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -41,7 +49,8 @@ mixin _$AppController on _AppControllerBase, Store {
   @override
   String toString() {
     return '''
-value: ${value}
+menuPressed: ${menuPressed},
+menuStatus: ${menuStatus}
     ''';
   }
 }

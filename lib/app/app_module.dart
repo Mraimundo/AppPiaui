@@ -26,7 +26,8 @@ class AppModule extends MainModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute, module: EditionPageModule()),
-        ModularRouter('/menu', module: MenuModule())
+        ModularRouter('/menu', module: MenuModule()),
+        ModularRouter('/editions', module: EditionPageModule())
       ];
 
   @override
