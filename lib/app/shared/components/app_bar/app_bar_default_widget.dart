@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:piaui_app/app/modules/menu/widgets/menu_button.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+
+import 'menu/widgets/menu_button.dart';
 
 class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   AppBarDefaultWidget({Key key})
