@@ -45,7 +45,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                           ),
                           borderRadius: BorderRadius.zero),
                       child: ListTile(
-                        minVerticalPadding: vBtnHeght,
+                        contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -77,7 +77,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                           ),
                           borderRadius: BorderRadius.zero),
                       child: ListTile(
-                        minVerticalPadding: vBtnHeght,
+                        contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -109,7 +109,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                           ),
                           borderRadius: BorderRadius.zero),
                       child: ListTile(
-                        minVerticalPadding: vBtnHeght,
+                        contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
                         tileColor: AppColors.bottomAppBar,
                         title: Align(
                           alignment: Alignment.center,
