@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:piaui_app/app/shared/components/app_bar/search/search_button.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
-
 import 'menu/widgets/menu_button.dart';
 
 class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
@@ -51,7 +51,12 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
                 : MediaQuery.of(context).size.height / 14,
           ),
           alignment: Alignment.centerRight,
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (_) => SearchButton(),
+            );
+          },
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 3),
