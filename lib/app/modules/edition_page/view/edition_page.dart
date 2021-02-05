@@ -6,8 +6,8 @@ import 'package:piaui_app/app/modules/edition_page/widgets/load_more_widget.dart
 import 'package:piaui_app/app/modules/edition_page/widgets/more_editions_widget.dart';
 import 'package:piaui_app/app/modules/edition_page/widgets/return_library_widget.dart';
 import 'package:piaui_app/app/modules/edition_page/widgets/row_grid_widget.dart';
+import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/components/bottom_app_bar_widget.dart';
-import 'package:piaui_app/app/shared/components/preferred_app_bar_widget.dart';
 
 class EditionPage extends StatefulWidget {
   final String title;

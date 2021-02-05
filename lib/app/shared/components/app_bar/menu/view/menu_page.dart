@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/menu/controller/menu_controller.dart';
+import 'package:piaui_app/app/shared/components/app_bar/menu/controller/menu_controller.dart';
+import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/components/bottom_app_bar_widget.dart';
-import 'package:piaui_app/app/shared/components/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class MenuPage extends StatefulWidget {
@@ -45,7 +45,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                           ),
                           borderRadius: BorderRadius.zero),
                       child: ListTile(
-                        minVerticalPadding: vBtnHeght,
+                        contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -77,7 +77,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                           ),
                           borderRadius: BorderRadius.zero),
                       child: ListTile(
-                        minVerticalPadding: vBtnHeght,
+                        contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -109,7 +109,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                           ),
                           borderRadius: BorderRadius.zero),
                       child: ListTile(
-                        minVerticalPadding: vBtnHeght,
+                        contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
                         tileColor: AppColors.bottomAppBar,
                         title: Align(
                           alignment: Alignment.center,

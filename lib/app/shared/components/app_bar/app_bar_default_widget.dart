@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/shared/components/app_bar/search/search_button.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'menu/widgets/menu_button.dart';
 
 class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   AppBarDefaultWidget({Key key})
@@ -12,10 +13,6 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
 
   @override
   Widget build(BuildContext context) {
-    return appbarDefault(context);
-  }
-
-  Widget appbarDefault(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: AppColors.appBar,
@@ -54,27 +51,17 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
                 : MediaQuery.of(context).size.height / 14,
           ),
           alignment: Alignment.centerRight,
-          onPressed: () {},
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (_) => SearchButton(),
+            );
+          },
         ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 3),
         ),
-        IconButton(
-          padding: EdgeInsets.zero,
-          icon: Container(
-            padding: EdgeInsets.all(4),
-            child:
-                Image.asset('assets/images/icon_menu.png', fit: BoxFit.contain),
-            //color: Colors.black,
-            height: MediaQuery.of(context).orientation == Orientation.portrait
-                ? MediaQuery.of(context).size.height / 25
-                : MediaQuery.of(context).size.height / 14,
-          ),
-          alignment: Alignment.centerRight,
-          onPressed: () {
-            Modular.to.pushNamed('/menu');
-          },
-        ),
+        MenuButton(),
         Container(
           color: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: 7),
