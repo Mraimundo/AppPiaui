@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/edition_page/components/image_shimmer.dart';
-import 'package:piaui_app/app/modules/edition_page/controller/edition_page_controller.dart';
-import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
+import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
+import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
+import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridSingleWidget extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/edition_page/model/edition_model.dart';
-import 'package:piaui_app/app/modules/edition_page/repository/edition_repository.dart';
+import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
+import 'package:piaui_app/app/modules/editions_page/repository/edition_repository.dart';
 
 part 'edition_page_controller.g.dart';
 

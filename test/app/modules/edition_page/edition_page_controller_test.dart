@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:piaui_app/app/modules/edition_page/edition_page_module.dart';
+import 'package:piaui_app/app/modules/editions_page/edition_page_module.dart';
 
 void main() {
   initModule(EditionPageModule());

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/edition_page/components/skeleton_row_grid.dart';
-import 'package:piaui_app/app/modules/edition_page/controller/edition_page_controller.dart';
-import 'package:piaui_app/app/modules/edition_page/widgets/row_grid_double_widget.dart';
-import 'package:piaui_app/app/modules/edition_page/widgets/row_grid_single_widget.dart';
+import 'package:piaui_app/app/modules/editions_page/components/skeleton_row_grid.dart';
+import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
+import 'package:piaui_app/app/modules/editions_page/widgets/row_grid_double_widget.dart';
+import 'package:piaui_app/app/modules/editions_page/widgets/row_grid_single_widget.dart';
 
 class RowGridWidget extends StatefulWidget {
   @override
