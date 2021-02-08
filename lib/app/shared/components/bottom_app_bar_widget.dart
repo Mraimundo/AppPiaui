@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class BottomAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.bottomAppBar,
+      color: AppColors.orangePiaui,
       height: 80,
       child: Align(
         child: ListTile(
@@ -31,7 +32,9 @@ class BottomAppBarWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     fontSize: 18),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Modular.to.pushNamed('/subscribe');
+              },
             )),
       ),
     );

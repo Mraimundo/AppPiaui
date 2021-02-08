@@ -68,7 +68,7 @@ class _SearchButtonState extends State<SearchButton> {
                       child: Container(
                         height: 60,
                         width: 150,
-                        color: AppColors.bottomAppBar,
+                        color: AppColors.orangePiaui,
                         child: Align(
                           alignment: Alignment.center,
                           child: Text(

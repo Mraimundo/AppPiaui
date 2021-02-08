@@ -110,7 +110,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                           borderRadius: BorderRadius.zero),
                       child: ListTile(
                         contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                        tileColor: AppColors.bottomAppBar,
+                        tileColor: AppColors.orangePiaui,
                         title: Align(
                           alignment: Alignment.center,
                           child: Text(

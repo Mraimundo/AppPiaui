@@ -32,7 +32,7 @@ class _LoadMoreWidgetState
                     child: Padding(
                       padding: const EdgeInsets.fromLTRB(125, 26, 125, 26),
                       child: FlatButton(
-                        color: AppColors.bottomAppBar,
+                        color: AppColors.orangePiaui,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

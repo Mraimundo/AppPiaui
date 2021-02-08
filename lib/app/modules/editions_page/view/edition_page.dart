@@ -23,41 +23,41 @@ class _EditionPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: PreferredAppBarWidget(height: 60),
-        body: Stack(
-          children: [
-            LayoutBuilder(
-              builder:
-                  (BuildContext context, BoxConstraints viewportConstraints) {
-                return SingleChildScrollView(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: viewportConstraints.maxHeight,
-                    ),
-                    child: Column(
-                      children: [
-                        Container(
-                          height: 80,
-                          color: Colors.white,
-                          child:
-                              Text('Dummie text, heigh of BottomAppBarWidget'),
-                        ),
-                        ReturnLibraryWidget(),
-                        LastEditionWidget(),
-                        MoreEditionsWidget(),
-                        RowGridWidget(),
-                        LoadMoreWidget(),
-                      ],
-                    ),
+      appBar: PreferredAppBarWidget(height: 60),
+      body: Stack(
+        children: [
+          LayoutBuilder(
+            builder:
+                (BuildContext context, BoxConstraints viewportConstraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: viewportConstraints.maxHeight,
                   ),
-                );
-              },
-            ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: BottomAppBarWidget(),
-            ),
-          ],
-        ));
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 80,
+                        color: Colors.white,
+                        child: Text('Dummie text, heigh of BottomAppBarWidget'),
+                      ),
+                      ReturnLibraryWidget(),
+                      LastEditionWidget(),
+                      MoreEditionsWidget(),
+                      RowGridWidget(),
+                      LoadMoreWidget(),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+          Align(
+            alignment: Alignment.topCenter,
+            child: BottomAppBarWidget(),
+          ),
+        ],
+      ),
+    );
   }
 }

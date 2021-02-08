@@ -66,7 +66,7 @@ class _LastEditionWidgetState
                                   onPressed: () {},
                                   padding: EdgeInsets.zero,
                                   child: Container(
-                                    color: AppColors.bottomAppBar,
+                                    color: AppColors.orangePiaui,
                                     height: vHeight * 0.08,
                                     width: vWidth / 2.7,
                                     child: Align(
@@ -82,7 +82,9 @@ class _LastEditionWidgetState
                                   ),
                                 ),
                                 FlatButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Modular.to.pushNamed('/articles');
+                                  },
                                   padding: EdgeInsets.zero,
                                   child: Container(
                                     color: AppColors.dark,
