@@ -5,6 +5,7 @@ import 'package:piaui_app/app/modules/subscribe_now/widgets/image_devices_widget
 import 'package:piaui_app/app/modules/subscribe_now/widgets/row_text_widget.dart';
 import 'package:piaui_app/app/modules/subscribe_now/widgets/top_text_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
+import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class SubscribeNowPage extends StatefulWidget {
   final String title;
@@ -37,7 +38,7 @@ class _SubscribeNowPageState
                   children: [
                     Flexible(
                       child: Container(
-                        color: Colors.black,
+                        color: AppColors.appBackground,
                         child: Column(
                           children: [
                             topTextWidget(vWidth, vFontSize),
@@ -50,26 +51,65 @@ class _SubscribeNowPageState
                               children: [
                                 Container(
                                   width: vWidth,
-                                  height: 60,
-                                  color: Colors.white,
+                                  height: 50,
+                                  color: AppColors.appBackground,
                                   child: Row(
                                     children: [
                                       Expanded(
-                                        flex: 2,
+                                        flex: 4,
                                         child: Padding(
                                           padding:
                                               const EdgeInsets.only(left: 16),
-                                          child: Container(
-                                            color: Colors.green,
+                                          child: SizedBox.expand(
+                                            child: Container(
+                                              //color: Colors.green,
+                                              child: Card(
+                                                elevation: 0,
+                                                child: Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(horizontal: 8),
+                                                  child: Row(
+                                                    children: [
+                                                      Text('1 ano'),
+                                                    ],
+                                                  ),
+                                                ),
+                                                margin: EdgeInsets.all(1),
+                                                shape: Border(
+                                                  right: BorderSide.none,
+                                                  bottom: BorderSide(
+                                                      width: 1,
+                                                      color: Colors.grey[300]),
+                                                  left: BorderSide(
+                                                      width: 1,
+                                                      color: Colors.grey[300]),
+                                                  top: BorderSide(
+                                                      width: 1,
+                                                      color: Colors.grey[300]),
+                                                ),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
                                       Expanded(
+                                        flex: 2,
                                         child: Padding(
                                           padding:
                                               const EdgeInsets.only(right: 16),
-                                          child: Container(
-                                            color: Colors.blue,
+                                          child: SizedBox.expand(
+                                            child: FlatButton(
+                                              onPressed: () {},
+                                              child: Text(
+                                                'Assine agora',
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              color: AppColors.orangePiaui,
+                                            ),
                                           ),
                                         ),
                                       ),

@@ -8,7 +8,7 @@ Widget rowTextWidget(double width, double height, String text, double fontSize,
       Container(
         width: width,
         height: height,
-        color: Colors.white,
+        color: AppColors.appBackground,
         child: Center(
           child: Text(
             text,
