@@ -8,7 +8,8 @@ class AppColors {
   static var textColorWhite = Colors.white;
   static Color secundary = Colors.white;
 
-  static Color bottomAppBar = Color.fromRGBO(241, 91, 64, 1.0);
+  static Color orangePiaui = Color.fromRGBO(241, 91, 64, 1.0);
   static Color appBar = Colors.white;
   static Color appBackground = Color.fromRGBO(247, 247, 247, 1.0);
+  static Color dark = Color.fromRGBO(82, 82, 82, 1.0);
 }
