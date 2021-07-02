@@ -68,11 +68,20 @@ flutter:
   assets:
     - assets/images/piaui_logo.png
     - assets/images/piaui_devices.png
+    - assets/images/icon_configuration.png
     - assets/images/icon_lupa.png
     - assets/images/icon_menu.png
     - assets/images/icon_profile.png
     - assets/images/icon_revista.png
+    - assets/images/arrow.png
+    - assets/images/arrow-sign.png
+    - assets/images/arrow_menu.png
+    - assets/images/arrow-left.png
     - assets/images/icon_x.png
+    - assets/images/night-mode.png
+    - assets/images/font-size.png
+
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

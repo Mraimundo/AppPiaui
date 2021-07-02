@@ -98,7 +98,7 @@ class _SubscribeNowPageState
                                           padding:
                                               const EdgeInsets.only(right: 16),
                                           child: SizedBox.expand(
-                                            child: FlatButton(
+                                            child: TextButton(
                                               onPressed: () {},
                                               child: Text(
                                                 'Assine agora',
@@ -108,7 +108,6 @@ class _SubscribeNowPageState
                                                   fontWeight: FontWeight.bold,
                                                 ),
                                               ),
-                                              color: AppColors.orangePiaui,
                                             ),
                                           ),
                                         ),

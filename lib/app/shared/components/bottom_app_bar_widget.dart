@@ -22,9 +22,9 @@ class BottomAppBarWidget extends StatelessWidget {
                 style: TextStyle(color: AppColors.textColorWhite, fontSize: 36),
               ),
             ),
-            trailing: OutlineButton(
-              borderSide: BorderSide(color: AppColors.textColorWhite),
-              padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+            trailing: OutlinedButton(
+              // borderSide: BorderSide(color: AppColors.textColorWhite),
+              // padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
               child: Text(
                 'Assine agora',
                 style: TextStyle(

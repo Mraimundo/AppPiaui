@@ -62,8 +62,7 @@ class _SearchButtonState extends State<SearchButton> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    FlatButton(
-                      padding: EdgeInsets.only(top: 15),
+                    TextButton(
                       onPressed: () {},
                       child: Container(
                         height: 60,

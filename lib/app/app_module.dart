@@ -7,21 +7,29 @@ import 'package:piaui_app/app/modules/magazine_articles/controller/magazine_arti
 import 'package:piaui_app/app/modules/magazine_articles/magazine_articles_module.dart';
 import 'package:piaui_app/app/modules/subscribe_now/controller/subscribe_now_controller.dart';
 import 'package:piaui_app/app/modules/subscribe_now/subscribe_now_module.dart';
+import 'package:piaui_app/app/shared/components/app_bar/login/controller/login_controller.dart';
+import 'package:piaui_app/app/shared/components/app_bar/login/login_module.dart';
 import 'package:piaui_app/app/shared/components/app_bar/menu/controller/menu_controller.dart';
+import 'package:piaui_app/app/shared/components/app_bar/configuration/controller/configuration_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/menu/menu_module.dart';
+import 'package:piaui_app/app/shared/components/app_bar/configuration/configuration_module.dart';
 import 'package:piaui_app/app/shared/components/app_bar/search/controller/search_controller.dart';
+import 'package:piaui_app/app/shared/components/signature/controller/signature_controller.dart';
+import 'package:piaui_app/app/shared/components/signature/signature_module.dart';
 import 'package:piaui_app/app/shared/utils/constants.dart';
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/app_widget.dart';
 
-
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
         Bind((i) => AppController()),
         Bind((i) => MenuController()),
+        Bind((i) => LoginController()),
+        Bind((i) => SignatureController()),
+        Bind((i) => ConfigController()),
         Bind((i) => SearchController()),
         Bind((i) => SubscribeNowController()),
         Bind((i) => HomeController()),
@@ -35,6 +43,9 @@ class AppModule extends MainModule {
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute, module: EditionPageModule()),
         ModularRouter('/menu', module: MenuModule()),
+        ModularRouter('/login', module: LoginModule()),
+        ModularRouter('/signature', module: SignatureModule()),
+        ModularRouter('/config', module: ConfigModule()),
         ModularRouter('/editions', module: EditionPageModule()),
         ModularRouter('/articles', module: MagazineArticlesModule()),
         ModularRouter('/subscribe', module: SubscribeNowModule()),

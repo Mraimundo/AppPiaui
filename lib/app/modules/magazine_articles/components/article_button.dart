@@ -9,8 +9,7 @@ class ArticleButton extends StatefulWidget {
 class _ArticleButtonState extends State<ArticleButton> {
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      padding: EdgeInsets.zero,
+    return TextButton(
       onPressed: () {},
       child: Card(
         child: Container(

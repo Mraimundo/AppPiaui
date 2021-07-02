@@ -29,56 +29,15 @@ class _LoadMoreWidgetState
                   child: Container(
                     height: 120,
                     color: AppColors.appBackground,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(125, 26, 125, 26),
-                      child: FlatButton(
-                        color: AppColors.orangePiaui,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'CARREGAR MAIS',
-                              style: TextStyle(
-                                  color: AppColors.textColorWhite,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_down,
-                              color: AppColors.textColorWhite,
-                              size: 35,
-                            )
-                          ],
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton.icon(
+                          icon: Icon(Icons.keyboard_arrow_down, size: 35),
+                          label: buildText('CARREGAR MAIS'),
+                          onPressed: () {},
                         ),
-                        onPressed: () {
-                          print("Loading new page? R: ${controller.loadPage}");
-                          if (!controller.loadPage) {
-                            if (numberEditions % 2 == 0) {
-                              if (items < numberEditions - 2) {
-                                controller.itemCount += 2;
-                                rows += 2;
-                                if (rows >= 8) {
-                                  controller.nextPage();
-                                  rows = 0;
-                                }
-                                //controller.nextPage();
-                                print('ItemCount ${controller.itemCount}');
-                                print('rows = $rows');
-                              } else {
-                                if (items <= numberEditions) {
-                                  controller.itemCount++;
-                                  print('ItemCount ${controller.itemCount}');
-                                }
-                              }
-                            } else {
-                              if (items <= numberEditions) {
-                                controller.itemCount++;
-                                print('ItemCount ${controller.itemCount}');
-                              }
-                            }
-                          }
-                        },
-                      ),
+                      ],
                     ),
                   ),
                 ),
@@ -91,4 +50,6 @@ class _LoadMoreWidgetState
       },
     );
   }
+
+  Text buildText(String text) => Text(text, style: TextStyle(fontSize: 28));
 }

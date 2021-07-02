@@ -9,26 +9,26 @@ part of 'app_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$AppController on _AppControllerBase, Store {
-  Computed<bool> _$menuStatusComputed;
+  Computed<bool> _$checkedStatusComputed;
 
   @override
   bool get menuStatus =>
-      (_$menuStatusComputed ??= Computed<bool>(() => super.menuStatus,
-              name: '_AppControllerBase.menuStatus'))
+      (_$checkedStatusComputed ??= Computed<bool>(() => super.checkedStatus,
+              name: '_AppControllerBase.checkedStatus'))
           .value;
 
-  final _$menuPressedAtom = Atom(name: '_AppControllerBase.menuPressed');
+  final _$checkedPressedAtom = Atom(name: '_AppControllerBase.checkedPressed');
 
   @override
-  bool get menuPressed {
-    _$menuPressedAtom.reportRead();
-    return super.menuPressed;
+  bool get checkedPressed {
+    _$checkedPressedAtom.reportRead();
+    return super.checkedPressed;
   }
 
   @override
-  set menuPressed(bool value) {
-    _$menuPressedAtom.reportWrite(value, super.menuPressed, () {
-      super.menuPressed = value;
+  set checkedPressed(bool value) {
+    _$checkedPressedAtom.reportWrite(value, super.checkedPressed, () {
+      super.checkedPressed = value;
     });
   }
 
@@ -36,11 +36,11 @@ mixin _$AppController on _AppControllerBase, Store {
       ActionController(name: '_AppControllerBase');
 
   @override
-  dynamic menu() {
+  dynamic checked() {
     final _$actionInfo = _$_AppControllerBaseActionController.startAction(
-        name: '_AppControllerBase.menu');
+        name: '_AppControllerBase.checked');
     try {
-      return super.menu();
+      return super.checked();
     } finally {
       _$_AppControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -49,8 +49,8 @@ mixin _$AppController on _AppControllerBase, Store {
   @override
   String toString() {
     return '''
-menuPressed: ${menuPressed},
-menuStatus: ${menuStatus}
+checkedPressed: ${checkedPressed},
+checkedStatus: ${checkedStatus}
     ''';
   }
 }

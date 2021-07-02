@@ -8,13 +8,13 @@ class AppController = _AppControllerBase with _$AppController;
 
 abstract class _AppControllerBase with Store {
   @observable
-  bool menuPressed = false;
+  bool checkedPressed = false;
 
   @computed
-  bool get menuStatus => menuPressed;
+  bool get checkedStatus => checkedPressed;
 
   @action
-  menu() {
-    menuPressed = !menuPressed;
+  checked() {
+    checkedPressed = !checkedPressed;
   }
 }

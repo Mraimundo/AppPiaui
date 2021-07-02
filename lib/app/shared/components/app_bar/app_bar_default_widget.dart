@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/components/app_bar/search/search_button.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'configuration/widgets/configuration_button.dart';
 import 'menu/widgets/menu_button.dart';
 
 class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
@@ -17,8 +18,8 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
       automaticallyImplyLeading: false,
       backgroundColor: AppColors.appBar,
       elevation: 0,
-      title: FlatButton(
-        padding: EdgeInsets.zero,
+      title: TextButton(
+        // padding: EdgeInsets.zero,
         onPressed: () {},
         child: Visibility(
           visible: MediaQuery.of(context).orientation == Orientation.portrait,
@@ -40,6 +41,10 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
         ),
       ),
       actions: <Widget>[
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 3),
+        ),
+        ConfigButton(),
         IconButton(
           padding: EdgeInsets.zero,
           icon: Container(

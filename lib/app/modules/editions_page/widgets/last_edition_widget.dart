@@ -57,53 +57,50 @@ class _LastEditionWidgetState
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(32, 0, 32, 32),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                FlatButton(
-                                  onPressed: () {},
-                                  padding: EdgeInsets.zero,
-                                  child: Container(
-                                    color: AppColors.orangePiaui,
-                                    height: vHeight * 0.08,
-                                    width: vWidth / 2.7,
-                                    child: Align(
-                                      child: Text(
-                                        'Comprar R\$28',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 22),
-                                      ),
-                                      alignment: Alignment.center,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () {},
+                                // padding: EdgeInsets.zero,
+                                child: Container(
+                                  color: AppColors.orangePiaui,
+                                  height: vHeight * 0.08,
+                                  width: vWidth / 2.7,
+                                  child: Align(
+                                    child: Text(
+                                      'Comprar R\$28',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22),
                                     ),
+                                    alignment: Alignment.center,
                                   ),
                                 ),
-                                FlatButton(
-                                  onPressed: () {
-                                    Modular.to.pushNamed('/articles');
-                                  },
-                                  padding: EdgeInsets.zero,
-                                  child: Container(
-                                    color: AppColors.dark,
-                                    height: vHeight * 0.08,
-                                    width: vWidth / 2.7,
-                                    child: Align(
-                                      child: Text(
-                                        'Ler prévia',
-                                        style: TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 22),
-                                      ),
-                                      alignment: Alignment.center,
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  Modular.to.pushNamed('/articles');
+                                },
+                                // padding: EdgeInsets.zero,
+                                child: Container(
+                                  color: AppColors.dark,
+                                  height: vHeight * 0.08,
+                                  width: vWidth / 2.7,
+                                  child: Align(
+                                    child: Text(
+                                      'Ler prévia',
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22),
                                     ),
+                                    alignment: Alignment.center,
                                   ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ],
                       );
