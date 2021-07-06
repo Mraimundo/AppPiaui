@@ -81,6 +81,29 @@ flutter:
     - assets/images/night-mode.png
     - assets/images/font-size.png
 
+    - assets/images/afogados.png
+    - assets/images/agora.png
+    - assets/images/assassinos.png
+    - assets/images/bolsonaro.png
+    - assets/images/debate.png
+    - assets/images/diarios.png
+    - assets/images/gps.png
+    - assets/images/jogo-do-prende.png
+    - assets/images/livro.png
+    - assets/images/parados.png
+    - assets/images/fechado.png
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

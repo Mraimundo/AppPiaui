@@ -3,6 +3,8 @@ import 'package:piaui_app/app/modules/editions_page/controller/edition_page_cont
 import 'package:piaui_app/app/modules/editions_page/edition_page_module.dart';
 import 'package:piaui_app/app/modules/editions_page/repository/edition_repository.dart';
 import 'package:piaui_app/app/modules/home/home_controller.dart';
+import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
+import 'package:piaui_app/app/modules/inside_magazine/inside_magazine_module.dart';
 import 'package:piaui_app/app/modules/magazine_articles/controller/magazine_articles_controller.dart';
 import 'package:piaui_app/app/modules/magazine_articles/magazine_articles_module.dart';
 import 'package:piaui_app/app/modules/subscribe_now/controller/subscribe_now_controller.dart';
@@ -36,6 +38,7 @@ class AppModule extends MainModule {
         Bind((i) => EditionPageController(i.get<EditionRepository>())),
         Bind((i) => EditionRepository(i.get<Dio>())),
         Bind((i) => MagazineArticlesController()),
+        Bind((i) => InsideMagazineController()),
         Bind((i) => Dio(BaseOptions(baseUrl: URL_BASE))),
       ];
 
@@ -48,6 +51,7 @@ class AppModule extends MainModule {
         ModularRouter('/config', module: ConfigModule()),
         ModularRouter('/editions', module: EditionPageModule()),
         ModularRouter('/articles', module: MagazineArticlesModule()),
+        ModularRouter('/magazine', module: InsideMagazineModule()),
         ModularRouter('/subscribe', module: SubscribeNowModule()),
       ];
 

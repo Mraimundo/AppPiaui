@@ -19,7 +19,6 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
       backgroundColor: AppColors.appBar,
       elevation: 0,
       title: TextButton(
-        // padding: EdgeInsets.zero,
         onPressed: () {},
         child: Visibility(
           visible: MediaQuery.of(context).orientation == Orientation.portrait,
@@ -27,14 +26,12 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
             padding: EdgeInsets.zero,
             child:
                 Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
-            //color: Colors.black,
             height: MediaQuery.of(context).size.height / 20,
             width: MediaQuery.of(context).size.width / 6,
           ),
           replacement: Container(
             child:
                 Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
-            //color: Colors.white,
             height: MediaQuery.of(context).size.height / 12,
             width: MediaQuery.of(context).size.width / 10,
           ),
@@ -50,7 +47,6 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
           icon: Container(
             child:
                 Image.asset('assets/images/icon_lupa.png', fit: BoxFit.contain),
-            //color: Colors.black,
             height: MediaQuery.of(context).orientation == Orientation.portrait
                 ? MediaQuery.of(context).size.height / 25
                 : MediaQuery.of(context).size.height / 14,
@@ -68,7 +64,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
         ),
         MenuButton(),
         Container(
-          color: Colors.white,
+          // color: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: 7),
         ),
       ],

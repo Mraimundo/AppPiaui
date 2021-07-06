@@ -20,7 +20,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
     final double vFontSize = 15;
     final double vBtnHeght = 5;
     return Scaffold(
-      appBar: PreferredAppBarWidget(height: 65),
+      appBar: PreferredAppBarWidget(height: 56),
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [

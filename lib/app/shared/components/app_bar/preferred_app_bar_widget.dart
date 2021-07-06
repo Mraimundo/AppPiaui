@@ -20,7 +20,6 @@ class PreferredAppBarWidget extends StatelessWidget implements PreferredSize {
     return PreferredSize(
       child: SafeArea(
         child: Container(
-          color: Colors.white,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [AppBarDefaultWidget()],

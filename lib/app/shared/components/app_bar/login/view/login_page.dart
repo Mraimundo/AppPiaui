@@ -23,7 +23,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
     final double vFontSize = 15;
     final double vBtnHeght = 5;
     return Scaffold(
-      appBar: PreferredAppBarWidget(height: 65),
+      appBar: PreferredAppBarWidget(height: 56),
       backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(

@@ -14,7 +14,7 @@ class _ListArticlesState extends State<ListArticles> {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       separatorBuilder: (context, index) => SizedBox(height: 20),
-      itemCount: 20,
+      itemCount: 10,
       itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: ArticleButton(),

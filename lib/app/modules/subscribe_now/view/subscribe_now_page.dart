@@ -25,7 +25,7 @@ class _SubscribeNowPageState
     double vWidth = MediaQuery.of(context).size.width;
     double vFontSize = 33;
     return Scaffold(
-      appBar: PreferredAppBarWidget(height: 60),
+      appBar: PreferredAppBarWidget(height: 56),
       body: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return SingleChildScrollView(
@@ -38,7 +38,7 @@ class _SubscribeNowPageState
                   children: [
                     Flexible(
                       child: Container(
-                        color: AppColors.appBackground,
+                        color: AppColors.backgroundColor,
                         child: Column(
                           children: [
                             topTextWidget(vWidth, vFontSize),
@@ -52,7 +52,7 @@ class _SubscribeNowPageState
                                 Container(
                                   width: vWidth,
                                   height: 50,
-                                  color: AppColors.appBackground,
+                                  color: AppColors.backgroundColor,
                                   child: Row(
                                     children: [
                                       Expanded(

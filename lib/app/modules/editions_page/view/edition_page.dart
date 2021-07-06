@@ -23,7 +23,7 @@ class _EditionPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredAppBarWidget(height: 65),
+      appBar: PreferredAppBarWidget(height: 56),
       body: Stack(
         children: [
           LayoutBuilder(

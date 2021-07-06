@@ -81,7 +81,7 @@ class _LastEditionWidgetState
                               ),
                               TextButton(
                                 onPressed: () {
-                                  Modular.to.pushNamed('/articles');
+                                  Modular.to.pushNamed('/magazine');
                                 },
                                 // padding: EdgeInsets.zero,
                                 child: Container(

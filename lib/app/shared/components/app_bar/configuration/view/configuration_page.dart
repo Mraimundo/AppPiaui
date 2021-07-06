@@ -23,7 +23,7 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
     final double vFontSize = 15;
     final double vBtnHeght = 5;
     return Scaffold(
-      appBar: PreferredAppBarWidget(height: 65),
+      appBar: PreferredAppBarWidget(height: 56),
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [

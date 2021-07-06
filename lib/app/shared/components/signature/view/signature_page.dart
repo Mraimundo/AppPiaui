@@ -188,19 +188,25 @@ class _SignaturePageState
                                         ),
                                       ),
                                       SizedBox(height: 19),
-                                      DecoratedBox(
-                                        decoration: BoxDecoration(
-                                            gradient: AppGradients.linear),
-                                        child: TextButton(
-                                          child: Text(
-                                            'ASSINE AGORA',
-                                            style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: AppColors.textColorWhite,
+                                      ConstrainedBox(
+                                        constraints:
+                                            BoxConstraints.tightFor(width: 226),
+                                        child: DecoratedBox(
+                                          decoration: BoxDecoration(
+                                              gradient: AppGradients.linear),
+                                          child: TextButton(
+                                            child: Text(
+                                              'ASSINE AGORA',
+                                              style: TextStyle(
+                                                fontSize: 15,
+                                                fontWeight: FontWeight.bold,
+                                                color: AppColors.textColorWhite,
+                                              ),
                                             ),
+                                            onPressed: () {
+                                              Modular.to.pushNamed('/magazine');
+                                            },
                                           ),
-                                          onPressed: () {},
                                         ),
                                       ),
                                       SizedBox(height: 18),
