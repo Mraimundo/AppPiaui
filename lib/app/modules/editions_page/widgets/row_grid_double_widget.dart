@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
+import 'package:piaui_app/app/modules/editions_page/widgets/bottom_orange_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridDoubleWidget extends StatefulWidget {
@@ -20,7 +21,7 @@ class _RowGridDoubleWidgetState
   Widget build(BuildContext context) {
     final double rowHeight = 255;
     final double rowWidth = MediaQuery.of(context).size.width / 2.2;
-    final double rowFontsize = 15;
+    final double rowFontsize = 12;
     const framePadding = EdgeInsets.fromLTRB(0, 8, 0, 8);
     CrossAxisAlignment columAlignH = CrossAxisAlignment.center;
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
@@ -35,7 +36,6 @@ class _RowGridDoubleWidgetState
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              color: AppColors.appBackground,
               width: MediaQuery.of(context).size.width,
               child: Row(
                 crossAxisAlignment: rowAlignV,
@@ -44,9 +44,6 @@ class _RowGridDoubleWidgetState
                   Padding(
                     padding: framePadding,
                     child: Container(
-                      color: Colors.white,
-                      height: rowHeight,
-                      width: rowWidth,
                       child: Column(
                         crossAxisAlignment: columAlignH,
                         mainAxisAlignment: columAlignV,
@@ -54,21 +51,24 @@ class _RowGridDoubleWidgetState
                           Container(
                             color: Colors.grey,
                             height: rowHeight * 0.80,
-                            width: rowWidth * 0.85,
+                            width: rowWidth * 0.87,
                             child: ImageShimmer(url: editionPair.capa.url),
                           ),
                           Container(
-                            color: Colors.white,
                             height: rowHeight * 0.15,
                             width: rowWidth * 0.85,
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
-                                style: TextStyle(fontSize: rowFontsize),
+                                style: TextStyle(
+                                    fontFamily: 'Piaui',
+                                    fontSize: rowFontsize,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
                           ),
+                          ButtomOrangeWidget(),
                         ],
                       ),
                     ),
@@ -76,9 +76,6 @@ class _RowGridDoubleWidgetState
                   Padding(
                     padding: framePadding,
                     child: Container(
-                      color: Colors.white,
-                      height: rowHeight,
-                      width: rowWidth,
                       child: Column(
                         crossAxisAlignment: columAlignH,
                         mainAxisAlignment: columAlignV,
@@ -86,7 +83,7 @@ class _RowGridDoubleWidgetState
                           Container(
                             color: Colors.grey,
                             height: rowHeight * 0.80,
-                            width: rowWidth * 0.85,
+                            width: rowWidth * 0.87,
                             child: ImageShimmer(url: editionOdd.capa.url),
                           ),
                           Container(
@@ -97,10 +94,14 @@ class _RowGridDoubleWidgetState
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'Edição #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
-                                style: TextStyle(fontSize: rowFontsize),
+                                style: TextStyle(
+                                    fontFamily: 'Piaui',
+                                    fontSize: rowFontsize,
+                                    fontWeight: FontWeight.bold),
                               ),
                             ),
-                          )
+                          ),
+                          ButtomOrangeWidget(),
                         ],
                       ),
                     ),

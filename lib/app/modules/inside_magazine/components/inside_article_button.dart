@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class InsideArticleButton extends StatefulWidget {
@@ -10,7 +11,9 @@ class _InsideArticleButtonState extends State<InsideArticleButton> {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        Modular.to.pushNamed('/internal');
+      },
       child: Card(
           elevation: 0,
           child: Container(

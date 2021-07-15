@@ -1,32 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-class ButtonToGetWidget extends StatefulWidget {
-  const ButtonToGetWidget({Key key}) : super(key: key);
+class ButtomOrangeWidget extends StatefulWidget {
+  const ButtomOrangeWidget({Key key}) : super(key: key);
 
   @override
-  _ButtonToGetWidgetState createState() => _ButtonToGetWidgetState();
+  _ButtomOrangeWidgetState createState() => _ButtomOrangeWidgetState();
 }
 
-class _ButtonToGetWidgetState extends State<ButtonToGetWidget> {
+class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
   @override
   Widget build(BuildContext context) {
     double vHeight = MediaQuery.of(context).size.height;
     double vWidth = MediaQuery.of(context).size.width;
     return TextButton(
       onPressed: () {},
+      // padding: EdgeInsets.zero,
       child: Container(
         color: AppColors.orangePiaui,
-        height: vHeight * 0.05,
-        width: vWidth / 1,
+        height: vHeight * 0.06,
+        width: vWidth / 2.5,
         child: Align(
           child: Text(
-            'Já é assinante? Entre agora.',
+            'Experimente',
             style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
-            ),
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
           ),
           alignment: Alignment.center,
         ),

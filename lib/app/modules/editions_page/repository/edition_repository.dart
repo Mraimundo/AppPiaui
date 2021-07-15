@@ -13,6 +13,7 @@ class EditionRepository implements IRepository {
   Future<List<EditionModel>> findAll() async {
     try {
       var response = await dio.get('wp-json/acf/v3/edicao/');
+
       if (response.statusCode == 200) {
         for (var json in response.data) {
           final singleEdition = EditionModel.fromJson(json);
@@ -29,6 +30,7 @@ class EditionRepository implements IRepository {
   Future<List<EditionModel>> findByPage(int page) async {
     try {
       var response = await dio.get('wp-json/acf/v3/edicao?page=$page');
+      print('response');
       if (response.statusCode == 200) {
         for (var json in response.data) {
           final singleEdition = EditionModel.fromJson(json);

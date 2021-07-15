@@ -11,30 +11,29 @@ class ButtonToCancelWidget extends StatefulWidget {
 class _ButtonToCancelWidgetState extends State<ButtonToCancelWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 260,
-      height: 35,
-      color: AppColors.backgroundColorButton,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor:
-              MaterialStateProperty.all(AppColors.backgroundColorButton),
-          side: MaterialStateProperty.all(
-            BorderSide(
-              color: AppColors.borderColor,
-              width: 1,
-            ),
-          ),
-        ),
-        child: Text(
-          'Cancelar',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
+    double vHeight = MediaQuery.of(context).size.height;
+    double vWidth = MediaQuery.of(context).size.width;
+    return TextButton(
+      onPressed: () {},
+      child: Container(
+        height: vHeight * 0.05,
+        width: vWidth / 1,
+        decoration: BoxDecoration(
+          border: Border.all(
             color: AppColors.orangePiaui,
           ),
         ),
-        onPressed: () {},
+        child: Align(
+          child: Text(
+            'Cancelar',
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: AppColors.orangePiaui,
+            ),
+          ),
+          alignment: Alignment.center,
+        ),
       ),
     );
   }

@@ -16,18 +16,20 @@ class TextLoginWidget extends StatelessWidget {
             Text(
               "Faça seu login",
               style: TextStyle(
-                  fontSize: vFontSize,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.dark),
+                fontSize: vFontSize,
+                fontWeight: FontWeight.bold,
+                // color: AppColors.dark,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 9),
+              padding: const EdgeInsets.only(top: 9, right: 15),
               child: Text(
                 "Assinantes da revista piauí possuem acesso ilimitado a todo conteúdo disponível no app.",
                 style: TextStyle(
-                    fontSize: vFontSize2,
-                    fontWeight: FontWeight.normal,
-                    color: AppColors.dark),
+                  fontSize: vFontSize2,
+                  fontWeight: FontWeight.normal,
+                  // color: AppColors.dark,
+                ),
               ),
             ),
           ],

@@ -22,95 +22,97 @@ class _LastEditionWidgetState
       children: [
         Expanded(
           child: Container(
-              color: AppColors.appBackground,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
-                child: Container(
-                  color: Colors.white,
-                  child: Observer(builder: (ctx) {
-                    if (!controller.isLoading) {
-                      Acf edicoes = controller.lastEdition.acf;
-                      print('vHeight $vHeight');
-                      return Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(32, 32, 32, 0),
-                            child: Container(
-                              color: Colors.grey,
-                              height: vHeight < 764.5
-                                  ? vHeight * 0.6
-                                  : vHeight * 0.5,
-                              width: vWidth,
-                              child: ImageShimmer(url: edicoes.capa.url),
-                            ),
+              child: Container(
+            color: Colors.white,
+            child: Observer(builder: (ctx) {
+              if (!controller.isLoading) {
+                Acf edicoes = controller.lastEdition.acf;
+                print('vHeight $vHeight');
+                return Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(24, 32, 24, 0),
+                      child: Container(
+                        color: Colors.grey,
+                        height: vHeight < 764.5 ? vHeight * 0.6 : vHeight * 0.5,
+                        width: vWidth,
+                        child: ImageShimmer(url: edicoes.capa.url),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsets.only(left: 23, top: 9, bottom: 8),
+                      child: Align(
+                        child: Text(
+                          'Edição #${edicoes.numberEdition}: ${edicoes.mes} de ${edicoes.ano}',
+                          style: TextStyle(
+                            fontFamily: 'Piaui',
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(32, 16, 32, 16),
+                        ),
+                        alignment: Alignment.centerLeft,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 15, right: 15, bottom: 12),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                            onPressed: () {},
                             child: Container(
-                              color: Colors.white,
+                              color: AppColors.orangePiaui,
+                              height: vHeight * 0.06,
+                              width: vWidth / 2.5,
                               child: Align(
                                 child: Text(
-                                  'Edição #${edicoes.numberEdition}: ${edicoes.mes} de ${edicoes.ano}',
-                                  style: TextStyle(fontSize: 25),
+                                  'Experimente',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22),
                                 ),
-                                alignment: Alignment.centerLeft,
+                                alignment: Alignment.center,
                               ),
                             ),
                           ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                // padding: EdgeInsets.zero,
-                                child: Container(
+                          TextButton(
+                            onPressed: () {
+                              Modular.to.pushNamed('/magazine');
+                            },
+                            child: Container(
+                              height: vHeight * 0.06,
+                              width: vWidth / 2.5,
+                              decoration: BoxDecoration(
+                                border: Border.all(
                                   color: AppColors.orangePiaui,
-                                  height: vHeight * 0.08,
-                                  width: vWidth / 2.7,
-                                  child: Align(
-                                    child: Text(
-                                      'Comprar R\$28',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 22),
-                                    ),
-                                    alignment: Alignment.center,
-                                  ),
                                 ),
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  Modular.to.pushNamed('/magazine');
-                                },
-                                // padding: EdgeInsets.zero,
-                                child: Container(
-                                  color: AppColors.dark,
-                                  height: vHeight * 0.08,
-                                  width: vWidth / 2.7,
-                                  child: Align(
-                                    child: Text(
-                                      'Ler prévia',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 22),
-                                    ),
-                                    alignment: Alignment.center,
-                                  ),
+                              child: Align(
+                                child: Text(
+                                  'Já sou assinante',
+                                  style: TextStyle(
+                                      color: AppColors.orangePiaui,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22),
                                 ),
+                                alignment: Alignment.center,
                               ),
-                            ],
+                            ),
                           ),
                         ],
-                      );
-                    } else {
-                      //You'll put a shimmer here!
-                      return SkeletonLastEdition();
-                    }
-                  }),
-                ),
-              )),
+                      ),
+                    ),
+                  ],
+                );
+              } else {
+                //You'll put a shimmer here!
+                return SkeletonLastEdition();
+              }
+            }),
+          )),
         ),
       ],
     );

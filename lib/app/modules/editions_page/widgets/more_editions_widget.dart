@@ -9,7 +9,7 @@ class MoreEditionsWidget extends StatelessWidget {
         Expanded(
           child: Container(
             height: 80,
-            color: AppColors.appBackground,
+            // color: AppColors.appBackground,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Align(
