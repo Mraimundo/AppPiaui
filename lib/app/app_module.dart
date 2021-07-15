@@ -26,6 +26,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/app_widget.dart';
 
+import 'modules/editions_logged_page/edition__logged_page_module.dart';
+
 class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
@@ -53,6 +55,7 @@ class AppModule extends MainModule {
         ModularRouter('/signature', module: SignatureModule()),
         ModularRouter('/config', module: ConfigModule()),
         ModularRouter('/editions', module: EditionPageModule()),
+        ModularRouter('/logged', module: EditionLoggedPageModule()),
         ModularRouter('/articles', module: MagazineArticlesModule()),
         ModularRouter('/magazine', module: InsideMagazineModule()),
         ModularRouter('/internal', module: InternalMagazineModule()),

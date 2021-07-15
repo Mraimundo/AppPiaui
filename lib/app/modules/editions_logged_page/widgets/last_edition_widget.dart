@@ -61,9 +61,7 @@ class _LastEditionWidgetState
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                            onPressed: () {
-                              Modular.to.pushNamed('/logged');
-                            },
+                            onPressed: () {},
                             child: Container(
                               color: AppColors.orangePiaui,
                               height: vHeight * 0.06,
