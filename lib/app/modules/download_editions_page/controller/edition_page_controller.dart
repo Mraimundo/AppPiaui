@@ -6,10 +6,10 @@ import 'package:piaui_app/app/modules/editions_page/repository/edition_repositor
 part 'edition_page_controller.g.dart';
 
 @Injectable()
-class EditionLoggedPageController = _EditionLoggedPageControllerBase
-    with _$EditionLoggedPageController;
+class DownLoadEditionPageController = _DownLoadEditionPageControllerBase
+    with _$DownLoadEditionPageController;
 
-abstract class _EditionLoggedPageControllerBase with Store {
+abstract class _DownLoadEditionPageControllerBase with Store {
   EditionRepository _repository;
   List<EditionModel> _listEditonLocal = <EditionModel>[];
   List<EditionModel> _pages = [];
@@ -28,7 +28,7 @@ abstract class _EditionLoggedPageControllerBase with Store {
 
   bool loadPage = false;
 
-  _EditionLoggedPageControllerBase(this._repository) {
+  _DownLoadEditionPageControllerBase(this._repository) {
     init();
   }
 

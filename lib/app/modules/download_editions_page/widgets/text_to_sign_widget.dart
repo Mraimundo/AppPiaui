@@ -14,10 +14,10 @@ class TextToSignWidget extends StatelessWidget {
           child: RichText(
             text: TextSpan(children: [
               TextSpan(
-                text: 'Já é assinante?',
+                text: 'Bem-vindo à piauí, Tiago.',
                 style: TextStyle(
-                  fontFamily: 'Palatino',
-                  fontSize: 12,
+                  fontFamily: ' Piaui',
+                  fontSize: 17.5,
                   fontWeight: FontWeight.bold,
                   color: AppColors.textColorNormal,
                 ),

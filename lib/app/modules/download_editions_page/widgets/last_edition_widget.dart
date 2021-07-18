@@ -27,11 +27,11 @@ class _LastEditionWidgetState
             child: Observer(builder: (ctx) {
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
-                print('vHeight $vHeight');
+                // print('vHeight $vHeight');
                 return Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(24, 32, 24, 0),
+                      padding: const EdgeInsets.fromLTRB(20, 32, 20, 0),
                       child: Container(
                         color: Colors.grey,
                         height: vHeight < 764.5 ? vHeight * 0.6 : vHeight * 0.5,
@@ -54,37 +54,41 @@ class _LastEditionWidgetState
                         alignment: Alignment.centerLeft,
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 15, right: 15, bottom: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          TextButton(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, bottom: 12),
+                          child: TextButton(
                             onPressed: () {},
                             child: Container(
                               color: AppColors.orangePiaui,
                               height: vHeight * 0.06,
-                              width: vWidth / 2.5,
+                              width: vWidth / 2.4,
                               child: Align(
                                 child: Text(
-                                  'Experimente',
+                                  'Ler agora',
                                   style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22),
+                                    fontFamily: 'Piaui',
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
                                 alignment: Alignment.center,
                               ),
                             ),
                           ),
-                          TextButton(
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 10, bottom: 12),
+                          child: TextButton(
                             onPressed: () {
                               Modular.to.pushNamed('/magazine');
                             },
                             child: Container(
                               height: vHeight * 0.06,
-                              width: vWidth / 2.5,
+                              width: vWidth / 2.4,
                               decoration: BoxDecoration(
                                 border: Border.all(
                                   color: AppColors.orangePiaui,
@@ -92,18 +96,20 @@ class _LastEditionWidgetState
                               ),
                               child: Align(
                                 child: Text(
-                                  'Já sou assinante',
+                                  'Fazer download',
                                   style: TextStyle(
-                                      color: AppColors.orangePiaui,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22),
+                                    fontFamily: 'Piaui',
+                                    color: AppColors.orangePiaui,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
                                 ),
                                 alignment: Alignment.center,
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ],
                 );

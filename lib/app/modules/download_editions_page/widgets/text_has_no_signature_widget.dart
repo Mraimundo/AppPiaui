@@ -11,7 +11,7 @@ class TextHasNoSignatureWidget extends StatelessWidget {
       onTap: onTap,
       child: Center(
         child: Text(
-          'Ainda não tem assinatura? Clique aqui.',
+          'Bem-vindo à piauí, Tiago.',
           style: TextStyle(
             height: 1.3,
             fontFamily: 'Piaui',

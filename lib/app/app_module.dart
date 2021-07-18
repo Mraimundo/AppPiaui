@@ -28,6 +28,8 @@ import 'package:piaui_app/app/app_widget.dart';
 
 import 'modules/all_editions_page/controller/edition_page_controller.dart';
 import 'modules/all_editions_page/all_edition_page_module.dart';
+import 'modules/download_editions_page/controller/edition_page_controller.dart';
+import 'modules/download_editions_page/download_edition_page_module.dart';
 
 class AppModule extends MainModule {
   @override
@@ -42,6 +44,7 @@ class AppModule extends MainModule {
         Bind((i) => HomeController()),
         Bind((i) => EditionPageController(i.get<EditionRepository>())),
         Bind((i) => AllEditionPageController(i.get<EditionRepository>())),
+        Bind((i) => DownLoadEditionPageController(i.get<EditionRepository>())),
         Bind((i) => EditionRepository(i.get<Dio>())),
         Bind((i) => MagazineArticlesController()),
         Bind((i) => InsideMagazineController()),
@@ -58,6 +61,7 @@ class AppModule extends MainModule {
         ModularRouter('/config', module: ConfigModule()),
         ModularRouter('/editions', module: EditionPageModule()),
         ModularRouter('/logged', module: AllEditionPageModule()),
+        ModularRouter('/downloads', module: DownLoadEditionPageModule()),
         ModularRouter('/articles', module: MagazineArticlesModule()),
         ModularRouter('/magazine', module: InsideMagazineModule()),
         ModularRouter('/internal', module: InternalMagazineModule()),

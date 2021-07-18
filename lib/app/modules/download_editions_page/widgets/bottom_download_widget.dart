@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-class ButtomOrangeWidget extends StatefulWidget {
-  const ButtomOrangeWidget({Key key}) : super(key: key);
+class ButtomDownLoadWidget extends StatefulWidget {
+  const ButtomDownLoadWidget({Key key}) : super(key: key);
 
   @override
-  _ButtomOrangeWidgetState createState() => _ButtomOrangeWidgetState();
+  _ButtomDownLoadWidgetState createState() => _ButtomDownLoadWidgetState();
 }
 
-class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
+class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
   @override
   Widget build(BuildContext context) {
     double vHeight = MediaQuery.of(context).size.height;
@@ -17,14 +17,16 @@ class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
       onPressed: () {},
       // padding: EdgeInsets.zero,
       child: Container(
-        color: AppColors.orangePiaui,
         height: vHeight * 0.06,
-        width: vWidth / 2.5,
+        width: vWidth / 8,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColors.orangePiaui,
+          ),
+        ),
         child: Align(
-          child: Text(
-            'Experimente',
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+          child: Image.asset(
+            'assets/images/arrow_download.png',
           ),
           alignment: Alignment.center,
         ),
