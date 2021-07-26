@@ -96,8 +96,11 @@ class _DownLoadEditionPageState
                             ),
                             child: FilterWidget(),
                           ),
-                          LastEditionWidget(),
-                          RowGridWidget(),
+                          // LastEditionWidget(),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 25),
+                            child: RowGridWidget(),
+                          ),
                           LoadMoreWidget(),
                         ],
                       ),

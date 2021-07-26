@@ -7,6 +7,7 @@ import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine
 import 'package:piaui_app/app/modules/inside_magazine/inside_magazine_module.dart';
 import 'package:piaui_app/app/modules/internal_magazine/controller/internal_magazine_controller.dart';
 import 'package:piaui_app/app/modules/internal_magazine/internal_magazine_module.dart';
+import 'package:piaui_app/app/modules/internal_magazine/repository/internal_repository.dart';
 import 'package:piaui_app/app/modules/magazine_articles/controller/magazine_articles_controller.dart';
 import 'package:piaui_app/app/modules/magazine_articles/magazine_articles_module.dart';
 import 'package:piaui_app/app/modules/subscribe_now/controller/subscribe_now_controller.dart';
@@ -48,7 +49,9 @@ class AppModule extends MainModule {
         Bind((i) => EditionRepository(i.get<Dio>())),
         Bind((i) => MagazineArticlesController()),
         Bind((i) => InsideMagazineController()),
-        Bind((i) => InternalMagazineController()),
+        Bind((i) =>
+            InternalMagazineController(i.get<IntenalMagazineRepository>())),
+        Bind((i) => IntenalMagazineRepository(i.get<Dio>())),
         Bind((i) => Dio(BaseOptions(baseUrl: URL_BASE))),
       ];
 

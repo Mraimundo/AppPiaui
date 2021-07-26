@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/bottom_download_widget.dart';
-import 'package:piaui_app/app/modules/all_editions_page/components/image_shimmer.dart';
+import 'package:piaui_app/app/modules/download_editions_page/widgets/bottom_download_widget.dart';
+import 'package:piaui_app/app/modules/download_editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/bottom_orange_widget.dart';
+import 'package:piaui_app/app/modules/download_editions_page/widgets/bottom_orange_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridDoubleWidget extends StatefulWidget {
@@ -58,14 +58,34 @@ class _RowGridDoubleWidgetState
                           Container(
                             height: rowHeight * 0.15,
                             width: rowWidth * 0.92,
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
-                                style: TextStyle(
-                                    fontFamily: 'Piaui',
-                                    fontSize: rowFontsize,
-                                    fontWeight: FontWeight.bold),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 7),
+                              child: Column(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
+                                      style: TextStyle(
+                                        fontFamily: 'Piaui',
+                                        fontSize: rowFontsize,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: 4),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Baixado (36 MB)',
+                                      style: TextStyle(
+                                        fontFamily: 'Palatino',
+                                        fontSize: 11.5,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),
@@ -96,14 +116,33 @@ class _RowGridDoubleWidgetState
                             color: Colors.white,
                             height: rowHeight * 0.15,
                             width: rowWidth * 0.92,
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Edição #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
-                                style: TextStyle(
-                                    fontFamily: 'Piaui',
-                                    fontSize: rowFontsize,
-                                    fontWeight: FontWeight.bold),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 7),
+                              child: Column(
+                                children: [
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Edição #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
+                                      style: TextStyle(
+                                          fontFamily: 'Piaui',
+                                          fontSize: rowFontsize,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  SizedBox(height: 4),
+                                  Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: Text(
+                                      'Baixado (36 MB)',
+                                      style: TextStyle(
+                                        fontFamily: 'Palatino',
+                                        fontSize: 11.5,
+                                        fontWeight: FontWeight.normal,
+                                      ),
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                           ),

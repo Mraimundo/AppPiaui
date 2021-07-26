@@ -18,7 +18,7 @@ import 'package:piaui_app/app/shared/layout/gradients.dart';
 
 class AllEditionPage extends StatefulWidget {
   final String title;
-
+  // final UserModel user;
   const AllEditionPage({Key key, this.title = "EditionPage"}) : super(key: key);
 
   @override
@@ -51,6 +51,7 @@ class _AllEditionPageState
                             height: 42,
                             width: 400,
                             color: AppColors.appBar,
+                            // child: Text(wi),
                             // child: Padding(
                             //   padding: const EdgeInsets.only(left: 20, right: 20),
                             //   child: Column(

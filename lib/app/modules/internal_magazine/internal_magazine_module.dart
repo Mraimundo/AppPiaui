@@ -6,7 +6,7 @@ import 'package:piaui_app/app/modules/internal_magazine/controller/internal_maga
 class InternalMagazineModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => InternalMagazineController()),
+        // Bind((i) => InternalMagazineController()),
       ];
 
   @override

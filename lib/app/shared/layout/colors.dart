@@ -10,12 +10,15 @@ class AppColors {
   static final backgroundColor = Color(0xFFFFFFFF);
   static final linkText = Color(0x262626);
   static var textColorNormal = Color.fromRGBO(38, 38, 38, 1);
+  static var textColorModal = Color.fromRGBO(142, 142, 142, 1);
   static var textColorBold = Color.fromRGBO(43, 43, 43, 1);
   static var textColorArticle = Color.fromRGBO(79, 79, 79, 1);
   static var textColorInternal = Color.fromRGBO(103, 103, 103, 1);
   static var textAuthorColor = Color.fromRGBO(70, 69, 69, 1);
 
   static var boxColor = Color.fromRGBO(244, 244, 244, 1);
+  static var boxColorModal = Color.fromRGBO(236, 236, 236, 1);
+
   static var borderColor = Color.fromRGBO(241, 91, 64, 1);
   static var borderColorForm = Color.fromRGBO(196, 196, 196, 1);
 

@@ -26,7 +26,7 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
         ),
         child: Align(
           child: Image.asset(
-            'assets/images/arrow_download.png',
+            'assets/images/arrow_check.png',
           ),
           alignment: Alignment.center,
         ),

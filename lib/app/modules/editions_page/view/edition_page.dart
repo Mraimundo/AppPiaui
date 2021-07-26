@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/border_top_widget.dart';
-import 'package:piaui_app/app/modules/editions_page/widgets/filter_widget.dart';
+import 'package:piaui_app/app/modules/all_editions_page/widgets/filter_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/last_edition_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/load_more_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/row_grid_widget.dart';
