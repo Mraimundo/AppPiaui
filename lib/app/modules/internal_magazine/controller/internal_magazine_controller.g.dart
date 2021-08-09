@@ -26,7 +26,7 @@ mixin _$InternalMagazineController on _InternalMagazineControllerBase, Store {
   }
 
   final _$_editionsSiglePageAtom =
-      Atom(name: '_EditionPageControllerBase._editionsSiglePage');
+      Atom(name: '_InternalMagazineControllerBase._editionsSiglePage');
 
   @override
   List<EditionModel> get _editionsSiglePage {
@@ -41,7 +41,8 @@ mixin _$InternalMagazineController on _InternalMagazineControllerBase, Store {
     });
   }
 
-  final _$itemCountAtom = Atom(name: '_EditionPageControllerBase.itemCount');
+  final _$itemCountAtom =
+      Atom(name: '_InternalMagazineControllerBase.itemCount');
 
   @override
   int get itemCount {
@@ -56,7 +57,8 @@ mixin _$InternalMagazineController on _InternalMagazineControllerBase, Store {
     });
   }
 
-  final _$_pageCountAtom = Atom(name: '_EditionPageControllerBase._pageCount');
+  final _$_pageCountAtom =
+      Atom(name: '_InternalMagazineControllerBase._pageCount');
 
   @override
   int get _pageCount {
@@ -72,7 +74,7 @@ mixin _$InternalMagazineController on _InternalMagazineControllerBase, Store {
   }
 
   final _$nextPageAsyncAction =
-      AsyncAction('_EditionPageControllerBase.nextPage');
+      AsyncAction('_InternalMagazineControllerBase.nextPage');
 
   @override
   Future nextPage() {

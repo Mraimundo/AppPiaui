@@ -12,7 +12,7 @@ mixin _$AppController on _AppControllerBase, Store {
   Computed<bool> _$checkedStatusComputed;
 
   @override
-  bool get menuStatus =>
+  bool get checkedStatus =>
       (_$checkedStatusComputed ??= Computed<bool>(() => super.checkedStatus,
               name: '_AppControllerBase.checkedStatus'))
           .value;

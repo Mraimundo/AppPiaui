@@ -24,17 +24,17 @@ mixin _$LoginController on _LoginControllerBase, Store {
     });
   }
 
-  final _$_ConfigControllerBaseActionController =
-      ActionController(name: '_ConfigControllerBase');
+  final _$_LoginControllerBaseActionController =
+      ActionController(name: '_LoginControllerBase');
 
   @override
   void increment() {
-    final _$actionInfo = _$_ConfigControllerBaseActionController.startAction(
-        name: '_ConfigControllerBase.increment');
+    final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
+        name: '_LoginControllerBase.increment');
     try {
       return super.increment();
     } finally {
-      _$_ConfigControllerBaseActionController.endAction(_$actionInfo);
+      _$_LoginControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

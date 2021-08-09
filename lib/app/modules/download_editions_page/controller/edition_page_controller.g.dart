@@ -10,7 +10,8 @@ part of 'edition_page_controller.dart';
 
 mixin _$DownLoadEditionPageController
     on _DownLoadEditionPageControllerBase, Store {
-  final _$isLoadingAtom = Atom(name: '_EditionPageControllerBase.isLoading');
+  final _$isLoadingAtom =
+      Atom(name: '_DownLoadEditionPageControllerBase.isLoading');
 
   @override
   bool get isLoading {
@@ -26,7 +27,7 @@ mixin _$DownLoadEditionPageController
   }
 
   final _$_editionsSiglePageAtom =
-      Atom(name: '_EditionPageControllerBase._editionsSiglePage');
+      Atom(name: '_DownLoadEditionPageControllerBase._editionsSiglePage');
 
   @override
   List<EditionModel> get _editionsSiglePage {
@@ -41,7 +42,8 @@ mixin _$DownLoadEditionPageController
     });
   }
 
-  final _$itemCountAtom = Atom(name: '_EditionPageControllerBase.itemCount');
+  final _$itemCountAtom =
+      Atom(name: '_DownLoadEditionPageControllerBase.itemCount');
 
   @override
   int get itemCount {
@@ -56,7 +58,8 @@ mixin _$DownLoadEditionPageController
     });
   }
 
-  final _$_pageCountAtom = Atom(name: '_EditionPageControllerBase._pageCount');
+  final _$_pageCountAtom =
+      Atom(name: '_DownLoadEditionPageControllerBase._pageCount');
 
   @override
   int get _pageCount {
@@ -72,7 +75,7 @@ mixin _$DownLoadEditionPageController
   }
 
   final _$nextPageAsyncAction =
-      AsyncAction('_EditionPageControllerBase.nextPage');
+      AsyncAction('_DownLoadEditionPageControllerBase.nextPage');
 
   @override
   Future nextPage() {

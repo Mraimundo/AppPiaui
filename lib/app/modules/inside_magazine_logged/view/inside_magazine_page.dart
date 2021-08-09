@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/inside_magazine/components/inside_article_button.dart';
-import 'package:piaui_app/app/modules/inside_magazine/components/list_inside_articles.dart';
-import 'package:piaui_app/app/modules/inside_magazine/components/list_inside_articles_closed.dart';
-import 'package:piaui_app/app/modules/inside_magazine/components/text_magazine.dart';
-import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
+import 'package:piaui_app/app/modules/inside_magazine_logged/components/list_inside_articles_closed.dart';
+import 'package:piaui_app/app/modules/inside_magazine_logged/components/list_inside_logged_articles.dart';
+import 'package:piaui_app/app/modules/inside_magazine_logged/components/text_magazine.dart';
+import 'package:piaui_app/app/modules/inside_magazine_logged/controller/inside_magazine_logged_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-class InsideMagazinePage extends StatefulWidget {
+class InsideMagazineLoggedPage extends StatefulWidget {
   final String title;
-  const InsideMagazinePage({Key key, this.title = "InsideMagazine"})
+  const InsideMagazineLoggedPage({Key key, this.title = "InsideMagazine"})
       : super(key: key);
 
   @override
-  _InsideMagazinePageState createState() => _InsideMagazinePageState();
+  _InsideMagazineLoggedPageState createState() =>
+      _InsideMagazineLoggedPageState();
 }
 
-class _InsideMagazinePageState
-    extends ModularState<InsideMagazinePage, InsideMagazineController> {
+class _InsideMagazineLoggedPageState extends ModularState<
+    InsideMagazineLoggedPage, InsideMagazineLoggeController> {
   //use 'controller' variable to access controller
 
   @override
@@ -43,7 +43,6 @@ class _InsideMagazinePageState
                         children: <Widget>[
                           TextMagazine(),
                           ListInsideArticles(),
-                          // InsideArticleButton(),
                           ListInsideArticlesClosed(),
                         ],
                       ),

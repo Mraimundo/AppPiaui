@@ -1,5 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/inside_magazine/model/subjects_model.dart';
+import 'package:piaui_app/app/modules/inside_magazine/repository/inside_repository.dart';
 
 part 'inside_magazine_controller.g.dart';
 
@@ -8,11 +10,15 @@ class InsideMagazineController = _InsideMagazineControllerBase
     with _$InsideMagazineController;
 
 abstract class _InsideMagazineControllerBase with Store {
+  final InsideMagazineRepository insideMagazineRepository;
+  _InsideMagazineControllerBase(this.insideMagazineRepository);
+
   @observable
-  int value = 0;
+  ObservableFuture<List<SubjectModel>> subjectsFuture;
 
   @action
-  void increment() {
-    value++;
+  void findAll() {
+    subjectsFuture =
+        ObservableFuture(insideMagazineRepository.findAllSubjects());
   }
 }

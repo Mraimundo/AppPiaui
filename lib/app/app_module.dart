@@ -3,8 +3,12 @@ import 'package:piaui_app/app/modules/editions_page/controller/edition_page_cont
 import 'package:piaui_app/app/modules/editions_page/edition_page_module.dart';
 import 'package:piaui_app/app/modules/editions_page/repository/edition_repository.dart';
 import 'package:piaui_app/app/modules/home/home_controller.dart';
-import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
+// import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
 import 'package:piaui_app/app/modules/inside_magazine/inside_magazine_module.dart';
+import 'package:piaui_app/app/modules/inside_magazine/repository/inside_repository.dart';
+import 'package:piaui_app/app/modules/inside_magazine_logged/controller/inside_magazine_logged_controller.dart';
+import 'package:piaui_app/app/modules/inside_magazine_logged/inside_magazine_module.dart';
+// import 'package:piaui_app/app/modules/inside_magazine_logged/repository/inside_repository.dart';
 import 'package:piaui_app/app/modules/internal_magazine/controller/internal_magazine_controller.dart';
 import 'package:piaui_app/app/modules/internal_magazine/internal_magazine_module.dart';
 import 'package:piaui_app/app/modules/internal_magazine/repository/internal_repository.dart';
@@ -48,7 +52,11 @@ class AppModule extends MainModule {
         Bind((i) => DownLoadEditionPageController(i.get<EditionRepository>())),
         Bind((i) => EditionRepository(i.get<Dio>())),
         Bind((i) => MagazineArticlesController()),
-        Bind((i) => InsideMagazineController()),
+        // Bind((i) => InsideMagazineController()),
+        Bind((i) => InsideMagazineRepository()),
+        Bind((i) => InsideMagazineLoggeController(i.get<EditionRepository>())),
+        Bind((i) =>
+            InternalMagazineController(i.get<IntenalMagazineRepository>())),
         Bind((i) =>
             InternalMagazineController(i.get<IntenalMagazineRepository>())),
         Bind((i) => IntenalMagazineRepository(i.get<Dio>())),
@@ -66,7 +74,8 @@ class AppModule extends MainModule {
         ModularRouter('/logged', module: AllEditionPageModule()),
         ModularRouter('/downloads', module: DownLoadEditionPageModule()),
         ModularRouter('/articles', module: MagazineArticlesModule()),
-        ModularRouter('/magazine', module: InsideMagazineModule()),
+        // ModularRouter('/magazine', module: InsideMagazineModule()),
+        ModularRouter('/subjects', module: InsideMagazineLoggedModule()),
         ModularRouter('/internal', module: InternalMagazineModule()),
         ModularRouter('/subscribe', module: SubscribeNowModule()),
       ];

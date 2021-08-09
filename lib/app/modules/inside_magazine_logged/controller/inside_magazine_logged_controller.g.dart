@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'edition_page_controller.dart';
+part of 'inside_magazine_logged_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'edition_page_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$AllEditionPageController on _AllEditionPageControllerBase, Store {
-  final _$isLoadingAtom = Atom(name: '_AllEditionPageControllerBase.isLoading');
+mixin _$InsideMagazineLoggeController on _InsideMagazineControllerBase, Store {
+  final _$isLoadingAtom = Atom(name: '_InsideMagazineControllerBase.isLoading');
 
   @override
   bool get isLoading {
@@ -25,22 +25,22 @@ mixin _$AllEditionPageController on _AllEditionPageControllerBase, Store {
   }
 
   final _$_editionsSiglePageAtom =
-      Atom(name: '_AllEditionPageControllerBase._editionsSiglePage');
+      Atom(name: '_InsideMagazineControllerBase._editionsSiglePage');
 
   @override
-  List<EditionModel> get _editionsSiglePage {
+  List<InsideMagazineLoggedModel> get _editionsSiglePage {
     _$_editionsSiglePageAtom.reportRead();
     return super._editionsSiglePage;
   }
 
   @override
-  set _editionsSiglePage(List<EditionModel> value) {
+  set _editionsSiglePage(List<InsideMagazineLoggedModel> value) {
     _$_editionsSiglePageAtom.reportWrite(value, super._editionsSiglePage, () {
       super._editionsSiglePage = value;
     });
   }
 
-  final _$itemCountAtom = Atom(name: '_AllEditionPageControllerBase.itemCount');
+  final _$itemCountAtom = Atom(name: '_InsideMagazineControllerBase.itemCount');
 
   @override
   int get itemCount {
@@ -56,7 +56,7 @@ mixin _$AllEditionPageController on _AllEditionPageControllerBase, Store {
   }
 
   final _$_pageCountAtom =
-      Atom(name: '_AllEditionPageControllerBase._pageCount');
+      Atom(name: '_InsideMagazineControllerBase._pageCount');
 
   @override
   int get _pageCount {
@@ -72,7 +72,7 @@ mixin _$AllEditionPageController on _AllEditionPageControllerBase, Store {
   }
 
   final _$nextPageAsyncAction =
-      AsyncAction('_AllEditionPageControllerBase.nextPage');
+      AsyncAction('_InsideMagazineControllerBase.nextPage');
 
   @override
   Future nextPage() {
