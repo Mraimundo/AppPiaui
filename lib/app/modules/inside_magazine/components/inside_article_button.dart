@@ -5,6 +5,9 @@ import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
 
 class InsideArticleButton extends StatefulWidget {
+  final String url;
+  final String id;
+  const InsideArticleButton({Key key, this.url, this.id}) : super(key: key);
   @override
   _InsideArticleButtonState createState() => _InsideArticleButtonState();
 }
@@ -16,6 +19,11 @@ class _InsideArticleButtonState
     super.initState();
     controller.findAll();
   }
+
+  // void initState() {
+  //   super.initState();
+  //   controller.findByID();
+  // }
 
   @override
   Widget build(BuildContext context) {

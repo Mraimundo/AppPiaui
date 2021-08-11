@@ -6,12 +6,11 @@ import 'package:piaui_app/app/shared/components/app_bar/login/widgets/link_widge
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/login_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/reset_to_password_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/signature_widget.dart';
+import 'package:piaui_app/app/shared/components/app_bar/login/widgets/social_login_button.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/text_login_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
-import 'package:piaui_app/app/shared/components/signature/view/signature_page.dart';
 import 'package:piaui_app/app/shared/components/signature/widgets/button_to_cancel_widget.dart';
 import 'package:piaui_app/app/shared/components/signature/widgets/button_to_get_widget.dart';
-import 'package:piaui_app/app/shared/components/signature/widgets/signature_show_dialog_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/shared/layout/gradients.dart';
 
@@ -28,8 +27,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 
   @override
   Widget build(BuildContext context) {
-    final double vFontSize = 15;
-    final double vBtnHeght = 5;
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
       backgroundColor: AppColors.backgroundColor,
@@ -43,15 +40,22 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
             ),
             TextLoginWidget(),
             Padding(
+              padding: const EdgeInsets.only(left: 20, top: 16),
+              child: Container(
+                alignment: Alignment.topLeft,
+                child: SocialLoginButton(
+                  onTap: () {},
+                ),
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.only(
                   top: 12, right: 20, left: 20, bottom: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 36),
-                    child: LoginWidget(),
-                  ),
+                  LoginWidget(),
+                  SizedBox(height: 20),
                   ResetToPassWordWidget(
                     onTap: () {
                       showDialog(

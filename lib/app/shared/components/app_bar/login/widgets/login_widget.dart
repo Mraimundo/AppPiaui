@@ -48,7 +48,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       } on DioError catch (e) {
         authController.setUser(context, null);
         if (e.response != null) {
-          print(e.response.data.toString());
+          // print(e.response.data.toString());
         } else {
           print(e.message);
         }

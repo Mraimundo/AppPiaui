@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
+import 'package:piaui_app/app/modules/inside_magazine/model/inside_model.dart';
 import 'package:piaui_app/app/modules/inside_magazine/model/subjects_model.dart';
 
 class InsideMagazineRepository {
@@ -12,10 +15,14 @@ class InsideMagazineRepository {
             .toList());
   }
 
-  Future<SubjectModel> findByID(String id) {
-    return Dio()
-        .get(
-            'https://piaui.folha.uol.com.br/customRest/v1/esquinasEdicao/?edicao=$id')
-        .then((res) => SubjectModel.fromJson(res.data));
+  Future<List<Materias>> findByID(String id) async {
+    var dio = Dio();
+    var response = await dio.get(
+        'https://piaui.folha.uol.com.br/customRest/v1/esquinasEdicao/?edicao=$id');
+    List<Materias> materias = [];
+    print(response.data + "chegou");
+    Map<String, dynamic> json = jsonDecode(await response.data);
+    print(json);
+    return materias;
   }
 }

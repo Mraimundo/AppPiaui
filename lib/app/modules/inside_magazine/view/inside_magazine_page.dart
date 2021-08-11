@@ -9,8 +9,10 @@ import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class InsideMagazinePage extends StatefulWidget {
+  final String url;
   final String title;
-  const InsideMagazinePage({Key key, this.title = "InsideMagazine"})
+  const InsideMagazinePage(
+      {Key key, this.title = "InsideMagazine", this.url = ""})
       : super(key: key);
 
   @override
