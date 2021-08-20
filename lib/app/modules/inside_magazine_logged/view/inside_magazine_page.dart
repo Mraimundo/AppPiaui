@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:piaui_app/app/modules/inside_magazine_logged/components/list_inside_articles_closed.dart';
 import 'package:piaui_app/app/modules/inside_magazine_logged/components/list_inside_logged_articles.dart';
 import 'package:piaui_app/app/modules/inside_magazine_logged/components/text_magazine.dart';
@@ -8,8 +9,11 @@ import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class InsideMagazineLoggedPage extends StatefulWidget {
+  final GoogleSignInAccount user;
+
   final String title;
-  const InsideMagazineLoggedPage({Key key, this.title = "InsideMagazine"})
+  const InsideMagazineLoggedPage(
+      {Key key, this.user, this.title = "InsideMagazine"})
       : super(key: key);
 
   @override

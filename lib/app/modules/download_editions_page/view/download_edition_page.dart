@@ -1,115 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
-import 'package:piaui_app/app/modules/download_editions_page/widgets/border_top_widget.dart';
-import 'package:piaui_app/app/modules/download_editions_page/widgets/filter_widget.dart';
-import 'package:piaui_app/app/modules/download_editions_page/widgets/last_edition_widget.dart';
-import 'package:piaui_app/app/modules/download_editions_page/widgets/load_more_widget.dart';
-import 'package:piaui_app/app/modules/download_editions_page/widgets/row_grid_widget.dart';
-import 'package:piaui_app/app/modules/download_editions_page/widgets/text_has_no_signature_widget.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/text_to_sign_widget.dart';
-import 'package:piaui_app/app/modules/screen/screen_first.dart';
-import 'package:piaui_app/app/modules/screen/screen_second.dart';
-import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
-import 'package:piaui_app/app/shared/components/signature/widgets/button_to_cancel_widget.dart';
-import 'package:piaui_app/app/shared/components/signature/widgets/button_to_get_widget.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:piaui_app/app/modules/all_editions_page/widgets/border_top_widget.dart';
+import 'package:piaui_app/app/modules/all_editions_page/widgets/filter_widget.dart';
+import 'package:piaui_app/app/modules/all_editions_page/widgets/load_more_widget.dart';
+import 'package:piaui_app/app/modules/all_editions_page/widgets/row_grid_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
-import 'package:piaui_app/app/shared/layout/gradients.dart';
 
-class DownLoadEditionPage extends StatefulWidget {
-  final String title;
-
-  const DownLoadEditionPage({Key key, this.title = "EditionPage"})
-      : super(key: key);
+class DownLoadEditionPage extends StatelessWidget {
+  final GoogleSignInAccount user;
+  const DownLoadEditionPage({Key key, this.user}) : super(key: key);
 
   @override
-  _DownLoadEditionPageState createState() => _DownLoadEditionPageState();
-}
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints viewportConstraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: viewportConstraints.maxHeight,
+                ),
+                child: Column(
+                  children: [
+                    BorderTopWidget(),
 
-class _DownLoadEditionPageState
-    extends ModularState<DownLoadEditionPage, DownLoadEditionPageController> {
-  //use 'controller' variable to access controller
-  @override
-  Widget build(BuildContext context) => DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: PreferredAppBarWidget(height: 56),
-          backgroundColor: AppColors.backgroundColor,
-          body: Stack(
-            children: [
-              LayoutBuilder(
-                builder:
-                    (BuildContext context, BoxConstraints viewportConstraints) {
-                  return SingleChildScrollView(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minHeight: viewportConstraints.maxHeight,
-                      ),
-                      child: Column(
-                        children: [
-                          BorderTopWidget(),
-                          Container(
-                            height: 42,
-                            width: 400,
-                            color: AppColors.appBar,
-                            // child: Padding(
-                            //   padding: const EdgeInsets.only(left: 20, right: 20),
-                            //   child: Column(
-                            //     children: [
-                            //       TabBar(
-                            //         tabs: <Widget>[
-                            //           Tab(
-                            //             text: "Primeiro",
-                            //           ),
-                            //           Tab(
-                            //             text: "Segundo",
-                            //           ),
-                            //         ],
-                            //       ),
-                            //       TabBarView(
-                            //         children: <Widget>[
-                            //           // ScreenFirst(),
-                            //           // ScreenSecond()
-                            //         ],
-                            //       )
-                            //     ],
-                            //   ),
-                            // ),
-
-                            // child: TextToSignWidget(
-                            //   onTap: () {
-                            //     Modular.to.pushNamed('/login');
-                            //   },
-                            // ),
-                          ),
-                          SizedBox(height: 23),
-                          TextHasNoSignatureWidget(),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                top: 21, right: 25, left: 25, bottom: 25),
-                            child: BorderTopWidget(),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 25,
-                              right: 25,
-                            ),
-                            child: FilterWidget(),
-                          ),
-                          // LastEditionWidget(),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 25),
-                            child: RowGridWidget(),
-                          ),
-                          LoadMoreWidget(),
-                        ],
+                    SizedBox(height: 23),
+                    // TextHasNoSignatureWidget(),
+                    Center(
+                      child: Text(
+                        'Bem-vindo à piauí, ' + user.displayName,
+                        style: TextStyle(
+                          height: 1.3,
+                          fontFamily: 'Piaui',
+                          fontSize: 17.5,
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.textColorNormal,
+                        ),
                       ),
                     ),
-                  );
-                },
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 21, right: 25, left: 25, bottom: 25),
+                      child: BorderTopWidget(),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 25,
+                        right: 25,
+                      ),
+                      child: FilterWidget(),
+                    ),
+                    // LastEditionWidget(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 25),
+                      child: RowGridWidget(),
+                    ),
+                    LoadMoreWidget(),
+                  ],
+                ),
               ),
-            ],
-          ),
+            );
+          },
         ),
-      );
+      ],
+    );
+  }
 }

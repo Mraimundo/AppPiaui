@@ -62,7 +62,7 @@ class _LastEditionWidgetState
                         children: [
                           TextButton(
                             onPressed: () {
-                              Modular.to.pushNamed('/internal');
+                              Modular.to.pushNamed('/logged');
                             },
                             child: Container(
                               color: AppColors.orangePiaui,

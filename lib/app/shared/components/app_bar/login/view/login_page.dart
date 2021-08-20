@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/api/google_sign_in_api.dart';
+import 'package:piaui_app/app/modules/all_editions_page/view/all_edition_page.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/controller/login_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/back_to_home_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/link_widget.dart';
@@ -44,7 +46,9 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
               child: Container(
                 alignment: Alignment.topLeft,
                 child: SocialLoginButton(
-                  onTap: () {},
+                  onTap: () {
+                    signIn(context);
+                  },
                 ),
               ),
             ),
@@ -597,5 +601,17 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
         ),
       ),
     );
+  }
+}
+
+Future signIn(BuildContext context) async {
+  final user = await GoogleSignInApi.login();
+  if (user == null) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text('Sign in failed')));
+  } else {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(
+      builder: (context) => AllEditionPage(user: user),
+    ));
   }
 }

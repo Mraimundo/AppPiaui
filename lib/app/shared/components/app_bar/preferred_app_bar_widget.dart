@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piaui_app/app/modules/all_editions_page/widgets/tab_bar.dart';
 import 'package:piaui_app/app/shared/components/app_bar/app_bar_default_widget.dart';
 
 class PreferredAppBarWidget extends StatelessWidget implements PreferredSize {
@@ -22,9 +23,12 @@ class PreferredAppBarWidget extends StatelessWidget implements PreferredSize {
         child: Container(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [AppBarDefaultWidget()],
+            children: [
+              AppBarDefaultWidget(),
+            ],
           ),
         ),
+        //  TabBarWidget()
       ),
       preferredSize: Size.fromHeight(this.height),
     );
