@@ -23,10 +23,7 @@ class DownLoadEditionPage extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
-                    BorderTopWidget(),
-
                     SizedBox(height: 23),
-                    // TextHasNoSignatureWidget(),
                     Center(
                       child: Text(
                         'Bem-vindo à piauí, ' + user.displayName,

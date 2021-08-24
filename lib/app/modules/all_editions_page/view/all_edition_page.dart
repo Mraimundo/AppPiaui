@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/list_magazine.dart';
 import 'package:piaui_app/app/modules/download_editions_page/view/download_edition_page.dart';
-import 'package:piaui_app/app/modules/editions_page/widgets/border_top_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
@@ -19,43 +18,45 @@ class AllEditionPage extends StatelessWidget {
         body: DefaultTabController(
           length: 2,
           child: Scaffold(
-            appBar: AppBar(
-              backgroundColor: AppColors.appBar,
-              // title: Text("Second appbar"),
-              bottom: PreferredSize(
-                preferredSize: Size.fromHeight(100.0),
-                child: Column(
-                  children: [
-                    TabBar(
-                      indicatorColor: AppColors.orangePiaui,
-                      indicatorSize: TabBarIndicatorSize.label,
-                      indicatorWeight: 6,
-                      tabs: const <Widget>[
-                        Tab(
-                          child: Text(
-                            'Todas as edições',
-                            style: TextStyle(
-                              fontFamily: 'Palatino',
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+            appBar: PreferredSize(
+              preferredSize: Size(100, 53),
+              child: SafeArea(
+                child: Container(
+                  height: 100,
+                  color: AppColors.appBar,
+                  child: Column(
+                    children: [
+                      TabBar(
+                        indicatorColor: AppColors.orangePiaui,
+                        indicatorSize: TabBarIndicatorSize.label,
+                        indicatorWeight: 6,
+                        tabs: const <Widget>[
+                          Tab(
+                            child: Text(
+                              'Todas as edições',
+                              style: TextStyle(
+                                fontFamily: 'Palatino',
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                        ),
-                        Tab(
-                          child: Text(
-                            'Meus downloads',
-                            style: TextStyle(
-                              fontFamily: 'Palatino',
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          Tab(
+                            child: Text(
+                              'Meus downloads',
+                              style: TextStyle(
+                                fontFamily: 'Palatino',
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
