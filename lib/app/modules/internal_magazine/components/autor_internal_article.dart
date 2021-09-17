@@ -31,7 +31,7 @@ class AutorInternalArticle extends StatelessWidget {
                   flex: 6,
                   child: Padding(
                     padding: const EdgeInsets.only(
-                        top: 18, left: 21, right: 8, bottom: 14),
+                        top: 10, left: 21, right: 8, bottom: 14),
                     child: Column(
                       children: [
                         Row(

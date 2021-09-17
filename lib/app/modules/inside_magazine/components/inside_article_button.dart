@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/inside_magazine/model/subjects_model.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
 

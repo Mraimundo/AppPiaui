@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/border_top_widget.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/filter_widget.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/load_more_widget.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/row_grid_widget.dart';
+import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class DownLoadEditionPage extends StatelessWidget {
-  final GoogleSignInAccount user;
+  // final GoogleSignInAccount user;
+  final Dados user;
   const DownLoadEditionPage({Key key, this.user}) : super(key: key);
 
   @override
@@ -26,7 +27,7 @@ class DownLoadEditionPage extends StatelessWidget {
                     SizedBox(height: 23),
                     Center(
                       child: Text(
-                        'Bem-vindo à piauí, ' + user.displayName,
+                        'Bem-vindo à piauí, ' + user.nome,
                         style: TextStyle(
                           height: 1.3,
                           fontFamily: 'Piaui',

@@ -4,7 +4,6 @@ import 'package:piaui_app/app/shared/components/app_bar/configuration/controller
 import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/back_to_menu_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/text_config_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
-import 'package:piaui_app/app/shared/components/bottom_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class ConfigPage extends StatefulWidget {

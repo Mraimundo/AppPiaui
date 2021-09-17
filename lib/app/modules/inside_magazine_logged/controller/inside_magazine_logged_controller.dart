@@ -1,9 +1,7 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/editions_page/repository/edition_repository.dart';
 import 'package:piaui_app/app/modules/inside_magazine_logged/model/inside_magazine_logged.dart';
-import 'package:piaui_app/app/modules/inside_magazine_logged/repository/inside_repository.dart';
 
 part 'inside_magazine_logged_controller.g.dart';
 

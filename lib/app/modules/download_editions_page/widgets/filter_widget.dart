@@ -13,7 +13,6 @@ class FilterWidget extends StatefulWidget {
 
 class _FilterWidgetState extends State<FilterWidget> {
   @override
-  String dropdownValue = 'One';
   Widget build(BuildContext context) {
     return Container(
       height: 45,

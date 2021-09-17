@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/modules/inside_magazine/components/inside_article_button.dart';
 import 'package:piaui_app/app/modules/inside_magazine/components/list_inside_articles.dart';
 import 'package:piaui_app/app/modules/inside_magazine/components/list_inside_articles_closed.dart';
 import 'package:piaui_app/app/modules/inside_magazine/components/text_magazine.dart';

@@ -5,7 +5,6 @@ import 'package:piaui_app/app/modules/download_editions_page/components/image_sh
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/download_editions_page/widgets/bottom_orange_widget.dart';
-import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridDoubleWidget extends StatefulWidget {
   final int index;

@@ -1,7 +1,4 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class SelectEditionWidget extends StatelessWidget {

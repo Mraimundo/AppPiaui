@@ -46,7 +46,7 @@ class _EditionPageState
                       BorderTopWidget(),
                       Container(
                         height: 42,
-                        width: 400,
+                        width: 600,
                         color: AppColors.appBar,
                         child: TextToSignWidget(
                           onTap: () {

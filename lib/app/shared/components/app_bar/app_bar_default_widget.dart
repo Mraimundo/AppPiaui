@@ -72,6 +72,5 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   }
 
   @override
-  // TODO: implement child
   Widget get child => AppBarDefaultWidget();
 }

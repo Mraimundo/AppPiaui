@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:piaui_app/app/shared/components/signature/view/signature_page.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class SignatureShowDialogWidget extends StatelessWidget {

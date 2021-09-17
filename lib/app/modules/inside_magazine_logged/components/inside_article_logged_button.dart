@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 // import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/inside_magazine_logged/controller/inside_magazine_logged_controller.dart';
-import 'package:piaui_app/app/modules/inside_magazine_logged/model/inside_magazine_logged.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class InsideArticleLoggedButton extends StatefulWidget {

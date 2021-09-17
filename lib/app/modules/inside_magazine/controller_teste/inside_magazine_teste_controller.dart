@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/inside_magazine/model/inside_model.dart';

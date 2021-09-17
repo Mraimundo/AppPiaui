@@ -32,7 +32,7 @@ class _LoadMoreWidgetState
                     child: TextButton(
                       child: Container(
                         height: vHeight * 0.06,
-                        width: vWidth / 2.1,
+                        width: vWidth / 1.8,
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: AppColors.orangePiaui,
@@ -41,12 +41,15 @@ class _LoadMoreWidgetState
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              'CARREGAR MAIS',
-                              style: TextStyle(
-                                  color: AppColors.orangePiaui,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(
+                                'CARREGAR MAIS',
+                                style: TextStyle(
+                                    color: AppColors.orangePiaui,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold),
+                              ),
                             ),
                             Icon(
                               Icons.keyboard_arrow_down,

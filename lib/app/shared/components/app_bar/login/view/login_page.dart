@@ -1,8 +1,11 @@
+import 'dart:convert';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/api/google_sign_in_api.dart';
 import 'package:piaui_app/app/modules/all_editions_page/view/all_edition_page.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/controller/login_controller.dart';
+import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/back_to_home_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/link_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/login_widget.dart';
@@ -605,13 +608,53 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 }
 
 Future signIn(BuildContext context) async {
+  // var _inpLogin = 'leonardo@leonardo.com.br';
+  // var _inpSenha = '123456';
   final user = await GoogleSignInApi.login();
+  var _inpLogin = user.email;
+  var _inpSenha = user.id;
+  print(user);
   if (user == null) {
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text('Sign in failed')));
   } else {
-    Navigator.of(context).pushReplacement(MaterialPageRoute(
-      builder: (context) => AllEditionPage(user: user),
-    ));
+    // Navigator.of(context).pushReplacement(MaterialPageRoute(
+    //   builder: (context) => AllEditionPage(user: user),
+    // ));
+
+    final _url =
+        'https://piaui.homolog.inf.br/wp-admin/admin-ajax.php?action=flLogin';
+    var dio = Dio();
+    try {
+      final _data =
+          FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
+      var response = await dio.post(_url, data: _data);
+      var json = jsonDecode(response.data);
+
+      try {
+        var userDados = Dados.fromMap(jsonDecode(response.data)["dados"]);
+        var assinante = json['dados']['assinante'];
+
+        if (assinante == '1') {
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+            builder: (context) => AllEditionPage(user: userDados),
+          ));
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Center(
+              child: Text('Você não é assinante!'),
+            ),
+          ));
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Center(
+            child: Text(json['msg']),
+          ),
+        ));
+      }
+    } catch (e) {
+      print(e);
+    }
   }
 }

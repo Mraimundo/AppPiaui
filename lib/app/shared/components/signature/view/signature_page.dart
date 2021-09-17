@@ -4,7 +4,6 @@ import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget
 import 'package:piaui_app/app/shared/components/signature/controller/signature_controller.dart';
 import 'package:piaui_app/app/shared/components/signature/widgets/button_to_cancel_widget.dart';
 import 'package:piaui_app/app/shared/components/signature/widgets/button_to_get_widget.dart';
-import 'package:piaui_app/app/shared/components/signature/widgets/signature_show_dialog_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/shared/layout/gradients.dart';
 
@@ -24,8 +23,8 @@ class _SignaturePageState
 
   @override
   Widget build(BuildContext context) {
-    final double vFontSize = 15;
-    final double vBtnHeght = 5;
+    // final double vFontSize = 15;
+    // final double vBtnHeght = 5;
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 65),
       backgroundColor: AppColors.backgroundColor,

@@ -164,7 +164,6 @@ void _modalBottomMonth(context) {
 
 class _FilterWidgetState extends State<FilterWidget> {
   @override
-  String dropdownValue = 'One';
   Widget build(BuildContext context) {
     return Container(
       height: 45,

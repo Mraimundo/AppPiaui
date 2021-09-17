@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class TextLoginWidget extends StatelessWidget {
   @override

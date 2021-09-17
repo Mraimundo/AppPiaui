@@ -1,37 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/all_editions_page/view/all_edition_page.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
-import 'package:piaui_app/app/shared/components/app_bar/login/model/user.dart';
+import 'package:piaui_app/app/shared/components/app_bar/login/widgets/login_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthController {
-  UserModel _user;
+  Dados _user;
 
-  UserModel get user => _user;
+  Dados get user => _user;
 
-  void setUser(BuildContext context, UserModel user) {
+  void setUser(BuildContext context, Dados user) {
     if (user != null) {
       _user = user;
-      Modular.to.pushNamed('/logged');
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => AllEditionPage(user: user),
+      ));
+      // Modular.to.pushNamed('/logged');
     } else {
-      Modular.to.pushNamed('/editions');
+      Navigator.of(context).pushReplacement(MaterialPageRoute(
+        builder: (context) => LoginWidget(),
+      ));
+      // Modular.to.pushNamed('/editions');
     }
   }
 
-  // Future<void> saveUser(var user) async {
-  //   final instance = await SharedPreferences.getInstance();
-  //   await instance.setString("user", user.toJson());
-  //   return;
-  // }
+  Future<void> saveUser(var user) async {
+    final instance = await SharedPreferences.getInstance();
+    await instance.setString("user", user.toJson());
+    return;
+  }
 
-  // Future<void> currentUser(BuildContext context) async {
-  //   final instance = await SharedPreferences.getInstance();
-  //   if (instance.containsKey("user")) {
-  //     final json = instance.get("user") as String;
-  //     setUser(context, UserModel.fromJson(json));
-  //     return;
-  //   } else {
-  //     setUser(context, null);
-  //   }
-  // }
+  Future<void> currentUser(BuildContext context) async {
+    final instance = await SharedPreferences.getInstance();
+    if (instance.containsKey("user")) {
+      // final json = instance.get("user") as String;
+      // setUser(context, Dados.fromJson(json));
+      return;
+    } else {
+      setUser(context, null);
+    }
+  }
 }

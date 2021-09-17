@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/app_controller.dart';
-import 'package:piaui_app/app/configuration_controller.dart';
 
 class ConfigButton extends StatefulWidget {
   @override

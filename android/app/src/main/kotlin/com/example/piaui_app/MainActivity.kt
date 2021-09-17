@@ -1,4 +1,4 @@
-package com.example.piaui_app
+package com.piaui_example.piaui_app
 
 import io.flutter.embedding.android.FlutterActivity
 

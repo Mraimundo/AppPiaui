@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/auth/auth_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/util/validations.dart';
-import 'package:piaui_app/app/shared/components/app_bar/login/api/api.dart';
-import 'package:piaui_app/app/shared/components/app_bar/login/model/user.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -24,36 +22,47 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   final _formKey = GlobalKey<FormState>();
-
-  var _email = '';
-  var _password = '';
-  var _isLoading = false;
-  var _errorMessage = '';
+  var _inpLogin = '';
+  var _inpSenha = '';
 
   final authController = AuthController();
 
   Future<void> _onPressed() async {
     if (_formKey.currentState.validate()) {
       final _url =
-          "actions/?acao=loginrest&email=mel@revistapiaui.com.br&senha=pinguim";
-
+          'http://piaui.homolog.inf.br/wp-admin/admin-ajax.php?action=flLogin';
+      var dio = Dio();
       try {
         final _data =
-            FormData.fromMap({'email': _email, 'password': _password});
-        var response = await api.post(_url, data: _data);
-        final user = UserModel(cadaTxNome: response.data.cadaTxNome);
-        authController.setUser(context, user);
-        var parsedJson = json.decode(response.data.toString());
-        print(parsedJson['CADA_TX_NOME']);
+            FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
+        var response = await dio.post(_url, data: _data);
+        var json = jsonDecode(response.data);
+        try {
+          var user = Dados.fromMap(jsonDecode(response.data)["dados"]);
+          authController.setUser(context, user);
+        } catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Center(
+              child: Text(json['msg']),
+            ),
+          ));
+        }
       } on DioError catch (e) {
-        authController.setUser(context, null);
         if (e.response != null) {
-          // print(e.response.data.toString());
+          print(e.response.data.toString());
         } else {
-          print(e.message);
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Center(
+              child: Text(e.message),
+            ),
+          ));
         }
       } catch (e) {
-        print(e);
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Center(
+            child: Text(e),
+          ),
+        ));
       }
     }
   }
@@ -92,7 +101,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     autocorrect: false,
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (value) => setState(() {
-                      _email = value;
+                      _inpLogin = value;
                     }),
                     decoration: InputDecoration(
                       hintText: 'E-mail',
@@ -127,7 +136,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     autocorrect: false,
                     obscureText: true,
                     onChanged: (value) => setState(() {
-                          _password = value;
+                          _inpSenha = value;
                         }),
                     decoration: InputDecoration(
                       hintText: 'Senha',

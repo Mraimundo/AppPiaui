@@ -4,7 +4,6 @@ import 'package:piaui_app/app/modules/editions_page/edition_page_module.dart';
 import 'package:piaui_app/app/modules/editions_page/repository/edition_repository.dart';
 import 'package:piaui_app/app/modules/home/home_controller.dart';
 // import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
-import 'package:piaui_app/app/modules/inside_magazine/inside_magazine_module.dart';
 import 'package:piaui_app/app/modules/inside_magazine/repository/inside_repository.dart';
 import 'package:piaui_app/app/modules/inside_magazine_logged/controller/inside_magazine_logged_controller.dart';
 import 'package:piaui_app/app/modules/inside_magazine_logged/inside_magazine_module.dart';
