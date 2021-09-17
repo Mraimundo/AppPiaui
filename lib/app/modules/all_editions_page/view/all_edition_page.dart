@@ -65,7 +65,7 @@ class AllEditionPage extends StatelessWidget {
             body: TabBarView(
               children: <Widget>[
                 ListMagazine(user: user),
-                DownLoadEditionPage(),
+                DownLoadEditionPage(user: user),
               ],
             ),
           ),
