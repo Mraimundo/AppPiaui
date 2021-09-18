@@ -610,18 +610,20 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 Future signIn(BuildContext context) async {
   // var _inpLogin = 'leonardo@leonardo.com.br';
   // var _inpSenha = '123456';
-  final user = await GoogleSignInApi.login();
+  var user;
+  try {
+    user = await GoogleSignInApi.login();
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e)));
+  }
   var _inpLogin = user.email;
   var _inpSenha = user.id;
+
   print(user);
   if (user == null) {
     ScaffoldMessenger.of(context)
         .showSnackBar(SnackBar(content: Text('Sign in failed')));
   } else {
-    // Navigator.of(context).pushReplacement(MaterialPageRoute(
-    //   builder: (context) => AllEditionPage(user: user),
-    // ));
-
     final _url =
         'https://piaui.homolog.inf.br/wp-admin/admin-ajax.php?action=flLogin';
     var dio = Dio();
