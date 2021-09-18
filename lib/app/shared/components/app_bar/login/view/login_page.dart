@@ -16,6 +16,7 @@ import 'package:piaui_app/app/shared/components/app_bar/login/widgets/text_login
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/components/signature/widgets/button_to_cancel_widget.dart';
 import 'package:piaui_app/app/shared/components/signature/widgets/button_to_get_widget.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/shared/layout/gradients.dart';
 
@@ -613,50 +614,69 @@ Future signIn(BuildContext context) async {
   var user;
   try {
     user = await GoogleSignInApi.login();
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e)));
-  }
-  var _inpLogin = user.email;
-  var _inpSenha = user.id;
 
-  print(user);
-  if (user == null) {
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text('Sign in failed')));
-  } else {
-    final _url =
-        'https://piaui.homolog.inf.br/wp-admin/admin-ajax.php?action=flLogin';
-    var dio = Dio();
-    try {
-      final _data =
-          FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
-      var response = await dio.post(_url, data: _data);
-      var json = jsonDecode(response.data);
+    var _inpLogin = user.email;
+    var _inpSenha = user.id;
 
+    print(user);
+    if (user == null) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text('Sign in failed')));
+    } else {
+      final _url = '/wp-admin/admin-ajax.php?action=flLogin';
+      var dio = CustomDio().instance;
       try {
-        var userDados = Dados.fromMap(jsonDecode(response.data)["dados"]);
-        var assinante = json['dados']['assinante'];
+        final _data =
+            FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
+        var response = await dio.post(_url, data: _data);
+        var json = jsonDecode(response.data);
 
-        if (assinante == '1') {
-          Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context) => AllEditionPage(user: userDados),
-          ));
-        } else {
+        try {
+          var userDados = Dados.fromMap(jsonDecode(response.data)["dados"]);
+          var assinante = json['dados']['assinante'];
+
+          if (assinante == '1') {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => AllEditionPage(user: userDados),
+            ));
+          } else {
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+              content: Center(
+                child: Text('Você não é assinante!'),
+              ),
+            ));
+          }
+        } catch (e) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: Center(
-              child: Text('Você não é assinante!'),
+              child: Text(json['msg']),
             ),
           ));
         }
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Center(
-            child: Text(json['msg']),
+            child: Column(
+              children: [
+                Text('Falha ao fazer login'),
+                Text(e.toString()),
+              ],
+            ),
           ),
         ));
+        print(e);
       }
-    } catch (e) {
-      print(e);
     }
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Center(
+        child: Column(
+          children: [
+            Text('Falha ao fazer login'),
+            Text(e.toString()),
+          ],
+        ),
+      ),
+    ));
   }
 }

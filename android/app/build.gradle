@@ -35,12 +35,15 @@ if (keystorePropertiesFile.exists()) {
 android {
     compileSdkVersion 30
 
+    ndkVersion "22.1.7171670"
+
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
     lintOptions {
         disable 'InvalidPackage'
+        checkReleaseBuilds false
     }
 
     defaultConfig {
@@ -66,33 +69,28 @@ android {
     //     }
     // }
    
-    
-
     signingConfigs {
         release {
-            keyAlias 'androidreleasekey'
-            keyPassword 'piaui@2021'
-            storeFile file('upload-keystore.jks')
-            storePassword 'piaui@2021'
+            keyAlias 'realeasekey'
+            keyPassword 'senha@2021'
+            storeFile file('realease-keystore.jks')
+            storePassword 'senha@2021'
         }
         debug {
             keyAlias 'androiddebugkey'
-            keyPassword 'senha2022'
+            keyPassword 'senha@2021'
             storeFile file('mykeys.jks')
-            storePassword 'senha2022'
+            storePassword 'senha@2021'
         }
     }
     buildTypes {
         release {
             signingConfig signingConfigs.release
         }
-   }
-   buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
-    }
-
+   }
 }
 
 flutter {
@@ -101,4 +99,5 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
 }
