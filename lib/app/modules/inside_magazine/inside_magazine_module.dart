@@ -16,7 +16,7 @@ class InsideMagazineModule extends ChildModule {
         ModularRouter(Modular.initialRoute,
             child: (_, args) => InsideMagazinePage(
                   url: args.data['url'],
-                  title: "teste",
+                  title: args.data['title'],
                 )),
       ];
 

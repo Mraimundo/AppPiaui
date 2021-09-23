@@ -18,14 +18,18 @@ Future<dynamic> readUser() async {
 class InsideMagazinePage extends StatefulWidget {
   final String url;
   final String title;
+  final String edicao;
 
   const InsideMagazinePage(
-      {Key key, this.title = "InsideMagazine", this.url = "Teste"})
+      {Key key,
+      this.title = "InsideMagazine",
+      this.url = "Teste",
+      this.edicao = "174"})
       : super(key: key);
 
   @override
   _InsideMagazinePageState createState() =>
-      _InsideMagazinePageState(url, title);
+      _InsideMagazinePageState(url, title, edicao);
 }
 
 class _InsideMagazinePageState
@@ -33,8 +37,9 @@ class _InsideMagazinePageState
   var user;
   String url;
   var title;
+  var edicao;
   //use 'controller' variable to access controller
-  _InsideMagazinePageState(this.url, this.title);
+  _InsideMagazinePageState(this.url, this.title, this.edicao);
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +63,7 @@ class _InsideMagazinePageState
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          TextMagazine(title: "Teste", edicao: "175"),
+                          TextMagazine(title: title, edicao: edicao),
                           ListInsideArticles(
                             user: user,
                             url: this.url,

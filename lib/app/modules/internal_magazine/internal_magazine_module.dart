@@ -11,7 +11,12 @@ class InternalMagazineModule extends ChildModule {
   @override
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute,
-            child: (_, args) => InternalMagazinePage()),
+            child: (_, args) => InternalMagazinePage(
+                  idMateria: args.data['idMateria'].toString(),
+                  edition: args.data['edition'].toString(),
+                  imagemUrl: args.data['imagemUrl'].toString(),
+                  imagemAlt: args.data['imagemAlt'].toString(),
+                )),
       ];
 
   static Inject get to => Inject<InternalMagazineModule>.of();

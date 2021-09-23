@@ -26,20 +26,6 @@ class _ListInsideArticlesState extends State<ListInsideArticles> {
 
   _ListInsideArticlesState(this.url);
 
-  /*  @override
-  Widget build(BuildContext context) {
-    readUser().then((data) {
-      return ListView.separated(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        separatorBuilder: (context, index) => SizedBox(height: 13),
-        itemCount: 3,
-        itemBuilder: (_, index) =>
-            InsideArticleButton(idMateria: index.toString(), user: 'Teste'),
-      ); // doesn't work
-    });
-  } */
-
   @override
   Widget build(context) {
     return FutureBuilder<String>(

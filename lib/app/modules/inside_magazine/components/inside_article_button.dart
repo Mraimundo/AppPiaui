@@ -51,39 +51,38 @@ class _InsideArticleButtonState
     controller.findAll();
   }
 
-  /* @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () async {
-        if (user == "") {
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text('Usuário não está logado')));
-          Modular.to.pushNamed('/login');
-        } else {
-          Modular.to.pushNamed('/internal');
-        }
-      },
-      child: _makeListSubjects(user, url),
-    );
-  } */
-
   @override
   Widget build(context) {
     return FutureBuilder<String>(
         future: materias(url),
         builder: (context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
-            return TextButton(
-              onPressed: () async {
-                if (user == "") {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Usuário não está logado')));
-                  Modular.to.pushNamed('/login');
-                } else {
-                  Modular.to.pushNamed('/internal');
-                }
-              },
-              child: _makeListSubjects(user, snapshot.data),
+            return ListView.separated(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              separatorBuilder: (context, index) => SizedBox(height: 13),
+              itemCount: jsonDecode(snapshot.data)["materias"].length,
+              itemBuilder: (_, index) => TextButton(
+                onPressed: () async {
+                  if (user == "") {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Usuário não está logado')));
+                    Modular.to.pushNamed('/login');
+                  } else {
+                    Modular.to.pushNamed('/internal', arguments: {
+                      "idMateria": jsonDecode(snapshot.data)["materias"]
+                          [(index + 1).toString()]["id"],
+                      "edition": jsonDecode(snapshot.data)["edicoes"]["1"]
+                          ["titulo"],
+                      "imagemUrl": jsonDecode(snapshot.data)["materias"]
+                          [(index + 1).toString()]["imagemcapa"]["url"],
+                      "imagemAlt": jsonDecode(snapshot.data)["materias"]
+                          [(index + 1).toString()]["imagemcapa"]["alt"]
+                    });
+                  }
+                },
+                child: _makeListSubjects(user, snapshot.data, index),
+              ),
             );
           } else {
             return CircularProgressIndicator();
@@ -91,25 +90,8 @@ class _InsideArticleButtonState
         });
   }
 
-  // (List<SubjectModel>data),
-
-  Card _makeListSubjects(String user, String url) {
-    print((jsonDecode(url)["materias"]['1']).length);
-    var list = [
-      "João Campos, o jovem prefeito do Recife, e os dramas agrestes de uma dinastia política",
-      "Flávio Bolsonaro e o roubo de 6,1 milhões de reais de dinheiro público",
-      "A nova política é como o vinho, quanto mais velha melhor"
-    ];
-    var titulo = [
-      "O herdeiro",
-      "A Orcrim-FB",
-      "A nova política é como o vinho, quanto mais velha melhor"
-    ];
-    var imagem = [
-      "https://piaui.homolog.inf.br/wp-content/uploads/2021/03/175_vultosdarepublica.jpg",
-      "https://piaui.homolog.inf.br/wp-content/uploads/2021/03/175_questoescriminais.jpg",
-      "https://piaui.homolog.inf.br/wp-content/uploads/2021/03/175_humor.jpg"
-    ];
+  Card _makeListSubjects(String user, String data, int pos) {
+    var jsonData = jsonDecode(data)["materias"];
 
     return Card(
       elevation: 0,
@@ -121,12 +103,14 @@ class _InsideArticleButtonState
           children: [
             Stack(children: [
               Container(
+                width: 100,
+                height: 100,
                 color: Colors.black.withOpacity(0.9),
                 child: Container(
-                  child: Image.asset(
-                    'assets/images/agora.png',
-                    fit: BoxFit.fill,
-                  ),
+                  child: Image.network(
+                      jsonData[(pos + 1).toString()]["imagemcapa"]["url"]
+                          .toString(),
+                      fit: BoxFit.fill),
                 ),
               ),
               Positioned(
@@ -149,9 +133,13 @@ class _InsideArticleButtonState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                            titulo[int.parse(idMateria)].toString().length < 30
-                                ? titulo[int.parse(idMateria)].toString()
-                                : titulo[int.parse(idMateria)]
+                            jsonData[(pos + 1).toString()]["titulo"]
+                                        .toString()
+                                        .length <
+                                    30
+                                ? jsonData[(pos + 1).toString()]["titulo"]
+                                    .toString()
+                                : jsonData[(pos + 1).toString()]["titulo"]
                                         .toString()
                                         .substring(0, 30) +
                                     "...",
@@ -169,7 +157,7 @@ class _InsideArticleButtonState
                       ],
                     ),
                     SizedBox(height: 3),
-                    Text(list[int.parse(idMateria)].toString(),
+                    Text(jsonData[(pos + 1).toString()]["gravata"].toString(),
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.normal,

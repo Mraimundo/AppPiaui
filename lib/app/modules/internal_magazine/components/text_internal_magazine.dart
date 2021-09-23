@@ -2,11 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class TextInternalMagazine extends StatefulWidget {
+  final String edition;
+  final String title;
+  const TextInternalMagazine({Key key, this.edition = "", this.title = ""})
+      : super(key: key);
+
   @override
-  _TextInternalMagazineState createState() => _TextInternalMagazineState();
+  _TextInternalMagazineState createState() =>
+      _TextInternalMagazineState(edition, title);
 }
 
 class _TextInternalMagazineState extends State<TextInternalMagazine> {
+  String edition;
+  String title;
+  _TextInternalMagazineState(this.edition, this.title);
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,7 +27,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
-                  'Edição #175',
+                  'Edição #' + edition,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -40,7 +50,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
               SizedBox(height: 21),
               SizedBox(height: 11),
               Text(
-                'PARADOS NA CONTRAMÃO',
+                title,
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,

@@ -27,6 +27,9 @@ class _RowGridDoubleWidgetState
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.spaceEvenly;
+    String id = controller.editionsSinglePage[widget.index].id.toString();
+    String idOdd =
+        controller.editionsSinglePage[widget.index + 1].id.toString();
     Acf editionPair = controller.editionsSinglePage[widget.index].acf;
     Acf editionOdd = controller.editionsSinglePage[widget.index + 1].acf;
     return Row(
@@ -70,7 +73,10 @@ class _RowGridDoubleWidgetState
                           ),
                           Row(
                             children: [
-                              ButtomOrangeWidget(),
+                              ButtomOrangeWidget(
+                                id: id,
+                                edicao: editionPair.numberEdition,
+                              ),
                               ButtomDownLoadWidget()
                             ],
                           ),
@@ -108,7 +114,8 @@ class _RowGridDoubleWidgetState
                           ),
                           Row(
                             children: [
-                              ButtomOrangeWidget(),
+                              ButtomOrangeWidget(
+                                  id: idOdd, edicao: editionOdd.numberEdition),
                               ButtomDownLoadWidget()
                             ],
                           ),
