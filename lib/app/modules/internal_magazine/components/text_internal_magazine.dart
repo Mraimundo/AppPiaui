@@ -17,7 +17,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
               Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
-                  'Edição #172',
+                  'Edição #175',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -38,15 +38,6 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 ),
               ),
               SizedBox(height: 21),
-              Text(
-                'questões criminais',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.orangePiaui,
-                ),
-                textAlign: TextAlign.center,
-              ),
               SizedBox(height: 11),
               Text(
                 'PARADOS NA CONTRAMÃO',
@@ -58,18 +49,9 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 10),
-              Text(
-                'Como o doleiro Chaaya Moghrabi escapou três vezes da prisão',
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textColorInternal,
-                ),
-                textAlign: TextAlign.center,
-              ),
               SizedBox(height: 10),
               Text(
-                'ALLAN DE ABREU',
+                'JOÃO MOREIRA SALLES',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -79,7 +61,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
               ),
               SizedBox(height: 5),
               Text(
-                '22fev2021_14h41',
+                'abr2021',
                 style: TextStyle(
                   fontSize: 10,
                   fontWeight: FontWeight.w500,

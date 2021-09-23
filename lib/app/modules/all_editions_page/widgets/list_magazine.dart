@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_session/flutter_session.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/border_top_widget.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/filter_widget.dart';
@@ -8,6 +9,10 @@ import 'package:piaui_app/app/modules/all_editions_page/widgets/row_grid_widget.
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
+Future<void> populateUser(user) async {
+  await FlutterSession().set("user", user);
+}
+
 class ListMagazine extends StatelessWidget {
   // final GoogleSignInAccount user;
   final Dados user;
@@ -15,6 +20,8 @@ class ListMagazine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    populateUser(user);
+
     return Container(
       color: AppColors.backgroundColor,
       child: Stack(

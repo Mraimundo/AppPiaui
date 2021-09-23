@@ -609,8 +609,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
 }
 
 Future signIn(BuildContext context) async {
-  // var _inpLogin = 'leonardo@leonardo.com.br';
-  // var _inpSenha = '123456';
   var user;
   try {
     user = await GoogleSignInApi.login();
@@ -618,7 +616,6 @@ Future signIn(BuildContext context) async {
     var _inpLogin = user.email;
     var _inpSenha = user.id;
 
-    print(user);
     if (user == null) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text('Sign in failed')));
@@ -626,13 +623,19 @@ Future signIn(BuildContext context) async {
       final _url = '/wp-admin/admin-ajax.php?action=flLogin';
       var dio = CustomDio().instance;
       try {
-        final _data =
+        var _data;
+        var response;
+        var json;
+
+        _data =
             FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
-        var response = await dio.post(_url, data: _data);
-        var json = jsonDecode(response.data);
+
+        response = await dio.post(_url, data: _data);
+        json = jsonDecode(response.data);
 
         try {
           var userDados = Dados.fromMap(jsonDecode(response.data)["dados"]);
+          print(userDados);
           var assinante = json['dados']['assinante'];
 
           if (assinante == '1') {
@@ -654,6 +657,7 @@ Future signIn(BuildContext context) async {
           ));
         }
       } catch (e) {
+        print(e.toString());
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Center(
             child: Column(
@@ -664,7 +668,6 @@ Future signIn(BuildContext context) async {
             ),
           ),
         ));
-        print(e);
       }
     }
   } catch (e) {

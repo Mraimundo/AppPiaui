@@ -10,6 +10,9 @@ import 'package:piaui_app/app/shared/layout/colors.dart';
 class LastEditionWidget extends StatefulWidget {
   @override
   _LastEditionWidgetState createState() => _LastEditionWidgetState();
+
+  final bool user;
+  LastEditionWidget({Key key, this.user = false}) : super(key: key);
 }
 
 class _LastEditionWidgetState
@@ -60,7 +63,13 @@ class _LastEditionWidgetState
                         Padding(
                           padding: const EdgeInsets.only(left: 10, bottom: 12),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Modular.to.pushNamed('/magazine', arguments: {
+                                "url":
+                                    'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
+                                        (controller.lastEdition.id).toString()
+                              });
+                            },
                             child: Container(
                               color: AppColors.orangePiaui,
                               height: vHeight * 0.06,

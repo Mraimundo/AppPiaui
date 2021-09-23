@@ -37,7 +37,7 @@ class AutorInternalArticle extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              'ALLAN DE ABREU ',
+                              'JOÃO MOREIRA SALLES ',
                               style: TextStyle(
                                 height: 1.3,
                                 fontFamily: 'Piaui',

@@ -42,20 +42,18 @@ class Materias {
       this.autores,
       this.imagemcapa});
 
-  // Materias.fromJson(Map<String, dynamic> json) {
-  //   id = json['id'];
-  //   data = json['data'];
-  //   categoriaId = json['categoria_id'];
-  //   categoriaNome = json['categoria_nome'];
-  //   categoriaChapeu = json['categoria_chapeu'];
-  //   chapeuExtra = json['chapeu_extra'];
-  //   gravata = json['gravata'];
-  //   titulo = json['titulo'];
-  //   autores = json['autores'].cast<String>();
-  //   imagemcapa = json['imagemcapa'] != null
-  //       ? new Imagemcapa.fromJson(json['imagemcapa'])
-  //       : null;
-  // }
+  Materias.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    data = json['data'];
+    categoriaId = json['categoria_id'];
+    categoriaNome = json['categoria_nome'];
+    categoriaChapeu = json['categoria_chapeu'];
+    chapeuExtra = json['chapeu_extra'];
+    gravata = json['gravata'];
+    titulo = json['titulo'];
+    autores = json['autores'].cast<String>();
+    imagemcapa = json['imagemcapa'] != null ? json['imagemcapa'] : null;
+  }
 
   // Map<String, dynamic> toJson() {
   //   final Map<String, dynamic> data = new Map<String, dynamic>();

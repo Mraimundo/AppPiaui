@@ -12,15 +12,15 @@ class Dados {
   String id;
   String nome;
   String email;
-  Null celular;
+  String celular;
   String senha;
   String data;
   String login;
   String status;
   String origem;
-  Null abril;
-  Null google;
-  List<Null> compras;
+  String abril;
+  String google;
+  List<String> compras;
   String assinante;
 
   Dados(
@@ -40,18 +40,18 @@ class Dados {
 
   factory Dados.fromMap(Map<String, dynamic> map) {
     return new Dados(
-      id: map['id'],
-      nome: map['nome'],
-      email: map['email'],
-      celular: map['celular'],
-      senha: map['senha'],
-      data: map['data'],
-      login: map['login'],
-      status: map['status'],
-      origem: map['origem'],
-      abril: map['abril'],
-      google: map['google'],
-      assinante: map['assinante'],
+      id: map['id'] != null ? map['id'] : '',
+      nome: map['nome'] != null ? map['nome'] : '',
+      email: map['email'] != null ? map['email'] : '',
+      celular: map['celular'] != null ? map['celular'] : '',
+      senha: map['senha'] != null ? map['senha'] : '',
+      data: map['data'] != null ? map['data'] : '',
+      login: map['login'] != null ? map['login'] : '',
+      status: map['status'] != null ? map['status'] : '',
+      origem: map['origem'] != null ? map['origem'] : '',
+      abril: map['abril'] != null ? map['abril'] : '',
+      google: map['google'] != null ? map['google'] : '',
+      assinante: map['assinante'] != null ? map['assinante'] : '',
     );
   }
 

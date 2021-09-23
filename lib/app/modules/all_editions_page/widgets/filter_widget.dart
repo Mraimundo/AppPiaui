@@ -172,22 +172,22 @@ class _FilterWidgetState extends State<FilterWidget> {
           color: AppColors.internalBorderColor,
         ),
       ),
-      child: Expanded(
+      child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           // crossAxisAlignment: CrossAxisAlignment.spaceBetween,
           children: [
-            Expanded(
+            Container(
               child: SelectEditionWidget(
                 onTap: () {},
               ),
             ),
-            Expanded(child: SelectYearWidget(
+            Container(child: SelectYearWidget(
               onTap: () {
                 _modalBottomYear(context);
               },
             )),
-            Expanded(child: SelectMonthWidget(
+            Container(child: SelectMonthWidget(
               onTap: () {
                 _modalBottomMonth(context);
               },

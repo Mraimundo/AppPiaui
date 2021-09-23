@@ -9,7 +9,7 @@ class InsideMagazineRepository {
     var dio = Dio();
     return dio
         .get(
-            'https://piaui.folha.uol.com.br/customRest/v1/esquinasEdicao/?edicao=392835')
+            'https://piaui.folha.uol.com.br/customRest/v1/esquinasEdicao/?edicao=397398')
         .then((res) => res.data
             .map<SubjectModel>((b) => SubjectModel.fromJson(b))
             .toList());
@@ -18,10 +18,9 @@ class InsideMagazineRepository {
   Future<List<Materias>> findByID(String id) async {
     var dio = Dio();
     var response = await dio.get(
-        'https://piaui.folha.uol.com.br/customRest/v1/esquinasEdicao/?edicao=$id');
-    List<Materias> materias = [];
-    print(response.data + "chegou");
-    Map<String, dynamic> json = jsonDecode(await response.data);
+        'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=$id');
+    var materias = [];
+    var json = jsonDecode(await response.data);
     print(json);
     return materias;
   }

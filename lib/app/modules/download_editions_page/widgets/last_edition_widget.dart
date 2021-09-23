@@ -27,7 +27,7 @@ class _LastEditionWidgetState
             child: Observer(builder: (ctx) {
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
-                // print('vHeight $vHeight');
+
                 return Column(
                   children: <Widget>[
                     Padding(
@@ -60,7 +60,13 @@ class _LastEditionWidgetState
                         Padding(
                           padding: const EdgeInsets.only(left: 10, bottom: 12),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Modular.to.pushNamed('/magazine', arguments: {
+                                "url":
+                                    'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
+                                        (controller.lastEdition.id).toString()
+                              });
+                            },
                             child: Container(
                               color: AppColors.orangePiaui,
                               height: vHeight * 0.06,

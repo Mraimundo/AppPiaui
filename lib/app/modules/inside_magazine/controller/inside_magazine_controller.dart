@@ -10,7 +10,7 @@ class InsideMagazineController = _InsideMagazineControllerBase
     with _$InsideMagazineController;
 
 abstract class _InsideMagazineControllerBase with Store {
-  final InsideMagazineRepository insideMagazineRepository;
+  InsideMagazineRepository insideMagazineRepository;
   _InsideMagazineControllerBase(this.insideMagazineRepository);
 
   @observable

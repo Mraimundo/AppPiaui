@@ -28,42 +28,40 @@ class _LoginWidgetState extends State<LoginWidget> {
   final authController = AuthController();
 
   Future<void> _onPressed() async {
-    if (_formKey.currentState.validate()) {
-      final _url =
-          'http://piaui.homolog.inf.br/wp-admin/admin-ajax.php?action=flLogin';
-      var dio = Dio();
+    final _url =
+        'http://piaui.homolog.inf.br/wp-admin/admin-ajax.php?action=flLogin';
+    var dio = Dio();
+    try {
+      final _data =
+          FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
+      var response = await dio.post(_url, data: _data);
+      var json = jsonDecode(response.data);
       try {
-        final _data =
-            FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
-        var response = await dio.post(_url, data: _data);
-        var json = jsonDecode(response.data);
-        try {
-          var user = Dados.fromMap(jsonDecode(response.data)["dados"]);
-          authController.setUser(context, user);
-        } catch (e) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Center(
-              child: Text(json['msg']),
-            ),
-          ));
-        }
-      } on DioError catch (e) {
-        if (e.response != null) {
-          print(e.response.data.toString());
-        } else {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Center(
-              child: Text(e.message),
-            ),
-          ));
-        }
+        var user = Dados.fromMap(jsonDecode(response.data)["dados"]);
+        authController.setUser(context, user);
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Center(
-            child: Text(e),
+            child: Text(json['msg']),
           ),
         ));
       }
+    } on DioError catch (e) {
+      if (e.response != null) {
+        print(e.toString());
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Center(
+            child: Text(e.message),
+          ),
+        ));
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Center(
+          child: Text(e.toString()),
+        ),
+      ));
     }
   }
 
@@ -101,7 +99,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     autocorrect: false,
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (value) => setState(() {
-                      _inpLogin = value;
+                      _inpLogin = value ?? 'Email';
                     }),
                     decoration: InputDecoration(
                       hintText: 'E-mail',
@@ -136,7 +134,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     autocorrect: false,
                     obscureText: true,
                     onChanged: (value) => setState(() {
-                          _inpSenha = value;
+                          _inpSenha = value ?? 'Senha';
                         }),
                     decoration: InputDecoration(
                       hintText: 'Senha',

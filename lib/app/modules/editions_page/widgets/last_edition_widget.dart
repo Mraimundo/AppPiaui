@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/components/skeleton_last_edition.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+
+Future<void> cleanUser() async {
+  await FlutterSession().set("user", "");
+}
 
 class LastEditionWidget extends StatefulWidget {
   @override
@@ -27,7 +32,7 @@ class _LastEditionWidgetState
             child: Observer(builder: (ctx) {
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
-                print('vHeight $vHeight');
+
                 return Column(
                   children: <Widget>[
                     Padding(
@@ -61,8 +66,13 @@ class _LastEditionWidgetState
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                            onPressed: () {
-                              Modular.to.pushNamed('/logged');
+                            onPressed: () async {
+                              await cleanUser();
+                              Modular.to.pushNamed('/magazine', arguments: {
+                                "url":
+                                    'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
+                                        (controller.lastEdition.id).toString()
+                              });
                             },
                             child: Container(
                               color: AppColors.orangePiaui,

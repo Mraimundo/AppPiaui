@@ -40,8 +40,8 @@ class _InternalMagazinePageState
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           TextInternalMagazine(),
-                          Image.asset(
-                            'assets/images/intenal_article.png',
+                          Image.network(
+                            'https://piaui.homolog.inf.br/wp-content/uploads/2021/03/175_dossiepiaui_colunainteira.jpg',
                             fit: BoxFit.fill,
                           ),
                           SizedBox(height: 7),
