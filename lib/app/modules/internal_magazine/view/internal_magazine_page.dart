@@ -8,6 +8,7 @@ import 'package:piaui_app/app/modules/internal_magazine/components/text_internal
 import 'package:piaui_app/app/modules/internal_magazine/controller/internal_magazine_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:html/parser.dart';
 
 Future<String> conteudo(idMateria) async {
   final _url =
@@ -15,6 +16,13 @@ Future<String> conteudo(idMateria) async {
   var dio = Dio();
   var response = await dio.get(_url);
   return response.toString();
+}
+
+String _parseHtmlString(String htmlString) {
+  final document = parse(htmlString);
+  final String parsedString = parse(document.body.text).documentElement.text;
+
+  return parsedString;
 }
 
 class InternalMagazinePage extends StatefulWidget {
@@ -51,8 +59,6 @@ class _InternalMagazinePageState
 
   @override
   Widget build(context) {
-    print(imagemUrl);
-    print(imagemAlt);
     return FutureBuilder<String>(
         future: conteudo(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
@@ -77,9 +83,10 @@ class _InternalMagazinePageState
                                 children: <Widget>[
                                   TextInternalMagazine(
                                     edition: edition,
-                                    title: jsonDecode(snapshot.data)["title"]
-                                            ["rendered"]
-                                        .toString()
+                                    title: _parseHtmlString(
+                                            jsonDecode(snapshot.data)["title"]
+                                                    ["rendered"]
+                                                .toString())
                                         .toUpperCase(),
                                   ),
                                   Image.network(
@@ -98,7 +105,10 @@ class _InternalMagazinePageState
                                     textAlign: TextAlign.center,
                                   ),
                                   SizedBox(height: 22),
-                                  ListInternalArticles(),
+                                  ListInternalArticles(
+                                      rendered:
+                                          jsonDecode(snapshot.data)['content']
+                                              ['rendered']),
                                 ],
                               ),
                             ),

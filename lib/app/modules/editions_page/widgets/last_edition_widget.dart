@@ -93,9 +93,7 @@ class _LastEditionWidgetState
                           ),
                           TextButton(
                             onPressed: () {
-                              Modular.to.pushNamed('/magazine',
-                                  arguments:
-                                      'https://www.google.com/imgres?imgurl=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F80%2F85%2Fea%2F8085ea8d91dda668fc1e4c9620583af0.jpg&imgrefurl=https%3A%2F%2Fbr.pinterest.com%2Fpin%2F116530709093102919%2F&tbnid=3I5cjPzOnxPi3M&vet=12ahUKEwjwn7Hkl5jyAhV_pZUCHcQqD40QMygEegUIARC9AQ..i&docid=WopqXG1wt83raM&w=2000&h=2626&q=piaui%20revista&ved=2ahUKEwjwn7Hkl5jyAhV_pZUCHcQqD40QMygEegUIARC9AQ');
+                              Modular.to.pushNamed('/login');
                             },
                             child: Container(
                               height: vHeight * 0.06,

@@ -73,7 +73,7 @@ class _RowGridDoubleWidgetState
                           ButtomOrangeWidget(
                             id: id,
                             edicao: (editionPair.capa.title)
-                                .split("_")[1]
+                                /* .split("_")[1] */
                                 .toString(),
                           ),
                         ],

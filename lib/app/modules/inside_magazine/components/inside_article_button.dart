@@ -6,6 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
+import 'package:html/parser.dart';
 
 Future<dynamic> readUser() async {
   return await FlutterSession().get("user");
@@ -16,6 +17,13 @@ Future<String> materias(url) async {
   var dio = Dio();
   var response = await dio.get(_url);
   return response.toString();
+}
+
+String _parseHtmlString(String htmlString) {
+  final document = parse(htmlString);
+  final String parsedString = parse(document.body.text).documentElement.text;
+
+  return parsedString;
 }
 
 class InsideArticleButton extends StatefulWidget {
@@ -64,7 +72,7 @@ class _InsideArticleButtonState
               itemCount: jsonDecode(snapshot.data)["materias"].length,
               itemBuilder: (_, index) => TextButton(
                 onPressed: () async {
-                  if (user == "") {
+                  if (user == "" && index > 2) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Usuário não está logado')));
                     Modular.to.pushNamed('/login');
@@ -105,7 +113,7 @@ class _InsideArticleButtonState
               Container(
                 width: 100,
                 height: 100,
-                color: Colors.black.withOpacity(0.9),
+                color: Colors.black.withOpacity(1),
                 child: Container(
                   child: Image.network(
                       jsonData[(pos + 1).toString()]["imagemcapa"]["url"]
@@ -116,9 +124,9 @@ class _InsideArticleButtonState
               Positioned(
                 left: 0,
                 right: 0,
-                child: user != ""
-                    ? Text("")
-                    : Image.asset("assets/images/fechado.png"),
+                child: user == "" && pos > 2
+                    ? Image.asset("assets/images/fechado.png")
+                    : Text(""),
               )
             ]),
             Expanded(
@@ -137,11 +145,15 @@ class _InsideArticleButtonState
                                         .toString()
                                         .length <
                                     30
-                                ? jsonData[(pos + 1).toString()]["titulo"]
-                                    .toString()
-                                : jsonData[(pos + 1).toString()]["titulo"]
+                                ? _parseHtmlString(
+                                    jsonData[(pos + 1).toString()]["titulo"]
                                         .toString()
-                                        .substring(0, 30) +
+                                        .toUpperCase())
+                                : _parseHtmlString(
+                                        jsonData[(pos + 1).toString()]["titulo"]
+                                            .toString()
+                                            .substring(0, 29)
+                                            .toUpperCase()) +
                                     "...",
                             style: TextStyle(
                               fontSize: 16,

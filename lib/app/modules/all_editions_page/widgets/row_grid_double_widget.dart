@@ -27,7 +27,8 @@ class _RowGridDoubleWidgetState
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.spaceEvenly;
-    String id = controller.editionsSinglePage[widget.index].id.toString();
+
+    String id = controller.editionsSinglePage[1].id.toString();
     String idOdd =
         controller.editionsSinglePage[widget.index + 1].id.toString();
     Acf editionPair = controller.editionsSinglePage[widget.index].acf;
