@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/border_top_widget.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/filter_widget.dart';
@@ -11,8 +12,6 @@ import 'package:piaui_app/app/modules/editions_page/widgets/row_grid_widget.dart
 import 'package:piaui_app/app/modules/editions_page/widgets/text_has_no_signature_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/text_to_sign_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
-import 'package:piaui_app/app/shared/components/signature/widgets/button_to_cancel_widget.dart';
-import 'package:piaui_app/app/shared/components/signature/widgets/button_to_get_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/shared/layout/gradients.dart';
 import 'package:url_launcher/url_launcher.dart';
