@@ -14,7 +14,6 @@ Future<void> populateUser(user) async {
 }
 
 class ListMagazine extends StatelessWidget {
-  // final GoogleSignInAccount user;
   final Dados user;
   const ListMagazine({Key key, this.user}) : super(key: key);
 

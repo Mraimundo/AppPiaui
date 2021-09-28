@@ -1,13 +1,13 @@
-import 'dart:convert';
+/* import 'dart:convert'; */
 import 'package:flutter_session/flutter_session.dart';
-import 'package:http/http.dart';
+/* import 'package:http/http.dart'; */
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/inside_magazine/components/list_inside_articles.dart';
 import 'package:piaui_app/app/modules/inside_magazine/components/text_magazine.dart';
 import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
-import 'package:piaui_app/app/modules/inside_magazine/model/inside_model.dart';
-import 'package:piaui_app/app/modules/inside_magazine/repository/inside_repository.dart';
+/* import 'package:piaui_app/app/modules/inside_magazine/model/inside_model.dart';
+import 'package:piaui_app/app/modules/inside_magazine/repository/inside_repository.dart'; */
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
@@ -19,17 +19,19 @@ class InsideMagazinePage extends StatefulWidget {
   final String url;
   final String title;
   final String edicao;
+  final String data;
 
   const InsideMagazinePage(
       {Key key,
-      this.title = "InsideMagazine",
-      this.url = "Teste",
-      this.edicao = "174"})
+      this.title = "",
+      this.url = "",
+      this.edicao = "",
+      this.data = ""})
       : super(key: key);
 
   @override
   _InsideMagazinePageState createState() =>
-      _InsideMagazinePageState(url, title, edicao);
+      _InsideMagazinePageState(url, title, edicao, data);
 }
 
 class _InsideMagazinePageState
@@ -38,8 +40,9 @@ class _InsideMagazinePageState
   String url;
   var title;
   var edicao;
+  var data;
   //use 'controller' variable to access controller
-  _InsideMagazinePageState(this.url, this.title, this.edicao);
+  _InsideMagazinePageState(this.url, this.title, this.edicao, this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -65,11 +68,7 @@ class _InsideMagazinePageState
                         children: <Widget>[
                           TextMagazine(title: title, edicao: edicao),
                           ListInsideArticles(
-                            user: user,
-                            url: this.url,
-                          ),
-                          // InsideArticleButton(),
-                          /* ListInsideArticlesClosed(), */
+                              user: user, url: this.url, data: data),
                         ],
                       ),
                     ),

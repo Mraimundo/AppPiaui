@@ -31,17 +31,19 @@ class InsideArticleButton extends StatefulWidget {
   final String id;
   final String idMateria;
   final String user;
+  final String data;
 
   const InsideArticleButton(
       {Key key,
-      this.url = "Testes",
+      this.url = "",
       this.id,
       this.idMateria = "",
-      this.user = ""})
+      this.user = "",
+      this.data = ""})
       : super(key: key);
   @override
   _InsideArticleButtonState createState() =>
-      _InsideArticleButtonState(idMateria, user, url);
+      _InsideArticleButtonState(idMateria, user, url, data);
 }
 
 class _InsideArticleButtonState
@@ -50,8 +52,9 @@ class _InsideArticleButtonState
   var user;
   var teste;
   String url;
+  String data;
 
-  _InsideArticleButtonState(this.idMateria, this.user, this.url);
+  _InsideArticleButtonState(this.idMateria, this.user, this.url, this.data);
 
   @override
   void initState() {
@@ -85,7 +88,8 @@ class _InsideArticleButtonState
                       "imagemUrl": jsonDecode(snapshot.data)["materias"]
                           [(index + 1).toString()]["imagemcapa"]["url"],
                       "imagemAlt": jsonDecode(snapshot.data)["materias"]
-                          [(index + 1).toString()]["imagemcapa"]["alt"]
+                          [(index + 1).toString()]["imagemcapa"]["alt"],
+                      "data": data
                     });
                   }
                 },
@@ -169,7 +173,10 @@ class _InsideArticleButtonState
                       ],
                     ),
                     SizedBox(height: 3),
-                    Text(jsonData[(pos + 1).toString()]["gravata"].toString(),
+                    Text(
+                        _parseHtmlString(jsonData[(pos + 1).toString()]
+                                ["gravata"]
+                            .toString()),
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.normal,

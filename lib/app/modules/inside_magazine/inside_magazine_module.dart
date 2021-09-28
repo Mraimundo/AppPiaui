@@ -15,9 +15,9 @@ class InsideMagazineModule extends ChildModule {
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute,
             child: (_, args) => InsideMagazinePage(
-                  url: args.data['url'],
-                  title: args.data['title'],
-                )),
+                url: args.data['url'],
+                title: args.data['title'],
+                data: args.data['data'])),
       ];
 
   static Inject get to => Inject<InsideMagazineModule>.of();

@@ -5,20 +5,23 @@ import 'package:piaui_app/app/shared/layout/colors.dart';
 class ButtomOrangeWidget extends StatefulWidget {
   final String id;
   final String edicao;
+  final String data;
 
-  const ButtomOrangeWidget({Key key, this.id = "123", this.edicao = "174"})
+  const ButtomOrangeWidget(
+      {Key key, this.id = "", this.edicao = "", this.data = ""})
       : super(key: key);
 
   @override
   _ButtomOrangeWidgetState createState() =>
-      _ButtomOrangeWidgetState(id, edicao);
+      _ButtomOrangeWidgetState(id, edicao, data);
 }
 
 class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
   String id;
   String edicao;
+  String data;
 
-  _ButtomOrangeWidgetState(this.id, this.edicao);
+  _ButtomOrangeWidgetState(this.id, this.edicao, this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +33,8 @@ class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
           "url":
               'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
                   id,
-          "title": edicao
+          "title": edicao,
+          "data": data
         });
       },
       // padding: EdgeInsets.zero,

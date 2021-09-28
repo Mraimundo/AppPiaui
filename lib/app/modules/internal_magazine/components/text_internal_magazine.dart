@@ -1,21 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
+String editAutor(List<dynamic> autor) {
+  String autores = '';
+
+  if (autor.length == 1) {
+    return autor[0]["post_title"].toString().toUpperCase();
+  } else if (autor.length == 2) {
+    autores = autor[0]["post_title"] + ' e ' + autor[1]["post_title"];
+    return autores.toUpperCase();
+  } else {
+    for (var i = 0; i < autor.length; i++) {
+      if (i == 0) {
+        autores += autor[i]["post_title"];
+      } else if (i == 1) {
+        autores += ', ' + autor[i]["post_title"];
+      } else {
+        autores += ' e ' + autor[i]["post_title"];
+      }
+    }
+    return autores.toUpperCase();
+  }
+}
+
 class TextInternalMagazine extends StatefulWidget {
   final String edition;
   final String title;
-  const TextInternalMagazine({Key key, this.edition = "", this.title = ""})
+  final String data;
+  final List<dynamic> autor;
+  const TextInternalMagazine(
+      {Key key, this.edition = "", this.title = "", this.autor, this.data})
       : super(key: key);
 
   @override
   _TextInternalMagazineState createState() =>
-      _TextInternalMagazineState(edition, title);
+      _TextInternalMagazineState(edition, title, autor, data);
 }
 
 class _TextInternalMagazineState extends State<TextInternalMagazine> {
   String edition;
   String title;
-  _TextInternalMagazineState(this.edition, this.title);
+  List<dynamic> autor;
+  String data;
+  _TextInternalMagazineState(this.edition, this.title, this.autor, this.data);
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +88,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
               SizedBox(height: 10),
               SizedBox(height: 10),
               Text(
-                'JOÃO MOREIRA SALLES',
+                editAutor(autor) + ' | Edição ' + edition + ', ' + data,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -70,15 +97,6 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 5),
-              Text(
-                'abr2021',
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w500,
-                  color: AppColors.textColorNormal,
-                ),
-                textAlign: TextAlign.center,
-              ),
               SizedBox(height: 35),
             ],
           ),

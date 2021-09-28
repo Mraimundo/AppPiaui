@@ -75,6 +75,7 @@ class _RowGridDoubleWidgetState
                             edicao: (editionPair.capa.title)
                                 /* .split("_")[1] */
                                 .toString(),
+                            data: '${editionPair.mes} de ${editionPair.ano}',
                           ),
                         ],
                       ),
@@ -109,10 +110,12 @@ class _RowGridDoubleWidgetState
                             ),
                           ),
                           ButtomOrangeWidget(
-                              id: idOdd,
-                              edicao: (editionOdd.capa.title)
-                                  .split("_")[1]
-                                  .toString()),
+                            id: idOdd,
+                            edicao: (editionOdd.capa.title)
+                                .split("_")[1]
+                                .toString(),
+                            data: '${editionPair.mes} de ${editionPair.ano}',
+                          ),
                         ],
                       ),
                     ),
