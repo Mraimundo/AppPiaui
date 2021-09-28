@@ -31,18 +31,21 @@ class InternalMagazinePage extends StatefulWidget {
   final String edition;
   final String imagemUrl;
   final String imagemAlt;
+  final String data;
+
   const InternalMagazinePage(
       {Key key,
       this.title = "InternalMagazine",
       this.idMateria = "",
       this.edition = "",
       this.imagemUrl = "",
-      this.imagemAlt = ""})
+      this.imagemAlt = "",
+      this.data = ""})
       : super(key: key);
 
   @override
-  _InternalMagazinePageState createState() =>
-      _InternalMagazinePageState(idMateria, edition, imagemUrl, imagemAlt);
+  _InternalMagazinePageState createState() => _InternalMagazinePageState(
+      idMateria, edition, imagemUrl, imagemAlt, data);
 }
 
 class _InternalMagazinePageState
@@ -53,12 +56,14 @@ class _InternalMagazinePageState
   String edition;
   String imagemUrl;
   String imagemAlt;
+  String data;
 
   _InternalMagazinePageState(
-      this.idMateria, this.edition, this.imagemUrl, this.imagemAlt);
+      this.idMateria, this.edition, this.imagemUrl, this.imagemAlt, this.data);
 
   @override
   Widget build(context) {
+    print(idMateria);
     return FutureBuilder<String>(
         future: conteudo(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
@@ -82,6 +87,9 @@ class _InternalMagazinePageState
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   TextInternalMagazine(
+                                    data: data,
+                                    autor: jsonDecode(snapshot.data)["acf"]
+                                        ["autor"],
                                     edition: edition,
                                     title: _parseHtmlString(
                                             jsonDecode(snapshot.data)["title"]
@@ -95,7 +103,7 @@ class _InternalMagazinePageState
                                   ),
                                   SizedBox(height: 7),
                                   Text(
-                                    imagemAlt,
+                                    _parseHtmlString(imagemAlt),
                                     style: TextStyle(
                                       fontFamily: 'Piaui',
                                       fontSize: 10,
@@ -106,9 +114,11 @@ class _InternalMagazinePageState
                                   ),
                                   SizedBox(height: 22),
                                   ListInternalArticles(
-                                      rendered:
-                                          jsonDecode(snapshot.data)['content']
-                                              ['rendered']),
+                                    rendered:
+                                        jsonDecode(snapshot.data)['content']
+                                            ['rendered'],
+                                    idMateria: idMateria,
+                                  ),
                                 ],
                               ),
                             ),

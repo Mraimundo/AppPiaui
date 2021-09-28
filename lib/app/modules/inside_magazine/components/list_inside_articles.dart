@@ -13,18 +13,21 @@ Future<String> readUser() async {
 class ListInsideArticles extends StatefulWidget {
   final String user;
   final String url;
-  const ListInsideArticles({Key key, this.user = "", this.url = ""})
+  final String data;
+  const ListInsideArticles(
+      {Key key, this.user = "", this.url = "", this.data = ""})
       : super(key: key);
 
   @override
-  _ListInsideArticlesState createState() => _ListInsideArticlesState(url);
+  _ListInsideArticlesState createState() => _ListInsideArticlesState(url, data);
 }
 
 class _ListInsideArticlesState extends State<ListInsideArticles> {
   String user;
   String url;
+  String data;
 
-  _ListInsideArticlesState(this.url);
+  _ListInsideArticlesState(this.url, this.data);
 
   @override
   Widget build(context) {
@@ -41,6 +44,7 @@ class _ListInsideArticlesState extends State<ListInsideArticles> {
                 idMateria: index.toString(),
                 user: snapshot.data,
                 url: this.url,
+                data: data,
               ),
             );
           } else {

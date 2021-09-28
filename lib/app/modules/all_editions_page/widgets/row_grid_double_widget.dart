@@ -75,9 +75,10 @@ class _RowGridDoubleWidgetState
                           Row(
                             children: [
                               ButtomOrangeWidget(
-                                id: id,
-                                edicao: editionPair.numberEdition,
-                              ),
+                                  id: id,
+                                  edicao: editionPair.numberEdition,
+                                  data:
+                                      '${editionPair.mes} de ${editionPair.ano}'),
                               ButtomDownLoadWidget()
                             ],
                           ),
@@ -116,7 +117,10 @@ class _RowGridDoubleWidgetState
                           Row(
                             children: [
                               ButtomOrangeWidget(
-                                  id: idOdd, edicao: editionOdd.numberEdition),
+                                id: idOdd,
+                                edicao: editionOdd.numberEdition,
+                                data: '${editionOdd.mes} de ${editionOdd.ano}',
+                              ),
                               ButtomDownLoadWidget()
                             ],
                           ),

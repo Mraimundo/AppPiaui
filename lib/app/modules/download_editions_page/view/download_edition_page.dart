@@ -50,10 +50,10 @@ class DownLoadEditionPage extends StatelessWidget {
                       child: FilterWidget(),
                     ),
                     // LastEditionWidget(),
-                    Padding(
+                    /* Padding(
                       padding: const EdgeInsets.only(top: 25),
                       child: RowGridWidget(),
-                    ),
+                    ), */
                     LoadMoreWidget(),
                   ],
                 ),

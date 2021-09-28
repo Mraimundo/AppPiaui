@@ -72,7 +72,8 @@ class _LastEditionWidgetState
                                 "url":
                                     'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
                                         (controller.lastEdition.id).toString(),
-                                "title": edicoes.numberEdition
+                                "title": edicoes.numberEdition,
+                                "data": '${edicoes.mes} de ${edicoes.ano}'
                               });
                             },
                             child: Container(
