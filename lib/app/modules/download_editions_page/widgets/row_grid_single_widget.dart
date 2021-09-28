@@ -28,6 +28,7 @@ class _RowGridSingleWidgetState
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.center;
+
     RevistDownload edition = controller.revistDownloads[widget.index];
     return Row(
       children: [

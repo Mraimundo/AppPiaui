@@ -33,6 +33,7 @@ class DownloadsController {
 
     if (!((listString.where((element) => (element == magazine_id))).length >
         0)) {
+      listString = listString.toList();
       listString.add(magazine_id);
     }
 

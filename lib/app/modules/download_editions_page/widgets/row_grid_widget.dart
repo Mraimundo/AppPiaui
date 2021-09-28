@@ -24,14 +24,14 @@ class _RowGridWidgetState
         if (!controller.isLoading) {
           int items = controller.revistDownloads.length;
           if (items % 2 == 0) {
-            for (var i = 1; i < items; i += 2) {
+            for (var i = 0; i < items; i += 2) {
               content.add(RowGridDoubleWidget(index: i));
             }
           } else {
-            for (var i = 1; i < items - 1; i += 2) {
+            for (var i = 0; i < items - 1; i += 2) {
               content.add(RowGridDoubleWidget(index: i));
             }
-            content.add(RowGridSingleWidget(index: items));
+            content.add(RowGridSingleWidget(index: items - 1));
           }
 
           return Column(children: content);

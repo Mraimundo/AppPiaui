@@ -6,6 +6,7 @@ import 'package:piaui_app/app/modules/download_editions_page/controller/edition_
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/bottom_orange_widget.dart';
+import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 
 class RowGridDoubleWidget extends StatefulWidget {
   final int index;
@@ -79,7 +80,13 @@ class _RowGridDoubleWidgetState
                                 id: id,
                                 edicao: editionPair.numberEdition,
                               ),
-                              ButtomDownLoadWidget()
+                              ButtomDownLoadWidget(
+                                  revist: RevistDownload(
+                                      int.parse(id),
+                                      editionPair.capa.url,
+                                      editionPair.numberEdition,
+                                      editionPair.mes,
+                                      editionPair.ano))
                             ],
                           ),
                         ],
@@ -118,7 +125,13 @@ class _RowGridDoubleWidgetState
                             children: [
                               ButtomOrangeWidget(
                                   id: idOdd, edicao: editionOdd.numberEdition),
-                              ButtomDownLoadWidget()
+                              ButtomDownLoadWidget(
+                                  revist: RevistDownload(
+                                      int.parse(idOdd),
+                                      editionOdd.capa.url,
+                                      editionOdd.numberEdition,
+                                      editionOdd.mes,
+                                      editionOdd.ano))
                             ],
                           ),
                         ],

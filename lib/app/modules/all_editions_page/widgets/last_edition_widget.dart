@@ -97,7 +97,6 @@ class _LastEditionWidgetState
                           padding: const EdgeInsets.only(right: 10, bottom: 12),
                           child: TextButton(
                             onPressed: () async {
-                              debugPrint('Entrou na função donwload');
                               final RevistDownload revist = RevistDownload(
                                   controller.lastEdition.id,
                                   edicoes.capa.url,
@@ -105,8 +104,6 @@ class _LastEditionWidgetState
                                   edicoes.mes,
                                   edicoes.ano);
                               await widget.downloads.addRevist(revist);
-                              debugPrint((await widget.downloads.getMyList())
-                                  .toString());
                             },
                             child: Container(
                               height: vHeight * 0.06,
