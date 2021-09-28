@@ -2,27 +2,30 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:piaui_app/app/modules/inside_magazine/model/inside_model.dart';
+import 'package:piaui_app/app/modules/inside_magazine/model/materia_model.dart';
 import 'package:piaui_app/app/modules/inside_magazine/model/subjects_model.dart';
+import 'package:piaui_app/app/shared/repositories/interfaces/repository_interface.dart';
 
-class InsideMagazineRepository {
-  Future<List<SubjectModel>> findAllSubjects() async {
-    var dio = Dio();
-    return dio
-        .get(
-            'https://piaui.folha.uol.com.br/customRest/v1/esquinasEdicao/?edicao=392835')
-        .then((res) => res.data
-            .map<SubjectModel>((b) => SubjectModel.fromJson(b))
-            .toList());
-  }
+class MateriaRepository implements IMateriaRepository {
+  final Dio dio;
+  MateriaRepository(this.dio);
 
-  Future<List<Materias>> findByID(String id) async {
-    var dio = Dio();
-    var response = await dio.get(
-        'https://piaui.folha.uol.com.br/customRest/v1/esquinasEdicao/?edicao=$id');
-    List<Materias> materias = [];
-    print(response.data + "chegou");
-    Map<String, dynamic> json = jsonDecode(await response.data);
-    print(json);
+  List<materiaModel> materias = <materiaModel>[];
+
+  Future<List<materiaModel>> findAllMateria() async {
+    try {
+      var response = await dio.get(
+          'https://piaui.folha.uol.com.br/customRest/v1/esquinasEdicao/?edicao=392835');
+
+      if (response.statusCode == 200) {
+        for (var json in response.data) {
+          final sigleMateria = materiaModel.fromJson(json);
+          materias.add(sigleMateria);
+        }
+      }
+    } catch (error) {
+      print("Error: " + error.toString());
+    }
     return materias;
   }
 }

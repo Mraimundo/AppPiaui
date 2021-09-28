@@ -27,7 +27,6 @@ class _LastEditionWidgetState
             child: Observer(builder: (ctx) {
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
-                print('vHeight $vHeight');
                 return Column(
                   children: <Widget>[
                     Padding(
@@ -62,7 +61,7 @@ class _LastEditionWidgetState
                         children: [
                           TextButton(
                             onPressed: () {
-                              Modular.to.pushNamed('/logged');
+                              Modular.to.pushNamed('/magazine');
                             },
                             child: Container(
                               color: AppColors.orangePiaui,

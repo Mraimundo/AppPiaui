@@ -26,8 +26,7 @@ class SelectMonthWidget extends StatelessWidget {
             padding: const EdgeInsets.only(
               left: 17,
             ),
-            child: Expanded(
-              flex: 2,
+            child: Container(
               child: Row(
                 children: [
                   Text(

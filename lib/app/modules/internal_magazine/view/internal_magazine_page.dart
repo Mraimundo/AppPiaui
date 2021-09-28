@@ -15,8 +15,7 @@ class InternalMagazinePage extends StatefulWidget {
   _InternalMagazinePageState createState() => _InternalMagazinePageState();
 }
 
-class _InternalMagazinePageState
-    extends ModularState<InternalMagazinePage, InternalMagazineController> {
+class _InternalMagazinePageState extends State<InternalMagazinePage> {
   //use 'controller' variable to access controller
 
   @override

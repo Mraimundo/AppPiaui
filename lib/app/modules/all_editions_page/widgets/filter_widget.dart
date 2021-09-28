@@ -172,7 +172,7 @@ class _FilterWidgetState extends State<FilterWidget> {
           color: AppColors.internalBorderColor,
         ),
       ),
-      child: Expanded(
+      child: Container(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           // crossAxisAlignment: CrossAxisAlignment.spaceBetween,

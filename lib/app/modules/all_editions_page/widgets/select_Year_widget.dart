@@ -24,8 +24,7 @@ class SelectYearWidget extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.only(left: 14),
-            child: Expanded(
-              flex: 1,
+            child: Container(
               child: Row(
                 children: [
                   Text(

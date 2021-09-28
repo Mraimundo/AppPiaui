@@ -5,6 +5,7 @@ import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dar
 import 'package:piaui_app/app/modules/editions_page/components/skeleton_last_edition.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
+import 'package:piaui_app/app/modules/inside_magazine/view/inside_magazine_page.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class LastEditionWidget extends StatefulWidget {
@@ -60,7 +61,9 @@ class _LastEditionWidgetState
                         Padding(
                           padding: const EdgeInsets.only(left: 10, bottom: 12),
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Modular.to.pushNamed('/magazine');
+                            },
                             child: Container(
                               color: AppColors.orangePiaui,
                               height: vHeight * 0.06,
@@ -84,7 +87,10 @@ class _LastEditionWidgetState
                           padding: const EdgeInsets.only(right: 10, bottom: 12),
                           child: TextButton(
                             onPressed: () {
-                              Modular.to.pushNamed('/magazine');
+                              Navigator.of(context)
+                                  .pushReplacement(MaterialPageRoute(
+                                builder: (context) => InsideMagazinePage(),
+                              ));
                             },
                             child: Container(
                               height: vHeight * 0.06,

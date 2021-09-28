@@ -3,6 +3,7 @@ import 'package:piaui_app/app/modules/editions_page/controller/edition_page_cont
 import 'package:piaui_app/app/modules/editions_page/edition_page_module.dart';
 import 'package:piaui_app/app/modules/editions_page/repository/edition_repository.dart';
 import 'package:piaui_app/app/modules/home/home_controller.dart';
+import 'package:piaui_app/app/modules/inside_magazine/inside_magazine_module.dart';
 // import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
 import 'package:piaui_app/app/modules/inside_magazine/repository/inside_repository.dart';
 import 'package:piaui_app/app/modules/inside_magazine_logged/controller/inside_magazine_logged_controller.dart';
@@ -34,6 +35,7 @@ import 'modules/all_editions_page/controller/edition_page_controller.dart';
 import 'modules/all_editions_page/all_edition_page_module.dart';
 import 'modules/download_editions_page/controller/edition_page_controller.dart';
 import 'modules/download_editions_page/download_edition_page_module.dart';
+import 'modules/inside_magazine/controller/inside_magazine_controller.dart';
 
 class AppModule extends MainModule {
   @override
@@ -51,14 +53,14 @@ class AppModule extends MainModule {
         Bind((i) => DownLoadEditionPageController(i.get<EditionRepository>())),
         Bind((i) => EditionRepository(i.get<Dio>())),
         Bind((i) => MagazineArticlesController()),
-        // Bind((i) => InsideMagazineController()),
-        Bind((i) => InsideMagazineRepository()),
+        Bind((i) => InsideMagazineController((i.get<MateriaRepository>()))),
+        Bind((i) => MateriaRepository(i.get<Dio>())),
         Bind((i) => InsideMagazineLoggeController(i.get<EditionRepository>())),
-        Bind((i) =>
-            InternalMagazineController(i.get<IntenalMagazineRepository>())),
-        Bind((i) =>
-            InternalMagazineController(i.get<IntenalMagazineRepository>())),
-        Bind((i) => IntenalMagazineRepository(i.get<Dio>())),
+        // Bind((i) =>
+        //     InternalMagazineController(i.get<IntenalMagazineRepository>())),
+        // Bind((i) =>
+        //     InternalMagazineController(i.get<IntenalMagazineRepository>())),
+        // Bind((i) => IntenalMagazineRepository(i.get<Dio>())),
         Bind((i) => Dio(BaseOptions(baseUrl: URL_BASE))),
       ];
 
@@ -73,7 +75,7 @@ class AppModule extends MainModule {
         ModularRouter('/logged', module: AllEditionPageModule()),
         ModularRouter('/downloads', module: DownLoadEditionPageModule()),
         ModularRouter('/articles', module: MagazineArticlesModule()),
-        // ModularRouter('/magazine', module: InsideMagazineModule()),
+        ModularRouter('/magazine', module: InsideMagazineModule()),
         ModularRouter('/subjects', module: InsideMagazineLoggedModule()),
         ModularRouter('/internal', module: InternalMagazineModule()),
         ModularRouter('/subscribe', module: SubscribeNowModule()),

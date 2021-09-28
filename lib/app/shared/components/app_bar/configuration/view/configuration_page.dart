@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/shared/components/app_bar/configuration/controller/configuration_controller.dart';
+import 'package:piaui_app/app/app_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/back_to_menu_widget.dart';
+import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/night_mode.dart';
 import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/text_config_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-class ConfigPage extends StatefulWidget {
-  final String title;
-  const ConfigPage({Key key, this.title = "Config"}) : super(key: key);
-
-  @override
-  _ConfigPageState createState() => _ConfigPageState();
-}
-
-class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
-  //use 'controller' variable to access controller
-
+class ConfigPage extends StatelessWidget {
+  final ValueNotifier<ThemeMode> _notifier = ValueNotifier(ThemeMode.light);
   @override
   Widget build(BuildContext context) {
     final double vFontSize = 15;
@@ -65,7 +56,12 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
                   SizedBox(height: 16),
                   TextButton(
                     // padding: EdgeInsets.zero,
-                    onPressed: () {},
+                    onPressed: () {
+                      AppWidget.themeNotifier.value =
+                          AppWidget.themeNotifier.value == ThemeMode.light
+                              ? ThemeMode.dark
+                              : ThemeMode.light;
+                    },
                     child: ListTile(
                       contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
                       tileColor: AppColors.appBar,
@@ -88,6 +84,7 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
                       ),
                     ),
                   ),
+                  // NightMode(),
                   SizedBox(height: 16),
                 ],
               ),
