@@ -36,7 +36,7 @@ class AutorInternalArticle extends StatelessWidget {
             builder: (context, AsyncSnapshot<String> snapshot) {
               if (snapshot.hasData) {
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 50),
+                  padding: const EdgeInsets.only(bottom: 10, top: 10),
                   child: Container(
                       height: 100,
                       color: AppColors.cardColor,
