@@ -7,8 +7,7 @@ import 'package:piaui_app/app/modules/inside_magazine/view/inside_magazine_page.
 class InsideMagazineModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind(
-            (i) => InsideMagazineController(i.get<InsideMagazineRepository>())),
+        Bind((i) => InsideMagazineController(i.get<MateriaRepository>())),
       ];
 
   @override

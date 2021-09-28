@@ -9,40 +9,65 @@ part of 'inside_magazine_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$InsideMagazineController on _InsideMagazineControllerBase, Store {
-  final _$subjectsFutureAtom =
-      Atom(name: '_InsideMagazineControllerBase.subjectsFuture');
+  final _$isLoadingAtom = Atom(name: '_InsideMagazineControllerBase.isLoading');
 
   @override
-  ObservableFuture<List<SubjectModel>> get subjectsFuture {
-    _$subjectsFutureAtom.reportRead();
-    return super.subjectsFuture;
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
   }
 
   @override
-  set subjectsFuture(ObservableFuture<List<SubjectModel>> value) {
-    _$subjectsFutureAtom.reportWrite(value, super.subjectsFuture, () {
-      super.subjectsFuture = value;
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
     });
   }
 
-  final _$_InsideMagazineControllerBaseActionController =
-      ActionController(name: '_InsideMagazineControllerBase');
+  final _$_editionsSiglePageAtom =
+      Atom(name: '_InsideMagazineControllerBase._editionsSiglePage');
 
   @override
-  void findAll() {
-    final _$actionInfo = _$_InsideMagazineControllerBaseActionController
-        .startAction(name: '_InsideMagazineControllerBase.findAll');
-    try {
-      return super.findAll();
-    } finally {
-      _$_InsideMagazineControllerBaseActionController.endAction(_$actionInfo);
-    }
+  List<materiaModel> get _editionsSiglePage {
+    _$_editionsSiglePageAtom.reportRead();
+    return super._editionsSiglePage;
+  }
+
+  @override
+  set _editionsSiglePage(List<materiaModel> value) {
+    _$_editionsSiglePageAtom.reportWrite(value, super._editionsSiglePage, () {
+      super._editionsSiglePage = value;
+    });
+  }
+
+  final _$loadPageAtom = Atom(name: '_InsideMagazineControllerBase.loadPage');
+
+  @override
+  bool get loadPage {
+    _$loadPageAtom.reportRead();
+    return super.loadPage;
+  }
+
+  @override
+  set loadPage(bool value) {
+    _$loadPageAtom.reportWrite(value, super.loadPage, () {
+      super.loadPage = value;
+    });
+  }
+
+  final _$nextPageAsyncAction =
+      AsyncAction('_InsideMagazineControllerBase.nextPage');
+
+  @override
+  Future nextPage() {
+    return _$nextPageAsyncAction.run(() => super.nextPage());
   }
 
   @override
   String toString() {
     return '''
-subjectsFuture: ${subjectsFuture}
+isLoading: ${isLoading},
+loadPage: ${loadPage}
     ''';
   }
 }

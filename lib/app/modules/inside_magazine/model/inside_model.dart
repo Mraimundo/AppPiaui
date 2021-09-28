@@ -1,46 +1,38 @@
-// class SubjectsModel {
-//   Materias materias;
+// To parse this JSON data, do
+//
+//     final materiamodel = materiamodelFromMap(jsonString);
 
-//   SubjectsModel({this.materias});
+import 'dart:convert';
 
-//   SubjectsModel.fromJson(Map<String, dynamic> json) {
-//     materias = json['materias'] != null
-//         ? new Materias.fromJson(json['materias'])
-//         : null;
-//   }
+Materiamodel materiamodelFromMap(String str) =>
+    Materiamodel.fromMap(json.decode(str));
 
-//   Map<String, dynamic> toJson() {
-//     final Map<String, dynamic> data = new Map<String, dynamic>();
-//     if (this.materias != null) {
-//       data['materias'] = this.materias.toJson();
-//     }
-//     return data;
-//   }
-// }
+String materiamodelToMap(Materiamodel data) => json.encode(data.toMap());
 
-class Materias {
-  int id;
-  String data;
-  int categoriaId;
-  String categoriaNome;
-  String categoriaChapeu;
-  String chapeuExtra;
-  String gravata;
-  String titulo;
-  List<String> autores;
-  Imagemcapa imagemcapa;
+class Materiamodel {
+  Materiamodel({
+    this.id,
+    this.data,
+    this.categoriaId,
+    this.categoriaNome,
+    this.categoriaChapeu,
+    this.chapeuExtra,
+    this.gravata,
+    this.titulo,
+    this.autores,
+    this.imagemcapa,
+  });
 
-  Materias(
-      {this.id,
-      this.data,
-      this.categoriaId,
-      this.categoriaNome,
-      this.categoriaChapeu,
-      this.chapeuExtra,
-      this.gravata,
-      this.titulo,
-      this.autores,
-      this.imagemcapa});
+  final int id;
+  final String data;
+  final int categoriaId;
+  final String categoriaNome;
+  final String categoriaChapeu;
+  final String chapeuExtra;
+  final String gravata;
+  final String titulo;
+  final List<String> autores;
+  final Imagemcapa imagemcapa;
 
   Materias.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -55,39 +47,36 @@ class Materias {
     imagemcapa = json['imagemcapa'] != null ? json['imagemcapa'] : null;
   }
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['id'] = this.id;
-  //   data['data'] = this.data;
-  //   data['categoria_id'] = this.categoriaId;
-  //   data['categoria_nome'] = this.categoriaNome;
-  //   data['categoria_chapeu'] = this.categoriaChapeu;
-  //   data['chapeu_extra'] = this.chapeuExtra;
-  //   data['gravata'] = this.gravata;
-  //   data['titulo'] = this.titulo;
-  //   data['autores'] = this.autores;
-  //   if (this.imagemcapa != null) {
-  //     data['imagemcapa'] = this.imagemcapa.toJson();
-  //   }
-  //   return data;
-  // }
+  Map<String, dynamic> toMap() => {
+        "id": id,
+        "data": data,
+        "categoria_id": categoriaId,
+        "categoria_nome": categoriaNome,
+        "categoria_chapeu": categoriaChapeu,
+        "chapeu_extra": chapeuExtra,
+        "gravata": gravata,
+        "titulo": titulo,
+        "autores": List<dynamic>.from(autores.map((x) => x)),
+        "imagemcapa": imagemcapa.toMap(),
+      };
 }
 
 class Imagemcapa {
-  String url;
-  String alt;
+  Imagemcapa({
+    this.url,
+    this.alt,
+  });
 
-  Imagemcapa({this.url, this.alt});
+  final String url;
+  final String alt;
 
-  // Imagemcapa.fromJson(Map<String, dynamic> json) {
-  //   url = json['url'];
-  //   alt = json['alt'];
-  // }
+  factory Imagemcapa.fromMap(Map<String, dynamic> json) => Imagemcapa(
+        url: json["url"],
+        alt: json["alt"],
+      );
 
-  // Map<String, dynamic> toJson() {
-  //   final Map<String, dynamic> data = new Map<String, dynamic>();
-  //   data['url'] = this.url;
-  //   data['alt'] = this.alt;
-  //   return data;
-  // }
+  Map<String, dynamic> toMap() => {
+        "url": url,
+        "alt": alt,
+      };
 }
