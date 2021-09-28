@@ -148,7 +148,7 @@ class _InsideArticleButtonState
                             jsonData[(pos + 1).toString()]["titulo"]
                                         .toString()
                                         .length <
-                                    30
+                                    25
                                 ? _parseHtmlString(
                                     jsonData[(pos + 1).toString()]["titulo"]
                                         .toString()
@@ -156,7 +156,7 @@ class _InsideArticleButtonState
                                 : _parseHtmlString(
                                         jsonData[(pos + 1).toString()]["titulo"]
                                             .toString()
-                                            .substring(0, 29)
+                                            .substring(0, 25)
                                             .toUpperCase()) +
                                     "...",
                             style: TextStyle(
