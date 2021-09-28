@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/download_editions_page/components/image_shimmer.dart';
+import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
+import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridSingleWidget extends StatefulWidget {
@@ -15,7 +17,7 @@ class RowGridSingleWidget extends StatefulWidget {
 }
 
 class _RowGridSingleWidgetState
-    extends ModularState<RowGridSingleWidget, EditionPageController> {
+    extends ModularState<RowGridSingleWidget, DownLoadEditionPageController> {
   @override
   Widget build(BuildContext context) {
     final double rowHeight = 250;
@@ -26,7 +28,7 @@ class _RowGridSingleWidgetState
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.center;
-    Acf edition = controller.editionsSinglePage[widget.index].acf;
+    RevistDownload edition = controller.revistDownloads[widget.index];
     return Row(
       children: [
         Column(
@@ -54,7 +56,7 @@ class _RowGridSingleWidgetState
                             color: Colors.grey,
                             height: rowHeight * 0.80,
                             width: rowWidth * 0.85,
-                            child: ImageShimmer(url: edition.capa.url),
+                            child: ImageShimmer(url: edition.capa),
                           ),
                           Container(
                             color: Colors.white,

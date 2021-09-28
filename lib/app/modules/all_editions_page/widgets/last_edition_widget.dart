@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/components/skeleton_last_edition.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
+import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
+import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class LastEditionWidget extends StatefulWidget {
   @override
   _LastEditionWidgetState createState() => _LastEditionWidgetState();
-
+  DownloadsController downloads = DownloadsController();
   final bool user;
   LastEditionWidget({Key key, this.user = false}) : super(key: key);
 }
@@ -93,8 +96,17 @@ class _LastEditionWidgetState
                         Padding(
                           padding: const EdgeInsets.only(right: 10, bottom: 12),
                           child: TextButton(
-                            onPressed: () {
-                              Modular.to.pushNamed('/magazine');
+                            onPressed: () async {
+                              debugPrint('Entrou na função donwload');
+                              final RevistDownload revist = RevistDownload(
+                                  controller.lastEdition.id,
+                                  edicoes.capa.url,
+                                  edicoes.numberEdition,
+                                  edicoes.mes,
+                                  edicoes.ano);
+                              await widget.downloads.addRevist(revist);
+                              debugPrint((await widget.downloads.getMyList())
+                                  .toString());
                             },
                             child: Container(
                               height: vHeight * 0.06,

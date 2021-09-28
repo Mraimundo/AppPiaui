@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/bottom_download_widget.dart';
 import 'package:piaui_app/app/modules/all_editions_page/components/image_shimmer.dart';
+import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/bottom_orange_widget.dart';
@@ -28,7 +29,7 @@ class _RowGridDoubleWidgetState
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.spaceEvenly;
 
-    String id = controller.editionsSinglePage[1].id.toString();
+    String id = controller.editionsSinglePage[widget.index].id.toString();
     String idOdd =
         controller.editionsSinglePage[widget.index + 1].id.toString();
     Acf editionPair = controller.editionsSinglePage[widget.index].acf;
