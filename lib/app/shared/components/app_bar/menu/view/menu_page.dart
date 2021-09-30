@@ -36,25 +36,38 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                       Modular.to.pushNamed('/menu_logged');
                     },
                     child: ListTile(
-                      contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                      tileColor: AppColors.appBar,
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
                           children: [
-                            Text(
-                              'Faça seu login',
-                              style: TextStyle(
-                                  fontSize: vFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.dark),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'FAÇA SEU LOGIN',
+                                  style: TextStyle(
+                                      fontSize: vFontSize,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.dark),
+                                ),
+                                Image.asset(
+                                  'assets/images/arrow_menu.png',
+                                  width: 20,
+                                  height: 12,
+                                ),
+                              ],
                             ),
-                            Image.asset(
-                              'assets/images/arrow_menu.png',
-                              width: 20,
-                              height: 12,
-                            ),
+                            Container(
+                              height: 25,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColors.internalBorderColor,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -62,30 +75,42 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    // padding: EdgeInsets.zero,
                     onPressed: () {
                       Modular.to.pushNamed('/signature');
                     },
                     child: ListTile(
-                      contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                      tileColor: AppColors.appBar,
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
                           children: [
-                            Text(
-                              'Configurações',
-                              style: TextStyle(
-                                  fontSize: vFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.dark),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'CONFIGURAÇÕES',
+                                  style: TextStyle(
+                                      fontSize: vFontSize,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.dark),
+                                ),
+                                Image.asset(
+                                  'assets/images/arrow_menu.png',
+                                  width: 20,
+                                  height: 12,
+                                ),
+                              ],
                             ),
-                            Image.asset(
-                              'assets/images/arrow_menu.png',
-                              width: 20,
-                              height: 12,
-                            ),
+                            Container(
+                              height: 25,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColors.internalBorderColor,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -93,28 +118,40 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    // padding: EdgeInsets.zero,
                     onPressed: () {},
                     child: ListTile(
-                      contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                      tileColor: AppColors.appBar,
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
                           children: [
-                            Text(
-                              'Sobre nós',
-                              style: TextStyle(
-                                  fontSize: vFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.dark),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'SOBRE NÓS',
+                                  style: TextStyle(
+                                      fontSize: vFontSize,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.dark),
+                                ),
+                                Image.asset(
+                                  'assets/images/arrow_menu.png',
+                                  width: 20,
+                                  height: 12,
+                                ),
+                              ],
                             ),
-                            Image.asset(
-                              'assets/images/arrow_menu.png',
-                              width: 20,
-                              height: 12,
-                            ),
+                            Container(
+                              height: 25,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColors.internalBorderColor,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -122,28 +159,40 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    // padding: EdgeInsets.zero,
                     onPressed: () {},
                     child: ListTile(
-                      contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                      tileColor: AppColors.appBar,
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
                           children: [
-                            Text(
-                              'Política de privacidade',
-                              style: TextStyle(
-                                  fontSize: vFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.dark),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'POLÍTICA DE PRIVACIDADE',
+                                  style: TextStyle(
+                                      fontSize: vFontSize,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.dark),
+                                ),
+                                Image.asset(
+                                  'assets/images/arrow_menu.png',
+                                  width: 20,
+                                  height: 12,
+                                ),
+                              ],
                             ),
-                            Image.asset(
-                              'assets/images/arrow_menu.png',
-                              width: 20,
-                              height: 12,
-                            ),
+                            Container(
+                              height: 25,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColors.internalBorderColor,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
@@ -151,28 +200,41 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    // padding: EdgeInsets.zero,
                     onPressed: () {},
                     child: ListTile(
-                      contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                      tileColor: AppColors.orangePiaui,
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        child: Column(
                           children: [
-                            Text(
-                              'Assinar',
-                              style: TextStyle(
-                                  fontSize: vFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'ASSINAR',
+                                  style: TextStyle(
+                                    fontSize: vFontSize,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.orangePiaui,
+                                  ),
+                                ),
+                                Image.asset(
+                                  'assets/images/arrow_sair.png',
+                                  width: 20,
+                                  height: 12,
+                                ),
+                              ],
                             ),
-                            Image.asset(
-                              'assets/images/arrow-sign.png',
-                              width: 20,
-                              height: 12,
-                            ),
+                            Container(
+                              height: 25,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColors.internalBorderColor,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ),
