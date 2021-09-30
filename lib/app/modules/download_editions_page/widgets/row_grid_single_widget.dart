@@ -4,6 +4,7 @@ import 'package:piaui_app/app/modules/download_editions_page/components/image_sh
 import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
+import 'package:piaui_app/app/modules/inside_magazine_download/view/inside_magazine_page.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
@@ -30,57 +31,67 @@ class _RowGridSingleWidgetState
     MainAxisAlignment rowAlignH = MainAxisAlignment.center;
 
     RevistDownload edition = controller.revistDownloads[widget.index];
-    return Row(
-      children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              color: AppColors.appBackground,
-              width: MediaQuery.of(context).size.width,
-              child: Row(
-                crossAxisAlignment: rowAlignV,
-                mainAxisAlignment: rowAlignH,
-                children: [
-                  Padding(
-                    padding: framePadding,
-                    child: Container(
-                      color: Colors.white,
-                      height: rowHeight,
-                      width: rowWidth,
-                      child: Column(
-                        crossAxisAlignment: columAlignH,
-                        mainAxisAlignment: columAlignV,
-                        children: [
-                          Container(
-                            color: Colors.grey,
-                            height: rowHeight * 0.80,
-                            width: rowWidth * 0.85,
-                            child: ImageShimmer(url: edition.capa),
-                          ),
-                          Container(
-                            color: Colors.white,
-                            height: rowHeight * 0.15,
-                            width: rowWidth * 0.85,
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Edição #${edition.numberEdition}: ${edition.mes} de ${edition.ano}',
-                                style: TextStyle(fontSize: rowFontsize),
+    return Material(
+        child: InkWell(
+      child: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                color: AppColors.appBackground,
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  crossAxisAlignment: rowAlignV,
+                  mainAxisAlignment: rowAlignH,
+                  children: [
+                    Padding(
+                      padding: framePadding,
+                      child: Container(
+                        color: Colors.white,
+                        height: rowHeight,
+                        width: rowWidth,
+                        child: Column(
+                          crossAxisAlignment: columAlignH,
+                          mainAxisAlignment: columAlignV,
+                          children: [
+                            Container(
+                              color: Colors.grey,
+                              height: rowHeight * 0.80,
+                              width: rowWidth * 0.85,
+                              child: ImageShimmer(url: edition.capa),
+                            ),
+                            Container(
+                              color: Colors.white,
+                              height: rowHeight * 0.15,
+                              width: rowWidth * 0.85,
+                              child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Ediçãoo #${edition.numberEdition}: ${edition.mes} de ${edition.ano}',
+                                  style: TextStyle(fontSize: rowFontsize),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
-        ),
-      ],
-    );
+            ],
+          ),
+        ],
+      ),
+      onTap: () {
+        Modular.to.pushNamed('/magazine_downloads',
+            arguments: {"revist": controller.revistDownloads[widget.index]});
+        /*   Navigator.of(context).push(MaterialPageRoute(builder: (builder) {
+          return InsideMagazinePage(controller.revistDownloads[widget.index]);
+        })); */
+      },
+    ));
   }
 }

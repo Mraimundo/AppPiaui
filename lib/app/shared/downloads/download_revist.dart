@@ -19,7 +19,7 @@ class DownloadRevist {
       List<Colaborador> colaboradores = [];
 
       var conteudoReponse = await apiDownload
-          .conteudo(jsonDecode(m)["materias"][i.toString()]["id"].toString());
+          .conteudo(jsonDecode(m)["materias"][(i).toString()]["id"].toString());
 
       //Colaboradores
       for (var cont = 0;
@@ -48,8 +48,9 @@ class DownloadRevist {
           jsonDecode(m)["materias"][i.toString()]["id"].toString(),
           conteudo,
           jsonDecode(m)["materias"][i.toString()]['imagemcapa']['url'],
-          jsonDecode(m)["materias"][i.toString()]['imagemcapa']['alt'],
-          jsonDecode(m)["materias"][i.toString()]['gravata']);
+          jsonDecode(m)["materias"][i.toString()]['gravata'],
+          jsonDecode(m)["materias"][i.toString()]['titulo'],
+          jsonDecode(m)["materias"][i.toString()]['imagemcapa']['alt']);
 
       materias.add(materia);
     }
