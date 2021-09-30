@@ -8,10 +8,6 @@ import 'package:piaui_app/app/modules/editions_page/controller/edition_page_cont
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-Future<void> cleanUser() async {
-  await FlutterSession().set("user", "");
-}
-
 class LastEditionWidget extends StatefulWidget {
   @override
   _LastEditionWidgetState createState() => _LastEditionWidgetState();
@@ -89,9 +85,8 @@ class _LastEditionWidgetState
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                          TextButton(
-                            onPressed: () async {
-                              await cleanUser();
+                              TextButton(
+                                onPressed: () async {
                                   Modular.to.pushNamed('/magazine', arguments: {
                                     "url":
                                         'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
@@ -113,12 +108,12 @@ class _LastEditionWidgetState
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22),
                                     ),
-                                alignment: Alignment.center,
+                                    alignment: Alignment.center,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {
+                              TextButton(
+                                onPressed: () {
                                   Modular.to.pushNamed('/login');
                                 },
                                 child: Container(
@@ -140,9 +135,9 @@ class _LastEditionWidgetState
                                     ),
                                     alignment: Alignment.center,
                                   ),
-                            ),
-                          ),
-                        ],
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ],

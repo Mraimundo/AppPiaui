@@ -12,6 +12,7 @@ class AllEditionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(user.nome);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

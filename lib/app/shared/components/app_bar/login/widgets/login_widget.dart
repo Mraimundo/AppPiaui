@@ -1,10 +1,15 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/auth/auth_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/util/validations.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+
+Future<void> populateUser(user) async {
+  await FlutterSession().set("user", user);
+}
 
 class LoginWidget extends StatefulWidget {
   // final UserModel use;
@@ -38,6 +43,8 @@ class _LoginWidgetState extends State<LoginWidget> {
       var json = jsonDecode(response.data);
       try {
         var user = Dados.fromMap(jsonDecode(response.data)["dados"]);
+
+        await populateUser(user);
         authController.setUser(context, user);
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(

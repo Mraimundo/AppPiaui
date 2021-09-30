@@ -9,18 +9,12 @@ import 'package:piaui_app/app/modules/all_editions_page/widgets/row_grid_widget.
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-Future<void> populateUser(user) async {
-  await FlutterSession().set("user", user);
-}
-
 class ListMagazine extends StatelessWidget {
   final Dados user;
   const ListMagazine({Key key, this.user}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    populateUser(user);
-
     return Container(
       color: AppColors.backgroundColor,
       child: Stack(

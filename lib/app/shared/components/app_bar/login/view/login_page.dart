@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/api/google_sign_in_api.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:piaui_app/app/modules/all_editions_page/view/all_edition_page.dart';
@@ -19,6 +20,10 @@ import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/shared/layout/gradients.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+Future<void> populateUser(user) async {
+  await FlutterSession().set("user", user);
+}
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -159,7 +164,7 @@ Future signIn(BuildContext context) async {
 
         try {
           var userDados = Dados.fromMap(jsonDecode(response.data)["dados"]);
-          print(userDados);
+          populateUser(userDados);
           var assinante = json['dados']['assinante'];
 
           if (assinante == '1') {

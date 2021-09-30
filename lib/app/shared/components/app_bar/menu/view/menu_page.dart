@@ -33,7 +33,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                 children: <Widget>[
                   TextButton(
                     onPressed: () {
-                      Modular.to.pushNamed('/menu_logged');
+                      Modular.to.pushNamed('/login');
                     },
                     child: ListTile(
                       contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),

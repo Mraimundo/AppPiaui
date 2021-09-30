@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_session/flutter_session.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/border_top_widget.dart';
@@ -27,6 +28,10 @@ Future<String> teste() async {
   return res;
 }
 
+Future<String> readUser() async {
+  return await FlutterSession().get("user");
+}
+
 class EditionPage extends StatefulWidget {
   final String title;
 
@@ -50,7 +55,7 @@ class _EditionPageState
   @override
   Widget build(context) {
     return FutureBuilder<String>(
-        future: teste(),
+        future: readUser(),
         builder: (context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
             return Scaffold(

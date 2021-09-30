@@ -17,10 +17,12 @@ import 'package:piaui_app/app/modules/subscribe_now/controller/subscribe_now_con
 import 'package:piaui_app/app/modules/subscribe_now/subscribe_now_module.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/controller/login_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/login_module.dart';
+import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/components/app_bar/menu/controller/menu_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/configuration/controller/configuration_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/menu/menu_module.dart';
 import 'package:piaui_app/app/shared/components/app_bar/configuration/configuration_module.dart';
+import 'package:piaui_app/app/shared/components/app_bar/menu_user_logged/menu_user_looged_module.dart';
 import 'package:piaui_app/app/shared/components/app_bar/search/controller/search_controller.dart';
 import 'package:piaui_app/app/shared/components/signature/controller/signature_controller.dart';
 import 'package:piaui_app/app/shared/components/signature/signature_module.dart';
@@ -35,10 +37,12 @@ import 'modules/all_editions_page/all_edition_page_module.dart';
 import 'modules/download_editions_page/controller/edition_page_controller.dart';
 import 'modules/download_editions_page/download_edition_page_module.dart';
 import 'modules/inside_magazine/inside_magazine_module.dart';
-import 'shared/components/app_bar/menu_user_logged/menu_user_looged_module.dart';
-import 'shared/components/change_password/change_password.dart';
 
 class AppModule extends MainModule {
+  final Dados user;
+
+  AppModule(this.user);
+
   @override
   List<Bind> get binds => [
         Bind((i) => AppController()),
@@ -67,21 +71,23 @@ class AppModule extends MainModule {
 
   @override
   List<ModularRouter> get routers => [
-        ModularRouter(Modular.initialRoute, module: EditionPageModule()),
+        ModularRouter(Modular.initialRoute,
+            module: user.nome == null
+                ? EditionPageModule()
+                : AllEditionPageModule(user)),
         ModularRouter('/menu', module: MenuModule()),
-        ModularRouter('/change_password', module: ChangePassWordModule()),
-        ModularRouter('/menu_logged', module: MenuUserLoggedModule()),
         ModularRouter('/login', module: LoginModule()),
         ModularRouter('/signature', module: SignatureModule()),
         ModularRouter('/config', module: ConfigModule()),
         ModularRouter('/editions', module: EditionPageModule()),
-        ModularRouter('/logged', module: AllEditionPageModule()),
+        ModularRouter('/logged', module: AllEditionPageModule(user)),
         ModularRouter('/downloads', module: DownLoadEditionPageModule()),
         ModularRouter('/articles', module: MagazineArticlesModule()),
         ModularRouter('/magazine', module: InsideMagazineModule()),
         ModularRouter('/subjects', module: InsideMagazineLoggedModule()),
         ModularRouter('/internal', module: InternalMagazineModule()),
         ModularRouter('/subscribe', module: SubscribeNowModule()),
+        ModularRouter('/menu_logged', module: MenuUserLoggedModule()),
       ];
 
   @override
