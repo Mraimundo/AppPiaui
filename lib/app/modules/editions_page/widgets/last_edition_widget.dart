@@ -21,8 +21,9 @@ class _LastEditionWidgetState
     extends ModularState<LastEditionWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
-    double vHeight = MediaQuery.of(context).size.height;
-    double vWidth = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size;
+    // double vHeight = MediaQuery.of(context).size.height;
+    // double vWidth = MediaQuery.of(context).size.width;
     return Row(
       children: [
         Expanded(
@@ -33,94 +34,121 @@ class _LastEditionWidgetState
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
 
-                return Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(24, 32, 24, 0),
-                      child: Container(
-                        color: Colors.grey,
-                        height: vHeight < 764.5 ? vHeight * 0.6 : vHeight * 0.5,
-                        width: vWidth,
-                        child: ImageShimmer(url: edicoes.capa.url),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 23, top: 9, bottom: 8),
-                      child: Align(
-                        child: Text(
-                          'Edição #${edicoes.numberEdition}: ${edicoes.mes} de ${edicoes.ano}',
-                          style: TextStyle(
-                            fontFamily: 'Piaui',
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
+                return Stack(children: [
+                  Container(
+                    margin: const EdgeInsets.only(top: 100, bottom: 25),
+                    width: size.width,
+                    height: size.height * 0.36,
+                    color: AppColors.backgroundColorLastEdition,
+                  ),
+                  Positioned(
+                    left: 15,
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            Container(
+                              margin: const EdgeInsets.only(top: 25),
+                              width: 190,
+                              height: 251.72,
+                              child: ImageShimmer(
+                                url: edicoes.capa.url,
+                              ),
+                            ),
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 18),
+                                  child: Text(
+                                    '-${edicoes.numberEdition}',
+                                    style: TextStyle(
+                                      fontFamily: 'TradeGothic',
+                                      fontSize: 62,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.textColorWhite,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  '${edicoes.mes}  ${edicoes.ano}',
+                                  style: TextStyle(
+                                    fontFamily: 'TradeGothic',
+                                    fontSize: 25,
+                                    // fontWeight: FontWeight.bold,
+                                    color: AppColors.textColorWhite,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                        alignment: Alignment.centerLeft,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                          left: 15, right: 15, bottom: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12, top: 25),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
                           TextButton(
                             onPressed: () async {
                               await cleanUser();
-                              Modular.to.pushNamed('/magazine', arguments: {
-                                "url":
-                                    'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
-                                        (controller.lastEdition.id).toString(),
-                                "title": edicoes.numberEdition,
-                                "data": '${edicoes.mes} de ${edicoes.ano}'
-                              });
-                            },
-                            child: Container(
-                              color: AppColors.orangePiaui,
-                              height: vHeight * 0.06,
-                              width: vWidth / 2.5,
-                              child: Align(
-                                child: Text(
-                                  'Experimente',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22),
-                                ),
+                                  Modular.to.pushNamed('/magazine', arguments: {
+                                    "url":
+                                        'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
+                                            (controller.lastEdition.id)
+                                                .toString(),
+                                    "title": edicoes.numberEdition,
+                                    "data": '${edicoes.mes} de ${edicoes.ano}'
+                                  });
+                                },
+                                child: Container(
+                                  color: AppColors.textColorWhite,
+                                  height: size.height * 0.06,
+                                  width: size.width / 2.5,
+                                  child: Align(
+                                    child: Text(
+                                      'Experimente',
+                                      style: TextStyle(
+                                          color: AppColors.textColorBold,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 22),
+                                    ),
                                 alignment: Alignment.center,
                               ),
                             ),
                           ),
                           TextButton(
                             onPressed: () {
-                              Modular.to.pushNamed('/login');
-                            },
-                            child: Container(
-                              height: vHeight * 0.06,
-                              width: vWidth / 2.5,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppColors.orangePiaui,
-                                ),
-                              ),
-                              child: Align(
-                                child: Text(
-                                  'Já sou assinante',
-                                  style: TextStyle(
-                                      color: AppColors.orangePiaui,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 22),
-                                ),
-                                alignment: Alignment.center,
-                              ),
+                                  Modular.to.pushNamed('/login');
+                                },
+                                child: Container(
+                                  height: size.height * 0.06,
+                                  width: size.width / 2.5,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                      color: AppColors.textColorWhite,
+                                    ),
+                                  ),
+                                  child: Align(
+                                    child: Text(
+                                      'Já sou assinante',
+                                      style: TextStyle(
+                                        color: AppColors.textColorWhite,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 22,
+                                      ),
+                                    ),
+                                    alignment: Alignment.center,
+                                  ),
                             ),
                           ),
                         ],
-                      ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
-                );
+                  ),
+                ]);
               } else {
                 //You'll put a shimmer here!
                 return SkeletonLastEdition();

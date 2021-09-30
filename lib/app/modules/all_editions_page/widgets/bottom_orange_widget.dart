@@ -39,7 +39,7 @@ class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
       },
       // padding: EdgeInsets.zero,
       child: Container(
-        color: AppColors.orangePiaui,
+        color: AppColors.backgroundColorLastEdition,
         height: vHeight * 0.06,
         width: vWidth / 4,
         child: Align(

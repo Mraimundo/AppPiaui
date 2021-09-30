@@ -23,6 +23,8 @@ class AppColors {
   static var borderColorForm = Color.fromRGBO(196, 196, 196, 1);
 
   static var backgroundColorButton = Color.fromRGBO(255, 255, 255, 1);
+  static var backgroundColorLastEdition = Color.fromRGBO(43, 43, 43, 1);
+
   static var cardColor = Color.fromRGBO(238, 238, 238, 1);
   static var internalBorderColor = Color.fromRGBO(219, 219, 219, 1);
 
