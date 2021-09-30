@@ -13,8 +13,6 @@ import 'package:piaui_app/app/modules/editions_page/widgets/text_has_no_signatur
 import 'package:piaui_app/app/modules/editions_page/widgets/text_to_sign_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
-import 'package:piaui_app/app/shared/layout/gradients.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 Future<String> teste() async {
   String res;
