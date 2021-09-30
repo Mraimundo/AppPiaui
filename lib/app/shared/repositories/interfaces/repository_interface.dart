@@ -3,6 +3,6 @@ abstract class IRepository {
   Future findByPage(int page);
 }
 
-abstract class IMateriaRepository {
-  Future findAllMateria();
+abstract class IntenalRepository {
+  Future findByTitle(int title);
 }

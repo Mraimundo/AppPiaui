@@ -32,6 +32,7 @@ class _LastEditionWidgetState
             child: Observer(builder: (ctx) {
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
+
                 return Column(
                   children: <Widget>[
                     Padding(

@@ -2,9 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:piaui_app/app/modules/inside_magazine/model/inside_model.dart';
-import 'package:piaui_app/app/modules/inside_magazine/model/materia_model.dart';
 import 'package:piaui_app/app/modules/inside_magazine/model/subjects_model.dart';
-import 'package:piaui_app/app/shared/repositories/interfaces/repository_interface.dart';
 
 class InsideMagazineRepository {
   Future<List<SubjectModel>> findAllSubjects() async {

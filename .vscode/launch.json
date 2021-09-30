@@ -7,8 +7,13 @@
     {
       "name": "app",
       "request": "launch",
-      "type": "dart",
-      "args": ["--web-port", "8000"]
+      "type": "dart"
     },
+    {
+      "name": "app (profile mode)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    }
   ]
 }

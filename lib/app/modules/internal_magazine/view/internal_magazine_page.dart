@@ -48,7 +48,8 @@ class InternalMagazinePage extends StatefulWidget {
       idMateria, edition, imagemUrl, imagemAlt, data);
 }
 
-class _InternalMagazinePageState extends State<InternalMagazinePage> {
+class _InternalMagazinePageState
+    extends ModularState<InternalMagazinePage, InternalMagazineController> {
   //use 'controller' variable to access controller
 
   String idMateria;
