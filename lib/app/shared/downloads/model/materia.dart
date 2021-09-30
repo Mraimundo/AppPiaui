@@ -6,8 +6,10 @@ class Materia {
   String image;
   String subTitle;
   String title;
+  String imageAlt;
 
-  Materia(this.id, this.conteudo, this.image, this.subTitle, this.title);
+  Materia(this.id, this.conteudo, this.image, this.subTitle, this.title,
+      this.imageAlt);
 
   Map toJson() {
     return {
@@ -15,7 +17,8 @@ class Materia {
       'conteudo': conteudo,
       'image': image,
       'subTitle': subTitle,
-      'title': title
+      'title': title,
+      'imageAlt': imageAlt
     };
   }
 }
