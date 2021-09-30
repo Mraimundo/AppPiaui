@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/download_editions_page/widgets/bottom_download_widget.dart';
 import 'package:piaui_app/app/modules/download_editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/download_editions_page/widgets/bottom_orange_widget.dart';
+import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 
 class RowGridDoubleWidget extends StatefulWidget {
   final int index;
@@ -16,7 +18,7 @@ class RowGridDoubleWidget extends StatefulWidget {
 }
 
 class _RowGridDoubleWidgetState
-    extends ModularState<RowGridDoubleWidget, EditionPageController> {
+    extends ModularState<RowGridDoubleWidget, DownLoadEditionPageController> {
   @override
   Widget build(BuildContext context) {
     final double rowHeight = 255;
@@ -27,8 +29,8 @@ class _RowGridDoubleWidgetState
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.spaceEvenly;
-    Acf editionPair = controller.editionsSinglePage[widget.index].acf;
-    Acf editionOdd = controller.editionsSinglePage[widget.index + 1].acf;
+    RevistDownload editionPair = controller.revistDownloads[widget.index];
+    RevistDownload editionOdd = controller.revistDownloads[widget.index + 1];
     return Row(
       children: [
         Column(
@@ -52,7 +54,7 @@ class _RowGridDoubleWidgetState
                             color: Colors.grey,
                             height: rowHeight * 0.80,
                             width: rowWidth * 0.92,
-                            child: ImageShimmer(url: editionPair.capa.url),
+                            child: ImageShimmer(url: editionPair.capa),
                           ),
                           Container(
                             height: rowHeight * 0.15,
@@ -64,7 +66,8 @@ class _RowGridDoubleWidgetState
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
+                                      /* 'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}' */ editionPair
+                                          .toString(),
                                       style: TextStyle(
                                         fontFamily: 'Piaui',
                                         fontSize: rowFontsize,
@@ -109,7 +112,7 @@ class _RowGridDoubleWidgetState
                             color: Colors.grey,
                             height: rowHeight * 0.80,
                             width: rowWidth * 0.92,
-                            child: ImageShimmer(url: editionOdd.capa.url),
+                            child: ImageShimmer(url: editionOdd.capa),
                           ),
                           Container(
                             color: Colors.white,
@@ -122,7 +125,7 @@ class _RowGridDoubleWidgetState
                                   Align(
                                     alignment: Alignment.centerLeft,
                                     child: Text(
-                                      'Edição #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
+                                      'Ediçãoo #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
                                       style: TextStyle(
                                           fontFamily: 'Piaui',
                                           fontSize: rowFontsize,

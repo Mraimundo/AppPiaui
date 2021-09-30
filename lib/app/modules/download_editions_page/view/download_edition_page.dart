@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/border_top_widget.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/filter_widget.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/load_more_widget.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/row_grid_widget.dart';
+import 'package:piaui_app/app/modules/download_editions_page/widgets/border_top_widget.dart';
+import 'package:piaui_app/app/modules/download_editions_page/widgets/filter_widget.dart';
+import 'package:piaui_app/app/modules/download_editions_page/widgets/load_more_widget.dart';
+import 'package:piaui_app/app/modules/download_editions_page/widgets/row_grid_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
@@ -50,11 +50,11 @@ class DownLoadEditionPage extends StatelessWidget {
                       child: FilterWidget(),
                     ),
                     // LastEditionWidget(),
-                    /* Padding(
+                    Padding(
                       padding: const EdgeInsets.only(top: 25),
                       child: RowGridWidget(),
-                    ), */
-                    LoadMoreWidget(),
+                    ),
+                    /*   LoadMoreWidget(), */
                   ],
                 ),
               ),

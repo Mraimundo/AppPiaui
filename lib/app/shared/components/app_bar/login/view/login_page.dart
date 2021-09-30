@@ -16,6 +16,8 @@ import 'package:piaui_app/app/shared/components/app_bar/login/widgets/text_login
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:piaui_app/app/shared/layout/gradients.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatefulWidget {
   final String title;
@@ -26,7 +28,14 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends ModularState<LoginPage, LoginController> {
-  //use 'controller' variable to access controller
+  _launchURL() async {
+    const url = 'https://piaui.homolog.inf.br/';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +89,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       ),
                       SignatureWidget(
                         onTap: () {
-                          // Modular.to.pushNamed('/signature');
+                          _launchURL();
                         },
                       )
                     ],

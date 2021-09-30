@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
+import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class ButtomDownLoadWidget extends StatefulWidget {
-  const ButtomDownLoadWidget({Key key}) : super(key: key);
+  final DownloadsController downloadsController = DownloadsController();
+  RevistDownload revist;
+  ButtomDownLoadWidget({Key key, this.revist}) : super(key: key);
 
   @override
   _ButtomDownLoadWidgetState createState() => _ButtomDownLoadWidgetState();
@@ -14,7 +18,9 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
     double vHeight = MediaQuery.of(context).size.height;
     double vWidth = MediaQuery.of(context).size.width;
     return TextButton(
-      onPressed: () {},
+      onPressed: () async {
+        await widget.downloadsController.addRevist(widget.revist);
+      },
       // padding: EdgeInsets.zero,
       child: Container(
         height: vHeight * 0.06,

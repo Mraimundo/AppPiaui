@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridSingleWidget extends StatefulWidget {
-
   final int index;
 
   const RowGridSingleWidget({Key key, this.index}) : super(key: key);
@@ -15,7 +15,8 @@ class RowGridSingleWidget extends StatefulWidget {
   _RowGridSingleWidgetState createState() => _RowGridSingleWidgetState();
 }
 
-class _RowGridSingleWidgetState extends ModularState<RowGridSingleWidget, EditionPageController> {
+class _RowGridSingleWidgetState
+    extends ModularState<RowGridSingleWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
     final double rowHeight = 250;

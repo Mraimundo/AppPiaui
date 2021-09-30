@@ -1,17 +1,48 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/components/skeleton_last_edition.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
-import 'package:piaui_app/app/modules/inside_magazine/view/inside_magazine_page.dart';
+import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
+import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+
+Future<String> materias(id) async {
+  final _url =
+      'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
+          id.toString();
+
+  var dio = Dio();
+  var response = await dio.get(_url);
+  return response.toString();
+}
+
+Future<String> conteudo(idMateria) async {
+  final _url = "https://piaui.homolog.inf.br/wp-json/wp/v2/materia/" +
+      idMateria.toString();
+  var dio = Dio();
+  var response = await dio.get(_url);
+  return response.toString();
+}
+
+Future<String> colaborador(id) async {
+  final _url = "https://piaui.homolog.inf.br/wp-json/acf/v3/colaborador/" +
+      id.toString();
+  var dio = Dio();
+  var response = await dio.get(_url);
+  return response.toString();
+}
 
 class LastEditionWidget extends StatefulWidget {
   @override
   _LastEditionWidgetState createState() => _LastEditionWidgetState();
-
+  DownloadsController downloads = DownloadsController();
   final bool user;
   LastEditionWidget({Key key, this.user = false}) : super(key: key);
 }
@@ -95,11 +126,53 @@ class _LastEditionWidgetState
                         Padding(
                           padding: const EdgeInsets.only(right: 10, bottom: 12),
                           child: TextButton(
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushReplacement(MaterialPageRoute(
-                                builder: (context) => InsideMagazinePage(),
-                              ));
+                            onPressed: () async {
+                              var m = await materias(
+                                  controller.lastEdition.id.toString());
+
+                              var posts = [];
+
+                              for (var i = 1;
+                                  i <= jsonDecode(m)["materias"].length;
+                                  i++) {
+                                posts.add(await conteudo(
+                                    jsonDecode(m)["materias"][i.toString()]
+                                            ["id"]
+                                        .toString()));
+                              }
+
+                              var idColaboradores = [];
+
+                              for (var i = 0; i < posts.length; i++) {
+                                for (var j = 0;
+                                    j <
+                                        jsonDecode(posts[i])["acf"]["autor"]
+                                            .length;
+                                    j++) {
+                                  if (!idColaboradores.contains(
+                                      jsonDecode(posts[i])["acf"]["autor"][j]
+                                          ["ID"])) {
+                                    idColaboradores.add(
+                                        jsonDecode(posts[i])["acf"]["autor"][j]
+                                            ["ID"]);
+                                  }
+                                }
+                              }
+
+                              var colaboradores = [];
+
+                              for (var item in idColaboradores) {
+                                colaboradores.add(await colaborador(item));
+                              }
+
+                              final RevistDownload revist = RevistDownload(
+                                  controller.lastEdition.id,
+                                  edicoes.capa.url,
+                                  edicoes.numberEdition,
+                                  edicoes.mes,
+                                  edicoes.ano,
+                                  m);
+                              await widget.downloads.addRevist(revist);
                             },
                             child: Container(
                               height: vHeight * 0.06,
