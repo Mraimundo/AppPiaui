@@ -88,12 +88,12 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/piaui_logo.png
-    - assets/images/piaui_devices.png
     - assets/images/icon_configuration.png
     - assets/images/icon_lupa.png
     - assets/images/icon_menu.png
-    - assets/images/icon_profile.png
-    - assets/images/icon_revista.png
+    - assets/images/icon_download.png
+    # - assets/images/icon_profile.png
+    - assets/images/arrow_sair.png
     - assets/images/arrow.png
     - assets/images/arrow-sign.png
     - assets/images/arrow_menu.png
@@ -102,26 +102,9 @@ flutter:
     - assets/images/icon_x_config.png
     - assets/images/night-mode.png
     - assets/images/font-size.png
-
-    - assets/images/afogados.png
-    - assets/images/agora.png
-    - assets/images/assassinos.png
-    - assets/images/bolsonaro.png
-    - assets/images/debate.png
-    - assets/images/diarios.png
-    - assets/images/gps.png
-    - assets/images/jogo-do-prende.png
-    - assets/images/livro.png
-    - assets/images/parados.png
     - assets/images/fechado.png
-
-    - assets/images/intenal_article.png
-    - assets/images/carrosel_image.png
     - assets/images/allan_abreu.png
-
-    - assets/images/arrow_download.png
     - assets/images/arrow_check.png
-
     - assets/images/google.png
 
   # An image asset can refer to one or more resolution-specific "variants", see

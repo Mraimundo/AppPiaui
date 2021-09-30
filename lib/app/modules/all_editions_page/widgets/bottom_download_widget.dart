@@ -27,12 +27,12 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
         width: vWidth / 8,
         decoration: BoxDecoration(
           border: Border.all(
-            color: AppColors.orangePiaui,
+            color: AppColors.backgroundColorLastEdition,
           ),
         ),
         child: Align(
           child: Image.asset(
-            'assets/images/arrow_download.png',
+            'assets/images/icon_download.png',
           ),
           alignment: Alignment.center,
         ),

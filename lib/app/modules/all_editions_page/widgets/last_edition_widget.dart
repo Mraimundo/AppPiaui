@@ -51,8 +51,9 @@ class _LastEditionWidgetState
     extends ModularState<LastEditionWidget, EditionPageController> {
   @override
   Widget build(BuildContext context) {
-    double vHeight = MediaQuery.of(context).size.height;
-    double vWidth = MediaQuery.of(context).size.width;
+    final size = MediaQuery.of(context).size;
+    // double vHeight = MediaQuery.of(context).size.height;
+    // double vWidth = MediaQuery.of(context).size.width;
     return Row(
       children: [
         Expanded(
@@ -62,142 +63,180 @@ class _LastEditionWidgetState
             child: Observer(builder: (ctx) {
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
-                // print('vHeight $vHeight');
-                return Column(
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 32, 20, 0),
-                      child: Container(
-                        color: Colors.grey,
-                        height: vHeight < 764.5 ? vHeight * 0.6 : vHeight * 0.5,
-                        width: vWidth,
-                        child: ImageShimmer(url: edicoes.capa.url),
-                      ),
+                return Stack(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(top: 100, bottom: 25),
+                      width: size.width,
+                      height: size.height * 0.36,
+                      color: AppColors.backgroundColorLastEdition,
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 23, top: 9, bottom: 8),
-                      child: Align(
-                        child: Text(
-                          'Edição #${edicoes.numberEdition}: ${edicoes.mes} de ${edicoes.ano}',
-                          style: TextStyle(
-                            fontFamily: 'Piaui',
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
+                    Positioned(
+                      left: 0,
+                      child: Column(
+                        children: <Widget>[
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              Container(
+                                margin: const EdgeInsets.only(top: 25),
+                                width: 190,
+                                height: 251.72,
+                                child: ImageShimmer(
+                                  url: edicoes.capa.url,
+                                ),
+                              ),
+                              Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 18),
+                                    child: Text(
+                                      '-${edicoes.numberEdition}',
+                                      style: TextStyle(
+                                        fontFamily: 'TradeGothic',
+                                        fontSize: 62,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.textColorWhite,
+                                      ),
+                                    ),
+                                  ),
+                                  Text(
+                                    '${edicoes.mes}  ${edicoes.ano}',
+                                    style: TextStyle(
+                                      fontFamily: 'TradeGothic',
+                                      fontSize: 25,
+                                      // fontWeight: FontWeight.bold,
+                                      color: AppColors.textColorWhite,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
-                        ),
-                        alignment: Alignment.centerLeft,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10, bottom: 12),
-                          child: TextButton(
-                            onPressed: () {
-                              Modular.to.pushNamed('/magazine', arguments: {
-                                "url":
-                                    'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
-                                        (controller.lastEdition.id).toString(),
-                                "title": edicoes.numberEdition,
-                                "data": '${edicoes.mes} de ${edicoes.ano}'
-                              });
-                            },
-                            child: Container(
-                              color: AppColors.orangePiaui,
-                              height: vHeight * 0.06,
-                              width: vWidth / 2.4,
-                              child: Align(
-                                child: Text(
-                                  'Ler agora',
-                                  style: TextStyle(
-                                    fontFamily: 'Piaui',
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 12, top: 25),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 10, bottom: 12),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Modular.to
+                                          .pushNamed('/magazine', arguments: {
+                                        "url":
+                                            'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
+                                                (controller.lastEdition.id)
+                                                    .toString(),
+                                        "title": edicoes.numberEdition,
+                                        "data":
+                                            '${edicoes.mes} de ${edicoes.ano}'
+                                      });
+                                    },
+                                    child: Container(
+                                      color: AppColors.textColorWhite,
+                                      height: size.height * 0.06,
+                                      width: size.width / 2.4,
+                                      child: Align(
+                                        child: Text(
+                                          'Ler agora',
+                                          style: TextStyle(
+                                            fontFamily: 'Piaui',
+                                            color: AppColors.textColorBold,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        alignment: Alignment.center,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                alignment: Alignment.center,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 10, bottom: 12),
-                          child: TextButton(
-                            onPressed: () async {
-                              var m = await materias(
-                                  controller.lastEdition.id.toString());
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 10, bottom: 12),
+                                  child: TextButton(
+                                    onPressed: () async {
+                                      var m = await materias(
+                                          controller.lastEdition.id.toString());
 
-                              var posts = [];
+                                      var posts = [];
 
-                              for (var i = 1;
-                                  i <= jsonDecode(m)["materias"].length;
-                                  i++) {
-                                posts.add(await conteudo(
-                                    jsonDecode(m)["materias"][i.toString()]
-                                            ["id"]
-                                        .toString()));
-                              }
+                                      for (var i = 1;
+                                          i <= jsonDecode(m)["materias"].length;
+                                          i++) {
+                                        posts.add(await conteudo(
+                                            jsonDecode(m)["materias"]
+                                                    [i.toString()]["id"]
+                                                .toString()));
+                                      }
 
-                              var idColaboradores = [];
+                                      var idColaboradores = [];
 
-                              for (var i = 0; i < posts.length; i++) {
-                                for (var j = 0;
-                                    j <
-                                        jsonDecode(posts[i])["acf"]["autor"]
-                                            .length;
-                                    j++) {
-                                  if (!idColaboradores.contains(
-                                      jsonDecode(posts[i])["acf"]["autor"][j]
-                                          ["ID"])) {
-                                    idColaboradores.add(
-                                        jsonDecode(posts[i])["acf"]["autor"][j]
-                                            ["ID"]);
-                                  }
-                                }
-                              }
+                                      for (var i = 0; i < posts.length; i++) {
+                                        for (var j = 0;
+                                            j <
+                                                jsonDecode(posts[i])["acf"]
+                                                        ["autor"]
+                                                    .length;
+                                            j++) {
+                                          if (!idColaboradores.contains(
+                                              jsonDecode(posts[i])["acf"]
+                                                  ["autor"][j]["ID"])) {
+                                            idColaboradores.add(
+                                                jsonDecode(posts[i])["acf"]
+                                                    ["autor"][j]["ID"]);
+                                          }
+                                        }
+                                      }
 
-                              var colaboradores = [];
+                                      var colaboradores = [];
 
-                              for (var item in idColaboradores) {
-                                colaboradores.add(await colaborador(item));
-                              }
+                                      for (var item in idColaboradores) {
+                                        colaboradores
+                                            .add(await colaborador(item));
+                                      }
 
-                              final RevistDownload revist = RevistDownload(
-                                  controller.lastEdition.id,
-                                  edicoes.capa.url,
-                                  edicoes.numberEdition,
-                                  edicoes.mes,
-                                  edicoes.ano,
-                                  m);
-                              await widget.downloads.addRevist(revist);
-                            },
-                            child: Container(
-                              height: vHeight * 0.06,
-                              width: vWidth / 2.4,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppColors.orangePiaui,
-                                ),
-                              ),
-                              child: Align(
-                                child: Text(
-                                  'Fazer download',
-                                  style: TextStyle(
-                                    fontFamily: 'Piaui',
-                                    color: AppColors.orangePiaui,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                                      final RevistDownload revist =
+                                          RevistDownload(
+                                              controller.lastEdition.id,
+                                              edicoes.capa.url,
+                                              edicoes.numberEdition,
+                                              edicoes.mes,
+                                              edicoes.ano,
+                                              m);
+                                      await widget.downloads.addRevist(revist);
+                                    },
+                                    child: Container(
+                                      height: size.height * 0.06,
+                                      width: size.width / 2.4,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: AppColors.textColorWhite,
+                                        ),
+                                      ),
+                                      child: Align(
+                                        child: Text(
+                                          'Fazer download',
+                                          style: TextStyle(
+                                            fontFamily: 'Piaui',
+                                            color: AppColors.textColorWhite,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                        alignment: Alignment.center,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                                alignment: Alignment.center,
-                              ),
+                              ],
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 );

@@ -366,7 +366,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                       color: AppColors.orangePiaui),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow-sign.png',
+                                  'assets/images/arrow_sair.png',
                                   width: 20,
                                   height: 12,
                                 ),

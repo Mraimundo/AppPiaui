@@ -9,7 +9,7 @@ class BorderTopWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border(
-          top: BorderSide(color: AppColors.internalBorderColor, width: 0.9),
+          top: BorderSide(color: AppColors.internalBorderColor, width: 1),
         ),
       ),
     );
