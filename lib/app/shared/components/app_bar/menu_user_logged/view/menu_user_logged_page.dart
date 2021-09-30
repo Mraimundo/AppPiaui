@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/shared/components/app_bar/menu/controller/menu_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
+import 'package:piaui_app/app/shared/components/complete_download/complete_download.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class MenuUserLoggedPage extends StatefulWidget {
@@ -137,7 +138,12 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                   // ),
                   SizedBox(height: 8),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (_) => CompleteDownload(),
+                      );
+                    },
                     child: ListTile(
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
