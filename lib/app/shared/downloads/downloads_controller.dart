@@ -2,10 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
 import 'package:piaui_app/app/shared/database/local_storage.dart';
+import 'package:piaui_app/app/shared/downloads/api_download.dart';
+import 'package:piaui_app/app/shared/downloads/model/materia.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 
 class DownloadsController {
   final LocalStorageHive local = LocalStorageHive();
+  final ApiDownload apiDownload = ApiDownload();
   findAll() async {}
 
   Future<String> getByKey(key) async {
