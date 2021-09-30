@@ -11,79 +11,120 @@ class _SearchButtonState extends State<SearchButton> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(top: 140),
+      padding: const EdgeInsets.only(top: 100),
       child: SingleChildScrollView(
         child: Container(
           height: size.height,
           width: size.width,
           color: Colors.black54,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 40),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Material(
-                      color: Colors.black54.withAlpha(0),
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        icon: Icon(Icons.clear),
-                        color: Colors.white,
-                        iconSize: 60,
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 44),
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
-                    child: TextField(
-                      obscureText: false,
-                      cursorColor: Colors.black,
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                        hintText: "Escreva sua busca aqui ...",
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(right: 48),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {},
-                      child: Container(
-                        height: 60,
-                        width: 150,
-                        color: AppColors.orangePiaui,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            'BUSCAR',
-                            style: TextStyle(
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 350,
+                  height: 238,
+                  color: AppColors.textColorWhite,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Text(
+                          'Pesquisa',
+                          style: TextStyle(
+                            color: AppColors.orangePiaui,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25,
                           ),
                         ),
                       ),
-                    )
-                  ],
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Container(
+                          width: 315,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: AppColors.orangePiaui,
+                            ),
+                          ),
+                          child: Align(
+                            alignment: Alignment.center,
+                            child: Card(
+                              elevation: 0,
+                              child: Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 8),
+                                child: TextField(
+                                  obscureText: false,
+                                  cursorColor: Colors.black,
+                                  keyboardType: TextInputType.text,
+                                  decoration: InputDecoration(
+                                    hintText: "Escreva sua busca aqui ...",
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 25),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Container(
+                                height: 60,
+                                width: 150,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: AppColors.orangePiaui,
+                                  ),
+                                ),
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'Fechar',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                      color: AppColors.orangePiaui,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            TextButton(
+                              onPressed: () {},
+                              child: Container(
+                                height: 60,
+                                width: 150,
+                                color: AppColors.orangePiaui,
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    'BUSCAR',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

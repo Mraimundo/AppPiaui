@@ -14,8 +14,7 @@ class _LoadMoreWidgetState
   @override
   Widget build(BuildContext context) {
     int rows = 6;
-    double vHeight = MediaQuery.of(context).size.height;
-    double vWidth = MediaQuery.of(context).size.width;
+
     return Observer(
       builder: (_) {
         if (!controller.isLoading) {
@@ -30,34 +29,17 @@ class _LoadMoreWidgetState
                 children: [
                   Expanded(
                     child: TextButton(
-                      child: Container(
-                        height: vHeight * 0.06,
-                        width: vWidth / 2.1,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: AppColors.orangePiaui,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              'CARREGAR MAIS',
-                              style: TextStyle(
-                                  color: AppColors.orangePiaui,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_down,
-                              color: AppColors.orangePiaui,
-                              size: 35,
-                            )
-                          ],
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add_circle,
+                            color: AppColors.backgroundColorLastEdition,
+                            size: 55,
+                          )
+                        ],
                       ),
                       onPressed: () {
-                        print("Loading new page? R: ${controller.loadPage}");
                         if (!controller.loadPage) {
                           if (numberEditions % 2 == 0) {
                             if (items < numberEditions - 2) {
