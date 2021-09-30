@@ -75,7 +75,7 @@ class _InsideArticleButtonState
               itemCount: jsonDecode(snapshot.data)["materias"].length,
               itemBuilder: (_, index) => TextButton(
                 onPressed: () async {
-                  if (user == "" && index > 2) {
+                  if (user == "" && index > 4) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Usuário não está logado')));
                     Modular.to.pushNamed('/login');
@@ -128,7 +128,7 @@ class _InsideArticleButtonState
               Positioned(
                 left: 0,
                 right: 0,
-                child: user == "" && pos > 2
+                child: user == "" && pos > 4
                     ? Image.asset("assets/images/fechado.png")
                     : Text(""),
               )

@@ -25,16 +25,16 @@ class DownloadsController {
     return list;
   }
 
-  _addRevistMyList(String magazine_id) async {
+  _addRevistMyList(String magazineId) async {
     List<String> listString = await getMyList();
     if (listString == null) {
       listString = [];
     }
 
-    if (!((listString.where((element) => (element == magazine_id))).length >
+    if (!((listString.where((element) => (element == magazineId))).length >
         0)) {
       listString = listString.toList();
-      listString.add(magazine_id);
+      listString.add(magazineId);
     }
 
     await local.setItem('my_list', listString);
@@ -62,8 +62,13 @@ class DownloadsController {
     List<RevistDownload> revists = [];
     for (var i = 0; listString.length > i; i++) {
       Map<String, dynamic> revist = jsonDecode(await getByKey(listString[i]));
-      revists.add(RevistDownload(revist['ediciao'], revist['capa'],
-          revist['numberEdition'], revist['mes'], revist['ano']));
+      revists.add(RevistDownload(
+          revist['ediciao'],
+          revist['capa'],
+          revist['numberEdition'],
+          revist['mes'],
+          revist['ano'],
+          revist['materias']));
     }
 
     return revists;

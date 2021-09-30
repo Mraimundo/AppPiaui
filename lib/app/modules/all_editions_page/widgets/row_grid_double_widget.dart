@@ -82,12 +82,13 @@ class _RowGridDoubleWidgetState
                                   data:
                                       '${editionPair.mes} de ${editionPair.ano}'),
                               ButtomDownLoadWidget(
-                                  revist: RevistDownload(
+                                  /* revist: RevistDownload(
                                       int.parse(id),
                                       editionPair.capa.url,
                                       editionPair.numberEdition,
                                       editionPair.mes,
-                                      editionPair.ano))
+                                      editionPair.ano) */
+                                  )
                             ],
                           ),
                         ],
@@ -130,12 +131,13 @@ class _RowGridDoubleWidgetState
                                 data: '${editionOdd.mes} de ${editionOdd.ano}',
                               ),
                               ButtomDownLoadWidget(
-                                  revist: RevistDownload(
-                                      int.parse(idOdd),
+                                  /* revist: RevistDownload(
+                                      idOdd,
                                       editionOdd.capa.url,
                                       editionOdd.numberEdition,
                                       editionOdd.mes,
-                                      editionOdd.ano))
+                                      editionOdd.ano) */
+                                  )
                             ],
                           ),
                         ],
