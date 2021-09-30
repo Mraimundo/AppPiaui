@@ -7,7 +7,7 @@ class TextConfiWidget extends StatelessWidget {
     final double vFontSize = 18;
     return Container(
       child: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 29),
+        padding: const EdgeInsets.only(left: 22, top: 29, right: 22),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -18,6 +18,17 @@ class TextConfiWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   color: AppColors.dark),
             ),
+            Container(
+              height: 25,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: AppColors.internalBorderColor,
+                    width: 1,
+                  ),
+                ),
+              ),
+            )
           ],
         ),
       ),
