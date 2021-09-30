@@ -14,7 +14,8 @@ class _LoadMoreWidgetState
   @override
   Widget build(BuildContext context) {
     int rows = 6;
-
+    double vHeight = MediaQuery.of(context).size.height;
+    double vWidth = MediaQuery.of(context).size.width;
     return Observer(
       builder: (_) {
         if (!controller.isLoading) {

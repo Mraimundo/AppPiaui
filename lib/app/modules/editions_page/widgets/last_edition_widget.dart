@@ -89,9 +89,9 @@ class _LastEditionWidgetState
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              TextButton(
-                                onPressed: () async {
-                                  await cleanUser();
+                          TextButton(
+                            onPressed: () async {
+                              await cleanUser();
                                   Modular.to.pushNamed('/magazine', arguments: {
                                     "url":
                                         'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
@@ -113,12 +113,12 @@ class _LastEditionWidgetState
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22),
                                     ),
-                                    alignment: Alignment.center,
-                                  ),
-                                ),
+                                alignment: Alignment.center,
                               ),
-                              TextButton(
-                                onPressed: () {
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: () {
                                   Modular.to.pushNamed('/login');
                                 },
                                 child: Container(
@@ -140,9 +140,9 @@ class _LastEditionWidgetState
                                     ),
                                     alignment: Alignment.center,
                                   ),
-                                ),
-                              ),
-                            ],
+                            ),
+                          ),
+                        ],
                           ),
                         ),
                       ],

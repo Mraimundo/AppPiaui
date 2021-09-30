@@ -103,32 +103,8 @@ class _EditionPageState
                             ],
                           ),
                         ),
-                      ),
-                      SizedBox(height: 23),
-                      TextHasNoSignatureWidget(
-                        onTap: _launchURL,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            top: 21, right: 30, left: 30, bottom: 25),
-                        child: BorderTopWidget(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          left: 25,
-                          right: 25,
-                        ),
-                        child: FilterWidget(),
-                      ),
-                      LastEditionWidget(),
-                      RowGridWidget(),
-                      Padding(
-                        padding:
-                            const EdgeInsets.only(left: 25, right: 25, top: 25),
-                        child: BorderTopWidget(),
-                      ),
-                      LoadMoreWidget(),
-                    ],
+                      );
+                    },
                   ),
                 ],
               ),
