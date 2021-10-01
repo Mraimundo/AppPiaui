@@ -49,6 +49,8 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
     Map<String, dynamic> materiaMap = jsonData[widget.index];
     Map<String, dynamic> conteudo = materiaMap['conteudo'];
     List<dynamic> autors = conteudo['Colaboradores'];
+    var _bytes = base64.decode(materiaMap["image"].split(',').last);
+
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
       backgroundColor: AppColors.backgroundColor,
@@ -75,8 +77,8 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
                                 _parseHtmlString(conteudo['title'].toString())
                                     .toUpperCase(),
                           ),
-                          Image.network(
-                            materiaMap['image'],
+                          Image.memory(
+                            _bytes,
                             fit: BoxFit.fill,
                           ),
                           SizedBox(height: 7),

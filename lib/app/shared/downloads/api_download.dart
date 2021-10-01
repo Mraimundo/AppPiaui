@@ -1,6 +1,16 @@
 import 'package:dio/dio.dart';
 
 class ApiDownload {
+  Future<String> imageBase64(id) async {
+    final _url =
+        'https://piaui.homolog.inf.br/wp-json/customRest/v1/imgcode?postid=' +
+            id.toString();
+
+    var dio = Dio();
+    var response = await dio.get(_url);
+    return response.toString();
+  }
+
   Future<String> materias(id) async {
     final _url =
         'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +

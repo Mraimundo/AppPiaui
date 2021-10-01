@@ -66,6 +66,7 @@ class _InsideArticleButtonState extends State<InsideArticleButton> {
 Card _makeListSubjects(RevistDownload revist, int pos) {
   List<dynamic> jsonData = revist.materias;
   Map<String, dynamic> materiaMap = jsonData[pos];
+  var _bytes = base64.decode(materiaMap["image"].split(',').last);
 
   return Card(
     elevation: 0,
@@ -81,7 +82,8 @@ Card _makeListSubjects(RevistDownload revist, int pos) {
               height: 100,
               color: Colors.black.withOpacity(1),
               child: Container(
-                child: Image.network(materiaMap['image'], fit: BoxFit.fill),
+                child: Image.memory(
+                    _bytes) /* Image.network(materiaMap['image'], fit: BoxFit.fill) */,
               ),
             ),
             /* Positioned(

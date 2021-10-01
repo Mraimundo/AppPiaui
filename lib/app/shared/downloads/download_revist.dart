@@ -13,14 +13,15 @@ class DownloadRevist {
 
   download(id, capa, numberEdition, mes, ano) async {
     var m = await apiDownload.materias(id);
-
+    var capaRevist = await apiDownload.imageBase64(id);
     final List<Materia> materias = [];
     for (var i = 1; i <= jsonDecode(m)["materias"].length; i++) {
       List<Colaborador> colaboradores = [];
 
       var conteudoReponse = await apiDownload
           .conteudo(jsonDecode(m)["materias"][(i).toString()]["id"].toString());
-
+      var materiaImage = await apiDownload.imageBase64(
+          jsonDecode(m)["materias"][(i).toString()]["id"].toString());
       //Colaboradores
       for (var cont = 0;
           jsonDecode(conteudoReponse)["acf"]["autor"].length > cont;
@@ -47,7 +48,7 @@ class DownloadRevist {
       Materia materia = new Materia(
           jsonDecode(m)["materias"][i.toString()]["id"].toString(),
           conteudo,
-          jsonDecode(m)["materias"][i.toString()]['imagemcapa']['url'],
+          jsonDecode(materiaImage)['imgcode'],
           jsonDecode(m)["materias"][i.toString()]['gravata'],
           jsonDecode(m)["materias"][i.toString()]['titulo'],
           jsonDecode(m)["materias"][i.toString()]['imagemcapa']['alt']);
@@ -55,8 +56,8 @@ class DownloadRevist {
       materias.add(materia);
     }
 
-    final RevistDownload revist =
-        RevistDownload(id, capa, numberEdition, mes, ano, materias);
+    final RevistDownload revist = RevistDownload(id,
+        jsonDecode(capaRevist)['imgcode'], numberEdition, mes, ano, materias);
 
     await downloads.addRevist(revist);
   }
