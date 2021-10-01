@@ -23,6 +23,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 Future<void> populateUser(user) async {
   await FlutterSession().set("user", user);
+  await FlutterSession().set("date", DateTime.now().toString());
 }
 
 class LoginPage extends StatefulWidget {

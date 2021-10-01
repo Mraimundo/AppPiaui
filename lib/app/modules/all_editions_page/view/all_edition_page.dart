@@ -8,11 +8,12 @@ import 'package:piaui_app/app/shared/layout/colors.dart';
 class AllEditionPage extends StatelessWidget {
   // final GoogleSignInAccount user;
   final Dados user;
-  const AllEditionPage({Key key, this.user}) : super(key: key);
+  final bool conected;
+  const AllEditionPage({Key key, this.user, this.conected}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print(user.nome);
+    print(conected);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

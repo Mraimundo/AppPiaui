@@ -15,19 +15,6 @@ import 'package:piaui_app/app/modules/editions_page/widgets/text_to_sign_widget.
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-Future<String> teste() async {
-  String res;
-  try {
-    final result = await InternetAddress.lookup('google.com');
-    if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
-      res = 'connected';
-    }
-  } on SocketException catch (_) {
-    res = 'not connected';
-  }
-  return res;
-}
-
 class EditionPage extends StatefulWidget {
   final String title;
 
@@ -51,63 +38,63 @@ class _EditionPageState
   @override
   Widget build(context) {
     return Scaffold(
-              appBar: PreferredAppBarWidget(height: 56),
-              backgroundColor: AppColors.backgroundColor,
-              body: Stack(
-                children: [
-                  LayoutBuilder(
-                    builder: (BuildContext context,
-                        BoxConstraints viewportConstraints) {
-                      return SingleChildScrollView(
-                        child: ConstrainedBox(
-                          constraints: BoxConstraints(
-                            minHeight: viewportConstraints.maxHeight,
-                          ),
-                          child: Column(
-                            children: [
-                              BorderTopWidget(),
-                              Container(
-                                height: 42,
-                                width: 600,
-                                color: AppColors.appBar,
-                                child: TextToSignWidget(
-                                  onTap: () {
-                                    Modular.to.pushNamed('/login');
-                                  },
-                                ),
-                              ),
-                              SizedBox(height: 23),
-                              TextHasNoSignatureWidget(onTap: () {
-                                _launchURL();
-                              }),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 21, right: 30, left: 30, bottom: 25),
-                                child: BorderTopWidget(),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 25,
-                                  right: 25,
-                                ),
-                                child: FilterWidget(),
-                              ),
-                              LastEditionWidget(),
-                              RowGridWidget(),
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 25, left: 25, right: 25),
-                                child: BorderTopWidget(),
-                              ),
-                              LoadMoreWidget(),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
+      appBar: PreferredAppBarWidget(height: 56),
+      backgroundColor: AppColors.backgroundColor,
+      body: Stack(
+        children: [
+          LayoutBuilder(
+            builder:
+                (BuildContext context, BoxConstraints viewportConstraints) {
+              return SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: viewportConstraints.maxHeight,
                   ),
-                ],
-              ),
-            );
+                  child: Column(
+                    children: [
+                      BorderTopWidget(),
+                      Container(
+                        height: 42,
+                        width: 600,
+                        color: AppColors.appBar,
+                        child: TextToSignWidget(
+                          onTap: () {
+                            Modular.to.pushNamed('/login');
+                          },
+                        ),
+                      ),
+                      SizedBox(height: 23),
+                      TextHasNoSignatureWidget(onTap: () {
+                        _launchURL();
+                      }),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 21, right: 30, left: 30, bottom: 25),
+                        child: BorderTopWidget(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 25,
+                          right: 25,
+                        ),
+                        child: FilterWidget(),
+                      ),
+                      LastEditionWidget(),
+                      RowGridWidget(),
+                      Padding(
+                        padding:
+                            const EdgeInsets.only(top: 25, left: 25, right: 25),
+                        child: BorderTopWidget(),
+                      ),
+                      LoadMoreWidget(),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }

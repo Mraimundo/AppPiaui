@@ -66,7 +66,7 @@ class _RowGridSingleWidgetState
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Edição #${edition.numberEdition}: ${edition.mes} de ${edition.ano}',
+                                /* 'Edição #${edition.numberEdition}: ${edition.mes} de ${edition.ano}' */ "Teste",
                                 style: TextStyle(fontSize: rowFontsize),
                               ),
                             ),
