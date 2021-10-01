@@ -28,10 +28,6 @@ Future<String> teste() async {
   return res;
 }
 
-Future<String> readUser() async {
-  return await FlutterSession().get("user");
-}
-
 class EditionPage extends StatefulWidget {
   final String title;
 
@@ -54,11 +50,7 @@ class _EditionPageState
 
   @override
   Widget build(context) {
-    return FutureBuilder<String>(
-        future: readUser(),
-        builder: (context, AsyncSnapshot<String> snapshot) {
-          if (snapshot.hasData) {
-            return Scaffold(
+    return Scaffold(
               appBar: PreferredAppBarWidget(height: 56),
               backgroundColor: AppColors.backgroundColor,
               body: Stack(
@@ -117,9 +109,5 @@ class _EditionPageState
                 ],
               ),
             );
-          } else {
-            return CircularProgressIndicator();
-          }
-        });
   }
 }

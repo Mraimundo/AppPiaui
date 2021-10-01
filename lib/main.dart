@@ -9,6 +9,9 @@ import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.da
 import 'package:piaui_app/app/shared/database/database.dart';
 
 Future<Dados> readUser() async {
+  if(await FlutterSession().get("user") == null){
+    await FlutterSession().set("user", "");
+  }
   var response = await FlutterSession().get("user");
   Dados user;
   if (response == "") {
