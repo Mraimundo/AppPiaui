@@ -9,6 +9,7 @@ import 'package:piaui_app/app/shared/layout/colors.dart';
 
 Future<void> populateUser(user) async {
   await FlutterSession().set("user", user);
+  await FlutterSession().set("date", DateTime.now().toString());
 }
 
 class LoginWidget extends StatefulWidget {

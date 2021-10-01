@@ -11,9 +11,7 @@ import 'package:piaui_app/app/modules/inside_magazine/repository/inside_reposito
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-Future<dynamic> readUser() async {
-  return await FlutterSession().get("user");
-}
+
 
 class InsideMagazinePage extends StatefulWidget {
   final String url;
@@ -46,7 +44,7 @@ class _InsideMagazinePageState
 
   @override
   Widget build(BuildContext context) {
-    readUser().then((value) => {user = value});
+    
 
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),

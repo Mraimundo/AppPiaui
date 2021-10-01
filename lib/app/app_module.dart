@@ -42,8 +42,9 @@ import 'modules/inside_magazine/inside_magazine_module.dart';
 
 class AppModule extends MainModule {
   final Dados user;
+  final bool conected;
 
-  AppModule(this.user);
+  AppModule(this.user, this.conected);
 
   @override
   List<Bind> get binds => [
@@ -76,13 +77,13 @@ class AppModule extends MainModule {
         ModularRouter(Modular.initialRoute,
             module: user.nome == null
                 ? EditionPageModule()
-                : AllEditionPageModule(user)),
+                : AllEditionPageModule(user, conected)),
         ModularRouter('/menu', module: MenuModule()),
         ModularRouter('/login', module: LoginModule()),
         ModularRouter('/signature', module: SignatureModule()),
         ModularRouter('/config', module: ConfigModule()),
         ModularRouter('/editions', module: EditionPageModule()),
-        ModularRouter('/logged', module: AllEditionPageModule(user)),
+        ModularRouter('/logged', module: AllEditionPageModule(user, conected)),
         ModularRouter('/downloads', module: DownLoadEditionPageModule()),
         ModularRouter('/articles', module: MagazineArticlesModule()),
         ModularRouter('/magazine', module: InsideMagazineModule()),

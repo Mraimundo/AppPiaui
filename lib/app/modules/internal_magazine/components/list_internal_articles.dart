@@ -44,19 +44,6 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
 
   @override
   Widget build(BuildContext context) {
-    String htmlData = """<div>
-  <h1>Demo Page</h1>
-  <p>This is a fantastic product that you should buy!</p>
-  <h3>Features</h3>
-  <ul>
-    <li>It actually works</li>
-    <li>It exists</li>
-    <li>It doesn't cost much!</li>
-  </ul>
-  <!--You can pretty much put any html in here!-->
-</div>""";
-
-    dom.Document document = htmlparser.parse(htmlData);
     return FutureBuilder<String>(
         future: post(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
@@ -65,33 +52,37 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
               padding: const EdgeInsets.only(left: 26, right: 29),
               child: Column(
                 children: [
-                  Html(
-                      data: rendered.replaceAll('class=\"capitalize\"',
-                          'style="text-transform: capitalize; display: inline-block; margin-top: 12px; margin-right: 5px; margin-bottom: 0px;  float: left; font-family: Piaui, Tahoma, sans-serif !important; color: #2b2b2b; font-size: 100px; line-height: 60px; font-weight: 700; text-transform: uppercase;"')),
-                  /*  ListView.separated(
+                  ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
                     separatorBuilder: (context, index) => SizedBox(height: 0),
-                    itemCount:
-                        rendered.split("<span class=\"capitalize\">").length,
-                    itemBuilder: (_,
-                            index) => /*  DropCapText(
-                            _parseHtmlString(rendered
-                                .split("<span class=\"capitalize\">")[index]),
-                            style: TextStyle(
-                              height: 1.3,
-                              fontFamily: 'Palatino',
-                              fontSize: 13,
-                              fontWeight: FontWeight.normal,
-                              color: AppColors.textColorNormal,
-                            ),
-                            dropCapChars: 1,
-                          ) */
-
-                        Html(
-                            data: rendered
-                                .split("<span class=\"capitalize\">")[index]),
-                  ), */
+                    itemCount: rendered.split("\n").length,
+                    itemBuilder: (_, index) => rendered
+                            .split("\n")[index]
+                            .contains('<span class="capitalize">')
+                        ? Container(
+                            margin: new EdgeInsets.symmetric(horizontal: 9.0),
+                            child: DropCapText(
+                              _parseHtmlString(rendered.split("\n")[index]),
+                              style: TextStyle(
+                                height: 1.3,
+                                fontFamily: 'Palatino',
+                                fontSize: 13,
+                                fontWeight: FontWeight.normal,
+                                color: AppColors.textColorNormal,
+                              ),
+                              dropCapChars: 1,
+                            ))
+                        : Html(
+                            data: rendered.split("\n")[index],
+                            style: {
+                              "p": Style(
+                                  fontFamily: 'Palatino',
+                                  fontSize: FontSize(13),
+                                  fontWeight: FontWeight.normal),
+                            },
+                          ),
+                  ),
                   AutorInternalArticle(
                       autor: jsonDecode(snapshot.data)["acf"]["autor"]),
                 ],
