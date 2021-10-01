@@ -37,6 +37,8 @@ class _InsideArticleButtonState extends State<InsideArticleButton> {
       itemCount: widget.revist.materias.length,
       itemBuilder: (_, index) => TextButton(
         onPressed: () async {
+          Modular.to.pushNamed('/internal_downloads',
+              arguments: {"revist": widget.revist, "index": widget.index});
           /*  if (user == "" && index > 4) {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('Usuário não está logado')));

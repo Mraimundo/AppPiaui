@@ -12,6 +12,7 @@ import 'package:piaui_app/app/modules/inside_magazine_logged/inside_magazine_mod
 import 'package:piaui_app/app/modules/internal_magazine/controller/internal_magazine_controller.dart';
 import 'package:piaui_app/app/modules/internal_magazine/internal_magazine_module.dart';
 import 'package:piaui_app/app/modules/internal_magazine/repository/internal_repository.dart';
+import 'package:piaui_app/app/modules/internal_magazine_downloads/internal_magazine_module.dart';
 import 'package:piaui_app/app/modules/magazine_articles/controller/magazine_articles_controller.dart';
 import 'package:piaui_app/app/modules/magazine_articles/magazine_articles_module.dart';
 import 'package:piaui_app/app/modules/subscribe_now/controller/subscribe_now_controller.dart';
@@ -91,6 +92,8 @@ class AppModule extends MainModule {
         ModularRouter('/menu_logged', module: MenuUserLoggedModule()),
         ModularRouter('/magazine_downloads',
             module: InsideMagazineDownloadModule()),
+        ModularRouter('/internal_downloads',
+            module: InternalMagazineDownloadsModule()),
       ];
 
   @override
