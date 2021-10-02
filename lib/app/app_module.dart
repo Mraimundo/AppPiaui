@@ -36,7 +36,8 @@ import 'modules/download_editions_page/controller/edition_page_controller.dart';
 import 'modules/download_editions_page/download_edition_page_module.dart';
 import 'modules/inside_magazine/inside_magazine_module.dart';
 import 'shared/components/app_bar/menu_user_logged/menu_user_looged_module.dart';
-import 'shared/components/change_password/change_password.dart';
+import 'shared/components/change_password/change_password_module.dart';
+import 'shared/components/problem_subscription/problem_subscription_module.dart';
 
 class AppModule extends MainModule {
   @override
@@ -69,7 +70,9 @@ class AppModule extends MainModule {
   List<ModularRouter> get routers => [
         ModularRouter(Modular.initialRoute, module: EditionPageModule()),
         ModularRouter('/menu', module: MenuModule()),
-        ModularRouter('/change_password', module: ChangePassWordModule()),
+        ModularRouter('/change_password', module: ChangePasswordModule()),
+        ModularRouter('/problem_subscription',
+            module: ProblemSubscriptionModule()),
         ModularRouter('/menu_logged', module: MenuUserLoggedModule()),
         ModularRouter('/login', module: LoginModule()),
         ModularRouter('/signature', module: SignatureModule()),

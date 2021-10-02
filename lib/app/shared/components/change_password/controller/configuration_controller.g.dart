@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'menu_controller.dart';
+part of 'configuration_controller.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,8 +8,8 @@ part of 'menu_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$MenuController on _MenuControllerBase, Store {
-  final _$valueAtom = Atom(name: '_MenuControllerBase.value');
+mixin _$ConfigController on _ConfigControllerBase, Store {
+  final _$valueAtom = Atom(name: '_ConfigControllerBase.value');
 
   @override
   int get value {
@@ -24,17 +24,17 @@ mixin _$MenuController on _MenuControllerBase, Store {
     });
   }
 
-  final _$_MenuControllerBaseActionController =
-      ActionController(name: '_MenuControllerBase');
+  final _$_ConfigControllerBaseActionController =
+      ActionController(name: '_ConfigControllerBase');
 
   @override
   void increment() {
-    final _$actionInfo = _$_MenuControllerBaseActionController.startAction(
-        name: '_MenuControllerBase.increment');
+    final _$actionInfo = _$_ConfigControllerBaseActionController.startAction(
+        name: '_ConfigControllerBase.increment');
     try {
       return super.increment();
     } finally {
-      _$_MenuControllerBaseActionController.endAction(_$actionInfo);
+      _$_ConfigControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 

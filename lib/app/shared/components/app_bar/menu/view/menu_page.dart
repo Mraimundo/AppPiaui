@@ -33,7 +33,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                 children: <Widget>[
                   TextButton(
                     onPressed: () {
-                      Modular.to.pushNamed('/menu_logged');
+                      Modular.to.pushNamed('/problem_subscription');
                     },
                     child: ListTile(
                       title: Padding(
@@ -118,7 +118,9 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Modular.to.pushNamed('/change_password');
+                    },
                     child: ListTile(
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),

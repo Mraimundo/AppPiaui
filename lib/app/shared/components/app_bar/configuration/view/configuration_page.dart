@@ -34,17 +34,17 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
               child: ListView(
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 children: <Widget>[
-                  IconButton(
-                      icon: Icon(
-                          AppWidget.themeNotifier.value == ThemeMode.light
-                              ? Icons.dark_mode
-                              : Icons.light_mode),
-                      onPressed: () {
-                        AppWidget.themeNotifier.value =
-                            AppWidget.themeNotifier.value == ThemeMode.light
-                                ? ThemeMode.dark
-                                : ThemeMode.light;
-                      }),
+                  // IconButton(
+                  //     icon: Icon(
+                  //         AppWidget.themeNotifier.value == ThemeMode.light
+                  //             ? Icons.dark_mode
+                  //             : Icons.light_mode),
+                  //     onPressed: () {
+                  //       AppWidget.themeNotifier.value =
+                  //           AppWidget.themeNotifier.value == ThemeMode.light
+                  //               ? ThemeMode.dark
+                  //               : ThemeMode.light;
+                  //     }),
 
                   // TextButton(
                   //   onPressed: () {},

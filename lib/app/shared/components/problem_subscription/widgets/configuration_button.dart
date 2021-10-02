@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/app_controller.dart';
 
-class MenuButton extends StatefulWidget {
+class ConfigButton extends StatefulWidget {
   @override
-  _MenuButtonState createState() => _MenuButtonState();
+  _ConfigButtonState createState() => _ConfigButtonState();
 }
 
-class _MenuButtonState extends ModularState<MenuButton, AppController> {
+class _ConfigButtonState extends ModularState<ConfigButton, AppController> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
@@ -16,8 +16,8 @@ class _MenuButtonState extends ModularState<MenuButton, AppController> {
         padding: EdgeInsets.all(4),
         child: controller.checkedPressed
             ? Image.asset('assets/images/icon_x.png', fit: BoxFit.contain)
-            : Image.asset('assets/images/icon_menu.png', fit: BoxFit.contain),
-        //color: Colors.black,
+            : Image.asset('assets/images/icon_configuration.png',
+                fit: BoxFit.contain),
         height: MediaQuery.of(context).orientation == Orientation.portrait
             ? MediaQuery.of(context).size.height / 25
             : MediaQuery.of(context).size.height / 14,
@@ -27,7 +27,7 @@ class _MenuButtonState extends ModularState<MenuButton, AppController> {
         controller.checked();
         print('Menu pressed ? ${controller.checkedPressed}');
         controller.checkedPressed
-            ? Modular.to.pushNamed('/menu')
+            ? Modular.to.pushNamed('/config')
             : Modular.to.pushNamed('/editions');
       },
     );
