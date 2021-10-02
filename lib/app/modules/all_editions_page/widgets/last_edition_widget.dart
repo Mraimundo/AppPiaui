@@ -19,6 +19,7 @@ class LastEditionWidget extends StatefulWidget {
   @override
   _LastEditionWidgetState createState() => _LastEditionWidgetState();
   DownloadRevist downloadRevist = DownloadRevist();
+  DownloadsController downloads = DownloadsController();
   final bool user;
   LastEditionWidget({Key key, this.user = false}) : super(key: key);
 }
@@ -135,22 +136,36 @@ class _LastEditionWidgetState
                                       right: 10, bottom: 12),
                                   child: TextButton(
                                     onPressed: () async {
-                                      await widget.downloadRevist.download(
-                                        controller.lastEdition.id,
-                                        edicoes.capa.url,
-                                        edicoes.numberEdition,
-                                        edicoes.mes,
-                                        edicoes.ano,
-                                      );
+                                      final List<String> listRevista =
+                                          new List<String>.from(await widget
+                                              .downloads
+                                              .getMyList());
 
-                                      showDialog(
-                                        context: context,
-                                        builder: (_) => CompleteDownload(
-                                            int.parse(controller.lastEdition.id
-                                                .toString()),
-                                            edicoes.ano.toString(),
-                                            edicoes.mes.toString()),
-                                      );
+                                      if (((listRevista.where((element) =>
+                                                  (element ==
+                                                      'edicao_' +
+                                                          controller
+                                                              .lastEdition.id
+                                                              .toString())))
+                                              .length ==
+                                          0)) {
+                                        await widget.downloadRevist.download(
+                                          controller.lastEdition.id,
+                                          edicoes.capa.url,
+                                          edicoes.numberEdition,
+                                          edicoes.mes,
+                                          edicoes.ano,
+                                        );
+                                        showDialog(
+                                          context: context,
+                                          builder: (_) => CompleteDownload(
+                                              int.parse(controller
+                                                  .lastEdition.acf.numberEdition
+                                                  .toString()),
+                                              edicoes.ano.toString(),
+                                              edicoes.mes.toString()),
+                                        );
+                                      }
                                     },
                                     child: Container(
                                       height: size.height * 0.06,
