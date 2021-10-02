@@ -144,12 +144,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                   // ),
                   SizedBox(height: 8),
                   TextButton(
-                    onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (_) => CompleteDownload(),
-                      );
-                    },
+                    onPressed: () {},
                     child: ListTile(
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
