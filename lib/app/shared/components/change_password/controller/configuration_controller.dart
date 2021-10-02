@@ -1,12 +1,12 @@
 import 'package:mobx/mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-part 'menu_controller.g.dart';
+part 'configuration_controller.g.dart';
 
 @Injectable()
-class MenuController = _MenuControllerBase with _$MenuController;
+class ConfigController = _ConfigControllerBase with _$ConfigController;
 
-abstract class _MenuControllerBase with Store {
+abstract class _ConfigControllerBase with Store {
   @observable
   int value = 0;
 
