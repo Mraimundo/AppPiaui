@@ -43,121 +43,145 @@ class _RowGridDoubleWidgetState
                 crossAxisAlignment: rowAlignV,
                 mainAxisAlignment: rowAlignH,
                 children: [
-                  Padding(
-                    padding: framePadding,
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: columAlignH,
-                        mainAxisAlignment: columAlignV,
-                        children: [
-                          Container(
-                            color: Colors.grey,
-                            height: rowHeight * 0.80,
-                            width: rowWidth * 0.92,
-                            child: ImageShimmer(url: editionPair.capa),
-                          ),
-                          Container(
-                            height: rowHeight * 0.15,
-                            width: rowWidth * 0.92,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 7),
-                              child: Column(
-                                children: [
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      /* 'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}' */ editionPair
-                                          .toString(),
-                                      style: TextStyle(
-                                        fontFamily: 'Piaui',
-                                        fontSize: rowFontsize,
-                                        fontWeight: FontWeight.bold,
+                  Material(
+                    child: InkWell(
+                      onTap: () {
+                        Modular.to.pushNamed('/magazine_downloads',
+                            arguments: {"revist": editionPair});
+                        /*   Navigator.of(context).push(MaterialPageRoute(builder: (builder) {
+          return InsideMagazinePage(controller.revistDownloads[widget.index]);
+        })); */
+                      },
+                      child: Padding(
+                        padding: framePadding,
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: columAlignH,
+                            mainAxisAlignment: columAlignV,
+                            children: [
+                              Container(
+                                color: Colors.grey,
+                                height: rowHeight * 0.80,
+                                width: rowWidth * 0.92,
+                                child: ImageShimmer(url: editionPair.capa),
+                              ),
+                              Container(
+                                height: rowHeight * 0.15,
+                                width: rowWidth * 0.92,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 7),
+                                  child: Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          /* 'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}' */ editionPair
+                                              .toString(),
+                                          style: TextStyle(
+                                            fontFamily: 'Piaui',
+                                            fontSize: rowFontsize,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      SizedBox(height: 4),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'Baixado (36 MB)',
+                                          style: TextStyle(
+                                            fontFamily: 'Palatino',
+                                            fontSize: 11.5,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      )
+                                    ],
                                   ),
-                                  SizedBox(height: 4),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Baixado (36 MB)',
-                                      style: TextStyle(
-                                        fontFamily: 'Palatino',
-                                        fontSize: 11.5,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                    ),
-                                  )
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  ButtomOrangeWidget(
+                                    revist: editionPair,
+                                  ),
+                                  ButtomDownLoadWidget()
                                 ],
                               ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              ButtomOrangeWidget(),
-                              ButtomDownLoadWidget()
                             ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: framePadding,
-                    child: Container(
-                      child: Column(
-                        crossAxisAlignment: columAlignH,
-                        mainAxisAlignment: columAlignV,
-                        children: [
-                          Container(
-                            color: Colors.grey,
-                            height: rowHeight * 0.80,
-                            width: rowWidth * 0.92,
-                            child: ImageShimmer(url: editionOdd.capa),
-                          ),
-                          Container(
-                            color: Colors.white,
-                            height: rowHeight * 0.15,
-                            width: rowWidth * 0.92,
-                            child: Padding(
-                              padding: const EdgeInsets.only(top: 7),
-                              child: Column(
-                                children: [
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Ediçãoo #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
-                                      style: TextStyle(
-                                          fontFamily: 'Piaui',
-                                          fontSize: rowFontsize,
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  SizedBox(height: 4),
-                                  Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: Text(
-                                      'Baixado (36 MB)',
-                                      style: TextStyle(
-                                        fontFamily: 'Palatino',
-                                        fontSize: 11.5,
-                                        fontWeight: FontWeight.normal,
+                  Material(
+                    child: InkWell(
+                      onTap: () {
+                        Modular.to.pushNamed('/magazine_downloads',
+                            arguments: {"revist": editionOdd});
+                        /*   Navigator.of(context).push(MaterialPageRoute(builder: (builder) {
+          return InsideMagazinePage(controller.revistDownloads[widget.index]);
+        })); */
+                      },
+                      child: Padding(
+                        padding: framePadding,
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: columAlignH,
+                            mainAxisAlignment: columAlignV,
+                            children: [
+                              Container(
+                                color: Colors.grey,
+                                height: rowHeight * 0.80,
+                                width: rowWidth * 0.92,
+                                child: ImageShimmer(url: editionOdd.capa),
+                              ),
+                              Container(
+                                color: Colors.white,
+                                height: rowHeight * 0.15,
+                                width: rowWidth * 0.92,
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 7),
+                                  child: Column(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'Ediçãoo #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
+                                          style: TextStyle(
+                                              fontFamily: 'Piaui',
+                                              fontSize: rowFontsize,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
-                                    ),
-                                  )
+                                      SizedBox(height: 4),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          'Baixado (36 MB)',
+                                          style: TextStyle(
+                                            fontFamily: 'Palatino',
+                                            fontSize: 11.5,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Row(
+                                children: [
+                                  ButtomOrangeWidget(revist: editionOdd),
+                                  ButtomDownLoadWidget()
                                 ],
                               ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              ButtomOrangeWidget(),
-                              ButtomDownLoadWidget()
                             ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
             ),

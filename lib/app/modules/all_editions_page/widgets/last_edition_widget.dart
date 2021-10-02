@@ -9,6 +9,7 @@ import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dar
 import 'package:piaui_app/app/modules/editions_page/components/skeleton_last_edition.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
+import 'package:piaui_app/app/shared/components/complete_download/complete_download.dart';
 import 'package:piaui_app/app/shared/downloads/download_revist.dart';
 import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
@@ -134,12 +135,17 @@ class _LastEditionWidgetState
                                       right: 10, bottom: 12),
                                   child: TextButton(
                                     onPressed: () async {
-                                      widget.downloadRevist.download(
+                                      await widget.downloadRevist.download(
                                         controller.lastEdition.id,
                                         edicoes.capa.url,
                                         edicoes.numberEdition,
                                         edicoes.mes,
                                         edicoes.ano,
+                                      );
+
+                                      showDialog(
+                                        context: context,
+                                        builder: (_) => CompleteDownload(),
                                       );
                                     },
                                     child: Container(
