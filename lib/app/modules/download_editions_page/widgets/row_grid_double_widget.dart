@@ -3,8 +3,6 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/download_editions_page/widgets/bottom_download_widget.dart';
 import 'package:piaui_app/app/modules/download_editions_page/components/image_shimmer.dart';
-import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
-import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/download_editions_page/widgets/bottom_orange_widget.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 
@@ -105,7 +103,13 @@ class _RowGridDoubleWidgetState
                                   ButtomOrangeWidget(
                                     revist: editionPair,
                                   ),
-                                  ButtomDownLoadWidget()
+                                  ButtomDownLoadWidget(
+                                    id: editionPair.edicao.toString(),
+                                    numberEdition:
+                                        editionPair.numberEdition.toString(),
+                                    month: editionPair.mes.toString(),
+                                    year: editionPair.mes,
+                                  )
                                 ],
                               ),
                             ],
@@ -173,7 +177,13 @@ class _RowGridDoubleWidgetState
                               Row(
                                 children: [
                                   ButtomOrangeWidget(revist: editionOdd),
-                                  ButtomDownLoadWidget()
+                                  ButtomDownLoadWidget(
+                                    id: editionOdd.edicao.toString(),
+                                    numberEdition:
+                                        editionOdd.numberEdition.toString(),
+                                    month: editionOdd.mes.toString(),
+                                    year: editionOdd.mes,
+                                  )
                                 ],
                               ),
                             ],

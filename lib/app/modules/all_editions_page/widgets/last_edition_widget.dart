@@ -145,7 +145,11 @@ class _LastEditionWidgetState
 
                                       showDialog(
                                         context: context,
-                                        builder: (_) => CompleteDownload(),
+                                        builder: (_) => CompleteDownload(
+                                            int.parse(controller.lastEdition.id
+                                                .toString()),
+                                            edicoes.ano.toString(),
+                                            edicoes.mes.toString()),
                                       );
                                     },
                                     child: Container(
