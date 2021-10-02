@@ -75,10 +75,10 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
                                 _parseHtmlString(conteudo['title'].toString())
                                     .toUpperCase(),
                           ),
-                          Image.network(
+                          /* Image.network(
                             materiaMap['image'],
                             fit: BoxFit.fill,
-                          ),
+                          ), */
                           SizedBox(height: 7),
                           Text(
                             _parseHtmlString(materiaMap['imageAlt']),

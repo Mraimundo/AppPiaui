@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+/* import 'package:dio/dio.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/repositories/interfaces/repository_interface.dart';
 
@@ -43,3 +43,4 @@ class EditionRepository implements IRepository {
     return editions;
   }
 }
+ */

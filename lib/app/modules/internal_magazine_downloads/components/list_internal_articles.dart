@@ -34,7 +34,38 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
       padding: const EdgeInsets.only(left: 26, right: 29),
       child: Column(
         children: [
-          Html(data: widget.rendered['content']),
+          ListView.separated(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            separatorBuilder: (context, index) => SizedBox(height: 0),
+            itemCount: widget.rendered['content'].split("\n").length,
+            itemBuilder: (_, index) => widget.rendered['content']
+                    .split("\n")[index]
+                    .contains('<span class="capitalize">')
+                ? Container(
+                    margin: new EdgeInsets.symmetric(horizontal: 9.0),
+                    child: DropCapText(
+                      _parseHtmlString(
+                          widget.rendered['content'].split("\n")[index]),
+                      style: TextStyle(
+                        height: 1.3,
+                        fontFamily: 'Palatino',
+                        fontSize: 13,
+                        fontWeight: FontWeight.normal,
+                        color: AppColors.textColorNormal,
+                      ),
+                      dropCapChars: 1,
+                    ))
+                : Html(
+                    data: widget.rendered['content'].split("\n")[index],
+                    style: {
+                      "p": Style(
+                          fontFamily: 'Palatino',
+                          fontSize: FontSize(13),
+                          fontWeight: FontWeight.normal),
+                    },
+                  ),
+          ),
           AutorInternalArticle(autor: widget.rendered['Colaboradores']),
         ],
       ),

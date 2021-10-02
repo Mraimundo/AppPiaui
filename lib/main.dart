@@ -16,25 +16,25 @@ Future<Dados> readUser() async {
     await FlutterSession().set("date", "");
   }
   var response = await FlutterSession().get("user");
-  var dataLogin = await FlutterSession().get("date");
+  /* var dataLogin = await FlutterSession().get("date"); */
 
   Dados user;
   if (response == "") {
     user = new Dados();
   } else {
-    final dataSplit = dataLogin.toString().split(" ")[0].split("-");
+    /* final dataSplit = dataLogin.toString().split(" ")[0].split("-");
     final data = DateTime(int.parse(dataSplit[0]), int.parse(dataSplit[1]),
         int.parse(dataSplit[2]));
     final today = DateTime.now();
-    final difference = today.difference(data).inDays;
+    final difference = today.difference(data).inDays; */
 
     user = Dados.fromJson(response);
 
-    if (difference > 7) {
+    /* if (difference > 7) {
       user = new Dados();
       await FlutterSession().set("user", "");
       await FlutterSession().set("date", "");
-    }
+    } */
   }
 
   return user;

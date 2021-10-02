@@ -40,7 +40,7 @@ abstract class _DownLoadEditionPageControllerBase with Store {
 
   init() async {
     isLoading = true;
-    _listEditonLocal = await _repository.findByPage(_pageCount);
+    /* _listEditonLocal = await _repository.findByPage(_pageCount); */
     _editionsSiglePage = _listEditonLocal.asObservable();
     _revistsDownloads = await _downloadsController.populateList();
 

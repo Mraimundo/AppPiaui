@@ -81,7 +81,7 @@ Card _makeListSubjects(RevistDownload revist, int pos) {
               height: 100,
               color: Colors.black.withOpacity(1),
               child: Container(
-                child: Image.network(materiaMap['image'], fit: BoxFit.fill),
+                child: Text("teste"),
               ),
             ),
             /* Positioned(

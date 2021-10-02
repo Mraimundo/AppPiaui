@@ -40,6 +40,7 @@ class ListInternalArticles extends StatefulWidget {
 class _ListInternalArticlesState extends State<ListInternalArticles> {
   String rendered;
   String idMateria;
+  double _tamFonte = 13;
   _ListInternalArticlesState(this.rendered, this.idMateria);
 
   @override
@@ -52,6 +53,30 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
               padding: const EdgeInsets.only(left: 26, right: 29),
               child: Column(
                 children: [
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _tamFonte++;
+                      });
+                    },
+                    child: Text('+'),
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.blue),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _tamFonte--;
+                      });
+                    },
+                    child: Text('-'),
+                  ),
                   ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
@@ -67,7 +92,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                               style: TextStyle(
                                 height: 1.3,
                                 fontFamily: 'Palatino',
-                                fontSize: 13,
+                                fontSize: _tamFonte,
                                 fontWeight: FontWeight.normal,
                                 color: AppColors.textColorNormal,
                               ),
@@ -78,7 +103,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                             style: {
                               "p": Style(
                                   fontFamily: 'Palatino',
-                                  fontSize: FontSize(13),
+                                  fontSize: FontSize(_tamFonte),
                                   fontWeight: FontWeight.normal),
                             },
                           ),

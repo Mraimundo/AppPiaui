@@ -56,12 +56,13 @@ class _RowGridSingleWidgetState
                           crossAxisAlignment: columAlignH,
                           mainAxisAlignment: columAlignV,
                           children: [
-                            Container(
+                            /* Container(
                               color: Colors.grey,
                               height: rowHeight * 0.80,
                               width: rowWidth * 0.85,
                               child: ImageShimmer(url: edition.capa),
-                            ),
+                            ), */
+                            Text("Text"),
                             Container(
                               color: Colors.white,
                               height: rowHeight * 0.15,
@@ -69,7 +70,7 @@ class _RowGridSingleWidgetState
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  'Ediçãoo #${edition.numberEdition}: ${edition.mes} de ${edition.ano}',
+                                  'Edição #${edition.numberEdition}: ${edition.mes} de ${edition.ano}',
                                   style: TextStyle(fontSize: rowFontsize),
                                 ),
                               ),

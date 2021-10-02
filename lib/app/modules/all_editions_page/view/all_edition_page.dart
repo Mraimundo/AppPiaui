@@ -9,69 +9,115 @@ class AllEditionPage extends StatelessWidget {
   // final GoogleSignInAccount user;
   final Dados user;
   final bool conected;
-  const AllEditionPage({Key key, this.user, this.conected}) : super(key: key);
+  const AllEditionPage({Key key, this.user, this.conected = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print(conected);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: PreferredAppBarWidget(height: 56),
-        body: DefaultTabController(
-          length: 2,
-          child: Scaffold(
-            appBar: PreferredSize(
-              preferredSize: Size(100, 53),
-              child: SafeArea(
-                child: Container(
-                  height: 100,
-                  color: AppColors.appBar,
-                  child: Column(
-                    children: [
-                      TabBar(
-                        indicatorColor: AppColors.orangePiaui,
-                        indicatorSize: TabBarIndicatorSize.label,
-                        indicatorWeight: 6,
-                        tabs: const <Widget>[
-                          Tab(
-                            child: Text(
-                              'Todas as edições',
-                              style: TextStyle(
-                                fontFamily: 'Palatino',
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
+    return conected
+        ? MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: Scaffold(
+              appBar: PreferredAppBarWidget(height: 56),
+              body: DefaultTabController(
+                length: 2,
+                child: Scaffold(
+                  appBar: PreferredSize(
+                    preferredSize: Size(100, 53),
+                    child: SafeArea(
+                      child: Container(
+                        height: 100,
+                        color: AppColors.appBar,
+                        child: Column(
+                          children: [
+                            TabBar(
+                              indicatorColor: AppColors.orangePiaui,
+                              indicatorSize: TabBarIndicatorSize.label,
+                              indicatorWeight: 6,
+                              tabs: const <Widget>[
+                                Tab(
+                                  child: Text(
+                                    'Todas as edições',
+                                    style: TextStyle(
+                                      fontFamily: 'Palatino',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Tab(
+                                  child: Text(
+                                    'Meus downloads',
+                                    style: TextStyle(
+                                      fontFamily: 'Palatino',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                          Tab(
-                            child: Text(
-                              'Meus downloads',
-                              style: TextStyle(
-                                fontFamily: 'Palatino',
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
+                    ),
+                  ),
+                  body: TabBarView(
+                    children: <Widget>[
+                      ListMagazine(user: user),
+                      DownLoadEditionPage(user: user)
                     ],
                   ),
                 ),
               ),
             ),
-            body: TabBarView(
-              children: <Widget>[
-                ListMagazine(user: user),
-                DownLoadEditionPage(user: user)
-              ],
+          )
+        : MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: Scaffold(
+              appBar: PreferredAppBarWidget(height: 56),
+              body: DefaultTabController(
+                length: 1,
+                child: Scaffold(
+                  appBar: PreferredSize(
+                    preferredSize: Size(100, 53),
+                    child: SafeArea(
+                      child: Container(
+                        height: 100,
+                        color: AppColors.appBar,
+                        child: Column(
+                          children: [
+                            TabBar(
+                              indicatorColor: AppColors.orangePiaui,
+                              indicatorSize: TabBarIndicatorSize.label,
+                              indicatorWeight: 6,
+                              tabs: const <Widget>[
+                                Tab(
+                                  child: Text(
+                                    'Meus downloads',
+                                    style: TextStyle(
+                                      fontFamily: 'Palatino',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  body: TabBarView(
+                    children: <Widget>[DownLoadEditionPage(user: user)],
+                  ),
+                ),
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+          );
   }
 }
