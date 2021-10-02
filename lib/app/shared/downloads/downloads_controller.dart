@@ -66,7 +66,7 @@ class DownloadsController {
     for (var i = 0; listString.length > i; i++) {
       Map<String, dynamic> revist = jsonDecode(await getByKey(listString[i]));
       revists.add(RevistDownload(
-          revist['ediciao'],
+          revist['edicao'],
           revist['capa'],
           revist['numberEdition'],
           revist['mes'],
@@ -75,5 +75,21 @@ class DownloadsController {
     }
 
     return revists;
+  }
+
+  Future<void> deleteRevist(String numberEdition) async {
+    debugPrint(numberEdition);
+    List<String> listString = await getMyList();
+    if (listString == null) {
+      listString = [];
+    }
+    listString.toList();
+    List<String> listDynamic = new List<String>.from(listString);
+    listDynamic
+        .removeWhere((element) => ('edicao_' + numberEdition) == element);
+    await local.deleteItem(('edicao_' + numberEdition));
+    debugPrint(listDynamic.toString());
+    debugPrint("Esta Tentanto excluir");
+    await local.setItem('my_list', listDynamic);
   }
 }

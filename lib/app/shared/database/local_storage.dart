@@ -27,4 +27,9 @@ class LocalStorageHive {
     var box = await _instance.future;
     box.put(key, value);
   }
+
+  Future<void> deleteItem(key) async {
+    var box = await _instance.future;
+    box.delete(key);
+  }
 }

@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-class CompleteDownload extends StatefulWidget {
-  int numberEdition;
+class CompleteDelete extends StatefulWidget {
+  String numberEdition;
   String year;
   String month;
 
-  CompleteDownload(this.numberEdition, this.year, this.month);
+  CompleteDelete(this.numberEdition, this.year, this.month);
+
   @override
-  _CompleteDownloadState createState() => _CompleteDownloadState();
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return CompleteDeleteState();
+  }
 }
 
-class _CompleteDownloadState extends State<CompleteDownload> {
+class CompleteDeleteState extends State<CompleteDelete> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -36,7 +40,7 @@ class _CompleteDownloadState extends State<CompleteDownload> {
                         Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Text(
-                            'Oba! Download completo',
+                            'Revista excluida com sucesso!',
                             style: TextStyle(
                               color: AppColors.orangePiaui,
                               fontWeight: FontWeight.bold,
@@ -71,8 +75,7 @@ class _CompleteDownloadState extends State<CompleteDownload> {
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold)),
                                         TextSpan(
-                                            text:
-                                                ' foi realizado com sucesso e econtra-se na sua galeria.'),
+                                            text: ' foi excluido com sucesso.'),
                                       ],
                                     ),
                                   ),
@@ -86,25 +89,6 @@ class _CompleteDownloadState extends State<CompleteDownload> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: Container(
-                                  height: 60,
-                                  width: 150,
-                                  color: AppColors.orangePiaui,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Ver downloads',
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: AppColors.textColorWhite,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
                               TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
@@ -120,7 +104,7 @@ class _CompleteDownloadState extends State<CompleteDownload> {
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      'Fechar',
+                                      'OK',
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
