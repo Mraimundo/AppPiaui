@@ -33,7 +33,6 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
               return CompleteDelete(
                   widget.numberEdition.toString(), widget.year, widget.month);
             });
-        Navigator.of(context).pop();
       },
       // padding: EdgeInsets.zero,
       child: Container(
