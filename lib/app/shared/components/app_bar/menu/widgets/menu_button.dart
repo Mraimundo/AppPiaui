@@ -8,13 +8,22 @@ Future<String> readUser() async {
 }
 
 class MenuButton extends StatefulWidget {
+  final bool close;
+
+  MenuButton({Key key, this.close}) : super(key: key);
+
   @override
-  _MenuButtonState createState() => _MenuButtonState();
+  _MenuButtonState createState() => _MenuButtonState(close);
 }
 
 class _MenuButtonState extends ModularState<MenuButton, AppController> {
+  final bool close;
+
+  _MenuButtonState(this.close);
+
   @override
   Widget build(BuildContext context) {
+    print(close);
     return FutureBuilder<String>(
         future: readUser(),
         builder: (context, AsyncSnapshot<String> snapshot) {
@@ -23,7 +32,7 @@ class _MenuButtonState extends ModularState<MenuButton, AppController> {
               padding: EdgeInsets.zero,
               icon: Container(
                 padding: EdgeInsets.all(4),
-                child: controller.checkedPressed
+                child: close
                     ? Image.asset('assets/images/icon_x.png',
                         fit: BoxFit.contain)
                     : Image.asset('assets/images/icon_menu.png',
@@ -36,16 +45,13 @@ class _MenuButtonState extends ModularState<MenuButton, AppController> {
               ),
               alignment: Alignment.centerRight,
               onPressed: () {
-                controller.checked();
-                print('Menu pressed ? ${controller.checkedPressed}');
-
                 snapshot.data == ""
-                    ? controller.checkedPressed
+                    ? !close
                         ? Modular.to.pushNamed('/menu')
-                        : Modular.to.pushNamed('/editions')
-                    : controller.checkedPressed
+                        : Navigator.pop(context)
+                    : !close
                         ? Modular.to.pushNamed('/menu_logged')
-                        : Modular.to.pushNamed('/logged');
+                        : Navigator.pop(context);
               },
             );
           } else {

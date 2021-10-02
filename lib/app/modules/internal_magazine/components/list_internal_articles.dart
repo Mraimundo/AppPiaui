@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/autor_internal_article.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
@@ -38,6 +39,8 @@ class ListInternalArticles extends StatefulWidget {
 }
 
 class _ListInternalArticlesState extends State<ListInternalArticles> {
+  FlutterTts flutterTts = FlutterTts();
+
   String rendered;
   String idMateria;
   double _tamFonte = 13;
@@ -45,6 +48,10 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
 
   @override
   Widget build(BuildContext context) {
+    Future _speak() async {
+      await flutterTts.speak("Hello");
+    }
+
     return FutureBuilder<String>(
         future: post(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
@@ -53,10 +60,11 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
               padding: const EdgeInsets.only(left: 26, right: 29),
               child: Column(
                 children: [
-                  TextButton(
+                  /* TextButton(
                     style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blue),
+                      shape: MaterialStateProperty.all(CircleBorder()),
+                      borderSide: BorderSide(color: Colors.blue),
+                      padding: MaterialStateProperty.all(EdgeInsets.all(20)),
                     ),
                     onPressed: () {
                       setState(() {
@@ -64,18 +72,54 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                       });
                     },
                     child: Text('+'),
-                  ),
-                  TextButton(
+                  ), */
+                  new OutlinedButton(
+                    child: new Text("A+"),
                     style: ButtonStyle(
-                      foregroundColor:
-                          MaterialStateProperty.all<Color>(Colors.blue),
-                    ),
+                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                        shape: MaterialStateProperty.all(CircleBorder())),
                     onPressed: () {
                       setState(() {
-                        _tamFonte--;
+                        if (_tamFonte >= 20) {
+                          _tamFonte = 20;
+                        } else {
+                          _tamFonte++;
+                        }
                       });
                     },
-                    child: Text('-'),
+                  ),
+                  new OutlinedButton(
+                    child: new Text("A-"),
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                        shape: MaterialStateProperty.all(CircleBorder())),
+                    onPressed: () {
+                      setState(() {
+                        if (_tamFonte <= 8) {
+                          _tamFonte = 8;
+                        } else {
+                          _tamFonte--;
+                        }
+                      });
+                    },
+                  ),
+                  new OutlinedButton(
+                    child: new Text("A"),
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                        shape: MaterialStateProperty.all(CircleBorder())),
+                    onPressed: () {
+                      setState(() {
+                        _tamFonte = 13;
+                      });
+                    },
+                  ),
+                  new OutlinedButton(
+                    child: new Text("Play"),
+                    style: ButtonStyle(
+                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                        shape: MaterialStateProperty.all(CircleBorder())),
+                    onPressed: () => _speak(),
                   ),
                   ListView.separated(
                     shrinkWrap: true,

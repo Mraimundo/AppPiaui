@@ -3,8 +3,11 @@ import 'package:piaui_app/app/shared/components/app_bar/app_bar_default_widget.d
 
 class PreferredAppBarWidget extends StatelessWidget implements PreferredSize {
   final double height;
+  final bool close;
+  final bool closeCongif;
 
-  PreferredAppBarWidget({Key key, this.height})
+  PreferredAppBarWidget(
+      {Key key, this.height, this.close = false, this.closeCongif = false})
       : preferredSize = Size.fromHeight(height),
         super(key: key);
 
@@ -23,7 +26,7 @@ class PreferredAppBarWidget extends StatelessWidget implements PreferredSize {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              AppBarDefaultWidget(),
+              AppBarDefaultWidget(close: close, closeCongif: closeCongif),
             ],
           ),
         ),

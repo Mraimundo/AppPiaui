@@ -6,7 +6,10 @@ import 'configuration/widgets/configuration_button.dart';
 import 'menu/widgets/menu_button.dart';
 
 class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
-  AppBarDefaultWidget({Key key})
+  final bool close;
+  final bool closeCongif;
+
+  AppBarDefaultWidget({Key key, this.close, this.closeCongif})
       : preferredSize = Size.fromHeight(kToolbarHeight),
         super(key: key);
 
@@ -42,7 +45,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 3),
         ),
-        ConfigButton(),
+        ConfigButton(closeCongif: closeCongif),
         IconButton(
           padding: EdgeInsets.zero,
           icon: Container(
@@ -63,7 +66,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 3),
         ),
-        MenuButton(),
+        MenuButton(close: close),
         Container(
           // color: Colors.white,
           padding: EdgeInsets.symmetric(horizontal: 7),

@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:piaui_app/app/modules/internal_magazine_downloads/components/autor_internal_article.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
@@ -28,12 +29,67 @@ class ListInternalArticles extends StatefulWidget {
 }
 
 class _ListInternalArticlesState extends State<ListInternalArticles> {
+  FlutterTts flutterTts = FlutterTts();
+
+  double _tamFonte = 13;
   @override
   Widget build(BuildContext context) {
+    Future _speak() async {
+      await flutterTts.speak("Hello");
+    }
+
     return Padding(
       padding: const EdgeInsets.only(left: 26, right: 29),
       child: Column(
         children: [
+          new OutlinedButton(
+            child: new Text("A+"),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                shape: MaterialStateProperty.all(CircleBorder())),
+            onPressed: () {
+              setState(() {
+                if (_tamFonte >= 20) {
+                  _tamFonte = 20;
+                } else {
+                  _tamFonte++;
+                }
+              });
+            },
+          ),
+          new OutlinedButton(
+            child: new Text("A-"),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                shape: MaterialStateProperty.all(CircleBorder())),
+            onPressed: () {
+              setState(() {
+                if (_tamFonte <= 8) {
+                  _tamFonte = 8;
+                } else {
+                  _tamFonte--;
+                }
+              });
+            },
+          ),
+          new OutlinedButton(
+            child: new Text("A"),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                shape: MaterialStateProperty.all(CircleBorder())),
+            onPressed: () {
+              setState(() {
+                _tamFonte = 13;
+              });
+            },
+          ),
+          new OutlinedButton(
+            child: new Text("Play"),
+            style: ButtonStyle(
+                padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                shape: MaterialStateProperty.all(CircleBorder())),
+            onPressed: () => _speak(),
+          ),
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -50,7 +106,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                       style: TextStyle(
                         height: 1.3,
                         fontFamily: 'Palatino',
-                        fontSize: 13,
+                        fontSize: _tamFonte,
                         fontWeight: FontWeight.normal,
                         color: AppColors.textColorNormal,
                       ),
@@ -61,7 +117,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                     style: {
                       "p": Style(
                           fontFamily: 'Palatino',
-                          fontSize: FontSize(13),
+                          fontSize: FontSize(_tamFonte),
                           fontWeight: FontWeight.normal),
                     },
                   ),

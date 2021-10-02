@@ -18,7 +18,9 @@ class AllEditionPage extends StatelessWidget {
         ? MaterialApp(
             debugShowCheckedModeBanner: false,
             home: Scaffold(
-              appBar: PreferredAppBarWidget(height: 56),
+              appBar: PreferredAppBarWidget(
+                height: 56,
+              ),
               body: DefaultTabController(
                 length: 2,
                 child: Scaffold(

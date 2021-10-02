@@ -26,9 +26,9 @@ class _FilterWidgetState extends State<FilterWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           // crossAxisAlignment: CrossAxisAlignment.spaceBetween,
           children: [
-            Expanded(child: SelectEditionWidget()),
-            Expanded(child: SelectYearWidget()),
-            Expanded(child: SelectMonthWidget())
+            /* Expanded(child: SelectEditionWidget()),
+            Container(child: SelectYearWidget()),
+            Container(child: SelectMonthWidget()) */
           ],
         ),
       ),
