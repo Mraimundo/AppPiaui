@@ -76,10 +76,11 @@ class _RowGridDoubleWidgetState
                                           /* 'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}' */ editionPair
                                               .toString(),
                                           style: TextStyle(
-                                            fontFamily: 'Piaui',
-                                            fontSize: rowFontsize,
-                                            fontWeight: FontWeight.bold,
-                                          ),
+                                              fontFamily: 'Piaui',
+                                              fontSize: rowFontsize,
+                                              fontWeight: FontWeight.bold,
+                                              color: Theme.of(context)
+                                                  .primaryColor),
                                         ),
                                       ),
                                       SizedBox(height: 4),
@@ -88,10 +89,11 @@ class _RowGridDoubleWidgetState
                                         child: Text(
                                           'Baixado (36 MB)',
                                           style: TextStyle(
-                                            fontFamily: 'Palatino',
-                                            fontSize: 11.5,
-                                            fontWeight: FontWeight.normal,
-                                          ),
+                                              fontFamily: 'Palatino',
+                                              fontSize: 11.5,
+                                              fontWeight: FontWeight.normal,
+                                              color: Theme.of(context)
+                                                  .primaryColor),
                                         ),
                                       )
                                     ],
@@ -141,7 +143,6 @@ class _RowGridDoubleWidgetState
                                 child: ImageShimmer(url: editionOdd.capa),
                               ),
                               Container(
-                                color: Colors.white,
                                 height: rowHeight * 0.15,
                                 width: rowWidth * 0.92,
                                 child: Padding(
@@ -155,7 +156,9 @@ class _RowGridDoubleWidgetState
                                           style: TextStyle(
                                               fontFamily: 'Piaui',
                                               fontSize: rowFontsize,
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontWeight.bold,
+                                              color: Theme.of(context)
+                                                  .primaryColor),
                                         ),
                                       ),
                                       SizedBox(height: 4),
@@ -164,10 +167,11 @@ class _RowGridDoubleWidgetState
                                         child: Text(
                                           'Baixado (36 MB)',
                                           style: TextStyle(
-                                            fontFamily: 'Palatino',
-                                            fontSize: 11.5,
-                                            fontWeight: FontWeight.normal,
-                                          ),
+                                              fontFamily: 'Palatino',
+                                              fontSize: 11.5,
+                                              fontWeight: FontWeight.normal,
+                                              color: Theme.of(context)
+                                                  .primaryColor),
                                         ),
                                       )
                                     ],

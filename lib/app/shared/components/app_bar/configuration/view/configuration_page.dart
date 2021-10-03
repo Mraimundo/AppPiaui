@@ -6,6 +6,8 @@ import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/ba
 import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/text_config_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
+import 'package:provider/provider.dart';
 
 class ConfigPage extends StatefulWidget {
   final String title;
@@ -21,101 +23,73 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
   @override
   Widget build(BuildContext context) {
     final double vFontSize = 18;
+    var darkThemeEnabled = Provider.of<ThemeChanger>(context);
+    /* final double vFontSize = 15; */
+    final double vBtnHeght = 5;
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56, close: true, closeCongif: true),
-      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           BackToMenuWidget(),
           TextConfiWidget(),
           Expanded(
             child: Container(
-              color: AppColors.backgroundColor,
               child: ListView(
                 padding: const EdgeInsets.symmetric(vertical: 32),
                 children: <Widget>[
-                  // IconButton(
-                  //     icon: Icon(
-                  //         AppWidget.themeNotifier.value == ThemeMode.light
-                  //             ? Icons.dark_mode
-                  //             : Icons.light_mode),
-                  //     onPressed: () {
-                  //       AppWidget.themeNotifier.value =
-                  //           AppWidget.themeNotifier.value == ThemeMode.light
-                  //               ? ThemeMode.dark
-                  //               : ThemeMode.light;
-                  //     }),
-
-                  // TextButton(
-                  //   onPressed: () {},
-                  //   child: ListTile(
-                  //     title: Column(
-                  //       children: [
-                  //         Row(
-                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //           children: [
-                  //             Text(
-                  //               'Alterar tamanho da fonte',
-                  //               style: TextStyle(
-                  //                   fontSize: vFontSize,
-                  //                   fontWeight: FontWeight.bold,
-                  //                   color: AppColors.dark),
-                  //             ),
-
-                  //             Image.asset(
-                  //               'assets/images/font-size.png',
-                  //               scale: 0.6,
-                  //             ),
-                  //           ],
-                  //         ),
-                  //         Container(
-                  //           height: 25,
-                  //           decoration: BoxDecoration(
-                  //             border: Border(
-                  //               bottom: BorderSide(
-                  //                 color: AppColors.internalBorderColor,
-                  //                 width: 1,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         )
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
+                  TextButton(
+                    // padding: EdgeInsets.zero,
+                    onPressed: () {},
+                    child: ListTile(
+                      contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
+                      tileColor: Theme.of(context).backgroundColor,
+                      title: Padding(
+                        padding: const EdgeInsets.only(right: 12, left: 12),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Alterar tamanho da fonte',
+                              style: TextStyle(
+                                  fontSize: vFontSize,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor),
+                            ),
+                            Image.asset(
+                              'assets/images/font-size.png',
+                              scale: 0.6,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(height: 16),
                   TextButton(
                     // padding: EdgeInsets.zero,
                     onPressed: () {},
                     child: ListTile(
-                      title: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Ativar modo noturno',
-                                style: TextStyle(
-                                    fontSize: vFontSize,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.dark),
-                              ),
-                              Image.asset('assets/images/night-mode.png',
-                                  scale: 0.6),
-                            ],
-                          ),
-                          Container(
-                            height: 25,
-                            decoration: BoxDecoration(
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: AppColors.internalBorderColor,
-                                  width: 1,
-                                ),
-                              ),
+                      contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
+                      tileColor: Theme.of(context).backgroundColor,
+                      title: Padding(
+                        padding: const EdgeInsets.only(right: 15, left: 15),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Ativar modo noturno',
+                              style: TextStyle(
+                                  fontSize: vFontSize,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor),
                             ),
-                          )
-                        ],
+                            Switch(
+                                value: darkThemeEnabled.isDark(),
+                                onChanged: (status) {
+                                  darkThemeEnabled.setDarkStatus(status);
+                                })
+                          ],
+                        ),
                       ),
                     ),
                   ),

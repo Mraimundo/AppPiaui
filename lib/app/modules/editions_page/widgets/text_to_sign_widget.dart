@@ -19,7 +19,7 @@ class TextToSignWidget extends StatelessWidget {
                   fontFamily: 'Palatino',
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textColorNormal,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               TextSpan(

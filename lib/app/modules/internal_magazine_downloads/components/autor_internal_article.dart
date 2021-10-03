@@ -28,7 +28,7 @@ class AutorInternalArticle extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 10, top: 10),
             child: Container(
                 height: 100,
-                color: AppColors.cardColor,
+                color: Theme.of(context).bottomAppBarColor,
                 child: Row(
                   children: [
                     Expanded(
@@ -61,7 +61,7 @@ class AutorInternalArticle extends StatelessWidget {
                                       fontFamily: 'Piaui',
                                       fontSize: 14,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark,
+                                      color: Theme.of(context).cardColor,
                                     ),
                                     textAlign: TextAlign.left,
                                   ),
@@ -80,7 +80,7 @@ class AutorInternalArticle extends StatelessWidget {
                                       fontFamily: 'Piaui',
                                       fontSize: 10,
                                       fontWeight: FontWeight.w500,
-                                      color: AppColors.textColorNormal,
+                                      color: Colors.black,
                                     ),
                                     textAlign: TextAlign.left,
                                   ),
@@ -94,7 +94,7 @@ class AutorInternalArticle extends StatelessWidget {
                                   fontFamily: 'Piaui',
                                   fontSize: 11,
                                   fontWeight: FontWeight.w500,
-                                  color: AppColors.dark,
+                                  color: Theme.of(context).cardColor,
                                 ),
                                 textAlign: TextAlign.left,
                               ),

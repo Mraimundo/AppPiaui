@@ -181,7 +181,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                         fontFamily: 'Palatino',
                         fontSize: _tamFonte,
                         fontWeight: FontWeight.normal,
-                        color: AppColors.textColorNormal,
+                        color: Theme.of(context).primaryColor,
                       ),
                       dropCapChars: 1,
                     ))

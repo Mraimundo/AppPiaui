@@ -52,7 +52,6 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
 
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
-      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           Expanded(
@@ -87,7 +86,7 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
                               fontFamily: 'Piaui',
                               fontSize: 10,
                               fontWeight: FontWeight.w500,
-                              color: AppColors.textColorNormal,
+                              color: Theme.of(context).primaryColor,
                             ),
                             textAlign: TextAlign.center,
                           ),

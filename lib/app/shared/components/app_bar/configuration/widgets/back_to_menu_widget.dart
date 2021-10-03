@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class BackToMenuWidget extends StatelessWidget {
   @override
@@ -22,6 +23,7 @@ class BackToMenuWidget extends StatelessWidget {
               Text(
                 "Voltar para menu",
                 // style: TextStyles.buttonGray,
+                style: TextStyle(color: Theme.of(context).primaryColor),
               ),
             ],
           )

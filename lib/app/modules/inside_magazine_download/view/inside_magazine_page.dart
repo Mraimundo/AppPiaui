@@ -30,7 +30,6 @@ class _InsideMagazinePageState extends State<InsideMagazinePage> {
  */
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
-      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           Expanded(

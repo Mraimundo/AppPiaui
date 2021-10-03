@@ -44,7 +44,6 @@ class _InsideMagazinePageState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
-      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           Expanded(

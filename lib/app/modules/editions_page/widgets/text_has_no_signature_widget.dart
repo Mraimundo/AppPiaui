@@ -17,7 +17,7 @@ class TextHasNoSignatureWidget extends StatelessWidget {
             fontFamily: 'Piaui',
             fontSize: 17.5,
             fontWeight: FontWeight.bold,
-            color: AppColors.textColorNormal,
+            color: Theme.of(context).primaryColor,
           ),
         ),
       ),
