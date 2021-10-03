@@ -4,8 +4,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/autor_internal_article.dart';
+import 'package:piaui_app/app/modules/tts/tts.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
 
@@ -39,8 +39,7 @@ class ListInternalArticles extends StatefulWidget {
 }
 
 class _ListInternalArticlesState extends State<ListInternalArticles> {
-  FlutterTts flutterTts = FlutterTts();
-
+  Tts tts = new Tts();
   String rendered;
   String idMateria;
   double _tamFonte = 13;
@@ -48,10 +47,6 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
 
   @override
   Widget build(BuildContext context) {
-    Future _speak() async {
-      await flutterTts.speak("Hello");
-    }
-
     return FutureBuilder<String>(
         future: post(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
@@ -115,12 +110,23 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                     },
                   ),
                   new OutlinedButton(
-                    child: new Text("Play"),
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
-                        shape: MaterialStateProperty.all(CircleBorder())),
-                    onPressed: () => _speak(),
-                  ),
+                      child: new Text("Play"),
+                      style: ButtonStyle(
+                          padding:
+                              MaterialStateProperty.all(EdgeInsets.all(20)),
+                          shape: MaterialStateProperty.all(CircleBorder())),
+                      onPressed: () {
+                        tts.speak(rendered);
+                      }),
+                  new OutlinedButton(
+                      child: new Text("Stop"),
+                      style: ButtonStyle(
+                          padding:
+                              MaterialStateProperty.all(EdgeInsets.all(20)),
+                          shape: MaterialStateProperty.all(CircleBorder())),
+                      onPressed: () {
+                        tts.stop();
+                      }),
                   ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),

@@ -43,7 +43,7 @@ class _InsideMagazinePageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredAppBarWidget(height: 56, close: true),
+      appBar: PreferredAppBarWidget(height: 56),
       backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [

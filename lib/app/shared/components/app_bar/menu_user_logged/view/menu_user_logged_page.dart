@@ -352,9 +352,8 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                     // padding: EdgeInsets.zero,
                     onPressed: () async {
                       await cleanUser();
-                      /* Modular.to.pushNamed('/login'); */
-                      SystemChannels.platform
-                          .invokeMethod('SystemNavigator.pop');
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/editions', (Route<dynamic> route) => false);
                     },
                     child: ListTile(
                       title: Padding(

@@ -6,6 +6,7 @@ import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:piaui_app/app/modules/internal_magazine_downloads/components/autor_internal_article.dart';
+import 'package:piaui_app/app/modules/tts/tts.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
 
@@ -29,15 +30,11 @@ class ListInternalArticles extends StatefulWidget {
 }
 
 class _ListInternalArticlesState extends State<ListInternalArticles> {
-  FlutterTts flutterTts = FlutterTts();
+  Tts tts = new Tts();
 
   double _tamFonte = 13;
   @override
   Widget build(BuildContext context) {
-    Future _speak() async {
-      await flutterTts.speak("Hello");
-    }
-
     return Padding(
       padding: const EdgeInsets.only(left: 26, right: 29),
       child: Column(
@@ -88,7 +85,9 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
             style: ButtonStyle(
                 padding: MaterialStateProperty.all(EdgeInsets.all(20)),
                 shape: MaterialStateProperty.all(CircleBorder())),
-            onPressed: () => _speak(),
+            onPressed: () {
+              tts.speak(widget.rendered['content']);
+            },
           ),
           ListView.separated(
             shrinkWrap: true,
