@@ -56,6 +56,10 @@ class ListMagazine extends StatelessWidget {
                       ),
                       LastEditionWidget(),
                       RowGridWidget(),
+                      Padding(
+                          padding: const EdgeInsets.only(
+                              top: 25, left: 25, right: 25),
+                          child: BorderTopWidget()),
                       LoadMoreWidget(),
                     ],
                   ),

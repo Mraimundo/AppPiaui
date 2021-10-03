@@ -1,12 +1,12 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'controller/menu_controller.dart';
-import 'view/change_password.dart';
+import 'controller/configuration_controller.dart';
+import 'view/change_password_page.dart';
 
-class ChangePassWordModule extends ChildModule {
+class ChangePasswordModule extends ChildModule {
   @override
   List<Bind> get binds => [
-        Bind((i) => MenuController()),
+        Bind((i) => ConfigController()),
       ];
 
   @override
@@ -15,5 +15,5 @@ class ChangePassWordModule extends ChildModule {
             child: (_, args) => ChangePasswordPage()),
       ];
 
-  static Inject get to => Inject<ChangePassWordModule>.of();
+  static Inject get to => Inject<ChangePasswordModule>.of();
 }

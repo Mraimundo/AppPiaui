@@ -10,9 +10,12 @@ String _parseHtmlString(String htmlString) {
 
 class Tts {
   FlutterTts flutterTts = FlutterTts();
+  bool isStoped = false;
+
   speak(text) async {
+    isStoped = false;
     var i = 0;
-    while (i < text.split("\n").length) {
+    while (i < text.split("\n").length && !isStoped) {
       await flutterTts.awaitSpeakCompletion(true);
       await flutterTts.setLanguage("pt-BR");
       await flutterTts.speak(_parseHtmlString(text.split("\n")[i]));
@@ -22,5 +25,6 @@ class Tts {
 
   stop() async {
     await flutterTts.stop();
+    isStoped = true;
   }
 }

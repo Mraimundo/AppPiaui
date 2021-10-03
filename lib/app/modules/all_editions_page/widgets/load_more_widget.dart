@@ -31,34 +31,15 @@ class _LoadMoreWidgetState
                 children: [
                   Expanded(
                     child: TextButton(
-                      child: Container(
-                        height: vHeight * 0.06,
-                        width: vWidth / 1.8,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: AppColors.orangePiaui,
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10),
-                              child: Text(
-                                'CARREGAR MAIS',
-                                style: TextStyle(
-                                    color: AppColors.orangePiaui,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                            Icon(
-                              Icons.keyboard_arrow_down,
-                              color: AppColors.orangePiaui,
-                              size: 35,
-                            )
-                          ],
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.add_circle,
+                            color: AppColors.backgroundColorLastEdition,
+                            size: 55,
+                          )
+                        ],
                       ),
                       onPressed: () {
                         print("Loading new page? R: ${controller.loadPage}");
