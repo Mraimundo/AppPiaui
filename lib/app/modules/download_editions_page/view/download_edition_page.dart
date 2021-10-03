@@ -42,13 +42,13 @@ class DownLoadEditionPage extends StatelessWidget {
                           top: 21, right: 25, left: 25, bottom: 25),
                       child: BorderTopWidget(),
                     ),
-                    /* Padding(
+                    Padding(
                       padding: const EdgeInsets.only(
                         left: 25,
                         right: 25,
                       ),
                       child: FilterWidget(),
-                    ), */
+                    ),
                     // LastEditionWidget(),
                     Padding(
                       padding: const EdgeInsets.only(top: 25),

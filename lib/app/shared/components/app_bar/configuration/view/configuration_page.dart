@@ -46,43 +46,47 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
                   //               : ThemeMode.light;
                   //     }),
 
-                  // TextButton(
-                  //   onPressed: () {},
-                  //   child: ListTile(
-                  //     title: Column(
-                  //       children: [
-                  //         Row(
-                  //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //           children: [
-                  //             Text(
-                  //               'Alterar tamanho da fonte',
-                  //               style: TextStyle(
-                  //                   fontSize: vFontSize,
-                  //                   fontWeight: FontWeight.bold,
-                  //                   color: AppColors.dark),
-                  //             ),
-
-                  //             Image.asset(
-                  //               'assets/images/font-size.png',
-                  //               scale: 0.6,
-                  //             ),
-                  //           ],
-                  //         ),
-                  //         Container(
-                  //           height: 25,
-                  //           decoration: BoxDecoration(
-                  //             border: Border(
-                  //               bottom: BorderSide(
-                  //                 color: AppColors.internalBorderColor,
-                  //                 width: 1,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         )
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
+                  TextButton(
+                    onPressed: () {
+                      // AppWidget.themeNotifier.value =
+                      //       AppWidget.themeNotifier.value == ThemeMode.light
+                      //            ? ThemeMode.dark
+                      //          : ThemeMode.light;
+                    },
+                    child: ListTile(
+                      title: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Alterar tamanho da fonte',
+                                style: TextStyle(
+                                    fontSize: vFontSize,
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.dark),
+                              ),
+                              Image.asset(
+                                'assets/images/font-size.png',
+                                scale: 0.6,
+                              ),
+                            ],
+                          ),
+                          Container(
+                            height: 25,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: AppColors.internalBorderColor,
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
                   SizedBox(height: 16),
                   TextButton(
                     // padding: EdgeInsets.zero,

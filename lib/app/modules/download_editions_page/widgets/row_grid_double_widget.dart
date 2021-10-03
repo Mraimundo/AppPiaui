@@ -100,15 +100,21 @@ class _RowGridDoubleWidgetState
                               ),
                               Row(
                                 children: [
-                                  ButtomOrangeWidget(
-                                    revist: editionPair,
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: ButtomOrangeWidget(
+                                      revist: editionPair,
+                                    ),
                                   ),
-                                  ButtomDownLoadWidget(
-                                    id: editionPair.edicao.toString(),
-                                    numberEdition:
-                                        editionPair.numberEdition.toString(),
-                                    month: editionPair.mes.toString(),
-                                    year: editionPair.mes,
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: ButtomDownLoadWidget(
+                                      id: editionPair.edicao.toString(),
+                                      numberEdition:
+                                          editionPair.numberEdition.toString(),
+                                      month: editionPair.mes.toString(),
+                                      year: editionPair.mes,
+                                    ),
                                   )
                                 ],
                               ),
@@ -148,14 +154,17 @@ class _RowGridDoubleWidgetState
                                   padding: const EdgeInsets.only(top: 7),
                                   child: Column(
                                     children: [
-                                      Align(
-                                        alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          'Ediçãoo #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
-                                          style: TextStyle(
-                                              fontFamily: 'Piaui',
-                                              fontSize: rowFontsize,
-                                              fontWeight: FontWeight.bold),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Align(
+                                          alignment: Alignment.centerLeft,
+                                          child: Text(
+                                            'Ediçãoo #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
+                                            style: TextStyle(
+                                                fontFamily: 'Piaui',
+                                                fontSize: rowFontsize,
+                                                fontWeight: FontWeight.bold),
+                                          ),
                                         ),
                                       ),
                                       SizedBox(height: 4),
