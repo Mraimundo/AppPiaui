@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class TextConfiWidget extends StatelessWidget {
@@ -16,7 +17,7 @@ class TextConfiWidget extends StatelessWidget {
               style: TextStyle(
                   fontSize: vFontSize,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.dark),
+                  color: Theme.of(context).cardColor),
             ),
           ],
         ),

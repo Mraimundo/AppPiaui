@@ -28,12 +28,10 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
     final double vBtnHeght = 3;
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56, close: true),
-      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           Expanded(
             child: Container(
-              color: AppColors.backgroundColor,
               child: ListView(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 32),
@@ -55,7 +53,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
                                   'assets/images/arrow_menu.png',
@@ -158,7 +156,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
                                   'assets/images/arrow_menu.png',
@@ -199,7 +197,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
                                   'assets/images/arrow_menu.png',
@@ -240,7 +238,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
                                   'assets/images/arrow_menu.png',
@@ -281,7 +279,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
                                   'assets/images/arrow_menu.png',
@@ -322,7 +320,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
                                   'assets/images/arrow_menu.png',

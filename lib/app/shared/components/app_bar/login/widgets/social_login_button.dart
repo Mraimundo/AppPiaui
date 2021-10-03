@@ -15,7 +15,7 @@ class SocialLoginButton extends StatelessWidget {
           height: 56,
           width: vWidth / 1.5,
           decoration: BoxDecoration(
-            color: AppColors.boxColor,
+            color: Theme.of(context).primaryColorLight,
             border: Border.fromBorderSide(
               BorderSide(color: AppColors.backgroundColor),
             ),

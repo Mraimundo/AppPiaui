@@ -24,10 +24,9 @@ class BackToHomeWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  "Voltar para início",
-                  // style: TextStyles.buttonGray,
-                ),
+                Text("Voltar para início",
+                    // style: TextStyles.buttonGray,
+                    style: TextStyle(color: Theme.of(context).primaryColor)),
               ],
             )
           ],

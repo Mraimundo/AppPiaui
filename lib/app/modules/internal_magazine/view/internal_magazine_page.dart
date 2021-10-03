@@ -70,7 +70,6 @@ class _InternalMagazinePageState
           if (snapshot.hasData) {
             return Scaffold(
               appBar: PreferredAppBarWidget(height: 56),
-              backgroundColor: AppColors.backgroundColor,
               body: Column(
                 children: [
                   Expanded(
@@ -108,7 +107,7 @@ class _InternalMagazinePageState
                                       fontFamily: 'Piaui',
                                       fontSize: 10,
                                       fontWeight: FontWeight.w500,
-                                      color: AppColors.textColorNormal,
+                                      color: Theme.of(context).primaryColor,
                                     ),
                                     textAlign: TextAlign.center,
                                   ),

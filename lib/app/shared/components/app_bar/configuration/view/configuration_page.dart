@@ -5,6 +5,8 @@ import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/ba
 import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/text_config_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
+import 'package:provider/provider.dart';
 
 class ConfigPage extends StatefulWidget {
   final String title;
@@ -19,18 +21,17 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
 
   @override
   Widget build(BuildContext context) {
+    var darkThemeEnabled = Provider.of<ThemeChanger>(context);
     final double vFontSize = 15;
     final double vBtnHeght = 5;
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56, close: true, closeCongif: true),
-      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           BackToMenuWidget(),
           TextConfiWidget(),
           Expanded(
             child: Container(
-              color: AppColors.backgroundColor,
               child: ListView(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 32),
@@ -40,7 +41,7 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
                     onPressed: () {},
                     child: ListTile(
                       contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                      tileColor: AppColors.appBar,
+                      tileColor: Theme.of(context).backgroundColor,
                       title: Padding(
                         padding: const EdgeInsets.only(right: 12, left: 12),
                         child: Row(
@@ -51,7 +52,7 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
                               style: TextStyle(
                                   fontSize: vFontSize,
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.dark),
+                                  color: Theme.of(context).primaryColor),
                             ),
                             Image.asset(
                               'assets/images/font-size.png',
@@ -68,7 +69,7 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
                     onPressed: () {},
                     child: ListTile(
                       contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                      tileColor: AppColors.appBar,
+                      tileColor: Theme.of(context).backgroundColor,
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
                         child: Row(
@@ -79,10 +80,13 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
                               style: TextStyle(
                                   fontSize: vFontSize,
                                   fontWeight: FontWeight.bold,
-                                  color: AppColors.dark),
+                                  color: Theme.of(context).primaryColor),
                             ),
-                            Image.asset('assets/images/night-mode.png',
-                                scale: 0.6),
+                            Switch(
+                                value: darkThemeEnabled.isDark(),
+                                onChanged: (status) {
+                                  darkThemeEnabled.setDarkStatus(status);
+                                })
                           ],
                         ),
                       ),

@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_session/flutter_session.dart';
+import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/border_top_widget.dart';
@@ -17,11 +19,19 @@ import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class EditionPage extends StatefulWidget {
   final String title;
-
-  const EditionPage({Key key, this.title = "EditionPage"}) : super(key: key);
+  ThemeChanger themeChanger;
+  bool systemIsDark;
+  EditionPage({Key key, this.title = "EditionPage"}) : super(key: key);
 
   @override
   _EditionPageState createState() => _EditionPageState();
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      themeChanger.setDarkStatus(systemIsDark);
+    });
+  }
 }
 
 class _EditionPageState
@@ -37,9 +47,12 @@ class _EditionPageState
 
   @override
   Widget build(context) {
+    widget.themeChanger = Provider.of<ThemeChanger>(context, listen: false);
+    widget.systemIsDark =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
-      backgroundColor: AppColors.backgroundColor,
       body: Stack(
         children: [
           LayoutBuilder(
@@ -56,7 +69,7 @@ class _EditionPageState
                       Container(
                         height: 42,
                         width: 600,
-                        color: AppColors.appBar,
+                        color: Theme.of(context).backgroundColor,
                         child: TextToSignWidget(
                           onTap: () {
                             Modular.to.pushNamed('/login');

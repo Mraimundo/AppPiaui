@@ -48,7 +48,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
-      backgroundColor: AppColors.backgroundColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -107,7 +106,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             fontFamily: 'Piaui',
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.textColorNormal,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                         TextSpan(
@@ -117,7 +116,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                             fontFamily: 'Piaui',
                             fontSize: 15,
                             fontWeight: FontWeight.w500,
-                            color: AppColors.textColorNormal,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                       ]),

@@ -79,7 +79,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     double vWidth = MediaQuery.of(context).size.width;
     return Material(
         child: Container(
-      color: AppColors.backgroundColor,
       height: vHeight * 0.28,
       width: vWidth / 1.5,
       child: Padding(
@@ -105,11 +104,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: Align(
                   child: TextFormField(
                     autocorrect: false,
+                    style: TextStyle(color: Colors.black),
                     keyboardType: TextInputType.emailAddress,
                     onChanged: (value) => setState(() {
                       _inpLogin = value ?? 'Email';
                     }),
                     decoration: InputDecoration(
+                      hintStyle: TextStyle(color: Colors.black),
                       hintText: 'E-mail',
                       border: InputBorder.none,
                     ),
@@ -131,7 +132,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 width: vWidth / 1.10,
                 padding: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).primaryColor,
                   border: Border.all(
                     color: AppColors.borderColorForm, // set border color
                     width: 0.8,
@@ -139,12 +140,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                   // set rounded corner radius
                 ),
                 child: TextFormField(
+                    style: TextStyle(color: Colors.black),
                     autocorrect: false,
                     obscureText: true,
                     onChanged: (value) => setState(() {
                           _inpSenha = value ?? 'Senha';
                         }),
                     decoration: InputDecoration(
+                      hintStyle: TextStyle(color: Colors.black),
                       hintText: 'Senha',
                       border: InputBorder.none,
                     ),

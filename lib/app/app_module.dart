@@ -28,7 +28,9 @@ import 'package:piaui_app/app/shared/components/app_bar/menu_user_logged/menu_us
 import 'package:piaui_app/app/shared/components/app_bar/search/controller/search_controller.dart';
 import 'package:piaui_app/app/shared/components/signature/controller/signature_controller.dart';
 import 'package:piaui_app/app/shared/components/signature/signature_module.dart';
+import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
 import 'package:piaui_app/app/shared/utils/constants.dart';
+import 'package:provider/provider.dart';
 import 'app_controller.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +100,12 @@ class AppModule extends MainModule {
       ];
 
   @override
-  Widget get bootstrap => AppWidget();
+  MultiProvider get bootstrap => MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => ThemeChanger())
+        ],
+        child: AppWidget(),
+      );
 
   static Inject get to => Inject<AppModule>.of();
 }

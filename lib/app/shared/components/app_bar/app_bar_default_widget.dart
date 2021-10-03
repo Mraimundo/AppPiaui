@@ -20,7 +20,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: AppColors.appBar,
+      backgroundColor: Theme.of(context).backgroundColor,
       elevation: 0,
       title: TextButton(
         onPressed: () {},

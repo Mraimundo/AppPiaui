@@ -58,7 +58,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textColorNormal,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),
@@ -81,7 +81,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textColorNormal,
+                  color: Theme.of(context).primaryColor,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -92,7 +92,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.textColorNormal,
+                  color: Theme.of(context).primaryColor,
                 ),
                 textAlign: TextAlign.center,
               ),

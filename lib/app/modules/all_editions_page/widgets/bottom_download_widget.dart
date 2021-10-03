@@ -48,20 +48,13 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
                 widget.mes.toString()),
           );
         }
-
-        widget.downloadRevist.download(
-          widget.id,
-          widget.capa,
-          widget.numberEdition,
-          widget.mes,
-          widget.ano,
-        );
       },
       // padding: EdgeInsets.zero,
       child: Container(
         height: vHeight * 0.06,
         width: vWidth / 8,
         decoration: BoxDecoration(
+          color: Colors.white,
           border: Border.all(
             color: AppColors.backgroundColorLastEdition,
           ),

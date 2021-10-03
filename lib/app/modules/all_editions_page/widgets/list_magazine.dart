@@ -16,7 +16,6 @@ class ListMagazine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppColors.backgroundColor,
       child: Stack(
         children: [
           LayoutBuilder(
@@ -38,7 +37,7 @@ class ListMagazine extends StatelessWidget {
                                 fontFamily: 'Piaui',
                                 fontSize: 17.5,
                                 fontWeight: FontWeight.bold,
-                                color: AppColors.textColorNormal,
+                                color: Theme.of(context).primaryColor,
                               ),
                             ),
                           )),

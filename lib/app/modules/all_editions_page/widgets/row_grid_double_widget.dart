@@ -70,7 +70,8 @@ class _RowGridDoubleWidgetState
                                 style: TextStyle(
                                     fontFamily: 'Piaui',
                                     fontSize: rowFontsize,
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold,
+                                    color: Theme.of(context).primaryColor),
                               ),
                             ),
                           ),
@@ -107,7 +108,6 @@ class _RowGridDoubleWidgetState
                             child: ImageShimmer(url: editionOdd.capa.url),
                           ),
                           Container(
-                            color: Colors.white,
                             height: rowHeight * 0.15,
                             width: rowWidth * 0.92,
                             child: Align(
@@ -117,7 +117,8 @@ class _RowGridDoubleWidgetState
                                 style: TextStyle(
                                     fontFamily: 'Piaui',
                                     fontSize: rowFontsize,
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold,
+                                    color: Theme.of(context).primaryColor),
                               ),
                             ),
                           ),

@@ -64,9 +64,10 @@ class _RowGridDoubleWidgetState
                               child: Text(
                                 'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
                                 style: TextStyle(
-                                    fontFamily: 'Piaui',
-                                    fontSize: rowFontsize,
-                                    fontWeight: FontWeight.bold),
+                                  fontFamily: 'Piaui',
+                                  fontSize: rowFontsize,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -95,7 +96,6 @@ class _RowGridDoubleWidgetState
                             child: ImageShimmer(url: editionOdd.capa.url),
                           ),
                           Container(
-                            color: Colors.white,
                             height: rowHeight * 0.15,
                             width: rowWidth * 0.85,
                             child: Align(
@@ -105,7 +105,8 @@ class _RowGridDoubleWidgetState
                                 style: TextStyle(
                                     fontFamily: 'Piaui',
                                     fontSize: rowFontsize,
-                                    fontWeight: FontWeight.bold),
+                                    fontWeight: FontWeight.bold,
+                                    color: Theme.of(context).primaryColor),
                               ),
                             ),
                           ),

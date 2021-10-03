@@ -30,7 +30,7 @@ class _TextMagazineState extends State<TextMagazine> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.textColorNormal,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),
@@ -42,7 +42,7 @@ class _TextMagazineState extends State<TextMagazine> {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.normal,
-                    color: AppColors.textColorNormal,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
               ),

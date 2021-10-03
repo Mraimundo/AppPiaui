@@ -39,8 +39,9 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
         height: vHeight * 0.06,
         width: vWidth / 8,
         decoration: BoxDecoration(
+          color: Colors.white,
           border: Border.all(
-            color: AppColors.orangePiaui,
+            color: Theme.of(context).primaryColorDark,
           ),
         ),
         child: Align(

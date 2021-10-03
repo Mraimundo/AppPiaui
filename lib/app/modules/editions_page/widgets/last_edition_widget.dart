@@ -23,9 +23,7 @@ class _LastEditionWidgetState
     return Row(
       children: [
         Expanded(
-          child: Container(
-              child: Container(
-            color: Colors.white,
+          child: Container(child: Container(
             child: Observer(builder: (ctx) {
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
@@ -35,7 +33,7 @@ class _LastEditionWidgetState
                     margin: const EdgeInsets.only(top: 100, bottom: 25),
                     width: size.width,
                     height: size.height * 0.36,
-                    color: AppColors.backgroundColorLastEdition,
+                    color: Theme.of(context).primaryColorDark,
                   ),
                   Positioned(
                     left: 15,
@@ -73,7 +71,7 @@ class _LastEditionWidgetState
                                     fontFamily: 'TradeGothic',
                                     fontSize: 25,
                                     // fontWeight: FontWeight.bold,
-                                    color: AppColors.textColorWhite,
+                                    color: Theme.of(context).primaryColor,
                                   ),
                                 ),
                               ],
@@ -97,14 +95,14 @@ class _LastEditionWidgetState
                                   });
                                 },
                                 child: Container(
-                                  color: AppColors.textColorWhite,
+                                  color: AppColors.backgroundColorLastEdition,
                                   height: size.height * 0.06,
                                   width: size.width / 2.5,
                                   child: Align(
                                     child: Text(
                                       'Experimente',
                                       style: TextStyle(
-                                          color: AppColors.textColorBold,
+                                          color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 22),
                                     ),

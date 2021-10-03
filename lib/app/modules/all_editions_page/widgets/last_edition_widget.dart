@@ -34,9 +34,7 @@ class _LastEditionWidgetState
     return Row(
       children: [
         Expanded(
-          child: Container(
-              child: Container(
-            color: Colors.white,
+          child: Container(child: Container(
             child: Observer(builder: (ctx) {
               if (!controller.isLoading) {
                 Acf edicoes = controller.lastEdition.acf;
@@ -46,7 +44,7 @@ class _LastEditionWidgetState
                       margin: const EdgeInsets.only(top: 100, bottom: 25),
                       width: size.width,
                       height: size.height * 0.36,
-                      color: AppColors.backgroundColorLastEdition,
+                      color: Theme.of(context).primaryColorDark,
                     ),
                     Positioned(
                       left: 0,

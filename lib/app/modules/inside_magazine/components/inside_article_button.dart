@@ -108,7 +108,7 @@ class _InsideArticleButtonState
     return Card(
       elevation: 0,
       child: Container(
-        color: AppColors.cardColor,
+        color: Theme.of(context).bottomAppBarColor,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -180,7 +180,7 @@ class _InsideArticleButtonState
                         style: TextStyle(
                           fontSize: 13,
                           fontWeight: FontWeight.normal,
-                          color: AppColors.textColorArticle,
+                          color: Theme.of(context).cardColor,
                         ),
                         overflow: TextOverflow.ellipsis),
                   ],
