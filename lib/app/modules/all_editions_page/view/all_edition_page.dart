@@ -8,7 +8,7 @@ import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
 import 'package:provider/provider.dart';
 
-class AllEditionPage extends StatelessWidget {
+class AllEditionPage extends StatefulWidget {
   // final GoogleSignInAccount user;
   final Dados user;
   final bool conected;
@@ -17,20 +17,27 @@ class AllEditionPage extends StatelessWidget {
   AllEditionPage({Key key, this.user, this.conected = true}) : super(key: key);
 
   @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return AllEditionPageState();
+  }
+}
+
+class AllEditionPageState extends State<AllEditionPage> {
+  @override
   void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      themeChanger.setDarkStatus(systemIsDark);
+      widget.themeChanger.setDarkStatus(widget.systemIsDark);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    themeChanger = Provider.of<ThemeChanger>(context, listen: false);
-    systemIsDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-    print("MERDA" + systemIsDark.toString());
-
-    themeChanger.setDarkStatus(systemIsDark);
-    return conected
+    widget.themeChanger = Provider.of<ThemeChanger>(context, listen: false);
+    widget.systemIsDark =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
+    return widget.conected
         ? Scaffold(
             appBar: PreferredAppBarWidget(
               height: 56,
@@ -82,8 +89,8 @@ class AllEditionPage extends StatelessWidget {
                 ),
                 body: TabBarView(
                   children: <Widget>[
-                    ListMagazine(user: user),
-                    DownLoadEditionPage(user: user)
+                    ListMagazine(user: widget.user),
+                    DownLoadEditionPage(user: widget.user)
                   ],
                 ),
               ),
@@ -126,7 +133,7 @@ class AllEditionPage extends StatelessWidget {
                   ),
                 ),
                 body: TabBarView(
-                  children: <Widget>[DownLoadEditionPage(user: user)],
+                  children: <Widget>[DownLoadEditionPage(user: widget.user)],
                 ),
               ),
             ),

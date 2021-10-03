@@ -25,13 +25,6 @@ class EditionPage extends StatefulWidget {
 
   @override
   _EditionPageState createState() => _EditionPageState();
-
-  @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      themeChanger.setDarkStatus(systemIsDark);
-    });
-  }
 }
 
 class _EditionPageState
@@ -43,6 +36,13 @@ class _EditionPageState
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.themeChanger.setDarkStatus(widget.systemIsDark);
+    });
   }
 
   @override
