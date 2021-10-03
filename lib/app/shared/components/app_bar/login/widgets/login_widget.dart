@@ -132,7 +132,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 width: vWidth / 1.10,
                 padding: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
-                  color: Theme.of(context).primaryColor,
+                  color: Colors.white,
                   border: Border.all(
                     color: AppColors.borderColorForm, // set border color
                     width: 0.8,
@@ -140,7 +140,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   // set rounded corner radius
                 ),
                 child: TextFormField(
-                    style: TextStyle(color: Colors.black),
+                    style: TextStyle(color: Colors.white),
                     autocorrect: false,
                     obscureText: true,
                     onChanged: (value) => setState(() {
