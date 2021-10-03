@@ -102,15 +102,21 @@ class _RowGridDoubleWidgetState
                               ),
                               Row(
                                 children: [
-                                  ButtomOrangeWidget(
-                                    revist: editionPair,
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: ButtomOrangeWidget(
+                                      revist: editionPair,
+                                    ),
                                   ),
-                                  ButtomDownLoadWidget(
-                                    id: editionPair.edicao.toString(),
-                                    numberEdition:
-                                        editionPair.numberEdition.toString(),
-                                    month: editionPair.mes.toString(),
-                                    year: editionPair.mes,
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10),
+                                    child: ButtomDownLoadWidget(
+                                      id: editionPair.edicao.toString(),
+                                      numberEdition:
+                                          editionPair.numberEdition.toString(),
+                                      month: editionPair.mes.toString(),
+                                      year: editionPair.mes,
+                                    ),
                                   )
                                 ],
                               ),

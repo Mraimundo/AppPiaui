@@ -65,7 +65,7 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
                         minHeight: viewportConstraints.maxHeight,
                       ),
                       child: Column(
-                        mainAxisSize: MainAxisSize.min,
+                        // mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           TextInternalMagazine(
                             data: widget.revist.mes + '-' + widget.revist.ano,

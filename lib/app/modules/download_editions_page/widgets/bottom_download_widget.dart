@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
-import 'package:piaui_app/app/shared/components/complete_delete/complete_download.dart';
+import 'package:piaui_app/app/shared/components/complete_delete/complete_delete.dart';
 import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
@@ -46,7 +46,7 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
         ),
         child: Align(
           child: Image.asset(
-            'assets/images/arrow_check.png',
+            'assets/images/config.png',
           ),
           alignment: Alignment.center,
         ),
