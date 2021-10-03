@@ -30,7 +30,7 @@ class _CompleteDownloadState extends State<CompleteDownload> {
                   child: Container(
                     width: 350,
                     height: 230,
-                    color: AppColors.textColorWhite,
+                    color: Theme.of(context).backgroundColor,
                     child: Column(
                       children: [
                         Padding(
@@ -57,7 +57,7 @@ class _CompleteDownloadState extends State<CompleteDownload> {
                                       text: 'O seu download da ',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.black,
+                                        color: Theme.of(context).primaryColor,
                                       ),
                                       children: <TextSpan>[
                                         TextSpan(
@@ -69,8 +69,13 @@ class _CompleteDownloadState extends State<CompleteDownload> {
                                                 ' de ' +
                                                 widget.year,
                                             style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
+                                                fontWeight: FontWeight.bold,
+                                                color: Theme.of(context)
+                                                    .primaryColor)),
                                         TextSpan(
+                                            style: TextStyle(
+                                                color: Theme.of(context)
+                                                    .primaryColor),
                                             text:
                                                 ' foi realizado com sucesso e econtra-se na sua galeria.'),
                                       ],

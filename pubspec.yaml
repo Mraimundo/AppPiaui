@@ -115,7 +115,14 @@ flutter:
     - assets/images/config.png
     - assets/images/arrow_check.png
     - assets/images/google.png
-
+    - assets/images/Busca.png
+    - assets/images/Close.png
+    - assets/images/Conf.png
+    - assets/images/Mais.png
+    - assets/images/Menu.png
+    - assets/images/Pause.png
+    - assets/images/Play.png
+    - assets/images/Seta.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

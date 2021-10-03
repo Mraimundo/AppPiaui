@@ -56,7 +56,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                       color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),
@@ -118,7 +118,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                   //                     color: AppColors.dark),
                   //               ),
                   //               Image.asset(
-                  //                 'assets/images/arrow_menu.png',
+                  //                 'assets/images/Seta.png',
                   //                 width: 20,
                   //                 height: 12,
                   //               ),
@@ -159,7 +159,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                       color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),
@@ -200,7 +200,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                       color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),
@@ -241,7 +241,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                       color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),
@@ -282,7 +282,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                       color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),
@@ -325,7 +325,7 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                                       color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),

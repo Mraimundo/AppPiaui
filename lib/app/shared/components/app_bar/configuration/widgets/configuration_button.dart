@@ -23,9 +23,8 @@ class _ConfigButtonState extends ModularState<ConfigButton, AppController> {
       icon: Container(
         padding: EdgeInsets.all(4),
         child: closeCongif
-            ? Image.asset('assets/images/icon_x.png', fit: BoxFit.contain)
-            : Image.asset('assets/images/icon_configuration.png',
-                fit: BoxFit.contain),
+            ? Image.asset('assets/images/Close.png', fit: BoxFit.contain)
+            : Image.asset('assets/images/Conf.png', fit: BoxFit.contain),
         height: MediaQuery.of(context).orientation == Orientation.portrait
             ? MediaQuery.of(context).size.height / 25
             : MediaQuery.of(context).size.height / 14,

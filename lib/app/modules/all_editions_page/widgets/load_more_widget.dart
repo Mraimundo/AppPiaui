@@ -36,7 +36,7 @@ class _LoadMoreWidgetState
                         children: [
                           Icon(
                             Icons.add_circle,
-                            color: AppColors.backgroundColorLastEdition,
+                            color: Theme.of(context).primaryColorDark,
                             size: 55,
                           )
                         ],

@@ -15,8 +15,8 @@ class _MenuButtonState extends ModularState<MenuButton, AppController> {
       icon: Container(
         padding: EdgeInsets.all(4),
         child: controller.checkedPressed
-            ? Image.asset('assets/images/icon_x.png', fit: BoxFit.contain)
-            : Image.asset('assets/images/icon_menu.png', fit: BoxFit.contain),
+            ? Image.asset('assets/images/Close.png', fit: BoxFit.contain)
+            : Image.asset('assets/images/Menu.png', fit: BoxFit.contain),
         //color: Colors.black,
         height: MediaQuery.of(context).orientation == Orientation.portrait
             ? MediaQuery.of(context).size.height / 25

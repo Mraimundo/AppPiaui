@@ -26,11 +26,10 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
     double vWidth = MediaQuery.of(context).size.width;
     return TextButton(
       onPressed: () async {
-        await widget.downloads.deleteRevist(widget.id);
         showDialog(
             context: context,
             builder: (contex) {
-              return CompleteDelete(
+              return CompleteDelete(widget.id.toString(),
                   widget.numberEdition.toString(), widget.year, widget.month);
             });
       },

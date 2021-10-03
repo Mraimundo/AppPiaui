@@ -49,8 +49,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
         IconButton(
           padding: EdgeInsets.zero,
           icon: Container(
-            child:
-                Image.asset('assets/images/icon_lupa.png', fit: BoxFit.contain),
+            child: Image.asset('assets/images/Busca.png', fit: BoxFit.contain),
             height: MediaQuery.of(context).orientation == Orientation.portrait
                 ? MediaQuery.of(context).size.height / 25
                 : MediaQuery.of(context).size.height / 14,

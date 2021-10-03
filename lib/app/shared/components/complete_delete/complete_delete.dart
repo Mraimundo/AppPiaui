@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class CompleteDelete extends StatefulWidget {
+  String id;
   String numberEdition;
   String year;
   String month;
-
-  CompleteDelete(this.numberEdition, this.year, this.month);
+  DownloadsController downloads = DownloadsController();
+  CompleteDelete(this.id, this.numberEdition, this.year, this.month);
 
   @override
   State<StatefulWidget> createState() {
@@ -34,13 +36,13 @@ class CompleteDeleteState extends State<CompleteDelete> {
                   child: Container(
                     width: 350,
                     height: 230,
-                    color: AppColors.textColorWhite,
+                    color: Theme.of(context).backgroundColor,
                     child: Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Text(
-                            'Revista excluida com sucesso!',
+                            'Aviso',
                             style: TextStyle(
                               color: AppColors.orangePiaui,
                               fontWeight: FontWeight.bold,
@@ -58,10 +60,10 @@ class CompleteDeleteState extends State<CompleteDelete> {
                                   alignment: Alignment.center,
                                   child: RichText(
                                     text: TextSpan(
-                                      text: 'O seu download da ',
+                                      text: 'Deseja excluir a ',
                                       style: TextStyle(
                                         fontSize: 16,
-                                        color: Colors.black,
+                                        color: Theme.of(context).primaryColor,
                                       ),
                                       children: <TextSpan>[
                                         TextSpan(
@@ -73,9 +75,10 @@ class CompleteDeleteState extends State<CompleteDelete> {
                                                 ' de ' +
                                                 widget.year,
                                             style: TextStyle(
+                                                color: Theme.of(context)
+                                                    .primaryColor,
                                                 fontWeight: FontWeight.bold)),
-                                        TextSpan(
-                                            text: ' foi excluido com sucesso.'),
+                                        TextSpan(text: ' ?'),
                                       ],
                                     ),
                                   ),
@@ -89,6 +92,29 @@ class CompleteDeleteState extends State<CompleteDelete> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
+                              TextButton(
+                                onPressed: () async {
+                                  await widget.downloads
+                                      .deleteRevist(widget.id);
+                                  Navigator.of(context).pop();
+                                },
+                                child: Container(
+                                  height: 60,
+                                  width: 150,
+                                  color: AppColors.orangePiaui,
+                                  child: Align(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      'Excluir',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.textColorWhite,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                               TextButton(
                                 onPressed: () {
                                   Navigator.of(context).pop();
@@ -104,7 +130,7 @@ class CompleteDeleteState extends State<CompleteDelete> {
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      'OK',
+                                      'Cancelar',
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
