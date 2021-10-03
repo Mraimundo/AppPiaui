@@ -39,56 +39,130 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
       padding: const EdgeInsets.only(left: 26, right: 29),
       child: Column(
         children: [
-          new OutlinedButton(
-            child: new Text("A+"),
-            style: ButtonStyle(
-                padding: MaterialStateProperty.all(EdgeInsets.all(20)),
-                shape: MaterialStateProperty.all(CircleBorder())),
-            onPressed: () {
-              setState(() {
-                if (_tamFonte >= 20) {
-                  _tamFonte = 20;
-                } else {
-                  _tamFonte++;
-                }
-              });
-            },
-          ),
-          new OutlinedButton(
-            child: new Text("A-"),
-            style: ButtonStyle(
-                padding: MaterialStateProperty.all(EdgeInsets.all(20)),
-                shape: MaterialStateProperty.all(CircleBorder())),
-            onPressed: () {
-              setState(() {
-                if (_tamFonte <= 8) {
-                  _tamFonte = 8;
-                } else {
-                  _tamFonte--;
-                }
-              });
-            },
-          ),
-          new OutlinedButton(
-            child: new Text("A"),
-            style: ButtonStyle(
-                padding: MaterialStateProperty.all(EdgeInsets.all(20)),
-                shape: MaterialStateProperty.all(CircleBorder())),
-            onPressed: () {
-              setState(() {
-                _tamFonte = 13;
-              });
-            },
-          ),
-          new OutlinedButton(
-            child: new Text("Play"),
-            style: ButtonStyle(
-                padding: MaterialStateProperty.all(EdgeInsets.all(20)),
-                shape: MaterialStateProperty.all(CircleBorder())),
-            onPressed: () {
-              tts.speak(widget.rendered['content']);
-            },
-          ),
+          Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+            TextButton(
+              child: Text(
+                "Play",
+                style: TextStyle(
+                  fontFamily: 'TradeGothic',
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+              onPressed: () => tts.speak(widget.rendered['content']),
+            ),
+            TextButton(
+              child: Text(
+                "Stop",
+                style: TextStyle(
+                  fontFamily: 'TradeGothic',
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+              onPressed: () => tts.stop(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(
+                    color: Colors.black,
+                  ),
+                ),
+                child: TextButton(
+                  child: Text(
+                    "A+",
+                    style: TextStyle(
+                      fontFamily: 'TradeGothic',
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      if (_tamFonte >= 20) {
+                        _tamFonte = 20;
+                      } else {
+                        _tamFonte++;
+                      }
+                    });
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 10),
+              child: Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(
+                    color: Colors.black,
+                  ),
+                ),
+                child: TextButton(
+                  child: Text(
+                    "A-",
+                    style: TextStyle(
+                      fontFamily: 'TradeGothic',
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      if (_tamFonte <= 8) {
+                        _tamFonte = 8;
+                      } else {
+                        _tamFonte--;
+                      }
+                    });
+                  },
+                ),
+              ),
+            ),
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                border: Border.all(
+                  color: Colors.black,
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: TextButton(
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 6),
+                    child: Text(
+                      "A",
+                      style: TextStyle(
+                        fontFamily: 'TradeGothic',
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _tamFonte = 13;
+                    });
+                  },
+                ),
+              ),
+            ),
+          ]),
           ListView.separated(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),

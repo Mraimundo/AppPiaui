@@ -57,6 +57,30 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
               child: Column(
                 children: [
                   Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                    TextButton(
+                      child: Text(
+                        "Play",
+                        style: TextStyle(
+                          fontFamily: 'TradeGothic',
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      onPressed: () => tts.speak(rendered),
+                    ),
+                    TextButton(
+                      child: Text(
+                        "Stop",
+                        style: TextStyle(
+                          fontFamily: 'TradeGothic',
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      onPressed: () => tts.stop(),
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Container(
@@ -154,18 +178,6 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                           },
                         ),
                       ),
-                    ),
-                    TextButton(
-                      child: Text(
-                        "Play",
-                        style: TextStyle(
-                          fontFamily: 'TradeGothic',
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
-                      onPressed: () => tts.speak(rendered),
                     ),
                   ]),
                   Padding(

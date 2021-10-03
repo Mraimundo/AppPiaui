@@ -12,9 +12,10 @@ class AuthController {
   void setUser(BuildContext context, Dados user) {
     if (user != null) {
       _user = user;
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => AllEditionPage(user: user),
-      ));
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) => AllEditionPage(user: _user)),
+          (Route<dynamic> route) => false);
+
       // Modular.to.pushNamed('/logged');
     } else {
       Navigator.of(context).pushReplacement(MaterialPageRoute(

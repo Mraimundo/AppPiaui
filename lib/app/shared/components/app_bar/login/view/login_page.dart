@@ -52,8 +52,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           children: [
             BackToHomeWidget(
               onTap: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/editions', (Route<dynamic> route) => false);
+                Navigator.popUntil(
+                    context, ModalRoute.withName(Modular.initialRoute));
               },
             ),
             TextLoginWidget(),

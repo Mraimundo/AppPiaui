@@ -3,6 +3,16 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/shared/components/app_bar/menu/controller/menu_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+_launchURL() async {
+  const url = 'https://piaui.homolog.inf.br/';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
 
 class MenuPage extends StatefulWidget {
   final String title;
@@ -118,9 +128,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    onPressed: () {
-                      Modular.to.pushNamed('/change_password');
-                    },
+                    onPressed: () {},
                     child: ListTile(
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
@@ -202,7 +210,9 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _launchURL();
+                    },
                     child: ListTile(
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
