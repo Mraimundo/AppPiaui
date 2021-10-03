@@ -6,6 +6,7 @@ import 'package:drop_cap_text/drop_cap_text.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/autor_internal_article.dart';
 import 'package:piaui_app/app/modules/tts/tts.dart';
+import 'package:piaui_app/app/modules/internal_magazine/components/border_top_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
 
@@ -55,78 +56,122 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
               padding: const EdgeInsets.only(left: 26, right: 29),
               child: Column(
                 children: [
-                  /* TextButton(
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(CircleBorder()),
-                      borderSide: BorderSide(color: Colors.blue),
-                      padding: MaterialStateProperty.all(EdgeInsets.all(20)),
+                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(
+                            color: Colors.black,
+                          ),
+                        ),
+                        child: TextButton(
+                          child: Text(
+                            "A+",
+                            style: TextStyle(
+                              fontFamily: 'TradeGothic',
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              if (_tamFonte >= 20) {
+                                _tamFonte = 20;
+                              } else {
+                                _tamFonte++;
+                              }
+                            });
+                          },
+                        ),
+                      ),
                     ),
-                    onPressed: () {
-                      setState(() {
-                        _tamFonte++;
-                      });
-                    },
-                    child: Text('+'),
-                  ), */
-                  new OutlinedButton(
-                    child: new Text("A+"),
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
-                        shape: MaterialStateProperty.all(CircleBorder())),
-                    onPressed: () {
-                      setState(() {
-                        if (_tamFonte >= 20) {
-                          _tamFonte = 20;
-                        } else {
-                          _tamFonte++;
-                        }
-                      });
-                    },
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          border: Border.all(
+                            color: Colors.black,
+                          ),
+                        ),
+                        child: TextButton(
+                          child: Text(
+                            "A-",
+                            style: TextStyle(
+                              fontFamily: 'TradeGothic',
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 14,
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              if (_tamFonte <= 8) {
+                                _tamFonte = 8;
+                              } else {
+                                _tamFonte--;
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(
+                          color: Colors.black,
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: TextButton(
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 6),
+                            child: Text(
+                              "A",
+                              style: TextStyle(
+                                fontFamily: 'TradeGothic',
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 14,
+                              ),
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              _tamFonte = 13;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      child: Text(
+                        "Play",
+                        style: TextStyle(
+                          fontFamily: 'TradeGothic',
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                      onPressed: () => tts.speak(rendered),
+                    ),
+                  ]),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12, bottom: 32),
+                    child: BorderTopWidget(),
                   ),
-                  new OutlinedButton(
-                    child: new Text("A-"),
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
-                        shape: MaterialStateProperty.all(CircleBorder())),
-                    onPressed: () {
-                      setState(() {
-                        if (_tamFonte <= 8) {
-                          _tamFonte = 8;
-                        } else {
-                          _tamFonte--;
-                        }
-                      });
-                    },
-                  ),
-                  new OutlinedButton(
-                    child: new Text("A"),
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all(EdgeInsets.all(20)),
-                        shape: MaterialStateProperty.all(CircleBorder())),
-                    onPressed: () {
-                      setState(() {
-                        _tamFonte = 13;
-                      });
-                    },
-                  ),
-                  new OutlinedButton(
-                      child: new Text("Play"),
-                      style: ButtonStyle(
-                          padding:
-                              MaterialStateProperty.all(EdgeInsets.all(20)),
-                          shape: MaterialStateProperty.all(CircleBorder())),
-                      onPressed: () {
-                        tts.speak(rendered);
-                      }),
-                  new OutlinedButton(
-                      child: new Text("Stop"),
-                      style: ButtonStyle(
-                          padding:
-                              MaterialStateProperty.all(EdgeInsets.all(20)),
-                          shape: MaterialStateProperty.all(CircleBorder())),
-                      onPressed: () {
-                        tts.stop();
-                      }),
                   ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
