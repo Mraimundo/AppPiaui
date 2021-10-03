@@ -18,8 +18,6 @@ import 'package:piaui_app/app/shared/components/app_bar/login/widgets/text_login
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
-import 'package:piaui_app/app/shared/layout/gradients.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 Future<void> populateUser(user) async {
   await FlutterSession().set("user", user);

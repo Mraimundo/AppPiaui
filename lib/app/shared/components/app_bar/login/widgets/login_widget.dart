@@ -131,7 +131,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 width: vWidth / 1.10,
                 padding: EdgeInsets.only(left: 10),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  // color: Colors.white,
                   border: Border.all(
                     color: AppColors.borderColorForm, // set border color
                     width: 0.8,
