@@ -5,6 +5,7 @@ import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/auth/auth_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/util/validations.dart';
+import 'package:piaui_app/app/shared/components/modal_usuario/modal_usuario_invalido.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 Future<void> populateUser(user) async {
@@ -49,9 +50,8 @@ class _LoginWidgetState extends State<LoginWidget> {
         authController.setUser(context, user);
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Center(
-            child: Text(json['msg']),
-          ),
+          backgroundColor: Theme.of(context).backgroundColor,
+          content: ModalUsuario(json['msg']),
         ));
       }
     } on DioError catch (e) {
@@ -59,9 +59,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         print(e.toString());
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Center(
-            child: Text(e.message),
-          ),
+          content: ModalUsuario(e.message),
         ));
       }
     } catch (e) {
@@ -140,7 +138,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   // set rounded corner radius
                 ),
                 child: TextFormField(
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.black),
                     autocorrect: false,
                     obscureText: true,
                     onChanged: (value) => setState(() {

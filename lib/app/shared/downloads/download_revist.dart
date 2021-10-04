@@ -12,7 +12,7 @@ class DownloadRevist {
   final ApiDownload apiDownload = new ApiDownload();
   final DownloadsController downloads = new DownloadsController();
 
-  download(id, capa, numberEdition, mes, ano) async {
+  Future<void> download(id, capa, numberEdition, mes, ano) async {
     var m = await apiDownload.materias(id);
     var capaRevist = await apiDownload.imageBase64(id);
     final List<Materia> materias = [];
