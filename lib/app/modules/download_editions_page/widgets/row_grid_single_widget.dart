@@ -11,16 +11,17 @@ import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class RowGridSingleWidget extends StatefulWidget {
-  final int index;
+  final RevistDownload revist;
 
-  const RowGridSingleWidget({Key key, this.index}) : super(key: key);
+  const RowGridSingleWidget({Key key, this.revist}) : super(key: key);
 
   @override
-  _RowGridSingleWidgetState createState() => _RowGridSingleWidgetState();
+  _RowGridSingleWidgetState createState() => _RowGridSingleWidgetState(revist);
 }
 
-class _RowGridSingleWidgetState
-    extends ModularState<RowGridSingleWidget, DownLoadEditionPageController> {
+class _RowGridSingleWidgetState extends State<RowGridSingleWidget> {
+  final RevistDownload revist;
+  _RowGridSingleWidgetState(this.revist);
   @override
   Widget build(BuildContext context) {
     final double rowHeight = 250;
@@ -32,12 +33,11 @@ class _RowGridSingleWidgetState
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.center;
 
-    RevistDownload edition = controller.revistDownloads[widget.index];
     return Material(
       child: InkWell(
         onTap: () {
           Modular.to
-              .pushNamed('/magazine_downloads', arguments: {"revist": edition});
+              .pushNamed('/magazine_downloads', arguments: {"revist": revist});
           /*   Navigator.of(context).push(MaterialPageRoute(builder: (builder) {
           return InsideMagazinePage(controller.revistDownloads[widget.index]);
         })); */
@@ -53,7 +53,7 @@ class _RowGridSingleWidgetState
                   color: Colors.grey,
                   height: rowHeight * 0.80,
                   width: rowWidth * 0.92,
-                  child: ImageShimmer(url: edition.capa),
+                  child: ImageShimmer(url: revist.capa),
                 ),
                 Container(
                   height: rowHeight * 0.15,
@@ -65,7 +65,7 @@ class _RowGridSingleWidgetState
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'Ediçãoo #${edition.numberEdition}: ${edition.mes} de ${edition.ano}',
+                            'Ediçãoo #${revist.numberEdition}: ${revist.mes} de ${revist.ano}',
                             style: TextStyle(
                                 fontFamily: 'Piaui',
                                 fontSize: rowFontsize,
@@ -92,12 +92,12 @@ class _RowGridSingleWidgetState
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    ButtomOrangeWidget(revist: edition),
+                    ButtomOrangeWidget(revist: revist),
                     ButtomDownLoadWidget(
-                      id: edition.edicao.toString(),
-                      numberEdition: edition.numberEdition.toString(),
-                      month: edition.mes.toString(),
-                      year: edition.mes,
+                      id: revist.edicao.toString(),
+                      numberEdition: revist.numberEdition.toString(),
+                      month: revist.mes.toString(),
+                      year: revist.mes,
                     )
                   ],
                 ),

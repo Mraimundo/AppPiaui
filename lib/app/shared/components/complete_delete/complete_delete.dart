@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_session/flutter_session.dart';
+import 'package:piaui_app/app/modules/all_editions_page/view/all_edition_page.dart';
 import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
+import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+
+Future<Dados> readUser() async {
+  Dados user = new Dados();
+  user = Dados.fromJson(await FlutterSession().get("user"));
+  return user;
+}
 
 class CompleteDelete extends StatefulWidget {
   String id;
@@ -99,10 +108,19 @@ class CompleteDeleteState extends State<CompleteDelete> {
                                 onPressed: () async {
                                   await widget.downloads
                                       .deleteRevist(widget.id);
+                                  Dados user = new Dados();
+                                  user = await readUser();
 
                                   /*  Navigator.of(context).pop(); */
-                                  Modular.to.pushNamedAndRemoveUntil('/logged',
-                                      (Route<dynamic> route) => false);
+                                  /* Modular.to.pushNamedAndRemoveUntil('/logged' arguments: z
+                                     (Route<dynamic> route) => false); */
+
+                                  /* Navigator.pushAndRemoveUntil(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              AllEditionPage(user: user)),
+                                      (route) => false); */
                                 },
                                 child: Container(
                                   height: 60,

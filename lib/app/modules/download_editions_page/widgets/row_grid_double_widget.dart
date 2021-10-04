@@ -7,16 +7,23 @@ import 'package:piaui_app/app/modules/download_editions_page/widgets/bottom_oran
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 
 class RowGridDoubleWidget extends StatefulWidget {
-  final int index;
+  final RevistDownload revist;
+  final RevistDownload revist2;
 
-  const RowGridDoubleWidget({Key key, this.index}) : super(key: key);
+  const RowGridDoubleWidget({Key key, this.revist, this.revist2})
+      : super(key: key);
 
   @override
-  _RowGridDoubleWidgetState createState() => _RowGridDoubleWidgetState();
+  _RowGridDoubleWidgetState createState() =>
+      _RowGridDoubleWidgetState(revist, revist2);
 }
 
-class _RowGridDoubleWidgetState
-    extends ModularState<RowGridDoubleWidget, DownLoadEditionPageController> {
+class _RowGridDoubleWidgetState extends State<RowGridDoubleWidget> {
+  final RevistDownload revist;
+  final RevistDownload revist2;
+
+  _RowGridDoubleWidgetState(this.revist, this.revist2);
+
   @override
   Widget build(BuildContext context) {
     final double rowHeight = 255;
@@ -27,8 +34,8 @@ class _RowGridDoubleWidgetState
     MainAxisAlignment columAlignV = MainAxisAlignment.end;
     CrossAxisAlignment rowAlignV = CrossAxisAlignment.center;
     MainAxisAlignment rowAlignH = MainAxisAlignment.spaceEvenly;
-    RevistDownload editionPair = controller.revistDownloads[widget.index];
-    RevistDownload editionOdd = controller.revistDownloads[widget.index + 1];
+/*     RevistDownload editionPair = controller.revistDownloads[widget.index];
+    RevistDownload editionOdd = controller.revistDownloads[widget.index + 1]; */
     return Row(
       children: [
         Column(
@@ -45,7 +52,7 @@ class _RowGridDoubleWidgetState
                     child: InkWell(
                       onTap: () {
                         Modular.to.pushNamed('/magazine_downloads',
-                            arguments: {"revist": editionPair});
+                            arguments: {"revist": revist});
                         /*   Navigator.of(context).push(MaterialPageRoute(builder: (builder) {
           return InsideMagazinePage(controller.revistDownloads[widget.index]);
         })); */
@@ -61,7 +68,7 @@ class _RowGridDoubleWidgetState
                                 color: Colors.grey,
                                 height: rowHeight * 0.80,
                                 width: rowWidth * 0.92,
-                                child: ImageShimmer(url: editionPair.capa),
+                                child: ImageShimmer(url: revist.capa),
                               ),
                               Container(
                                 height: rowHeight * 0.15,
@@ -73,8 +80,7 @@ class _RowGridDoubleWidgetState
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          /* 'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}' */ editionPair
-                                              .toString(),
+                                          'Edição  #${revist.numberEdition}: ${revist.mes} de ${revist.ano}',
                                           style: TextStyle(
                                               fontFamily: 'Piaui',
                                               fontSize: rowFontsize,
@@ -105,17 +111,17 @@ class _RowGridDoubleWidgetState
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: ButtomOrangeWidget(
-                                      revist: editionPair,
+                                      revist: revist,
                                     ),
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 10),
                                     child: ButtomDownLoadWidget(
-                                      id: editionPair.edicao.toString(),
+                                      id: revist.edicao.toString(),
                                       numberEdition:
-                                          editionPair.numberEdition.toString(),
-                                      month: editionPair.mes.toString(),
-                                      year: editionPair.mes,
+                                          revist.numberEdition.toString(),
+                                      month: revist.mes.toString(),
+                                      year: revist.mes,
                                     ),
                                   )
                                 ],
@@ -130,7 +136,7 @@ class _RowGridDoubleWidgetState
                     child: InkWell(
                       onTap: () {
                         Modular.to.pushNamed('/magazine_downloads',
-                            arguments: {"revist": editionOdd});
+                            arguments: {"revist": revist2});
                         /*   Navigator.of(context).push(MaterialPageRoute(builder: (builder) {
           return InsideMagazinePage(controller.revistDownloads[widget.index]);
         })); */
@@ -146,7 +152,7 @@ class _RowGridDoubleWidgetState
                                 color: Colors.grey,
                                 height: rowHeight * 0.80,
                                 width: rowWidth * 0.92,
-                                child: ImageShimmer(url: editionOdd.capa),
+                                child: ImageShimmer(url: revist2.capa),
                               ),
                               Container(
                                 height: rowHeight * 0.15,
@@ -158,7 +164,7 @@ class _RowGridDoubleWidgetState
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          'Ediçãoo #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
+                                          'Ediçãoo #${revist2.numberEdition}: ${revist2.mes} de ${revist2.ano}',
                                           style: TextStyle(
                                               fontFamily: 'Piaui',
                                               fontSize: rowFontsize,
@@ -186,13 +192,13 @@ class _RowGridDoubleWidgetState
                               ),
                               Row(
                                 children: [
-                                  ButtomOrangeWidget(revist: editionOdd),
+                                  ButtomOrangeWidget(revist: revist2),
                                   ButtomDownLoadWidget(
-                                    id: editionOdd.edicao.toString(),
+                                    id: revist2.edicao.toString(),
                                     numberEdition:
-                                        editionOdd.numberEdition.toString(),
-                                    month: editionOdd.mes.toString(),
-                                    year: editionOdd.mes,
+                                        revist2.numberEdition.toString(),
+                                    month: revist2.mes.toString(),
+                                    year: revist2.mes,
                                   )
                                 ],
                               ),

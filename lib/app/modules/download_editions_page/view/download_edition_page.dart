@@ -15,13 +15,11 @@ class DownLoadEditionPage extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return DownloadEditionPageState();
   }
 }
 
-class DownloadEditionPageState
-    extends ModularState<DownLoadEditionPage, DownLoadEditionPageController> {
+class DownloadEditionPageState extends State<DownLoadEditionPage> {
   @override
   Widget build(BuildContext context) {
     return Stack(
