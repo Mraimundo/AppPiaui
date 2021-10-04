@@ -31,6 +31,7 @@ class ListInternalArticles extends StatefulWidget {
 
 class _ListInternalArticlesState extends State<ListInternalArticles> {
   Tts tts = new Tts();
+  bool isPlay = true;
 
   double _tamFonte = 13;
   @override
@@ -40,29 +41,49 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
       child: Column(
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-            TextButton(
-              child: Text(
-                "Play",
-                style: TextStyle(
-                  fontFamily: 'TradeGothic',
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                ),
+            IconButton(
+              padding: EdgeInsets.zero,
+              icon: Container(
+                padding: EdgeInsets.all(4),
+                child:
+                    Image.asset('assets/images/Play.png', fit: BoxFit.contain),
+                //color: Colors.black,
+                height:
+                    MediaQuery.of(context).orientation == Orientation.portrait
+                        ? MediaQuery.of(context).size.height / 25
+                        : MediaQuery.of(context).size.height / 14,
               ),
-              onPressed: () => tts.speak(widget.rendered['content']),
+              alignment: Alignment.centerRight,
+              onPressed: () {
+                setState(() {
+                  if (isPlay) {
+                    tts.speak(widget.rendered['content']);
+                    isPlay = false;
+                  }
+                });
+              },
             ),
-            TextButton(
-              child: Text(
-                "Stop",
-                style: TextStyle(
-                  fontFamily: 'TradeGothic',
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14,
-                ),
+            IconButton(
+              padding: EdgeInsets.zero,
+              icon: Container(
+                padding: EdgeInsets.only(right: 15, bottom: 6, top: 6, left: 6),
+                child:
+                    Image.asset('assets/images/Stop.png', fit: BoxFit.contain),
+                //color: Colors.black,
+                height:
+                    MediaQuery.of(context).orientation == Orientation.portrait
+                        ? MediaQuery.of(context).size.height / 25
+                        : MediaQuery.of(context).size.height / 14,
               ),
-              onPressed: () => tts.stop(),
+              alignment: Alignment.centerRight,
+              onPressed: () {
+                setState(() {
+                  if (!isPlay) {
+                    tts.stop();
+                    isPlay = true;
+                  }
+                });
+              },
             ),
             Padding(
               padding: const EdgeInsets.only(right: 10),
@@ -72,7 +93,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   border: Border.all(
-                    color: Colors.black,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
                 child: TextButton(
@@ -80,7 +101,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                     "A+",
                     style: TextStyle(
                       fontFamily: 'TradeGothic',
-                      color: Colors.black,
+                      color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 14,
                     ),
@@ -105,7 +126,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   border: Border.all(
-                    color: Colors.black,
+                    color: Theme.of(context).primaryColor,
                   ),
                 ),
                 child: TextButton(
@@ -113,7 +134,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                     "A-",
                     style: TextStyle(
                       fontFamily: 'TradeGothic',
-                      color: Colors.black,
+                      color: Theme.of(context).primaryColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 14,
                     ),
@@ -136,7 +157,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
                 border: Border.all(
-                  color: Colors.black,
+                  color: Theme.of(context).primaryColor,
                 ),
               ),
               child: Padding(
@@ -148,7 +169,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                       "A",
                       style: TextStyle(
                         fontFamily: 'TradeGothic',
-                        color: Colors.black,
+                        color: Theme.of(context).primaryColor,
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                       ),

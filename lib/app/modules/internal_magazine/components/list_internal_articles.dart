@@ -44,6 +44,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
   String rendered;
   String idMateria;
   double _tamFonte = 13;
+  bool isPlay = true;
   _ListInternalArticlesState(this.rendered, this.idMateria);
 
   @override
@@ -57,7 +58,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
               child: Column(
                 children: [
                   Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                    TextButton(
+                    /* TextButton(                     
                       child: Text(
                         "Play",
                         style: TextStyle(
@@ -68,8 +69,53 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                         ),
                       ),
                       onPressed: () => tts.speak(rendered),
+                    ), */
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: Container(
+                        padding: EdgeInsets.all(4),
+                        child: Image.asset('assets/images/Play.png',
+                            fit: BoxFit.contain),
+                        //color: Colors.black,
+                        height: MediaQuery.of(context).orientation ==
+                                Orientation.portrait
+                            ? MediaQuery.of(context).size.height / 25
+                            : MediaQuery.of(context).size.height / 14,
+                      ),
+                      alignment: Alignment.centerRight,
+                      onPressed: () {
+                        setState(() {
+                          if (isPlay) {
+                            tts.speak(rendered);
+                            isPlay = false;
+                          }
+                        });
+                      },
                     ),
-                    TextButton(
+                    IconButton(
+                      padding: EdgeInsets.zero,
+                      icon: Container(
+                        padding: EdgeInsets.only(
+                            right: 15, bottom: 6, top: 6, left: 6),
+                        child: Image.asset('assets/images/Stop.png',
+                            fit: BoxFit.contain),
+                        //color: Colors.black,
+                        height: MediaQuery.of(context).orientation ==
+                                Orientation.portrait
+                            ? MediaQuery.of(context).size.height / 25
+                            : MediaQuery.of(context).size.height / 14,
+                      ),
+                      alignment: Alignment.centerRight,
+                      onPressed: () {
+                        setState(() {
+                          if (!isPlay) {
+                            tts.stop();
+                            isPlay = true;
+                          }
+                        });
+                      },
+                    ),
+                    /* TextButton(
                       child: Text(
                         "Stop",
                         style: TextStyle(
@@ -80,7 +126,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                         ),
                       ),
                       onPressed: () => tts.stop(),
-                    ),
+                    ), */
                     Padding(
                       padding: const EdgeInsets.only(right: 10),
                       child: Container(

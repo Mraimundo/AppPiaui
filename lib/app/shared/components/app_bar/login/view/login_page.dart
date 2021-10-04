@@ -51,8 +51,8 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           children: [
             BackToHomeWidget(
               onTap: () {
-                Navigator.popUntil(
-                    context, ModalRoute.withName(Modular.initialRoute));
+                /* Navigator.popUntil(context, ModalRoute.withName("/editions")); */
+                Navigator.of(context).popUntil((route) => route.isFirst);
               },
             ),
             TextLoginWidget(),

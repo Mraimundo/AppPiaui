@@ -142,7 +142,9 @@ class _MenuPageState extends ModularState<MenuUserLoggedPage, MenuController> {
                   // ),
                   SizedBox(height: 8),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Modular.to.pushNamed("/config");
+                    },
                     child: ListTile(
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),

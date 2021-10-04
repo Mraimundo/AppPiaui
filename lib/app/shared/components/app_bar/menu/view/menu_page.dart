@@ -86,7 +86,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   SizedBox(height: 8),
                   TextButton(
                     onPressed: () {
-                      Modular.to.pushNamed('/signature');
+                      Modular.to.pushNamed("/config");
                     },
                     child: ListTile(
                       title: Padding(
