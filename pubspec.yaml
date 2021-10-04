@@ -122,7 +122,7 @@ flutter:
     - assets/images/Menu.png
     - assets/images/Pause.png
     - assets/images/Play.png
-    - assets/images/Seta.png
+    
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

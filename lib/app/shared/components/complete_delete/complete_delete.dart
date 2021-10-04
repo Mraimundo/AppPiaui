@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/modules/download_editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
@@ -8,6 +10,7 @@ class CompleteDelete extends StatefulWidget {
   String year;
   String month;
   DownloadsController downloads = DownloadsController();
+
   CompleteDelete(this.id, this.numberEdition, this.year, this.month);
 
   @override
@@ -96,7 +99,10 @@ class CompleteDeleteState extends State<CompleteDelete> {
                                 onPressed: () async {
                                   await widget.downloads
                                       .deleteRevist(widget.id);
-                                  Navigator.of(context).pop();
+
+                                  /*  Navigator.of(context).pop(); */
+                                  Modular.to.pushNamedAndRemoveUntil('/logged',
+                                      (Route<dynamic> route) => false);
                                 },
                                 child: Container(
                                   height: 60,

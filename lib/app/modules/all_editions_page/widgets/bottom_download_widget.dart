@@ -40,13 +40,11 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
             widget.mes,
             widget.ano,
           );
-          showDialog(
-            context: context,
-            builder: (_) => CompleteDownload(
-                int.parse(widget.numberEdition.toString()),
-                widget.ano.toString(),
-                widget.mes.toString()),
-          );
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => CompleteDownload(
+                  int.parse(widget.numberEdition.toString()),
+                  widget.ano.toString(),
+                  widget.mes.toString())));
         }
       },
       // padding: EdgeInsets.zero,
