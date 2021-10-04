@@ -120,7 +120,7 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   SizedBox(height: 8),
                   TextButton(
                     onPressed: () {
-                      Modular.to.pushNamed('/change_password');
+                      Modular.to.pushNamed('/about_us');
                     },
                     child: ListTile(
                       title: Padding(

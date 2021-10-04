@@ -72,11 +72,16 @@ void _modalBottomYear(context) {
                     color: AppColors.boxColorModal,
                     child: Padding(
                       padding: const EdgeInsets.only(left: 12, right: 12),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Text('Selecione o ano'),
-                          Text('2021'),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text('Selecione o ano'),
+                              Text('2021'),
+                            ],
+                          ),
                         ],
                       ),
                     )),

@@ -8,10 +8,8 @@ part of 'edition_page_controller.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
-mixin _$DownLoadEditionPageController
-    on _DownLoadEditionPageControllerBase, Store {
-  final _$isLoadingAtom =
-      Atom(name: '_DownLoadEditionPageControllerBase.isLoading');
+mixin _$EditionPageController on _EditionPageControllerBase, Store {
+  final _$isLoadingAtom = Atom(name: '_EditionPageControllerBase.isLoading');
 
   @override
   bool get isLoading {
@@ -27,7 +25,7 @@ mixin _$DownLoadEditionPageController
   }
 
   final _$_editionsSiglePageAtom =
-      Atom(name: '_DownLoadEditionPageControllerBase._editionsSiglePage');
+      Atom(name: '_EditionPageControllerBase._editionsSiglePage');
 
   @override
   List<EditionModel> get _editionsSiglePage {
@@ -42,24 +40,7 @@ mixin _$DownLoadEditionPageController
     });
   }
 
-  final _$_revistsDownloadsAtom =
-      Atom(name: '_DownLoadEditionPageControllerBase._revistsDownloads');
-
-  @override
-  List<RevistDownload> get _revistsDownloads {
-    _$_revistsDownloadsAtom.reportRead();
-    return super._revistsDownloads;
-  }
-
-  @override
-  set _revistsDownloads(List<RevistDownload> value) {
-    _$_revistsDownloadsAtom.reportWrite(value, super._revistsDownloads, () {
-      super._revistsDownloads = value;
-    });
-  }
-
-  final _$itemCountAtom =
-      Atom(name: '_DownLoadEditionPageControllerBase.itemCount');
+  final _$itemCountAtom = Atom(name: '_EditionPageControllerBase.itemCount');
 
   @override
   int get itemCount {
@@ -74,8 +55,7 @@ mixin _$DownLoadEditionPageController
     });
   }
 
-  final _$_pageCountAtom =
-      Atom(name: '_DownLoadEditionPageControllerBase._pageCount');
+  final _$_pageCountAtom = Atom(name: '_EditionPageControllerBase._pageCount');
 
   @override
   int get _pageCount {
@@ -91,7 +71,7 @@ mixin _$DownLoadEditionPageController
   }
 
   final _$nextPageAsyncAction =
-      AsyncAction('_DownLoadEditionPageControllerBase.nextPage');
+      AsyncAction('_EditionPageControllerBase.nextPage');
 
   @override
   Future nextPage() {
