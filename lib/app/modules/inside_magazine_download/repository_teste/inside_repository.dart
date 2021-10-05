@@ -1,4 +1,4 @@
-import 'package:piaui_app/app/modules/inside_magazine_download/model/materia_model.dart';
+/* import 'package:piaui_app/app/modules/inside_magazine_download/model/materia_model.dart';
 
 import 'dart:async';
 import 'dart:convert';
@@ -8,7 +8,7 @@ import 'package:http/http.dart' as http;
 Future<materiaModel> fetchMateria() async {
   final response = await http.get(
     Uri.parse(
-        'https://piaui.homolog.inf.br/customRest/v1/esquinasEdicao/?edicao=392835'),
+        'customRest/v1/esquinasEdicao/?edicao=392835'),
   );
 
   if (response.statusCode == 200) {
@@ -21,3 +21,4 @@ Future<materiaModel> fetchMateria() async {
     throw Exception('Failed to load album');
   }
 }
+ */

@@ -102,7 +102,7 @@ class _LastEditionWidgetState
                                       Modular.to
                                           .pushNamed('/magazine', arguments: {
                                         "url":
-                                            'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
+                                            '/wp-json/customRest/v1/materias-revista?edicao=' +
                                                 (controller.lastEdition.id)
                                                     .toString(),
                                         "title": edicoes.numberEdition,

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/border_top_widget.dart';
@@ -24,7 +25,9 @@ class BustResultPage extends StatefulWidget {
 class _BustResultPageState
     extends ModularState<BustResultPage, EditionPageController> {
   _launchURL() async {
-    const url = 'https://piaui.homolog.inf.br/';
+    var dio = CustomDio().instance;
+
+    var url = dio.options.baseUrl;
     if (await canLaunch(url)) {
       await launch(url);
     } else {

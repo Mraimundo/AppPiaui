@@ -7,6 +7,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/autor_internal_article.dart';
 import 'package:piaui_app/app/modules/tts/tts.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/border_top_widget.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
 
@@ -21,8 +22,8 @@ String _parseHtmlString(String htmlString) {
 }
 
 Future<String> post(idMateria) async {
-  final _url = "https://piaui.homolog.inf.br/wp-json/acf/v3/posts/" + idMateria;
-  var dio = Dio();
+  final _url = "/wp-json/acf/v3/posts/" + idMateria;
+  var dio = CustomDio().instance;
   var response = await dio.get(_url);
   return response.toString();
 }

@@ -12,7 +12,7 @@ class IntenalMagazineRepository implements IntenalRepository {
   @override
   Future<List<InternalModel>> findByTitle(int title) async {
     try {
-      var response = await dio.get('wp-json/acf/v3/edicao?title=$title');
+      var response = await dio.get('/wp-json/acf/v3/edicao?title=$title');
       print('response');
       if (response.statusCode == 200) {
         for (var json in response.data) {

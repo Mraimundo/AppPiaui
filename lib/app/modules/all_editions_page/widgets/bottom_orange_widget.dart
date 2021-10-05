@@ -30,9 +30,7 @@ class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
     return TextButton(
       onPressed: () {
         Modular.to.pushNamed('/magazine', arguments: {
-          "url":
-              'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=' +
-                  id,
+          "url": '/wp-json/customRest/v1/materias-revista?edicao=' + id,
           "title": edicao,
           "data": data
         });

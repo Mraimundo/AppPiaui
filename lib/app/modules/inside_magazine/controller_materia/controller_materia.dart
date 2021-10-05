@@ -14,7 +14,7 @@
 //   @override
 //   Future<List<EditionModel>> findAll() async {
 //     try {
-//       var response = await dio.get('wp-json/acf/v3/edicao/');
+//       var response = await dio.get('/wp-json/acf/v3/edicao/');
 
 //       if (response.statusCode == 200) {
 //         for (var json in response.data) {

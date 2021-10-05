@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:piaui_app/app/modules/inside_magazine_download/model/inside_model.dart';
 import 'package:piaui_app/app/modules/inside_magazine_download/model/subjects_model.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 
 class InsideMagazineRepository {
-  Future<List<SubjectModel>> findAllSubjects() async {
+  /* Future<List<SubjectModel>> findAllSubjects() async {
     var dio = Dio();
     return dio
         .get(
@@ -13,12 +14,12 @@ class InsideMagazineRepository {
         .then((res) => res.data
             .map<SubjectModel>((b) => SubjectModel.fromJson(b))
             .toList());
-  }
+  } */
 
   Future<List<Materias>> findByID(String id) async {
-    var dio = Dio();
-    var response = await dio.get(
-        'https://piaui.homolog.inf.br/wp-json/customRest/v1/materias-revista?edicao=$id');
+    var dio = CustomDio().instance;
+    var response =
+        await dio.get('/wp-json/customRest/v1/materias-revista?edicao=$id');
     var materias = [];
     var json = jsonDecode(await response.data);
     print(json);

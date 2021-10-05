@@ -1266,10 +1266,10 @@ Future<List<EditionModel>> findByPage(int page) async {
   var dio = CustomDio().instance;
   try {
     var response = await dio.get(_url);
-    print("aq" + response.data.length.toString());
+    /* print("aq" + response.data.length.toString()); */
     if (response.statusCode == 200) {
-      for (var json in response.data) {
-        final singleEdition = EditionModel.fromJson(json);
+      for (var i = page == 1 ? 1 : 0; i < response.data.length; i++) {
+        final singleEdition = EditionModel.fromJson(response.data[i]);
 
         editions.add(singleEdition);
       }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_session/flutter_session.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -30,7 +31,9 @@ class EditionPage extends StatefulWidget {
 class _EditionPageState
     extends ModularState<EditionPage, EditionPageController> {
   _launchURL() async {
-    const url = 'https://piaui.homolog.inf.br/';
+    var dio = CustomDio().instance;
+
+    var url = dio.options.baseUrl;
     if (await canLaunch(url)) {
       await launch(url);
     } else {

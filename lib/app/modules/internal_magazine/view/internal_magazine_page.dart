@@ -7,13 +7,13 @@ import 'package:piaui_app/app/modules/internal_magazine/components/list_internal
 import 'package:piaui_app/app/modules/internal_magazine/components/text_internal_magazine.dart';
 import 'package:piaui_app/app/modules/internal_magazine/controller/internal_magazine_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
 
 Future<String> conteudo(idMateria) async {
-  final _url =
-      "https://piaui.homolog.inf.br/wp-json/wp/v2/materia/" + idMateria;
-  var dio = Dio();
+  final _url = "/wp-json/wp/v2/materia/" + idMateria;
+  var dio = CustomDio().instance;
   var response = await dio.get(_url);
   return response.toString();
 }

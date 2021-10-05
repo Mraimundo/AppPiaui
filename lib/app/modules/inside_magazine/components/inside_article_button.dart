@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_session/flutter_session.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:piaui_app/app/modules/inside_magazine/controller/inside_magazine_controller.dart';
 import 'package:html/parser.dart';
@@ -14,7 +15,7 @@ Future<dynamic> readUser() async {
 
 Future<String> materias(url) async {
   final _url = url;
-  var dio = Dio();
+  var dio = CustomDio().instance;
   var response = await dio.get(_url);
   return response.toString();
 }

@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/shared/components/app_bar/menu/controller/menu_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 _launchURL() async {
-  const url = 'https://piaui.homolog.inf.br/';
+  var dio = CustomDio().instance;
+
+  var url = dio.options.baseUrl;
   if (await canLaunch(url)) {
     await launch(url);
   } else {

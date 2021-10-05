@@ -34,7 +34,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends ModularState<LoginPage, LoginController> {
   _launchURL() async {
-    const url = 'https://piaui.homolog.inf.br/';
+    var dio = CustomDio().instance;
+
+    var url = dio.options.baseUrl;
     if (await canLaunch(url)) {
       await launch(url);
     } else {

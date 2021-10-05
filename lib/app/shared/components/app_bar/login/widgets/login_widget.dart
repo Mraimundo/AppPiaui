@@ -5,6 +5,7 @@ import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/auth/auth_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/util/validations.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 Future<void> populateUser(user) async {
@@ -34,9 +35,8 @@ class _LoginWidgetState extends State<LoginWidget> {
   final authController = AuthController();
 
   Future<void> _onPressed() async {
-    final _url =
-        'http://piaui.homolog.inf.br/wp-admin/admin-ajax.php?action=flLogin';
-    var dio = Dio();
+    final _url = '/wp-admin/admin-ajax.php?action=flLogin';
+    var dio = CustomDio().instance;
     try {
       final _data =
           FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
