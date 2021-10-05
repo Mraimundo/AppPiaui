@@ -41,9 +41,8 @@ import 'modules/all_editions_page/all_edition_page_module.dart';
 import 'modules/download_editions_page/controller/edition_page_controller.dart';
 import 'modules/download_editions_page/download_edition_page_module.dart';
 import 'modules/inside_magazine/inside_magazine_module.dart';
+import 'shared/components/about_us/about_us_module.dart';
 import 'shared/components/app_bar/menu_user_logged/menu_user_looged_module.dart';
-import 'shared/components/change_password/change_password_module.dart';
-import 'shared/components/problem_subscription/problem_subscription_module.dart';
 
 class AppModule extends MainModule {
   final Dados user;
@@ -91,6 +90,8 @@ class AppModule extends MainModule {
         ModularRouter('/login', module: LoginModule()),
         ModularRouter('/signature', module: SignatureModule()),
         ModularRouter('/config', module: ConfigModule()),
+        ModularRouter('/about_us', module: AboutUsModule()),
+        ModularRouter('/editions', module: EditionPageModule()),
         ModularRouter('/editions', module: EditionPageModule()),
         ModularRouter('/logged', module: AllEditionPageModule(user, conected)),
         ModularRouter('/downloads', module: DownLoadEditionPageModule()),

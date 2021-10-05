@@ -128,7 +128,9 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Modular.to.pushNamed('/about_us');
+                    },
                     child: ListTile(
                       title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
