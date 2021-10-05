@@ -39,7 +39,6 @@ class _ChangePasswordPageState
                 height: 56,
                 close: true,
               ),
-              backgroundColor: AppColors.backgroundColor,
               body: Column(
                 children: [
                   Padding(
@@ -60,7 +59,7 @@ class _ChangePasswordPageState
                             style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.bold,
-                                color: AppColors.dark),
+                                color: Theme.of(context).primaryColor),
                           ),
                         ],
                       ),
@@ -77,7 +76,7 @@ class _ChangePasswordPageState
                           fontFamily: 'TradeGothic',
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                     ),
@@ -90,7 +89,7 @@ class _ChangePasswordPageState
                       style: TextStyle(
                           fontFamily: 'TradeGothic',
                           fontSize: 14,
-                          color: AppColors.dark),
+                          color: Theme.of(context).primaryColor),
                     ),
                   ),
                   Padding(
@@ -120,6 +119,7 @@ class _ChangePasswordPageState
                                 initialValue: jsonDecode(snapshot.data)["nome"],
                                 autocorrect: false,
                                 keyboardType: TextInputType.emailAddress,
+                                style: TextStyle(color: Colors.black),
                                 onChanged: (value) => setState(() {
                                   // _inpLogin = value ?? 'Email';
                                 }),
@@ -147,7 +147,7 @@ class _ChangePasswordPageState
                               style: TextStyle(
                                   fontFamily: 'TradeGothic',
                                   fontSize: 14,
-                                  color: AppColors.dark),
+                                  color: Theme.of(context).primaryColor),
                             ),
                           ),
                           SizedBox(
@@ -175,6 +175,7 @@ class _ChangePasswordPageState
                                 // onChanged: (value) => setState(() {
                                 //       _inpSenha = value ?? 'Senha';
                                 //     }),
+                                style: TextStyle(color: Colors.black),
                                 decoration: InputDecoration(
                                   hintText: 'Senha',
                                   border: InputBorder.none,

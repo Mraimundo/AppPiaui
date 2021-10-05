@@ -16,7 +16,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-      backgroundColor: AppColors.appBar,
+
       // elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
