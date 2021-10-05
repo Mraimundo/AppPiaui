@@ -30,28 +30,28 @@ class _DatePickerYearState extends State<DatePickerYear> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            buildCustomPicker(),
+            SingleChildScrollView(
+              child: SizedBox(
+                height: 100,
+                child: CupertinoPicker(
+                  itemExtent: 40,
+                  // looping: true,
+                  onSelectedItemChanged: (index) {
+                    setState(() => this.index = index);
+                    print(index);
+                  },
+                  children: Utils.modelBuilder<String>(
+                    values,
+                    (index, value) {
+                      return Center(
+                        child: Text(value, style: TextStyle(fontSize: 14)),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            )
           ],
-        ),
-      );
-
-  Widget buildCustomPicker() => SingleChildScrollView(
-        child: SizedBox(
-          height: 100,
-          child: CupertinoPicker(
-            itemExtent: 40,
-            // looping: true,
-            onSelectedItemChanged: (index) =>
-                setState(() => this.index = index),
-            children: Utils.modelBuilder<String>(
-              values,
-              (index, value) {
-                return Center(
-                  child: Text(value, style: TextStyle(fontSize: 14)),
-                );
-              },
-            ),
-          ),
         ),
       );
 }

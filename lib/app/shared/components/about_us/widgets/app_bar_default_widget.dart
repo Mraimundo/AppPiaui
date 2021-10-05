@@ -22,7 +22,9 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).popUntil((route) => route.isFirst);
+            },
             child: Visibility(
               visible:
                   MediaQuery.of(context).orientation == Orientation.portrait,

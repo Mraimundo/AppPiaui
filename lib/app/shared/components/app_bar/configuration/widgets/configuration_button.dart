@@ -18,23 +18,25 @@ class _ConfigButtonState extends ModularState<ConfigButton, AppController> {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      padding: EdgeInsets.zero,
-      icon: Container(
-        padding: EdgeInsets.all(4),
-        child: closeCongif
-            ? Image.asset('assets/images/Close.png', fit: BoxFit.contain)
-            : Image.asset('assets/images/Conf.png', fit: BoxFit.contain),
-        height: MediaQuery.of(context).orientation == Orientation.portrait
-            ? MediaQuery.of(context).size.height / 25
-            : MediaQuery.of(context).size.height / 14,
-      ),
-      alignment: Alignment.centerRight,
-      onPressed: () {
-        controller.checked();
-        print('Menu pressed ? ${controller.checkedPressed}');
-        !closeCongif ? Modular.to.pushNamed('/config') : Navigator.pop(context);
-      },
-    );
+    return closeCongif
+        ? Text("")
+        : IconButton(
+            padding: EdgeInsets.zero,
+            icon: Container(
+              padding: EdgeInsets.all(4),
+              child: Image.asset('assets/images/Conf.png', fit: BoxFit.contain),
+              height: MediaQuery.of(context).orientation == Orientation.portrait
+                  ? MediaQuery.of(context).size.height / 25
+                  : MediaQuery.of(context).size.height / 14,
+            ),
+            alignment: Alignment.centerRight,
+            onPressed: () {
+              controller.checked();
+              print('Menu pressed ? ${controller.checkedPressed}');
+              !closeCongif
+                  ? Modular.to.pushNamed('/config')
+                  : Navigator.pop(context);
+            },
+          );
   }
 }

@@ -26,6 +26,8 @@ import 'package:piaui_app/app/shared/components/app_bar/menu/menu_module.dart';
 import 'package:piaui_app/app/shared/components/app_bar/configuration/configuration_module.dart';
 import 'package:piaui_app/app/shared/components/app_bar/menu_user_logged/menu_user_looged_module.dart';
 import 'package:piaui_app/app/shared/components/app_bar/search/controller/search_controller.dart';
+import 'package:piaui_app/app/shared/components/change_password/change_password_module.dart';
+import 'package:piaui_app/app/shared/components/problem_subscription/problem_subscription_module.dart';
 import 'package:piaui_app/app/shared/components/signature/controller/signature_controller.dart';
 import 'package:piaui_app/app/shared/components/signature/signature_module.dart';
 import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';

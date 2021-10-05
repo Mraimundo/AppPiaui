@@ -171,47 +171,6 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                   ),
                   SizedBox(height: 8),
                   TextButton(
-                    onPressed: () {},
-                    child: ListTile(
-                      title: Padding(
-                        padding: const EdgeInsets.only(right: 15, left: 15),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'POLÍTICA DE PRIVACIDADE',
-                                  style: TextStyle(
-                                      fontSize: vFontSize,
-                                      fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
-                                ),
-                                Image.asset(
-                                  'assets/images/arrow_menu.png',
-                                  width: 20,
-                                  height: 12,
-                                ),
-                              ],
-                            ),
-                            Container(
-                              height: 25,
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: AppColors.internalBorderColor,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  TextButton(
                     onPressed: () {
                       _launchURL();
                     },

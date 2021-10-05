@@ -23,7 +23,9 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
       backgroundColor: Theme.of(context).backgroundColor,
       elevation: 0,
       title: TextButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).popUntil((route) => route.isFirst);
+        },
         child: Visibility(
           visible: MediaQuery.of(context).orientation == Orientation.portrait,
           child: Container(
@@ -46,7 +48,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
           padding: EdgeInsets.symmetric(horizontal: 3),
         ),
         ConfigButton(closeCongif: closeCongif),
-        IconButton(
+        /* IconButton(
           padding: EdgeInsets.zero,
           icon: Container(
             child: Image.asset('assets/images/Busca.png', fit: BoxFit.contain),
@@ -61,7 +63,7 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
               builder: (_) => SearchButton(),
             );
           },
-        ),
+        ), */
         Container(
           padding: EdgeInsets.symmetric(horizontal: 3),
         ),

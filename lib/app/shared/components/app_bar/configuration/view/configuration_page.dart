@@ -44,34 +44,6 @@ class _ConfigPageState extends ModularState<ConfigPage, ConfigController> {
                       contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
                       tileColor: Theme.of(context).backgroundColor,
                       title: Padding(
-                        padding: const EdgeInsets.only(right: 12, left: 12),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Alterar tamanho da fonte',
-                              style: TextStyle(
-                                  fontSize: vFontSize,
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor),
-                            ),
-                            Image.asset(
-                              'assets/images/font-size.png',
-                              scale: 0.6,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 16),
-                  TextButton(
-                    // padding: EdgeInsets.zero,
-                    onPressed: () {},
-                    child: ListTile(
-                      contentPadding: EdgeInsets.symmetric(vertical: vBtnHeght),
-                      tileColor: Theme.of(context).backgroundColor,
-                      title: Padding(
                         padding: const EdgeInsets.only(right: 15, left: 15),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

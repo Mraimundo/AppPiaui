@@ -31,24 +31,24 @@ class _DataPickerMesState extends State<DataPickerMes> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            buildCustomPicker(),
+            SizedBox(
+              height: 260,
+              child: CupertinoPicker(
+                itemExtent: 40,
+                // looping: true,
+                onSelectedItemChanged: (index) =>
+                    setState(() => this.index = index),
+                children: Utils.modelBuilder<String>(
+                  values,
+                  (index, value) {
+                    return Center(
+                      child: Text(value, style: TextStyle(fontSize: 14)),
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
-        ),
-      );
-  Widget buildCustomPicker() => SizedBox(
-        height: 260,
-        child: CupertinoPicker(
-          itemExtent: 40,
-          // looping: true,
-          onSelectedItemChanged: (index) => setState(() => this.index = index),
-          children: Utils.modelBuilder<String>(
-            values,
-            (index, value) {
-              return Center(
-                child: Text(value, style: TextStyle(fontSize: 14)),
-              );
-            },
-          ),
         ),
       );
 }

@@ -35,7 +35,10 @@ class _ChangePasswordPageState
           if (snapshot.hasData) {
             print(jsonDecode(snapshot.data));
             return Scaffold(
-              appBar: PreferredAppBarWidget(height: 56),
+              appBar: PreferredAppBarWidget(
+                height: 56,
+                close: true,
+              ),
               backgroundColor: AppColors.backgroundColor,
               body: Column(
                 children: [

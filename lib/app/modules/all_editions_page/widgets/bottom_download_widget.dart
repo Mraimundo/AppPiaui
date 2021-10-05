@@ -40,6 +40,7 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
             widget.mes,
             widget.ano,
           );
+
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => CompleteDownload(
                   int.parse(widget.numberEdition.toString()),

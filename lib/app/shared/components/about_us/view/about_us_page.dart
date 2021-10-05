@@ -41,7 +41,7 @@ class _AboutUsPageState extends ModularState<AboutUsPage, ConfigController> {
                         padding: const EdgeInsets.only(top: 25, left: 18),
                         child: TextButton(
                           onPressed: () {
-                            Modular.to.pushNamed('/menu');
+                            Navigator.of(context).pop();
                           },
                           child: Row(
                             children: [
