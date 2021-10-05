@@ -24,10 +24,13 @@ class ListMagazine extends StatefulWidget {
 }
 
 class _ListMagazine extends State {
-  int page = 0;
+  int page = 1;
+  int first = 1;
   Dados user;
   _ListMagazine(this.user);
   Future<List<EditionModel>> _editions;
+  List<Widget> content = <Widget>[];
+  List<EditionModel> allEditions = [];
 
   @override
   void initState() {
@@ -38,12 +41,14 @@ class _ListMagazine extends State {
   void _addPage() async {
     setState(() {
       page++;
+
       _editions = findByPage(page);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    int cont = 0;
     return Container(
       child: Stack(
         children: [
@@ -89,7 +94,6 @@ class _ListMagazine extends State {
                             future: _editions,
                             builder: (BuildContext context,
                                 AsyncSnapshot<List<EditionModel>> snapshot) {
-                              List<Widget> content = <Widget>[];
                               final double rowHeight = 255;
                               final double rowWidth =
                                   MediaQuery.of(context).size.width / 2.2;
@@ -104,493 +108,520 @@ class _ListMagazine extends State {
                                   CrossAxisAlignment.center;
                               MainAxisAlignment rowAlignH =
                                   MainAxisAlignment.spaceEvenly;
+                              cont++;
+
                               if (snapshot.hasData) {
                                 int items = snapshot.data.length;
-                                print(snapshot.data[0].acf.numberEdition);
-                                if (items % 2 == 0) {
-                                  for (var i = 0; i < items; i += 2) {
-                                    content.add(Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              child: Row(
-                                                crossAxisAlignment: rowAlignV,
-                                                mainAxisAlignment: rowAlignH,
-                                                children: [
-                                                  Padding(
-                                                    padding: framePadding,
-                                                    child: Container(
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            columAlignH,
-                                                        mainAxisAlignment:
-                                                            columAlignV,
-                                                        children: [
-                                                          Container(
-                                                            color: Colors.grey,
-                                                            height: rowHeight *
-                                                                0.80,
-                                                            width:
-                                                                rowWidth * 0.92,
-                                                            child: ImageShimmer(
-                                                                url: snapshot
-                                                                    .data[i]
-                                                                    .acf
-                                                                    .capa
-                                                                    .url),
-                                                          ),
-                                                          Container(
-                                                            height: rowHeight *
-                                                                0.15,
-                                                            width:
-                                                                rowWidth * 0.92,
-                                                            child: Align(
-                                                              alignment: Alignment
-                                                                  .centerLeft,
-                                                              child: Text(
-                                                                'Edição  #${snapshot.data[i].acf.numberEdition}: ${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}',
-                                                                style: TextStyle(
-                                                                    fontFamily:
-                                                                        'Piaui',
-                                                                    fontSize:
-                                                                        rowFontsize,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    color: Theme.of(
-                                                                            context)
-                                                                        .primaryColor),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              ButtomOrangeWidget(
-                                                                  id: snapshot
-                                                                      .data[i]
-                                                                      .id
-                                                                      .toString(),
-                                                                  edicao: snapshot
-                                                                      .data[i]
-                                                                      .acf
-                                                                      .numberEdition,
-                                                                  data:
-                                                                      '${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}'),
-                                                              ButtomDownLoadWidget(
-                                                                  id: snapshot
-                                                                      .data[i]
-                                                                      .id,
-                                                                  capa: snapshot
-                                                                      .data[i]
-                                                                      .acf
-                                                                      .capa
-                                                                      .url,
-                                                                  numberEdition:
-                                                                      snapshot
-                                                                          .data[
-                                                                              i]
-                                                                          .acf
-                                                                          .numberEdition,
-                                                                  mes: snapshot
-                                                                      .data[i]
-                                                                      .acf
-                                                                      .mes,
-                                                                  ano: snapshot
-                                                                      .data[i]
-                                                                      .acf
-                                                                      .ano)
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: framePadding,
-                                                    child: Container(
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            columAlignH,
-                                                        mainAxisAlignment:
-                                                            columAlignV,
-                                                        children: [
-                                                          Container(
-                                                            color: Colors.grey,
-                                                            height: rowHeight *
-                                                                0.80,
-                                                            width:
-                                                                rowWidth * 0.92,
-                                                            child: ImageShimmer(
-                                                                url: snapshot
-                                                                    .data[i + 1]
-                                                                    .acf
-                                                                    .capa
-                                                                    .url),
-                                                          ),
-                                                          Container(
-                                                            height: rowHeight *
-                                                                0.15,
-                                                            width:
-                                                                rowWidth * 0.92,
-                                                            child: Align(
-                                                              alignment: Alignment
-                                                                  .centerLeft,
-                                                              child: Text(
-                                                                'Edição #${snapshot.data[i + 1].acf.numberEdition}: ${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
-                                                                style: TextStyle(
-                                                                    fontFamily:
-                                                                        'Piaui',
-                                                                    fontSize:
-                                                                        rowFontsize,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    color: Theme.of(
-                                                                            context)
-                                                                        .primaryColor),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              ButtomOrangeWidget(
-                                                                id: snapshot
-                                                                    .data[i + 1]
-                                                                    .id
-                                                                    .toString(),
-                                                                edicao: snapshot
-                                                                    .data[i + 1]
-                                                                    .acf
-                                                                    .numberEdition,
-                                                                data:
-                                                                    '${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
-                                                              ),
-                                                              ButtomDownLoadWidget(
-                                                                  id: snapshot
-                                                                      .data[
-                                                                          i + 1]
-                                                                      .id,
-                                                                  capa: snapshot
-                                                                      .data[
-                                                                          i + 1]
-                                                                      .acf
-                                                                      .capa
-                                                                      .url,
-                                                                  numberEdition:
-                                                                      snapshot
-                                                                          .data[i +
-                                                                              1]
-                                                                          .acf
-                                                                          .numberEdition,
-                                                                  mes: snapshot
-                                                                      .data[
-                                                                          i + 1]
-                                                                      .acf
-                                                                      .mes,
-                                                                  ano: snapshot
-                                                                      .data[
-                                                                          i + 1]
-                                                                      .acf
-                                                                      .ano)
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ));
+                                print(items);
+
+                                for (var item in snapshot.data) {
+                                  if (!allEditions.contains(item)) {
+                                    allEditions.add(item);
                                   }
-                                } else {
-                                  for (var i = 1; i < items - 1; i += 2) {
-                                    content.add(Row(
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              width: MediaQuery.of(context)
-                                                  .size
-                                                  .width,
-                                              child: Row(
-                                                crossAxisAlignment: rowAlignV,
-                                                mainAxisAlignment: rowAlignH,
-                                                children: [
-                                                  Padding(
-                                                    padding: framePadding,
-                                                    child: Container(
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            columAlignH,
-                                                        mainAxisAlignment:
-                                                            columAlignV,
-                                                        children: [
-                                                          Container(
-                                                            color: Colors.grey,
-                                                            height: rowHeight *
-                                                                0.80,
-                                                            width:
-                                                                rowWidth * 0.92,
-                                                            child: ImageShimmer(
-                                                                url: snapshot
-                                                                    .data[i]
-                                                                    .acf
-                                                                    .capa
-                                                                    .url),
-                                                          ),
-                                                          Container(
-                                                            height: rowHeight *
-                                                                0.15,
-                                                            width:
-                                                                rowWidth * 0.92,
-                                                            child: Align(
-                                                              alignment: Alignment
-                                                                  .centerLeft,
-                                                              child: Text(
-                                                                'Edição  #${snapshot.data[i].acf.numberEdition}: ${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}',
-                                                                style: TextStyle(
-                                                                    fontFamily:
-                                                                        'Piaui',
-                                                                    fontSize:
-                                                                        rowFontsize,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    color: Theme.of(
-                                                                            context)
-                                                                        .primaryColor),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              ButtomOrangeWidget(
-                                                                  id: snapshot
-                                                                      .data[i]
-                                                                      .id
-                                                                      .toString(),
-                                                                  edicao: snapshot
-                                                                      .data[i]
-                                                                      .acf
-                                                                      .numberEdition,
-                                                                  data:
-                                                                      '${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}'),
-                                                              ButtomDownLoadWidget(
-                                                                  id: snapshot
-                                                                      .data[i]
-                                                                      .id,
-                                                                  capa: snapshot
-                                                                      .data[i]
-                                                                      .acf
-                                                                      .capa
-                                                                      .url,
-                                                                  numberEdition:
-                                                                      snapshot
-                                                                          .data[
-                                                                              i]
-                                                                          .acf
-                                                                          .numberEdition,
-                                                                  mes: snapshot
-                                                                      .data[i]
-                                                                      .acf
-                                                                      .mes,
-                                                                  ano: snapshot
-                                                                      .data[i]
-                                                                      .acf
-                                                                      .ano)
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding: framePadding,
-                                                    child: Container(
-                                                      child: Column(
-                                                        crossAxisAlignment:
-                                                            columAlignH,
-                                                        mainAxisAlignment:
-                                                            columAlignV,
-                                                        children: [
-                                                          Container(
-                                                            color: Colors.grey,
-                                                            height: rowHeight *
-                                                                0.80,
-                                                            width:
-                                                                rowWidth * 0.92,
-                                                            child: ImageShimmer(
-                                                                url: snapshot
-                                                                    .data[i + 1]
-                                                                    .acf
-                                                                    .capa
-                                                                    .url),
-                                                          ),
-                                                          Container(
-                                                            height: rowHeight *
-                                                                0.15,
-                                                            width:
-                                                                rowWidth * 0.92,
-                                                            child: Align(
-                                                              alignment: Alignment
-                                                                  .centerLeft,
-                                                              child: Text(
-                                                                'Edição #${snapshot.data[i + 1].acf.numberEdition}: ${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
-                                                                style: TextStyle(
-                                                                    fontFamily:
-                                                                        'Piaui',
-                                                                    fontSize:
-                                                                        rowFontsize,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold,
-                                                                    color: Theme.of(
-                                                                            context)
-                                                                        .primaryColor),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            children: [
-                                                              ButtomOrangeWidget(
-                                                                id: snapshot
-                                                                    .data[i + 1]
-                                                                    .id
-                                                                    .toString(),
-                                                                edicao: snapshot
-                                                                    .data[i + 1]
-                                                                    .acf
-                                                                    .numberEdition,
-                                                                data:
-                                                                    '${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
-                                                              ),
-                                                              ButtomDownLoadWidget(
-                                                                  id: snapshot
-                                                                      .data[
-                                                                          i + 1]
-                                                                      .id,
-                                                                  capa: snapshot
-                                                                      .data[
-                                                                          i + 1]
-                                                                      .acf
-                                                                      .capa
-                                                                      .url,
-                                                                  numberEdition:
-                                                                      snapshot
-                                                                          .data[i +
-                                                                              1]
-                                                                          .acf
-                                                                          .numberEdition,
-                                                                  mes: snapshot
-                                                                      .data[
-                                                                          i + 1]
-                                                                      .acf
-                                                                      .mes,
-                                                                  ano: snapshot
-                                                                      .data[
-                                                                          i + 1]
-                                                                      .acf
-                                                                      .ano)
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ));
-                                  }
-                                  content.add(Row(
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                }
+
+                                if (cont == 2) {
+                                  if (items % 2 == 0) {
+                                    for (var i = 0; i < items; i += 2) {
+                                      content.add(Row(
                                         children: [
-                                          Container(
-                                            color: AppColors.appBackground,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            child: Row(
-                                              crossAxisAlignment: rowAlignV,
-                                              mainAxisAlignment: rowAlignH,
-                                              children: [
-                                                Padding(
-                                                  padding: framePadding,
-                                                  child: Container(
-                                                    color: Colors.white,
-                                                    height: rowHeight,
-                                                    width: rowWidth,
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                          columAlignH,
-                                                      mainAxisAlignment:
-                                                          columAlignV,
-                                                      children: [
-                                                        Container(
-                                                          color: Colors.grey,
-                                                          height:
-                                                              rowHeight * 0.80,
-                                                          width:
-                                                              rowWidth * 0.85,
-                                                          child: ImageShimmer(
-                                                              url: snapshot
-                                                                  .data[items]
-                                                                  .acf
-                                                                  .capa
-                                                                  .url),
-                                                        ),
-                                                        Container(
-                                                          color: Colors.white,
-                                                          height:
-                                                              rowHeight * 0.15,
-                                                          width:
-                                                              rowWidth * 0.85,
-                                                          child: Align(
-                                                            alignment: Alignment
-                                                                .centerLeft,
-                                                            child: Text(
-                                                              'Edição #${snapshot.data[items].acf.numberEdition}: ${snapshot.data[items].acf.mes} de ${snapshot.data[items].acf.ano}',
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      rowFontsize),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                child: Row(
+                                                  crossAxisAlignment: rowAlignV,
+                                                  mainAxisAlignment: rowAlignH,
+                                                  children: [
+                                                    Padding(
+                                                      padding: framePadding,
+                                                      child: Container(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              columAlignH,
+                                                          mainAxisAlignment:
+                                                              columAlignV,
+                                                          children: [
+                                                            Container(
+                                                              color:
+                                                                  Colors.grey,
+                                                              height:
+                                                                  rowHeight *
+                                                                      0.80,
+                                                              width: rowWidth *
+                                                                  0.92,
+                                                              child: ImageShimmer(
+                                                                  url: snapshot
+                                                                      .data[i]
+                                                                      .acf
+                                                                      .capa
+                                                                      .url),
                                                             ),
-                                                          ),
+                                                            Container(
+                                                              height:
+                                                                  rowHeight *
+                                                                      0.15,
+                                                              width: rowWidth *
+                                                                  0.92,
+                                                              child: Align(
+                                                                alignment: Alignment
+                                                                    .centerLeft,
+                                                                child: Text(
+                                                                  'Edição  #${snapshot.data[i].acf.numberEdition}: ${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}',
+                                                                  style: TextStyle(
+                                                                      fontFamily:
+                                                                          'Piaui',
+                                                                      fontSize:
+                                                                          rowFontsize,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .primaryColor),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                ButtomOrangeWidget(
+                                                                    id: snapshot
+                                                                        .data[i]
+                                                                        .id
+                                                                        .toString(),
+                                                                    edicao: snapshot
+                                                                        .data[i]
+                                                                        .acf
+                                                                        .numberEdition,
+                                                                    data:
+                                                                        '${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}'),
+                                                                ButtomDownLoadWidget(
+                                                                    id: snapshot
+                                                                        .data[i]
+                                                                        .id,
+                                                                    capa: snapshot
+                                                                        .data[i]
+                                                                        .acf
+                                                                        .capa
+                                                                        .url,
+                                                                    numberEdition:
+                                                                        snapshot
+                                                                            .data[
+                                                                                i]
+                                                                            .acf
+                                                                            .numberEdition,
+                                                                    mes: snapshot
+                                                                        .data[i]
+                                                                        .acf
+                                                                        .mes,
+                                                                    ano: snapshot
+                                                                        .data[i]
+                                                                        .acf
+                                                                        .ano)
+                                                              ],
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
-                                                  ),
+                                                    Padding(
+                                                      padding: framePadding,
+                                                      child: Container(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              columAlignH,
+                                                          mainAxisAlignment:
+                                                              columAlignV,
+                                                          children: [
+                                                            Container(
+                                                              color:
+                                                                  Colors.grey,
+                                                              height:
+                                                                  rowHeight *
+                                                                      0.80,
+                                                              width: rowWidth *
+                                                                  0.92,
+                                                              child: ImageShimmer(
+                                                                  url: snapshot
+                                                                      .data[
+                                                                          i + 1]
+                                                                      .acf
+                                                                      .capa
+                                                                      .url),
+                                                            ),
+                                                            Container(
+                                                              height:
+                                                                  rowHeight *
+                                                                      0.15,
+                                                              width: rowWidth *
+                                                                  0.92,
+                                                              child: Align(
+                                                                alignment: Alignment
+                                                                    .centerLeft,
+                                                                child: Text(
+                                                                  'Edição #${snapshot.data[i + 1].acf.numberEdition}: ${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
+                                                                  style: TextStyle(
+                                                                      fontFamily:
+                                                                          'Piaui',
+                                                                      fontSize:
+                                                                          rowFontsize,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .primaryColor),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                ButtomOrangeWidget(
+                                                                  id: snapshot
+                                                                      .data[
+                                                                          i + 1]
+                                                                      .id
+                                                                      .toString(),
+                                                                  edicao: snapshot
+                                                                      .data[
+                                                                          i + 1]
+                                                                      .acf
+                                                                      .numberEdition,
+                                                                  data:
+                                                                      '${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
+                                                                ),
+                                                                ButtomDownLoadWidget(
+                                                                    id: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .id,
+                                                                    capa: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .acf
+                                                                        .capa
+                                                                        .url,
+                                                                    numberEdition: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .acf
+                                                                        .numberEdition,
+                                                                    mes: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .acf
+                                                                        .mes,
+                                                                    ano: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .acf
+                                                                        .ano)
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ],
-                                      ),
-                                    ],
-                                  ));
+                                      ));
+                                    }
+                                  } else {
+                                    for (var i = 0; i < items - 1; i += 2) {
+                                      content.add(Row(
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Container(
+                                                width: MediaQuery.of(context)
+                                                    .size
+                                                    .width,
+                                                child: Row(
+                                                  crossAxisAlignment: rowAlignV,
+                                                  mainAxisAlignment: rowAlignH,
+                                                  children: [
+                                                    Padding(
+                                                      padding: framePadding,
+                                                      child: Container(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              columAlignH,
+                                                          mainAxisAlignment:
+                                                              columAlignV,
+                                                          children: [
+                                                            Container(
+                                                              color:
+                                                                  Colors.grey,
+                                                              height:
+                                                                  rowHeight *
+                                                                      0.80,
+                                                              width: rowWidth *
+                                                                  0.92,
+                                                              child: ImageShimmer(
+                                                                  url: snapshot
+                                                                      .data[i]
+                                                                      .acf
+                                                                      .capa
+                                                                      .url),
+                                                            ),
+                                                            Container(
+                                                              height:
+                                                                  rowHeight *
+                                                                      0.15,
+                                                              width: rowWidth *
+                                                                  0.92,
+                                                              child: Align(
+                                                                alignment: Alignment
+                                                                    .centerLeft,
+                                                                child: Text(
+                                                                  'Edição  #${snapshot.data[i].acf.numberEdition}: ${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}',
+                                                                  style: TextStyle(
+                                                                      fontFamily:
+                                                                          'Piaui',
+                                                                      fontSize:
+                                                                          rowFontsize,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .primaryColor),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                ButtomOrangeWidget(
+                                                                    id: snapshot
+                                                                        .data[i]
+                                                                        .id
+                                                                        .toString(),
+                                                                    edicao: snapshot
+                                                                        .data[i]
+                                                                        .acf
+                                                                        .numberEdition,
+                                                                    data:
+                                                                        '${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}'),
+                                                                ButtomDownLoadWidget(
+                                                                    id: snapshot
+                                                                        .data[i]
+                                                                        .id,
+                                                                    capa: snapshot
+                                                                        .data[i]
+                                                                        .acf
+                                                                        .capa
+                                                                        .url,
+                                                                    numberEdition:
+                                                                        snapshot
+                                                                            .data[
+                                                                                i]
+                                                                            .acf
+                                                                            .numberEdition,
+                                                                    mes: snapshot
+                                                                        .data[i]
+                                                                        .acf
+                                                                        .mes,
+                                                                    ano: snapshot
+                                                                        .data[i]
+                                                                        .acf
+                                                                        .ano)
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding: framePadding,
+                                                      child: Container(
+                                                        child: Column(
+                                                          crossAxisAlignment:
+                                                              columAlignH,
+                                                          mainAxisAlignment:
+                                                              columAlignV,
+                                                          children: [
+                                                            Container(
+                                                              color:
+                                                                  Colors.grey,
+                                                              height:
+                                                                  rowHeight *
+                                                                      0.80,
+                                                              width: rowWidth *
+                                                                  0.92,
+                                                              child: ImageShimmer(
+                                                                  url: snapshot
+                                                                      .data[
+                                                                          i + 1]
+                                                                      .acf
+                                                                      .capa
+                                                                      .url),
+                                                            ),
+                                                            Container(
+                                                              height:
+                                                                  rowHeight *
+                                                                      0.15,
+                                                              width: rowWidth *
+                                                                  0.92,
+                                                              child: Align(
+                                                                alignment: Alignment
+                                                                    .centerLeft,
+                                                                child: Text(
+                                                                  'Edição #${snapshot.data[i + 1].acf.numberEdition}: ${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
+                                                                  style: TextStyle(
+                                                                      fontFamily:
+                                                                          'Piaui',
+                                                                      fontSize:
+                                                                          rowFontsize,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      color: Theme.of(
+                                                                              context)
+                                                                          .primaryColor),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Row(
+                                                              children: [
+                                                                ButtomOrangeWidget(
+                                                                  id: snapshot
+                                                                      .data[
+                                                                          i + 1]
+                                                                      .id
+                                                                      .toString(),
+                                                                  edicao: snapshot
+                                                                      .data[
+                                                                          i + 1]
+                                                                      .acf
+                                                                      .numberEdition,
+                                                                  data:
+                                                                      '${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
+                                                                ),
+                                                                ButtomDownLoadWidget(
+                                                                    id: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .id,
+                                                                    capa: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .acf
+                                                                        .capa
+                                                                        .url,
+                                                                    numberEdition: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .acf
+                                                                        .numberEdition,
+                                                                    mes: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .acf
+                                                                        .mes,
+                                                                    ano: snapshot
+                                                                        .data[i +
+                                                                            1]
+                                                                        .acf
+                                                                        .ano)
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ));
+                                    }
+                                    /* content.add(Row(
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Container(
+                                              color: AppColors.appBackground,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              child: Row(
+                                                crossAxisAlignment: rowAlignV,
+                                                mainAxisAlignment: rowAlignH,
+                                                children: [
+                                                  Padding(
+                                                    padding: framePadding,
+                                                    child: Container(
+                                                      color: Colors.white,
+                                                      height: rowHeight,
+                                                      width: rowWidth,
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            columAlignH,
+                                                        mainAxisAlignment:
+                                                            columAlignV,
+                                                        children: [
+                                                          Container(
+                                                            color: Colors.grey,
+                                                            height: rowHeight *
+                                                                0.80,
+                                                            width:
+                                                                rowWidth * 0.85,
+                                                            child: ImageShimmer(
+                                                                url: snapshot
+                                                                    .data[items]
+                                                                    .acf
+                                                                    .capa
+                                                                    .url),
+                                                          ),
+                                                          Container(
+                                                            color: Colors.white,
+                                                            height: rowHeight *
+                                                                0.15,
+                                                            width:
+                                                                rowWidth * 0.85,
+                                                            child: Align(
+                                                              alignment: Alignment
+                                                                  .centerLeft,
+                                                              child: Text(
+                                                                'Edição #${snapshot.data[items].acf.numberEdition}: ${snapshot.data[items].acf.mes} de ${snapshot.data[items].acf.ano}',
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        rowFontsize),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    )); */
+                                  }
                                 }
 
                                 return Column(children: content);
