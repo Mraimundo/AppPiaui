@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
-class CompleteDownload extends StatelessWidget {
+class DonwloadIniciado extends StatefulWidget {
   int numberEdition;
   String year;
   String month;
 
-  CompleteDownload(this.numberEdition, this.year, this.month);
+  DonwloadIniciado(this.numberEdition, this.year, this.month);
+  @override
+  _DonwloadIniciadoState createState() => _DonwloadIniciadoState();
+}
+
+class _DonwloadIniciadoState extends State<DonwloadIniciado> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -31,7 +36,7 @@ class CompleteDownload extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(top: 15),
                           child: Text(
-                            'Oba! Download completo',
+                            'Aviso!',
                             style: TextStyle(
                               color: AppColors.orangePiaui,
                               fontWeight: FontWeight.bold,
@@ -57,11 +62,12 @@ class CompleteDownload extends StatelessWidget {
                                       children: <TextSpan>[
                                         TextSpan(
                                             text: 'Edição #' +
-                                                numberEdition.toString() +
+                                                widget.numberEdition
+                                                    .toString() +
                                                 ': ' +
-                                                month +
+                                                widget.month +
                                                 ' de ' +
-                                                year,
+                                                widget.year,
                                             style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Theme.of(context)
@@ -70,8 +76,7 @@ class CompleteDownload extends StatelessWidget {
                                             style: TextStyle(
                                                 color: Theme.of(context)
                                                     .primaryColor),
-                                            text:
-                                                ' foi realizado com sucesso e econtra-se na sua galeria.'),
+                                            text: ' foi iniciado'),
                                       ],
                                     ),
                                   ),
@@ -100,7 +105,7 @@ class CompleteDownload extends StatelessWidget {
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(
-                                      'Fechar',
+                                      'Ok',
                                       style: TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,

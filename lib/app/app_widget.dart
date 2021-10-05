@@ -9,8 +9,6 @@ class AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     bool darkThemeEnabled = Provider.of<ThemeChanger>(context).isDark();
 
-    debugPrint("Theme dark" + darkThemeEnabled.toString());
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: Modular.navigatorKey,
