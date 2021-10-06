@@ -107,6 +107,10 @@ class _EditionPageState extends State<EditionPage> {
     widget.systemIsDark =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
 
+    if (page == 1) {
+      print(cont);
+      content = <Widget>[];
+    }
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
       body: Stack(

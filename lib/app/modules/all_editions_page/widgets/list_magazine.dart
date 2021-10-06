@@ -55,6 +55,8 @@ class _ListMagazine extends State<ListMagazine> {
       widget.themeChanger.setDarkStatus(widget.systemIsDark);
     });
     _editions = findByPage(page);
+
+    print("MERDA");
   }
 
   void _addPage() async {
@@ -99,6 +101,10 @@ class _ListMagazine extends State<ListMagazine> {
         MediaQuery.of(context).platformBrightness == Brightness.dark;
     print("aqq" + widget.systemIsDark.toString());
     int cont = 0;
+
+    if (page == 1) {
+      content = <Widget>[];
+    }
     return Container(
       child: Stack(
         children: [
