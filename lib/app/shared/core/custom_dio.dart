@@ -4,7 +4,7 @@ class CustomDio {
   var _dio;
 
   BaseOptions _options = BaseOptions(
-    baseUrl: 'https://piaui.homolog.inf.br',
+    baseUrl: 'https://piaui.folha.uol.com.br/',
     connectTimeout: 30000,
     receiveTimeout: 30000,
   );
