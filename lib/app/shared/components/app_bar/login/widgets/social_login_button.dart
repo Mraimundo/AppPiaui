@@ -20,7 +20,8 @@ class SocialLoginButton extends StatelessWidget {
               BorderSide(color: AppColors.backgroundColor),
             ),
           ),
-          child: Row(children: [
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
             Expanded(
                 flex: 2,
                 child: Row(
