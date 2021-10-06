@@ -34,12 +34,10 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
     final double vBtnHeght = 5;
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56, close: true),
-      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           Expanded(
             child: Container(
-              color: AppColors.backgroundColor,
               child: ListView(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 8, vertical: 32),
@@ -61,10 +59,10 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),
@@ -104,10 +102,10 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),
@@ -147,10 +145,10 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
-                                      color: AppColors.dark),
+                                      color: Theme.of(context).cardColor),
                                 ),
                                 Image.asset(
-                                  'assets/images/arrow_menu.png',
+                                  'assets/images/Seta.png',
                                   width: 20,
                                   height: 12,
                                 ),
