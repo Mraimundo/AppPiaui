@@ -1,14 +1,11 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/internal_magazine_downloads/components/list_internal_articles.dart';
 import 'package:piaui_app/app/modules/internal_magazine_downloads/components/text_internal_magazine.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
-import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
 
 Future<String> conteudo(idMateria) async {
