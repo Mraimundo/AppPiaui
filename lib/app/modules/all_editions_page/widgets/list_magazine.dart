@@ -21,16 +21,21 @@ import 'package:piaui_app/app/modules/all_editions_page/widgets/select_month_wid
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
+import 'package:provider/provider.dart';
 
 class ListMagazine extends StatefulWidget {
   final Dados user;
-  const ListMagazine({Key key, this.user}) : super(key: key);
+  ThemeChanger themeChanger;
+  bool systemIsDark;
+
+  ListMagazine({Key key, this.user}) : super(key: key);
 
   @override
   _ListMagazine createState() => _ListMagazine(this.user);
 }
 
-class _ListMagazine extends State {
+class _ListMagazine extends State<ListMagazine> {
   int page = 1;
   int first = 1;
   Dados user;
@@ -46,6 +51,9 @@ class _ListMagazine extends State {
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.themeChanger.setDarkStatus(widget.systemIsDark);
+    });
     _editions = findByPage(page);
   }
 
@@ -84,6 +92,12 @@ class _ListMagazine extends State {
 
   @override
   Widget build(BuildContext context) {
+    widget.themeChanger = Provider.of<ThemeChanger>(context, listen: false);
+    print("aq" + widget.themeChanger.toString());
+
+    widget.systemIsDark =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
+    print("aqq" + widget.systemIsDark.toString());
     int cont = 0;
     return Container(
       child: Stack(

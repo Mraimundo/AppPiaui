@@ -77,7 +77,7 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 children: [
                   LoginWidget(),
                   SizedBox(height: 20),
-                  ResetToPassWordWidget(onTap: () {}),
+                  /* ResetToPassWordWidget(onTap: () {}), */
                   Column(
                     children: [
                       Align(
@@ -201,7 +201,8 @@ Future signIn(BuildContext context) async {
       }
     }
   } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    print(e.toString());
+    /* ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Center(
         child: Column(
           children: [
@@ -210,6 +211,6 @@ Future signIn(BuildContext context) async {
           ],
         ),
       ),
-    ));
+    )); */
   }
 }
