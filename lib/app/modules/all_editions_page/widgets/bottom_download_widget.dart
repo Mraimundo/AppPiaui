@@ -3,6 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/shared/components/complete_download/complete_download.dart';
 import 'package:piaui_app/app/shared/components/download_iniciado/download_iniciado.dart';
 import 'package:piaui_app/app/shared/components/download_iniciado/download_iniciado_fail.dart';
+import 'package:piaui_app/app/shared/components/download_iniciado/download_iniciado_fail.dart';
 import 'package:piaui_app/app/shared/downloads/download_revist.dart';
 import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';

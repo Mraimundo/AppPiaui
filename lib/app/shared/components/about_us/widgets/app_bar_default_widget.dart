@@ -21,29 +21,23 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: Visibility(
-              visible:
-                  MediaQuery.of(context).orientation == Orientation.portrait,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Container(
-                  padding: EdgeInsets.zero,
-                  child: Image.asset('assets/images/piaui_logo.png',
-                      fit: BoxFit.fill),
-                  height: MediaQuery.of(context).size.height / 20,
-                  width: MediaQuery.of(context).size.width / 6,
-                ),
-              ),
-              replacement: Container(
+          Visibility(
+            visible: MediaQuery.of(context).orientation == Orientation.portrait,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 20),
+              child: Container(
+                padding: EdgeInsets.zero,
                 child: Image.asset('assets/images/piaui_logo.png',
                     fit: BoxFit.fill),
-                height: MediaQuery.of(context).size.height / 12,
-                width: MediaQuery.of(context).size.width / 10,
+                height: MediaQuery.of(context).size.height / 20,
+                width: MediaQuery.of(context).size.width / 6,
               ),
+            ),
+            replacement: Container(
+              child:
+                  Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
+              height: MediaQuery.of(context).size.height / 12,
+              width: MediaQuery.of(context).size.width / 10,
             ),
           ),
           Padding(

@@ -60,11 +60,11 @@ class _EditionPageState extends State<EditionPage> {
 
   @override
   void initState() {
-    super.initState();
-    _editions = findByPage(page);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.themeChanger.setDarkStatus(widget.systemIsDark);
     });
+    super.initState();
+    _editions = findByPage(page);
   }
 
   void _addPage() async {
