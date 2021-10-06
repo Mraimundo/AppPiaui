@@ -52,6 +52,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           backgroundColor: Theme.of(context).backgroundColor,
           content: ModalUsuario(json['msg']),
+          duration: const Duration(seconds: 1),
         ));
       }
     } on DioError catch (e) {

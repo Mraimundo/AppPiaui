@@ -50,13 +50,16 @@ class _EditionPageState extends State<EditionPage> {
   String y = "0";
   String mes = "Mês";
   String ano = "Ano";
+  bool isDark = false;
+  bool addFirst = true;
 
   @override
   void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.themeChanger.setDarkStatus(widget.systemIsDark);
     });
-    super.initState();
+    content = <Widget>[];
     _editions = findByPage(page);
   }
 
@@ -95,16 +98,18 @@ class _EditionPageState extends State<EditionPage> {
 
   @override
   Widget build(context) {
-    int cont = 0;
     widget.themeChanger = Provider.of<ThemeChanger>(context, listen: false);
     widget.systemIsDark =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
 
-    if (page == 1) {
-      print(cont);
-      content = <Widget>[];
-      findByPage(page);
-    }
+    /*  /* int cont = 0; */
+    print("local" + isDark.toString());
+    print("naolocal" + widget.themeChanger.isDark().toString());
+    if (isDark != widget.themeChanger.isDark()) {
+      isDark = widget.themeChanger.isDark();
+      _selectEdition();
+    } */
+
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
       body: Stack(
@@ -287,7 +292,7 @@ class _EditionPageState extends State<EditionPage> {
                                                                 right: 19,
                                                                 bottom: 9),
                                                         child: Text(
-                                                          'Todos os anos',
+                                                          'Todos os meses',
                                                           style: TextStyle(
                                                             fontFamily:
                                                                 ' Piaui',
@@ -302,17 +307,6 @@ class _EditionPageState extends State<EditionPage> {
                                                       ),
                                                       alignment:
                                                           Alignment.bottomRight,
-                                                    ),
-                                                    Text(
-                                                      'Selecione o ano',
-                                                      style: TextStyle(
-                                                        fontFamily: ' Piaui',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: AppColors
-                                                            .textColorModal,
-                                                      ),
                                                     ),
                                                     Align(
                                                       alignment:
@@ -545,17 +539,6 @@ class _EditionPageState extends State<EditionPage> {
                                                       alignment:
                                                           Alignment.bottomRight,
                                                     ),
-                                                    Text(
-                                                      'Selecione o ano',
-                                                      style: TextStyle(
-                                                        fontFamily: ' Piaui',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: AppColors
-                                                            .textColorModal,
-                                                      ),
-                                                    ),
                                                     Align(
                                                       alignment:
                                                           Alignment.bottomRight,
@@ -671,18 +654,20 @@ class _EditionPageState extends State<EditionPage> {
                                   CrossAxisAlignment.center;
                               MainAxisAlignment rowAlignH =
                                   MainAxisAlignment.spaceEvenly;
-                              cont++;
+                              /* cont++; */
 
                               if (snapshot.hasData) {
                                 int items = snapshot.data.length;
+                                bool ok = false;
 
                                 for (var item in snapshot.data) {
                                   if (!allEditions.contains(item)) {
                                     allEditions.add(item);
+                                    ok = true;
                                   }
                                 }
 
-                                if (cont == 2) {
+                                if (ok) {
                                   if (items % 2 == 0) {
                                     for (var i = 0; i < items; i += 2) {
                                       content.add(Row(

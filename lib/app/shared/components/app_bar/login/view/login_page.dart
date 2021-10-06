@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/api/google_sign_in_api.dart';
+import 'package:piaui_app/app/shared/components/modal_usuario/modal_usuario_invalido.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:piaui_app/app/modules/all_editions_page/view/all_edition_page.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/controller/login_controller.dart';
@@ -142,6 +143,7 @@ Future signIn(BuildContext context) async {
   var user;
   try {
     user = await GoogleSignInApi.login();
+    print(user);
 
     var _inpLogin = user.email;
     var _inpSenha = user.id;
@@ -157,8 +159,8 @@ Future signIn(BuildContext context) async {
         var response;
         var json;
 
-        _data =
-            FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
+        _data = FormData.fromMap(
+            {'inpLogin': _inpLogin, 'inpSenha': _inpSenha, 'oauth': 1});
 
         response = await dio.post(_url, data: _data);
         json = jsonDecode(response.data);
@@ -169,9 +171,10 @@ Future signIn(BuildContext context) async {
           var assinante = json['dados']['assinante'];
 
           if (assinante == '1') {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => AllEditionPage(user: userDados),
-            ));
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => AllEditionPage(user: userDados)),
+                (Route<dynamic> route) => false);
           } else {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Center(
@@ -181,9 +184,9 @@ Future signIn(BuildContext context) async {
           }
         } catch (e) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Center(
-              child: Text(json['msg']),
-            ),
+            backgroundColor: Theme.of(context).backgroundColor,
+            content: ModalUsuario(json['msg']),
+            duration: const Duration(seconds: 1),
           ));
         }
       } catch (e) {

@@ -47,6 +47,7 @@ class _ListMagazine extends State<ListMagazine> {
   String y = "0";
   String mes = "Mês";
   String ano = "Ano";
+  bool isDark = false;
 
   @override
   void initState() {
@@ -54,9 +55,8 @@ class _ListMagazine extends State<ListMagazine> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.themeChanger.setDarkStatus(widget.systemIsDark);
     });
+    content = <Widget>[];
     _editions = findByPage(page);
-
-    print("MERDA");
   }
 
   void _addPage() async {
@@ -95,16 +95,16 @@ class _ListMagazine extends State<ListMagazine> {
   @override
   Widget build(BuildContext context) {
     widget.themeChanger = Provider.of<ThemeChanger>(context, listen: false);
-    print("aq" + widget.themeChanger.toString());
-
     widget.systemIsDark =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
-    print("aqq" + widget.systemIsDark.toString());
+
     int cont = 0;
 
-    if (page == 1) {
-      content = <Widget>[];
+    if (isDark != widget.themeChanger.isDark()) {
+      isDark = widget.themeChanger.isDark();
+      _selectEdition();
     }
+
     return Container(
       child: Stack(
         children: [
@@ -251,6 +251,14 @@ class _ListMagazine extends State<ListMagazine> {
                                                                     _selectMonthAndYear(
                                                                         month,
                                                                         year);
+                                                                    setState(
+                                                                        () {
+                                                                      if (selectedMonth >
+                                                                          0) {
+                                                                        mes = selectedMonth
+                                                                            .toString();
+                                                                      }
+                                                                    });
                                                                     Navigator.pop(
                                                                         context);
                                                                   }
@@ -284,7 +292,7 @@ class _ListMagazine extends State<ListMagazine> {
                                                                 right: 19,
                                                                 bottom: 9),
                                                         child: Text(
-                                                          'Todos os anos',
+                                                          'Todos os meses',
                                                           style: TextStyle(
                                                             fontFamily:
                                                                 ' Piaui',
@@ -299,17 +307,6 @@ class _ListMagazine extends State<ListMagazine> {
                                                       ),
                                                       alignment:
                                                           Alignment.bottomRight,
-                                                    ),
-                                                    Text(
-                                                      'Selecione o ano',
-                                                      style: TextStyle(
-                                                        fontFamily: ' Piaui',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: AppColors
-                                                            .textColorModal,
-                                                      ),
                                                     ),
                                                     Align(
                                                       alignment:
@@ -332,11 +329,6 @@ class _ListMagazine extends State<ListMagazine> {
                                                                       (index) {
                                                                     selectedMonth =
                                                                         index;
-                                                                    setState(
-                                                                        () {
-                                                                      mes = index
-                                                                          .toString();
-                                                                    });
                                                                   },
                                                                   children: Utils
                                                                       .modelBuilder<
@@ -490,8 +482,11 @@ class _ListMagazine extends State<ListMagazine> {
                                                                         context);
                                                                     setState(
                                                                         () {
-                                                                      ano = values[
-                                                                          yearSelected];
+                                                                      if (yearSelected >
+                                                                          0) {
+                                                                        ano = values[
+                                                                            yearSelected];
+                                                                      }
                                                                     });
                                                                   }
                                                                 },
@@ -539,17 +534,6 @@ class _ListMagazine extends State<ListMagazine> {
                                                       ),
                                                       alignment:
                                                           Alignment.bottomRight,
-                                                    ),
-                                                    Text(
-                                                      'Selecione o ano',
-                                                      style: TextStyle(
-                                                        fontFamily: ' Piaui',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: AppColors
-                                                            .textColorModal,
-                                                      ),
                                                     ),
                                                     Align(
                                                       alignment:
@@ -668,14 +652,15 @@ class _ListMagazine extends State<ListMagazine> {
 
                               if (snapshot.hasData) {
                                 int items = snapshot.data.length;
-
+                                bool ok = false;
                                 for (var item in snapshot.data) {
                                   if (!allEditions.contains(item)) {
                                     allEditions.add(item);
+                                    ok = true;
                                   }
                                 }
 
-                                if (cont == 2) {
+                                if (cont == 2 && ok) {
                                   if (items % 2 == 0) {
                                     for (var i = 0; i < items; i += 2) {
                                       content.add(Row(
