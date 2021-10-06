@@ -127,19 +127,6 @@ class _RowGridWidgetState extends State<RowGridWidget> {
                                                     Align(
                                                       alignment:
                                                           Alignment.centerLeft,
-                                                      child: Text(
-                                                        'Baixado (36 MB)',
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                'Palatino',
-                                                            fontSize: 11.5,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor),
-                                                      ),
                                                     )
                                                   ],
                                                 ),
@@ -411,19 +398,6 @@ class _RowGridWidgetState extends State<RowGridWidget> {
                                                     Align(
                                                       alignment:
                                                           Alignment.centerLeft,
-                                                      child: Text(
-                                                        'Baixado (36 MB)',
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                'Palatino',
-                                                            fontSize: 11.5,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor),
-                                                      ),
                                                     )
                                                   ],
                                                 ),
@@ -736,19 +710,6 @@ class _RowGridWidgetState extends State<RowGridWidget> {
                                                     Align(
                                                       alignment:
                                                           Alignment.centerLeft,
-                                                      child: Text(
-                                                        'Baixado (36 MB)',
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                'Palatino',
-                                                            fontSize: 11.5,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor),
-                                                      ),
                                                     )
                                                   ],
                                                 ),
@@ -1020,19 +981,6 @@ class _RowGridWidgetState extends State<RowGridWidget> {
                                                     Align(
                                                       alignment:
                                                           Alignment.centerLeft,
-                                                      child: Text(
-                                                        'Baixado (36 MB)',
-                                                        style: TextStyle(
-                                                            fontFamily:
-                                                                'Palatino',
-                                                            fontSize: 11.5,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor),
-                                                      ),
                                                     )
                                                   ],
                                                 ),

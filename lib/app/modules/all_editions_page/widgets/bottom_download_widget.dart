@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/shared/components/complete_download/complete_download.dart';
 import 'package:piaui_app/app/shared/components/download_iniciado/download_iniciado.dart';
+import 'package:piaui_app/app/shared/components/download_iniciado/download_iniciado_fail.dart';
 import 'package:piaui_app/app/shared/downloads/download_revist.dart';
 import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
@@ -70,6 +71,10 @@ class _ButtomDownLoadWidgetState extends State<ButtomDownLoadWidget> {
                       int.parse(widget.numberEdition.toString()),
                       widget.ano.toString(),
                       widget.mes.toString()))); */
+        } else {
+          print("Já tem");
+          showDialog(
+              context: context, builder: (builder) => DonwloadIniciadoFail());
         }
       },
       // padding: EdgeInsets.zero,

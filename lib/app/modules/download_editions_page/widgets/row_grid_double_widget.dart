@@ -92,15 +92,6 @@ class _RowGridDoubleWidgetState extends State<RowGridDoubleWidget> {
                                       SizedBox(height: 4),
                                       Align(
                                         alignment: Alignment.centerLeft,
-                                        child: Text(
-                                          'Baixado (36 MB)',
-                                          style: TextStyle(
-                                              fontFamily: 'Palatino',
-                                              fontSize: 11.5,
-                                              fontWeight: FontWeight.normal,
-                                              color: Theme.of(context)
-                                                  .primaryColor),
-                                        ),
                                       )
                                     ],
                                   ),
