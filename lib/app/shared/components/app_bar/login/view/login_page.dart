@@ -120,11 +120,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       ]),
                     ),
                   ),
-                  LinkWidget(
-                    onTap: () {
-                      Modular.to.pushNamed('/signature');
-                    },
-                  )
                 ],
               ),
             ),
