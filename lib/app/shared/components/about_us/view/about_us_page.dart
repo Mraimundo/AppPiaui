@@ -93,67 +93,22 @@ class _AboutUsPageState extends ModularState<AboutUsPage, ConfigController> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 20, left: 22, right: 22),
-                        child: RichText(
-                          text: TextSpan(
-                            text: 'A ',
+                        padding: const EdgeInsets.only(left: 22, top: 20),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'A piauí é uma revista mensal de jornalismo, ideias e humor.',
                             style: TextStyle(
                               fontFamily: 'TradeGothic',
-                              fontSize: 18,
+                              fontSize: 16,
                               fontWeight: FontWeight.normal,
                               color: Theme.of(context).primaryColor,
                             ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'piauí  ',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  height: 1.4,
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor,
-                                  // fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'é uma revista  ',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  height: 1.4,
-                                  fontWeight: FontWeight.normal,
-                                  color: Theme.of(context).primaryColor,
-                                  // fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'mensal ',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  height: 1.4,
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'de jornalismo, ideias e humor.',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  height: 1.4,
-                                  fontWeight: FontWeight.normal,
-                                  color: Theme.of(context).primaryColor,
-                                  // fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       ),
+                      SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.only(left: 22, right: 22),
                         child: Text(
@@ -168,46 +123,18 @@ class _AboutUsPageState extends ModularState<AboutUsPage, ConfigController> {
                       ),
                       SizedBox(height: 18),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 20, left: 22, right: 22),
-                        child: RichText(
-                          text: TextSpan(
-                            text:
-                                'Jornalistas, escritores, artistas gráficos, ensaístas, críticos e humoristas de todas as idades expressam em  ',
+                        padding: const EdgeInsets.only(left: 22, right: 22),
+                        child: Text(
+                            'Jornalistas, escritores, artistas gráficos, ensaístas, críticos e humoristas detodas as idades expressam em piauí diferentes aspectos da vida nacional, que, convenhamos, não anda fácil de ser compreendida. Numa situação como essa, é melhor admitir a perplexidade do que prescrever receitasinfalíveis de salvação. Não salvamos ninguém, estamos perplexos, mas somos muito curiosos.',
                             style: TextStyle(
                               fontFamily: 'TradeGothic',
-                              fontSize: 18,
+                              fontSize: 16,
+                              height: 1.4,
                               fontWeight: FontWeight.normal,
                               color: Theme.of(context).primaryColor,
-                            ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'piauí  ',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  height: 1.4,
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor,
-                                  // fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    'diferentes aspectos da vida nacional, que, convenhamos, não anda fácil de ser compreendida. Numa situação como essa, é melhor admitir a perplexidade do que prescrever receitas infalíveis de salvação. Não salvamos ninguém, estamos perplexos, mas somos muito curiosos.  ',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  height: 1.4,
-                                  fontWeight: FontWeight.normal,
-                                  color: Theme.of(context).primaryColor,
-                                  // fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                            )),
                       ),
+                      SizedBox(height: 18),
                       Padding(
                         padding: const EdgeInsets.only(left: 22, right: 22),
                         child: Text(
@@ -215,57 +142,27 @@ class _AboutUsPageState extends ModularState<AboutUsPage, ConfigController> {
                             style: TextStyle(
                               fontFamily: 'TradeGothic',
                               fontSize: 16,
+                              fontWeight: FontWeight.normal,
+                              color: Theme.of(context).primaryColor,
                             )),
                       ),
                       SizedBox(height: 18),
                       Padding(
-                        padding: const EdgeInsets.only(
-                            bottom: 20, left: 22, right: 22),
-                        child: RichText(
-                          text: TextSpan(
-                            text: 'piauí  ',
+                        padding: const EdgeInsets.only(left: 22),
+                        child: Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'piauí não tem resposta para nada. Nem para quem pergunta por que ela se chama piauí, porque a esse respeito ainda não chegamos a um consenso (existem pelo menos quatro versões).',
                             style: TextStyle(
                               fontFamily: 'TradeGothic',
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              fontWeight: FontWeight.normal,
                               color: Theme.of(context).primaryColor,
                             ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text:
-                                    'não tem resposta para nada. Nem para quem pergunta por que ela se chama   ',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  height: 1.4,
-                                  fontWeight: FontWeight.normal,
-                                  color: Theme.of(context).primaryColor,
-                                  // fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'piauí,  ',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    'porque a esse respeito ainda não chegamos a um consenso (existem pelo menos quatro versões).  ',
-                                style: TextStyle(
-                                  fontFamily: 'TradeGothic',
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.normal,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
-                            ],
                           ),
                         ),
                       ),
+                      SizedBox(height: 18),
                       Padding(
                         padding: const EdgeInsets.only(
                             left: 22, right: 22, bottom: 22),
