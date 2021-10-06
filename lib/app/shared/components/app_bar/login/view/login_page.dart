@@ -12,13 +12,11 @@ import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.da
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/back_to_home_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/link_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/login_widget.dart';
-import 'package:piaui_app/app/shared/components/app_bar/login/widgets/reset_to_password_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/signature_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/social_login_button.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/text_login_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
-import 'package:piaui_app/app/shared/layout/colors.dart';
 
 Future<void> populateUser(user) async {
   await FlutterSession().set("user", user);
@@ -54,7 +52,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           children: [
             BackToHomeWidget(
               onTap: () {
-                /* Navigator.popUntil(context, ModalRoute.withName("/editions")); */
                 Navigator.of(context).popUntil((route) => route.isFirst);
               },
             ),
@@ -78,7 +75,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 children: [
                   LoginWidget(),
                   SizedBox(height: 20),
-                  /* ResetToPassWordWidget(onTap: () {}), */
                   Column(
                     children: [
                       Align(

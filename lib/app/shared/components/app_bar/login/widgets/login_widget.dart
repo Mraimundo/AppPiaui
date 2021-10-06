@@ -74,6 +74,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     double vHeight = MediaQuery.of(context).size.height;
     double vWidth = MediaQuery.of(context).size.width;
     return Material(
@@ -161,13 +162,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                 height: 13,
               ),
               Container(
-                margin: EdgeInsets.only(left: 0),
                 child: TextButton(
-                  // onPressed: () {},
                   child: Container(
                     color: AppColors.orangePiaui,
-                    height: vHeight * 0.06,
-                    width: vWidth / 2.5,
+                    height: size.height * 0.06,
+                    width: size.width / 2.5,
                     child: Align(
                       child: Text(
                         'Entrar',
@@ -179,7 +178,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                   ),
                   onPressed: () => _onPressed(),
-                  // loading: _isLoading,
                 ),
               ),
             ],
