@@ -136,7 +136,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           border: Border.all(
-                            color: Colors.black,
+                            color: Theme.of(context).primaryColor,
                           ),
                         ),
                         child: TextButton(
@@ -144,7 +144,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                             "A+",
                             style: TextStyle(
                               fontFamily: 'TradeGothic',
-                              color: Colors.black,
+                              color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                             ),
