@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/components/skeleton_last_edition.dart';
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
@@ -18,8 +17,6 @@ class _LastEditionWidgetState
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    // double vHeight = MediaQuery.of(context).size.height;
-    // double vWidth = MediaQuery.of(context).size.width;
     return Row(
       children: [
         Expanded(
@@ -70,8 +67,7 @@ class _LastEditionWidgetState
                                   style: TextStyle(
                                     fontFamily: 'TradeGothic',
                                     fontSize: 25,
-                                    // fontWeight: FontWeight.bold,
-                                    color: Theme.of(context).primaryColor,
+                                    color: AppColors.textColorWhite,
                                   ),
                                 ),
                               ],
@@ -95,16 +91,21 @@ class _LastEditionWidgetState
                                   });
                                 },
                                 child: Container(
-                                  color: AppColors.backgroundColorLastEdition,
+                                  color: AppColors.textColorWhite,
+
+                                  // color: Theme.of(context).primaryColor,
                                   height: size.height * 0.06,
                                   width: size.width / 2.5,
                                   child: Align(
                                     child: Text(
                                       'Experimente',
                                       style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 22),
+                                        color: AppColors
+                                            .backgroundColorLastEdition,
+                                        // color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 22,
+                                      ),
                                     ),
                                     alignment: Alignment.center,
                                   ),

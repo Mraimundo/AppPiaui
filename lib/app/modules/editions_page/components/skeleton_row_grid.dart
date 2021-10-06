@@ -30,7 +30,7 @@ class SkeletonRowGrid extends StatelessWidget {
                   Padding(
                     padding: framePadding,
                     child: Container(
-                      color: Colors.white,
+                      color: Theme.of(context).primaryColor,
                       height: rowHeight,
                       width: rowWidth,
                       child: Column(

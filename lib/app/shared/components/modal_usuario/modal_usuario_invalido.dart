@@ -60,38 +60,6 @@ class ModalUsuario extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              TextButton(
-                                onPressed: () {
-                                  /*      Navigator.of(context).pop(); */
-                                },
-                                child: Container(
-                                  height: 60,
-                                  width: 150,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: AppColors.orangePiaui,
-                                    ),
-                                  ),
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Text(
-                                      'Ok',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: AppColors.orangePiaui),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
                       ],
                     ),
                   ),

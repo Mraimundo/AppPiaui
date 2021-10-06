@@ -15,7 +15,7 @@ class BackToHomeWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset('assets/images/arrow-left.png'),
+                Image.asset('assets/images/arrow-left.png', scale: 1.4),
                 SizedBox(
                   width: 16,
                 ),
@@ -24,9 +24,12 @@ class BackToHomeWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Voltar para início",
-                    // style: TextStyles.buttonGray,
-                    style: TextStyle(color: Theme.of(context).primaryColor)),
+                Text(
+                  "Voltar para início",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).primaryColor),
+                ),
               ],
             )
           ],

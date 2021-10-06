@@ -21,16 +21,21 @@ import 'package:piaui_app/app/modules/all_editions_page/widgets/select_month_wid
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
+import 'package:provider/provider.dart';
 
 class ListMagazine extends StatefulWidget {
   final Dados user;
-  const ListMagazine({Key key, this.user}) : super(key: key);
+  ThemeChanger themeChanger;
+  bool systemIsDark;
+
+  ListMagazine({Key key, this.user}) : super(key: key);
 
   @override
   _ListMagazine createState() => _ListMagazine(this.user);
 }
 
-class _ListMagazine extends State {
+class _ListMagazine extends State<ListMagazine> {
   int page = 1;
   int first = 1;
   Dados user;
@@ -42,10 +47,15 @@ class _ListMagazine extends State {
   String y = "0";
   String mes = "Mês";
   String ano = "Ano";
+  bool isDark = false;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      widget.themeChanger.setDarkStatus(widget.systemIsDark);
+    });
+    content = <Widget>[];
     _editions = findByPage(page);
   }
 
@@ -84,7 +94,17 @@ class _ListMagazine extends State {
 
   @override
   Widget build(BuildContext context) {
+    widget.themeChanger = Provider.of<ThemeChanger>(context, listen: false);
+    widget.systemIsDark =
+        MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     int cont = 0;
+
+    if (isDark != widget.themeChanger.isDark()) {
+      isDark = widget.themeChanger.isDark();
+      _selectEdition();
+    }
+
     return Container(
       child: Stack(
         children: [
@@ -231,6 +251,14 @@ class _ListMagazine extends State {
                                                                     _selectMonthAndYear(
                                                                         month,
                                                                         year);
+                                                                    setState(
+                                                                        () {
+                                                                      if (selectedMonth >
+                                                                          0) {
+                                                                        mes = selectedMonth
+                                                                            .toString();
+                                                                      }
+                                                                    });
                                                                     Navigator.pop(
                                                                         context);
                                                                   }
@@ -264,7 +292,7 @@ class _ListMagazine extends State {
                                                                 right: 19,
                                                                 bottom: 9),
                                                         child: Text(
-                                                          'Todos os anos',
+                                                          'Todos os meses',
                                                           style: TextStyle(
                                                             fontFamily:
                                                                 ' Piaui',
@@ -279,17 +307,6 @@ class _ListMagazine extends State {
                                                       ),
                                                       alignment:
                                                           Alignment.bottomRight,
-                                                    ),
-                                                    Text(
-                                                      'Selecione o ano',
-                                                      style: TextStyle(
-                                                        fontFamily: ' Piaui',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: AppColors
-                                                            .textColorModal,
-                                                      ),
                                                     ),
                                                     Align(
                                                       alignment:
@@ -312,11 +329,6 @@ class _ListMagazine extends State {
                                                                       (index) {
                                                                     selectedMonth =
                                                                         index;
-                                                                    setState(
-                                                                        () {
-                                                                      mes = index
-                                                                          .toString();
-                                                                    });
                                                                   },
                                                                   children: Utils
                                                                       .modelBuilder<
@@ -470,8 +482,11 @@ class _ListMagazine extends State {
                                                                         context);
                                                                     setState(
                                                                         () {
-                                                                      ano = values[
-                                                                          yearSelected];
+                                                                      if (yearSelected >
+                                                                          0) {
+                                                                        ano = values[
+                                                                            yearSelected];
+                                                                      }
                                                                     });
                                                                   }
                                                                 },
@@ -519,17 +534,6 @@ class _ListMagazine extends State {
                                                       ),
                                                       alignment:
                                                           Alignment.bottomRight,
-                                                    ),
-                                                    Text(
-                                                      'Selecione o ano',
-                                                      style: TextStyle(
-                                                        fontFamily: ' Piaui',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: AppColors
-                                                            .textColorModal,
-                                                      ),
                                                     ),
                                                     Align(
                                                       alignment:
@@ -648,14 +652,15 @@ class _ListMagazine extends State {
 
                               if (snapshot.hasData) {
                                 int items = snapshot.data.length;
-
+                                bool ok = false;
                                 for (var item in snapshot.data) {
                                   if (!allEditions.contains(item)) {
                                     allEditions.add(item);
+                                    ok = true;
                                   }
                                 }
 
-                                if (cont == 2) {
+                                if (cont == 2 && ok) {
                                   if (items % 2 == 0) {
                                     for (var i = 0; i < items; i += 2) {
                                       content.add(Row(

@@ -1,9 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/modules/all_editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/all_editions_page/utils/utils.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/select_edition_widget.dart';
@@ -14,12 +11,8 @@ import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/border_top_widget.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/filter_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/last_edition_widget.dart';
-import 'package:piaui_app/app/modules/editions_page/widgets/load_more_widget.dart';
-import 'package:piaui_app/app/modules/editions_page/widgets/row_grid_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/text_has_no_signature_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/text_to_sign_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
@@ -57,13 +50,16 @@ class _EditionPageState extends State<EditionPage> {
   String y = "0";
   String mes = "Mês";
   String ano = "Ano";
+  bool isDark = false;
+  bool addFirst = true;
 
   @override
   void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.themeChanger.setDarkStatus(widget.systemIsDark);
     });
-    super.initState();
+    content = <Widget>[];
     _editions = findByPage(page);
   }
 
@@ -102,10 +98,17 @@ class _EditionPageState extends State<EditionPage> {
 
   @override
   Widget build(context) {
-    int cont = 0;
     widget.themeChanger = Provider.of<ThemeChanger>(context, listen: false);
     widget.systemIsDark =
         MediaQuery.of(context).platformBrightness == Brightness.dark;
+
+    /*  /* int cont = 0; */
+    print("local" + isDark.toString());
+    print("naolocal" + widget.themeChanger.isDark().toString());
+    if (isDark != widget.themeChanger.isDark()) {
+      isDark = widget.themeChanger.isDark();
+      _selectEdition();
+    } */
 
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
@@ -289,7 +292,7 @@ class _EditionPageState extends State<EditionPage> {
                                                                 right: 19,
                                                                 bottom: 9),
                                                         child: Text(
-                                                          'Todos os anos',
+                                                          'Todos os meses',
                                                           style: TextStyle(
                                                             fontFamily:
                                                                 ' Piaui',
@@ -304,17 +307,6 @@ class _EditionPageState extends State<EditionPage> {
                                                       ),
                                                       alignment:
                                                           Alignment.bottomRight,
-                                                    ),
-                                                    Text(
-                                                      'Selecione o ano',
-                                                      style: TextStyle(
-                                                        fontFamily: ' Piaui',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: AppColors
-                                                            .textColorModal,
-                                                      ),
                                                     ),
                                                     Align(
                                                       alignment:
@@ -394,12 +386,14 @@ class _EditionPageState extends State<EditionPage> {
                                                   fontFamily: 'Palatino',
                                                   fontSize: 11,
                                                   fontWeight: FontWeight.bold,
-                                                  color: AppColors.dark,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
                                                 ),
                                               ),
                                               Icon(
                                                 Icons.keyboard_arrow_down,
-                                                color: AppColors.textColorBlack,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
                                                 size: 22,
                                               )
                                             ],
@@ -545,17 +539,6 @@ class _EditionPageState extends State<EditionPage> {
                                                       alignment:
                                                           Alignment.bottomRight,
                                                     ),
-                                                    Text(
-                                                      'Selecione o ano',
-                                                      style: TextStyle(
-                                                        fontFamily: ' Piaui',
-                                                        fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        color: AppColors
-                                                            .textColorModal,
-                                                      ),
-                                                    ),
                                                     Align(
                                                       alignment:
                                                           Alignment.bottomRight,
@@ -628,12 +611,14 @@ class _EditionPageState extends State<EditionPage> {
                                                   fontFamily: 'Palatino',
                                                   fontSize: 11,
                                                   fontWeight: FontWeight.bold,
-                                                  color: AppColors.dark,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
                                                 ),
                                               ),
                                               Icon(
                                                 Icons.keyboard_arrow_down,
-                                                color: AppColors.textColorBlack,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
                                                 size: 22,
                                               )
                                             ],
@@ -669,18 +654,20 @@ class _EditionPageState extends State<EditionPage> {
                                   CrossAxisAlignment.center;
                               MainAxisAlignment rowAlignH =
                                   MainAxisAlignment.spaceEvenly;
-                              cont++;
+                              /* cont++; */
 
                               if (snapshot.hasData) {
                                 int items = snapshot.data.length;
+                                bool ok = false;
 
                                 for (var item in snapshot.data) {
                                   if (!allEditions.contains(item)) {
                                     allEditions.add(item);
+                                    ok = true;
                                   }
                                 }
 
-                                if (cont == 2) {
+                                if (ok) {
                                   if (items % 2 == 0) {
                                     for (var i = 0; i < items; i += 2) {
                                       content.add(Row(

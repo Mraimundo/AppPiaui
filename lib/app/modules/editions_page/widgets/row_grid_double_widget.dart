@@ -67,6 +67,7 @@ class _RowGridDoubleWidgetState
                                   fontFamily: 'Piaui',
                                   fontSize: rowFontsize,
                                   fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColorDark,
                                 ),
                               ),
                             ),

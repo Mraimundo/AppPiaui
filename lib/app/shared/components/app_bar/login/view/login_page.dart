@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/api/google_sign_in_api.dart';
+import 'package:piaui_app/app/shared/components/modal_usuario/modal_usuario_invalido.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:piaui_app/app/modules/all_editions_page/view/all_edition_page.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/controller/login_controller.dart';
@@ -11,13 +12,11 @@ import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.da
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/back_to_home_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/link_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/login_widget.dart';
-import 'package:piaui_app/app/shared/components/app_bar/login/widgets/reset_to_password_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/signature_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/social_login_button.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/widgets/text_login_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
-import 'package:piaui_app/app/shared/layout/colors.dart';
 
 Future<void> populateUser(user) async {
   await FlutterSession().set("user", user);
@@ -53,7 +52,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
           children: [
             BackToHomeWidget(
               onTap: () {
-                /* Navigator.popUntil(context, ModalRoute.withName("/editions")); */
                 Navigator.of(context).popUntil((route) => route.isFirst);
               },
             ),
@@ -77,7 +75,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                 children: [
                   LoginWidget(),
                   SizedBox(height: 20),
-                  ResetToPassWordWidget(onTap: () {}),
                   Column(
                     children: [
                       Align(
@@ -123,11 +120,6 @@ class _LoginPageState extends ModularState<LoginPage, LoginController> {
                       ]),
                     ),
                   ),
-                  LinkWidget(
-                    onTap: () {
-                      Modular.to.pushNamed('/signature');
-                    },
-                  )
                 ],
               ),
             ),
@@ -142,6 +134,7 @@ Future signIn(BuildContext context) async {
   var user;
   try {
     user = await GoogleSignInApi.login();
+    print(user);
 
     var _inpLogin = user.email;
     var _inpSenha = user.id;
@@ -157,8 +150,8 @@ Future signIn(BuildContext context) async {
         var response;
         var json;
 
-        _data =
-            FormData.fromMap({'inpLogin': _inpLogin, 'inpSenha': _inpSenha});
+        _data = FormData.fromMap(
+            {'inpLogin': _inpLogin, 'inpSenha': _inpSenha, 'oauth': 1});
 
         response = await dio.post(_url, data: _data);
         json = jsonDecode(response.data);
@@ -169,9 +162,10 @@ Future signIn(BuildContext context) async {
           var assinante = json['dados']['assinante'];
 
           if (assinante == '1') {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => AllEditionPage(user: userDados),
-            ));
+            Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                    builder: (context) => AllEditionPage(user: userDados)),
+                (Route<dynamic> route) => false);
           } else {
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
               content: Center(
@@ -181,9 +175,9 @@ Future signIn(BuildContext context) async {
           }
         } catch (e) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Center(
-              child: Text(json['msg']),
-            ),
+            backgroundColor: Theme.of(context).backgroundColor,
+            content: ModalUsuario(json['msg']),
+            duration: const Duration(seconds: 1),
           ));
         }
       } catch (e) {
@@ -201,7 +195,8 @@ Future signIn(BuildContext context) async {
       }
     }
   } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+    print(e.toString());
+    /* ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       content: Center(
         child: Column(
           children: [
@@ -210,6 +205,6 @@ Future signIn(BuildContext context) async {
           ],
         ),
       ),
-    ));
+    )); */
   }
 }
