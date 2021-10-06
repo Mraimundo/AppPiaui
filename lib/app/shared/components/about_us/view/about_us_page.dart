@@ -49,7 +49,7 @@ class _AboutUsPageState extends ModularState<AboutUsPage, ConfigController> {
                                 padding: const EdgeInsets.only(right: 10),
                                 child: Image.asset(
                                     'assets/images/arrow-left.png',
-                                    scale: 0.9),
+                                    scale: 1.4),
                               ),
                               Text(
                                 'Voltar para menu',
