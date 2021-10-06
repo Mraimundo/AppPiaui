@@ -1,12 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/modules/all_editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/all_editions_page/utils/utils.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/list_magazine.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/select_edition_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/components/skeleton_row_grid.dart';
@@ -15,12 +11,8 @@ import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/providers/ThemeChanger.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/border_top_widget.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/filter_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/last_edition_widget.dart';
-import 'package:piaui_app/app/modules/editions_page/widgets/load_more_widget.dart';
-import 'package:piaui_app/app/modules/editions_page/widgets/row_grid_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/text_has_no_signature_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/widgets/text_to_sign_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
@@ -400,12 +392,14 @@ class _EditionPageState extends State<EditionPage> {
                                                   fontFamily: 'Palatino',
                                                   fontSize: 11,
                                                   fontWeight: FontWeight.bold,
-                                                  color: AppColors.dark,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
                                                 ),
                                               ),
                                               Icon(
                                                 Icons.keyboard_arrow_down,
-                                                color: AppColors.textColorBlack,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
                                                 size: 22,
                                               )
                                             ],
@@ -634,12 +628,14 @@ class _EditionPageState extends State<EditionPage> {
                                                   fontFamily: 'Palatino',
                                                   fontSize: 11,
                                                   fontWeight: FontWeight.bold,
-                                                  color: AppColors.dark,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
                                                 ),
                                               ),
                                               Icon(
                                                 Icons.keyboard_arrow_down,
-                                                color: AppColors.textColorBlack,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
                                                 size: 22,
                                               )
                                             ],
