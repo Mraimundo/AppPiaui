@@ -26,7 +26,6 @@ class _ProblemSubscriptionPageState
     final double vFontSize = 18;
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
-      backgroundColor: AppColors.backgroundColor,
       body: Column(
         children: [
           Padding(
@@ -47,7 +46,7 @@ class _ProblemSubscriptionPageState
                     style: TextStyle(
                         fontSize: vFontSize,
                         fontWeight: FontWeight.bold,
-                        color: AppColors.dark),
+                        color: Theme.of(context).primaryColor),
                   ),
                 ],
               ),
@@ -77,7 +76,7 @@ class _ProblemSubscriptionPageState
               style: TextStyle(
                   fontFamily: 'TradeGothic',
                   fontSize: 14,
-                  color: AppColors.dark),
+                  color: Theme.of(context).primaryColor),
             ),
           ),
           SizedBox(height: 18),
@@ -90,7 +89,7 @@ class _ProblemSubscriptionPageState
                   fontFamily: 'TradeGothic',
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Theme.of(context).primaryColor,
                 ),
                 children: <TextSpan>[
                   TextSpan(
@@ -111,7 +110,7 @@ class _ProblemSubscriptionPageState
                       fontSize: 18,
                       height: 1.4,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
+                      color: Theme.of(context).primaryColor,
                       // fontWeight: FontWeight.bold,
                     ),
                   ),
