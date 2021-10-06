@@ -61,7 +61,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
                               border: Border.all(
-                                color: Colors.black,
+                                color: Theme.of(context).primaryColor,
                               ),
                             ),
                             child: IconButton(
@@ -70,7 +70,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                                 padding: EdgeInsets.only(right: 12),
                                 child: Image.asset('assets/images/Play.png',
                                     fit: BoxFit.contain),
-                                //color: Colors.black,
+                                //color: Theme.of(context).primaryColor,
                                 height: MediaQuery.of(context).orientation ==
                                         Orientation.portrait
                                     ? MediaQuery.of(context).size.height / 33
@@ -94,7 +94,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(50),
                             border: Border.all(
-                              color: Colors.black,
+                              color: Theme.of(context).primaryColor,
                             ),
                           ),
                           child: IconButton(
@@ -104,7 +104,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                                   right: 15, bottom: 6, top: 6, left: 6),
                               child: Image.asset('assets/images/Stop.png',
                                   fit: BoxFit.contain),
-                              //color: Colors.black,
+                              //color: Theme.of(context).primaryColor,
                               height: MediaQuery.of(context).orientation ==
                                       Orientation.portrait
                                   ? MediaQuery.of(context).size.height / 28
@@ -137,7 +137,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         border: Border.all(
-                          color: Colors.black,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                       child: TextButton(
@@ -170,7 +170,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         border: Border.all(
-                          color: Colors.black,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ),
                       child: TextButton(
@@ -201,7 +201,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(
-                        color: Colors.black,
+                        color: Theme.of(context).primaryColor,
                       ),
                     ),
                     child: Padding(

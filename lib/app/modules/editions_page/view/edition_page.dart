@@ -6,6 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:piaui_app/app/modules/all_editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/modules/all_editions_page/utils/utils.dart';
+import 'package:piaui_app/app/modules/all_editions_page/widgets/list_magazine.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/select_edition_widget.dart';
 import 'package:piaui_app/app/modules/editions_page/components/image_shimmer.dart';
 import 'package:piaui_app/app/modules/editions_page/components/skeleton_row_grid.dart';
@@ -110,6 +111,7 @@ class _EditionPageState extends State<EditionPage> {
     if (page == 1) {
       print(cont);
       content = <Widget>[];
+      findByPage(page);
     }
     return Scaffold(
       appBar: PreferredAppBarWidget(height: 56),
