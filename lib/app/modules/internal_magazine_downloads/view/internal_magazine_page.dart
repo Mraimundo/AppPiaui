@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/modules/internal_magazine_downloads/components/list_internal_articles.dart';
 import 'package:piaui_app/app/modules/internal_magazine_downloads/components/text_internal_magazine.dart';
+import 'package:piaui_app/app/modules/tts/tts.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
@@ -41,7 +42,7 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
   @override
   Widget build(context) {
     List<dynamic> jsonData = widget.revist.materias;
-
+    Tts tts = new Tts();
     Map<String, dynamic> materiaMap = jsonData[widget.index];
     Map<String, dynamic> conteudo = materiaMap['conteudo'];
     List<dynamic> autors = conteudo['Colaboradores'];
@@ -65,6 +66,7 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
                         // mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           TextInternalMagazine(
+                            onClickAction: () => {tts.stop()},
                             data: widget.revist.mes + '-' + widget.revist.ano,
                             autor: autors,
                             edition: widget.revist.numberEdition.toString(),

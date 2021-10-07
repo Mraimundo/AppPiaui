@@ -28,13 +28,19 @@ class TextInternalMagazine extends StatefulWidget {
   final String title;
   final String data;
   final List<dynamic> autor;
+  final Function onClickAction;
   const TextInternalMagazine(
-      {Key key, this.edition = "", this.title = "", this.autor, this.data})
+      {Key key,
+      this.edition = "",
+      this.title = "",
+      this.autor,
+      this.data,
+      this.onClickAction})
       : super(key: key);
 
   @override
   _TextInternalMagazineState createState() =>
-      _TextInternalMagazineState(edition, title, autor, data);
+      _TextInternalMagazineState(edition, title, autor, data, onClickAction);
 }
 
 class _TextInternalMagazineState extends State<TextInternalMagazine> {
@@ -42,7 +48,9 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
   String title;
   List<dynamic> autor;
   String data;
-  _TextInternalMagazineState(this.edition, this.title, this.autor, this.data);
+  Function onClickAction;
+  _TextInternalMagazineState(
+      this.edition, this.title, this.autor, this.data, this.onClickAction);
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +82,43 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10, top: 10, left: 10),
+                child: Row(
+                  children: [
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_outlined,
+                          color: AppColors.orangePiaui,
+                          size: 35,
+                        ),
+                        onPressed: () {
+                          onClickAction();
+                          Navigator.of(context).pop();
+                        }),
+                    Text(
+                      'anterior',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        color: AppColors.orangePiaui,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 28, right: 32),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                          color: AppColors.internalBorderColor, width: 0.9),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 21),
               SizedBox(height: 21),
               SizedBox(height: 11),
               Text(
