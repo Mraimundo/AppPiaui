@@ -29,13 +29,19 @@ class TextInternalMagazine extends StatefulWidget {
   final String title;
   final String data;
   final List<dynamic> autor;
+  final Function onClickAction;
   const TextInternalMagazine(
-      {Key key, this.edition = "", this.title = "", this.autor, this.data})
+      {Key key,
+      this.edition = "",
+      this.title = "",
+      this.autor,
+      this.data,
+      this.onClickAction})
       : super(key: key);
 
   @override
   _TextInternalMagazineState createState() =>
-      _TextInternalMagazineState(edition, title, autor, data);
+      _TextInternalMagazineState(edition, title, autor, data, onClickAction);
 }
 
 class _TextInternalMagazineState extends State<TextInternalMagazine> {
@@ -43,7 +49,9 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
   String title;
   List<dynamic> autor;
   String data;
-  _TextInternalMagazineState(this.edition, this.title, this.autor, this.data);
+  Function onClickAction;
+  _TextInternalMagazineState(
+      this.edition, this.title, this.autor, this.data, this.onClickAction);
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +94,8 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                           size: 35,
                         ),
                         onPressed: () {
-                          Navigator.pop(context);
-                          Tts().stop();
+                          onClickAction();
+                          Navigator.of(context).pop();
                         }),
                     Text(
                       'anterior',

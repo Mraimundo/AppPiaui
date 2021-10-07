@@ -6,6 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/list_internal_articles.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/text_internal_magazine.dart';
 import 'package:piaui_app/app/modules/internal_magazine/controller/internal_magazine_controller.dart';
+import 'package:piaui_app/app/modules/tts/tts.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
@@ -63,7 +64,7 @@ class _InternalMagazinePageState
 
   @override
   Widget build(context) {
-    print(idMateria);
+    Tts tts = new Tts();
     return FutureBuilder<String>(
         future: conteudo(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
@@ -86,6 +87,7 @@ class _InternalMagazinePageState
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
                                   TextInternalMagazine(
+                                    onClickAction: () => {tts.stop()},
                                     data: data,
                                     autor: jsonDecode(snapshot.data)["acf"]
                                         ["autor"],
