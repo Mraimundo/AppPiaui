@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:piaui_app/app/modules/tts/tts.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 String editAutor(List<dynamic> autor) {
@@ -86,6 +87,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                         ),
                         onPressed: () {
                           Navigator.pop(context);
+                          Tts().stop();
                         }),
                     Text(
                       'anterior',
