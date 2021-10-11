@@ -66,7 +66,7 @@ class _RowGridDoubleWidgetState
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Edição  #${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
+                                'piauí_${editionPair.numberEdition}: ${editionPair.mes} de ${editionPair.ano}',
                                 style: TextStyle(
                                     fontFamily: 'Piaui',
                                     fontSize: rowFontsize,
@@ -113,7 +113,7 @@ class _RowGridDoubleWidgetState
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                'Edição #${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
+                                'piauí_${editionOdd.numberEdition}: ${editionOdd.mes} de ${editionOdd.ano}',
                                 style: TextStyle(
                                     fontFamily: 'Piaui',
                                     fontSize: rowFontsize,

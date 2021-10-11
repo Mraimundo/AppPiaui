@@ -49,7 +49,9 @@ class DownloadRevist {
       Materia materia = new Materia(
           jsonDecode(m)["materias"][i.toString()]["id"].toString(),
           conteudo,
-          jsonDecode(materiaImage)['imgcode'],
+          materiaImage != "" && materiaImage != null
+              ? jsonDecode(materiaImage)['imgcode']
+              : "",
           jsonDecode(m)["materias"][i.toString()]['gravata'],
           jsonDecode(m)["materias"][i.toString()]['titulo'],
           jsonDecode(m)["materias"][i.toString()]['imagemcapa']['alt']);

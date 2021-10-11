@@ -71,7 +71,7 @@ class _LastEditionWidgetState
                                   Padding(
                                     padding: const EdgeInsets.only(left: 18),
                                     child: Text(
-                                      '-${edicoes.numberEdition}',
+                                      '_${edicoes.numberEdition}',
                                       style: TextStyle(
                                         fontFamily: 'TradeGothic',
                                         fontSize: 62,
