@@ -317,7 +317,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                                   "p": Style(
                                     fontFamily: 'Palatino',
                                     fontSize: FontSize(_tamFonte),
-                                    fontWeight: FontWeight.bold,
+                                    // fontWeight: FontWeight.bold,
                                   ),
                                 },
                               ),

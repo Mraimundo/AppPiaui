@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:html/parser.dart';
+import 'package:piaui_app/app/shared/core/custom_dio.dart';
+
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 String editAutor(List<dynamic> autor) {
@@ -23,18 +26,31 @@ String editAutor(List<dynamic> autor) {
   }
 }
 
+String _parseHtmlString(String htmlString) {
+  final document = parse(htmlString);
+  final String parsedString = parse(document.body.text).documentElement.text;
+
+  return parsedString;
+}
+
 class TextInternalMagazine extends StatefulWidget {
   final String edition;
   final String title;
   final String data;
+  final String imagemAlt;
   final List<dynamic> autor;
   const TextInternalMagazine(
-      {Key key, this.edition = "", this.title = "", this.autor, this.data})
+      {Key key,
+      this.edition = "",
+      this.title = "",
+      this.autor,
+      this.imagemAlt = "",
+      this.data})
       : super(key: key);
 
   @override
   _TextInternalMagazineState createState() =>
-      _TextInternalMagazineState(edition, title, autor, data);
+      _TextInternalMagazineState(edition, title, autor, data, imagemAlt);
 }
 
 class _TextInternalMagazineState extends State<TextInternalMagazine> {
@@ -42,10 +58,13 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
   String title;
   List<dynamic> autor;
   String data;
-  _TextInternalMagazineState(this.edition, this.title, this.autor, this.data);
+  String imagemAlt;
+  _TextInternalMagazineState(
+      this.edition, this.title, this.autor, this.data, this.imagemAlt);
 
   @override
   Widget build(BuildContext context) {
+    print(imagemAlt);
     return Padding(
       padding: const EdgeInsets.only(top: 35),
       child: Align(
@@ -85,7 +104,18 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 7),
+              Text(
+                'Testando aqui',
+                // _parseHtmlString(imagemAlt),
+                style: TextStyle(
+                  fontFamily: 'TradeGothic',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).primaryColor,
+                ),
+                textAlign: TextAlign.center,
+              ),
               SizedBox(height: 10),
               Text(
                 editAutor(autor) + ' | Edição ' + edition + ', ' + data,
@@ -96,7 +126,6 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 5),
               SizedBox(height: 35),
             ],
           ),

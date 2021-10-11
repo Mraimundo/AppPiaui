@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/list_internal_articles.dart';
@@ -8,7 +7,6 @@ import 'package:piaui_app/app/modules/internal_magazine/components/text_internal
 import 'package:piaui_app/app/modules/internal_magazine/controller/internal_magazine_controller.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
-import 'package:piaui_app/app/shared/layout/colors.dart';
 import 'package:html/parser.dart';
 
 Future<String> conteudo(idMateria) async {
@@ -50,8 +48,6 @@ class InternalMagazinePage extends StatefulWidget {
 
 class _InternalMagazinePageState
     extends ModularState<InternalMagazinePage, InternalMagazineController> {
-  //use 'controller' variable to access controller
-
   String idMateria;
   String edition;
   String imagemUrl;
@@ -63,7 +59,7 @@ class _InternalMagazinePageState
 
   @override
   Widget build(context) {
-    print(idMateria);
+    // print(idMateria);
     return FutureBuilder<String>(
         future: conteudo(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
@@ -95,22 +91,23 @@ class _InternalMagazinePageState
                                                     ["rendered"]
                                                 .toString())
                                         .toUpperCase(),
+                                    imagemAlt: imagemAlt,
                                   ),
                                   Image.network(
                                     imagemUrl,
                                     fit: BoxFit.fill,
                                   ),
                                   SizedBox(height: 7),
-                                  Text(
-                                    _parseHtmlString(imagemAlt),
-                                    style: TextStyle(
-                                      fontFamily: 'Piaui',
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.w500,
-                                      color: Theme.of(context).primaryColor,
-                                    ),
-                                    textAlign: TextAlign.center,
-                                  ),
+                                  // Text(
+                                  //   _parseHtmlString(imagemAlt),
+                                  //   style: TextStyle(
+                                  //     fontFamily: 'Piaui',
+                                  //     fontSize: 10,
+                                  //     fontWeight: FontWeight.w500,
+                                  //     color: Theme.of(context).primaryColor,
+                                  //   ),
+                                  //   textAlign: TextAlign.center,
+                                  // ),
                                   SizedBox(height: 22),
                                   ListInternalArticles(
                                     rendered:
