@@ -141,7 +141,7 @@ class _EditionPageState extends State<EditionPage> {
                       }),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 21, right: 30, left: 30, bottom: 25),
+                            top: 21, right: 25, left: 25, bottom: 25),
                         child: BorderTopWidget(),
                       ),
                       Padding(
@@ -458,7 +458,7 @@ class _EditionPageState extends State<EditionPage> {
                                                                   style:
                                                                       TextStyle(
                                                                     fontFamily:
-                                                                        ' Piaui',
+                                                                        'Piaui',
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -499,7 +499,7 @@ class _EditionPageState extends State<EditionPage> {
                                                                   style:
                                                                       TextStyle(
                                                                     fontFamily:
-                                                                        ' Piaui',
+                                                                        'Piaui',
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:

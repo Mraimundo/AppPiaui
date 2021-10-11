@@ -56,18 +56,21 @@ class _LastEditionWidgetState
                                     '-${edicoes.numberEdition}',
                                     style: TextStyle(
                                       fontFamily: 'TradeGothic',
-                                      fontSize: 62,
+                                      fontSize: 58,
                                       fontWeight: FontWeight.bold,
                                       color: AppColors.textColorWhite,
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  '${edicoes.mes}  ${edicoes.ano}',
-                                  style: TextStyle(
-                                    fontFamily: 'TradeGothic',
-                                    fontSize: 25,
-                                    color: AppColors.textColorWhite,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 22),
+                                  child: Text(
+                                    '${edicoes.mes}  ${edicoes.ano}',
+                                    style: TextStyle(
+                                      fontFamily: 'TradeGothic',
+                                      fontSize: 20,
+                                      color: AppColors.textColorWhite,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -75,7 +78,7 @@ class _LastEditionWidgetState
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 12, top: 25),
+                          padding: const EdgeInsets.only(top: 25),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -100,39 +103,44 @@ class _LastEditionWidgetState
                                     child: Text(
                                       'Experimente',
                                       style: TextStyle(
+                                        fontFamily: 'TradeGothic',
+                                        fontSize: 18,
                                         color: AppColors
                                             .backgroundColorLastEdition,
                                         // color: Theme.of(context).primaryColor,
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 22,
                                       ),
                                     ),
                                     alignment: Alignment.center,
                                   ),
                                 ),
                               ),
-                              TextButton(
-                                onPressed: () {
-                                  Modular.to.pushNamed('/login');
-                                },
-                                child: Container(
-                                  height: size.height * 0.06,
-                                  width: size.width / 2.5,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: AppColors.textColorWhite,
-                                    ),
-                                  ),
-                                  child: Align(
-                                    child: Text(
-                                      'Já sou assinante',
-                                      style: TextStyle(
+                              Padding(
+                                padding: const EdgeInsets.only(left: 12),
+                                child: TextButton(
+                                  onPressed: () {
+                                    Modular.to.pushNamed('/login');
+                                  },
+                                  child: Container(
+                                    height: size.height * 0.06,
+                                    width: size.width / 2.5,
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
                                         color: AppColors.textColorWhite,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 22,
                                       ),
                                     ),
-                                    alignment: Alignment.center,
+                                    child: Align(
+                                      child: Text(
+                                        'Já sou assinante',
+                                        style: TextStyle(
+                                          fontFamily: 'TradeGothic',
+                                          fontSize: 18,
+                                          color: AppColors.textColorWhite,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      alignment: Alignment.center,
+                                    ),
                                   ),
                                 ),
                               ),

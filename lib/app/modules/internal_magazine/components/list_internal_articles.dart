@@ -39,7 +39,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
   Tts tts = new Tts();
   String rendered;
   String idMateria;
-  double _tamFonte = 13;
+  double _tamFonte = 15;
   bool isPlay = true;
   _ListInternalArticlesState(this.rendered, this.idMateria);
 
@@ -303,7 +303,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                                 child: DropCapText(
                                   _parseHtmlString(rendered.split("\n")[index]),
                                   style: TextStyle(
-                                    height: 1.3,
+                                    height: 1.6,
                                     fontFamily: 'Palatino',
                                     fontSize: _tamFonte,
                                     fontWeight: FontWeight.normal,
@@ -315,9 +315,10 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                                 data: rendered.split("\n")[index],
                                 style: {
                                   "p": Style(
-                                      fontFamily: 'Palatino',
-                                      fontSize: FontSize(_tamFonte),
-                                      fontWeight: FontWeight.normal),
+                                    fontFamily: 'Palatino',
+                                    fontSize: FontSize(_tamFonte),
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 },
                               ),
                       ),

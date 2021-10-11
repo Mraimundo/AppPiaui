@@ -99,10 +99,12 @@ class AutorInternalArticle extends StatelessWidget {
                                       ],
                                     ),
                                     Text(
-                                      _parseHtmlString(
-                                          jsonDecode(snapshot.data)["acf"]
-                                                  ["bio_resumida"]
-                                              .toString()),
+                                      'Como o doleiro Chaaya Moghrabi escapou três vezes da prisão'
+                                      // _parseHtmlString(
+                                      //     jsonDecode(snapshot.data)["acf"]
+                                      //             ["bio_resumida"]
+                                      //         .toString()),
+                                      ,
                                       style: TextStyle(
                                         height: 1.4,
                                         fontFamily: 'Piaui',
