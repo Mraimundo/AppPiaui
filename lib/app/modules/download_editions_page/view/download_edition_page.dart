@@ -36,7 +36,7 @@ class DownloadEditionPageState extends State<DownLoadEditionPage> {
                     SizedBox(height: 23),
                     Center(
                       child: Text(
-                        'Bem-vindo à piauí, ' + widget.user.nome,
+                        'Bem-vindo à Piauí, ' + widget.user.nome,
                         style: TextStyle(
                           height: 1.3,
                           fontFamily: 'Piaui',

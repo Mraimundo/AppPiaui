@@ -321,8 +321,10 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                                 },
                               ),
                       ),
-                      AutorInternalArticle(
-                          autor: jsonDecode(snapshot.data)["acf"]["autor"]),
+                      jsonDecode(snapshot.data)["acf"]["autor"] != ""
+                          ? AutorInternalArticle(
+                              autor: jsonDecode(snapshot.data)["acf"]["autor"])
+                          : Text(""),
                     ],
                   ),
                 );

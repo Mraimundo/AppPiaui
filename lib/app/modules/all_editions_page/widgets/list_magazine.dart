@@ -713,7 +713,7 @@ class _ListMagazine extends State<ListMagazine> {
                                                                 alignment: Alignment
                                                                     .centerLeft,
                                                                 child: Text(
-                                                                  'Edição  #${snapshot.data[i].acf.numberEdition}: ${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}',
+                                                                  'piauí_${snapshot.data[i].acf.numberEdition}: ${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}',
                                                                   style: TextStyle(
                                                                       fontFamily:
                                                                           'Piaui',
@@ -805,7 +805,7 @@ class _ListMagazine extends State<ListMagazine> {
                                                                 alignment: Alignment
                                                                     .centerLeft,
                                                                 child: Text(
-                                                                  'Edição #${snapshot.data[i + 1].acf.numberEdition}: ${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
+                                                                  'piauí_${snapshot.data[i + 1].acf.numberEdition}: ${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
                                                                   style: TextStyle(
                                                                       fontFamily:
                                                                           'Piaui',
@@ -928,7 +928,7 @@ class _ListMagazine extends State<ListMagazine> {
                                                                 alignment: Alignment
                                                                     .centerLeft,
                                                                 child: Text(
-                                                                  'Edição  #${snapshot.data[i].acf.numberEdition}: ${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}',
+                                                                  'piauí_${snapshot.data[i].acf.numberEdition}: ${snapshot.data[i].acf.mes} de ${snapshot.data[i].acf.ano}',
                                                                   style: TextStyle(
                                                                       fontFamily:
                                                                           'Piaui',
@@ -1020,7 +1020,7 @@ class _ListMagazine extends State<ListMagazine> {
                                                                 alignment: Alignment
                                                                     .centerLeft,
                                                                 child: Text(
-                                                                  'Edição #${snapshot.data[i + 1].acf.numberEdition}: ${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
+                                                                  'piauí_${snapshot.data[i + 1].acf.numberEdition}: ${snapshot.data[i + 1].acf.mes} de ${snapshot.data[i + 1].acf.ano}',
                                                                   style: TextStyle(
                                                                       fontFamily:
                                                                           'Piaui',
@@ -1140,7 +1140,7 @@ class _ListMagazine extends State<ListMagazine> {
                                                               alignment: Alignment
                                                                   .centerLeft,
                                                               child: Text(
-                                                                'Edição #${snapshot.data[items - 1].acf.numberEdition}: ${snapshot.data[items - 1].acf.mes} de ${snapshot.data[items - 1].acf.ano}',
+                                                                'piauí_${snapshot.data[items - 1].acf.numberEdition}: ${snapshot.data[items - 1].acf.mes} de ${snapshot.data[items - 1].acf.ano}',
                                                                 style: TextStyle(
                                                                     fontFamily:
                                                                         'Piaui',

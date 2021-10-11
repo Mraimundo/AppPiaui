@@ -10,6 +10,8 @@ import 'package:piaui_app/app/modules/editions_page/components/skeleton_last_edi
 import 'package:piaui_app/app/modules/editions_page/controller/edition_page_controller.dart';
 import 'package:piaui_app/app/modules/editions_page/model/edition_model.dart';
 import 'package:piaui_app/app/shared/components/complete_download/complete_download.dart';
+import 'package:piaui_app/app/shared/components/download_iniciado/download_iniciado.dart';
+import 'package:piaui_app/app/shared/components/download_iniciado/download_iniciado_fail.dart';
 import 'package:piaui_app/app/shared/downloads/download_revist.dart';
 import 'package:piaui_app/app/shared/downloads/downloads_controller.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
@@ -69,7 +71,7 @@ class _LastEditionWidgetState
                                   Padding(
                                     padding: const EdgeInsets.only(left: 18),
                                     child: Text(
-                                      '-${edicoes.numberEdition}',
+                                      '_${edicoes.numberEdition}',
                                       style: TextStyle(
                                         fontFamily: 'TradeGothic',
                                         fontSize: 62,
@@ -149,6 +151,16 @@ class _LastEditionWidgetState
                                                               .toString())))
                                               .length ==
                                           0)) {
+                                        showDialog(
+                                            context: context,
+                                            builder: (builder) =>
+                                                DonwloadIniciado(
+                                                  int.parse(
+                                                      edicoes.numberEdition),
+                                                  edicoes.mes,
+                                                  edicoes.ano,
+                                                ));
+
                                         await widget.downloadRevist.download(
                                           controller.lastEdition.id,
                                           edicoes.capa.url,
@@ -165,6 +177,11 @@ class _LastEditionWidgetState
                                               edicoes.ano.toString(),
                                               edicoes.mes.toString()),
                                         );
+                                      } else {
+                                        showDialog(
+                                            context: context,
+                                            builder: (builder) =>
+                                                DonwloadIniciadoFail());
                                       }
                                     },
                                     child: Container(

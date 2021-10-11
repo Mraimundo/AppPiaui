@@ -65,7 +65,7 @@ class _RowGridSingleWidgetState extends State<RowGridSingleWidget> {
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
-                            'Ediçãoo #${revist.numberEdition}: ${revist.mes} de ${revist.ano}',
+                            'piauí_${revist.numberEdition}: ${revist.mes} de ${revist.ano}',
                             style: TextStyle(
                                 fontFamily: 'Piaui',
                                 fontSize: rowFontsize,

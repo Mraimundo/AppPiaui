@@ -80,7 +80,7 @@ class _RowGridDoubleWidgetState extends State<RowGridDoubleWidget> {
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          'Edição  #${revist.numberEdition}: ${revist.mes} de ${revist.ano}',
+                                          'piauí_${revist.numberEdition}: ${revist.mes} de ${revist.ano}',
                                           style: TextStyle(
                                               fontFamily: 'Piaui',
                                               fontSize: rowFontsize,
@@ -155,7 +155,7 @@ class _RowGridDoubleWidgetState extends State<RowGridDoubleWidget> {
                                       Align(
                                         alignment: Alignment.centerLeft,
                                         child: Text(
-                                          'Ediçãoo #${revist2.numberEdition}: ${revist2.mes} de ${revist2.ano}',
+                                          'piauí_${revist2.numberEdition}: ${revist2.mes} de ${revist2.ano}',
                                           style: TextStyle(
                                               fontFamily: 'Piaui',
                                               fontSize: rowFontsize,

@@ -65,10 +65,13 @@ class _InternalMagazinePageState
   @override
   Widget build(context) {
     Tts tts = new Tts();
+    print(idMateria);
+
     return FutureBuilder<String>(
         future: conteudo(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
+            print(snapshot.data);
             return Scaffold(
               appBar: PreferredAppBarWidget(height: 56),
               body: Column(
@@ -89,8 +92,6 @@ class _InternalMagazinePageState
                                   TextInternalMagazine(
                                     onClickAction: () => {tts.stop()},
                                     data: data,
-                                    autor: jsonDecode(snapshot.data)["acf"]
-                                        ["autor"],
                                     edition: edition,
                                     title: _parseHtmlString(
                                             jsonDecode(snapshot.data)["title"]
@@ -98,10 +99,10 @@ class _InternalMagazinePageState
                                                 .toString())
                                         .toUpperCase(),
                                   ),
-                                  Image.network(
-                                    imagemUrl,
-                                    fit: BoxFit.fill,
-                                  ),
+                                  imagemUrl != "false"
+                                      ? Image.network(imagemUrl,
+                                          fit: BoxFit.fill)
+                                      : Text(""),
                                   SizedBox(height: 7),
                                   Text(
                                     _parseHtmlString(imagemAlt),

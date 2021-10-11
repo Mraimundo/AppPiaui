@@ -21,8 +21,8 @@ String _parseHtmlString(String htmlString) {
 }
 
 class AutorInternalArticle extends StatelessWidget {
-  final List<dynamic> autor;
-  const AutorInternalArticle({Key key, this.autor}) : super(key: key);
+  List<dynamic> autor = [];
+  AutorInternalArticle({Key key, this.autor}) : super(key: key);
 
   @override
   Widget build(context) {
