@@ -17,27 +17,31 @@ class AppBarDefaultWidget extends StatelessWidget implements PreferredSize {
     return AppBar(
       automaticallyImplyLeading: false,
       backgroundColor: Theme.of(context).backgroundColor,
-      // elevation: 0,
+      elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Visibility(
-            visible: MediaQuery.of(context).orientation == Orientation.portrait,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Container(
-                padding: EdgeInsets.zero,
+          TextButton(
+            onPressed: () {},
+            child: Visibility(
+              visible:
+                  MediaQuery.of(context).orientation == Orientation.portrait,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: Container(
+                  padding: EdgeInsets.zero,
+                  child: Image.asset('assets/images/piaui_logo.png',
+                      fit: BoxFit.fill),
+                  height: MediaQuery.of(context).size.height / 20,
+                  width: MediaQuery.of(context).size.width / 6,
+                ),
+              ),
+              replacement: Container(
                 child: Image.asset('assets/images/piaui_logo.png',
                     fit: BoxFit.fill),
-                height: MediaQuery.of(context).size.height / 20,
-                width: MediaQuery.of(context).size.width / 6,
+                height: MediaQuery.of(context).size.height / 12,
+                width: MediaQuery.of(context).size.width / 10,
               ),
-            ),
-            replacement: Container(
-              child:
-                  Image.asset('assets/images/piaui_logo.png', fit: BoxFit.fill),
-              height: MediaQuery.of(context).size.height / 12,
-              width: MediaQuery.of(context).size.width / 10,
             ),
           ),
           Padding(

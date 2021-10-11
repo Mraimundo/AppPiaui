@@ -27,9 +27,9 @@ class AllEditionPageState extends State<AllEditionPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    /* WidgetsBinding.instance.addPostFrameCallback((_) {
       widget.themeChanger.setDarkStatus(widget.systemIsDark);
-    });
+    }); */
   }
 
   @override
