@@ -66,7 +66,9 @@ class _InternalMagazinePageState
         future: conteudo(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
-            print(snapshot.data);
+            print("AAAAAAAAAAAAA");
+            print(jsonDecode(snapshot.data)["acf"]["autor"]);
+            print("AAAAAAAAAAAAA");
             return Scaffold(
               appBar: PreferredAppBarWidget(height: 56),
               body: Column(
@@ -87,7 +89,11 @@ class _InternalMagazinePageState
                                   TextInternalMagazine(
                                     data: data,
                                     autor: jsonDecode(snapshot.data)["acf"]
-                                        ["autor"],
+                                                ["autor"] !=
+                                            ""
+                                        ? jsonDecode(snapshot.data)["acf"]
+                                            ["autor"]
+                                        : [],
                                     edition: edition,
                                     title: _parseHtmlString(
                                             jsonDecode(snapshot.data)["title"]

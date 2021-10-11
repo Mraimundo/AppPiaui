@@ -67,7 +67,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
   @override
   Widget build(BuildContext context) {
     print("autor");
-    print(edition);
+    print(autor);
     print("autor");
     return Padding(
       padding: const EdgeInsets.only(top: 35),
@@ -155,7 +155,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
               ),
               SizedBox(height: 10),
               Text(
-                autor != null
+                autor != []
                     ? editAutor(autor) + ' | Edição ' + edition + ', ' + data
                     : ' | Edição ' + edition + ', ' + data,
                 style: TextStyle(
