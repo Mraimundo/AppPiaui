@@ -28,6 +28,7 @@ class _TextMagazineState extends State<TextMagazine> {
                 child: Text(
                   "Por dentro da Revista",
                   style: TextStyle(
+                    fontFamily: 'TradeGothic',
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).primaryColor,
@@ -40,6 +41,7 @@ class _TextMagazineState extends State<TextMagazine> {
                 child: Text(
                   'Índice Edição #' + title,
                   style: TextStyle(
+                    fontFamily: 'TradeGothic',
                     fontSize: 15,
                     fontWeight: FontWeight.normal,
                     color: Theme.of(context).primaryColor,

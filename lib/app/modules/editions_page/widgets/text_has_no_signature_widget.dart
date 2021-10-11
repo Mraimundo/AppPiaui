@@ -14,7 +14,7 @@ class TextHasNoSignatureWidget extends StatelessWidget {
           'Ainda não tem assinatura? Clique aqui.',
           style: TextStyle(
             height: 1.3,
-            fontFamily: 'Piaui',
+            fontFamily: 'TradeGothic',
             fontSize: 17.5,
             fontWeight: FontWeight.bold,
             color: Theme.of(context).primaryColor,

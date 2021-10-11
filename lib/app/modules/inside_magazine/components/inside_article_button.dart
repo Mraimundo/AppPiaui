@@ -173,14 +173,17 @@ class _InsideArticleButtonState
                                     "...",
                             style: TextStyle(
                               fontSize: 16,
+                              fontFamily: 'TradeGothic',
                               fontWeight: FontWeight.bold,
-                              color: AppColors.orangePiaui,
+                              color: Theme.of(context).primaryColor,
+                              // color: Colors.black,
                             ),
                             // maxLines: 2,
                             overflow: TextOverflow.ellipsis),
                         Image.asset(
                           'assets/images/arrow.png',
-                          // fit: BoxFit.fill,
+                          fit: BoxFit.fill,
+                          color: Theme.of(context).primaryColor,
                         ),
                       ],
                     ),
@@ -191,6 +194,7 @@ class _InsideArticleButtonState
                             .toString()),
                         style: TextStyle(
                           fontSize: 13,
+                          fontFamily: 'TradeGothic',
                           fontWeight: FontWeight.normal,
                           color: Theme.of(context).cardColor,
                         ),

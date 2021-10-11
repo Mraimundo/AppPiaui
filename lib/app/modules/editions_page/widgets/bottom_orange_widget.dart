@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/shared/layout/colors.dart';
 
 class ButtomOrangeWidget extends StatefulWidget {
   final String id;
@@ -43,7 +42,11 @@ class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
           child: Text(
             'Experimente',
             style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 22),
+              color: Colors.white,
+              fontFamily: 'TradeGothic',
+              fontWeight: FontWeight.bold,
+              fontSize: 18,
+            ),
           ),
           alignment: Alignment.center,
         ),

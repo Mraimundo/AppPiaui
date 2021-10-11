@@ -39,7 +39,7 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
   Tts tts = new Tts();
   String rendered;
   String idMateria;
-  double _tamFonte = 13;
+  double _tamFonte = 15;
   bool isPlay = true;
   _ListInternalArticlesState(this.rendered, this.idMateria);
 
@@ -212,10 +212,13 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                                 child: Text(
                                   "A-",
                                   style: TextStyle(
-                                    fontFamily: 'TradeGothic',
-                                    color: Theme.of(context).primaryColor,
+                                    height: 1.6,
+                                    fontFamily: 'Palatino',
+                                    fontSize: _tamFonte,
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 14,
+                                    color: Theme.of(context).primaryColor,
+                                    /* fontWeight: FontWeight.bold,
+                                    fontSize: 14, */
                                   ),
                                 ),
                                 onPressed: () {
@@ -231,37 +234,35 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
                             ),
                           ),
                           Container(
-                            width: 40,
-                            height: 40,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.only(right: 10),
-                              child: TextButton(
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 6),
-                                  child: Text(
-                                    "A",
-                                    style: TextStyle(
-                                      fontFamily: 'TradeGothic',
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 14,
-                                    ),
-                                  ),
+                              width: 40,
+                              height: 40,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                border: Border.all(
+                                  color: Theme.of(context).primaryColor,
                                 ),
-                                onPressed: () {
-                                  setState(() {
-                                    _tamFonte = 13;
-                                  });
-                                },
                               ),
-                            ),
-                          ),
+                              child: Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: TextButton(
+                                      child: Padding(
+                                        padding: const EdgeInsets.only(left: 6),
+                                        child: Text(
+                                          "A",
+                                          style: TextStyle(
+                                            fontFamily: 'TradeGothic',
+                                            color:
+                                                Theme.of(context).primaryColor,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 14,
+                                          ),
+                                        ),
+                                      ),
+                                      onPressed: () {
+                                        setState(() {
+                                          _tamFonte = 13;
+                                        });
+                                      }))),
                         ]),
                       ),
                     ],
