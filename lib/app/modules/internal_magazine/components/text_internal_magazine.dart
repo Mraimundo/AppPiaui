@@ -106,8 +106,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
               ),
               SizedBox(height: 7),
               Text(
-                'Testando aqui',
-                // _parseHtmlString(imagemAlt),
+                _parseHtmlString(imagemAlt),
                 style: TextStyle(
                   fontFamily: 'TradeGothic',
                   fontSize: 15,
