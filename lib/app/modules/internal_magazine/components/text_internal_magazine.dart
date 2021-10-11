@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:piaui_app/app/modules/tts/tts.dart';
+import 'package:html/parser.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 String editAutor(List<dynamic> autor) {
@@ -28,24 +28,31 @@ String editAutor(List<dynamic> autor) {
   }
 }
 
+String _parseHtmlString(String htmlString) {
+  final document = parse(htmlString);
+  final String parsedString = parse(document.body.text).documentElement.text;
+
+  return parsedString;
+}
+
 class TextInternalMagazine extends StatefulWidget {
   final String edition;
   final String title;
   final String data;
+  final String imagemAlt;
   final List<dynamic> autor;
-  final Function onClickAction;
   const TextInternalMagazine(
       {Key key,
       this.edition = "",
       this.title = "",
       this.autor,
-      this.data,
-      this.onClickAction})
+      this.imagemAlt = "",
+      this.data})
       : super(key: key);
 
   @override
   _TextInternalMagazineState createState() =>
-      _TextInternalMagazineState(edition, title, autor, data, onClickAction);
+      _TextInternalMagazineState(edition, title, autor, data, imagemAlt);
 }
 
 class _TextInternalMagazineState extends State<TextInternalMagazine> {
@@ -53,12 +60,15 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
   String title;
   List<dynamic> autor;
   String data;
-  Function onClickAction;
+  String imagemAlt;
   _TextInternalMagazineState(
-      this.edition, this.title, this.autor, this.data, this.onClickAction);
+      this.edition, this.title, this.autor, this.data, this.imagemAlt);
 
   @override
   Widget build(BuildContext context) {
+    print("autor");
+    print(edition);
+    print("autor");
     return Padding(
       padding: const EdgeInsets.only(top: 35),
       child: Align(
@@ -87,7 +97,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                   ),
                 ),
               ),
-              Padding(
+              /* Padding(
                 padding: const EdgeInsets.only(bottom: 10, top: 10, left: 10),
                 child: Row(
                   children: [
@@ -98,7 +108,6 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                           size: 35,
                         ),
                         onPressed: () {
-                          onClickAction();
                           Navigator.of(context).pop();
                         }),
                     Text(
@@ -111,7 +120,7 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                     )
                   ],
                 ),
-              ),
+              ), */
               Padding(
                 padding: const EdgeInsets.only(left: 28, right: 32),
                 child: Container(
@@ -133,12 +142,22 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 7),
+              Text(
+                _parseHtmlString(imagemAlt),
+                style: TextStyle(
+                  fontFamily: 'TradeGothic',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).primaryColor,
+                ),
+                textAlign: TextAlign.center,
+              ),
               SizedBox(height: 10),
               Text(
-                autor != ""
-                    ? editAutor(autor)
-                    : "" + ' | Edição ' + edition + ', ' + data,
+                autor != null
+                    ? editAutor(autor) + ' | Edição ' + edition + ', ' + data
+                    : ' | Edição ' + edition + ', ' + data,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,
@@ -146,7 +165,6 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 5),
               SizedBox(height: 35),
             ],
           ),

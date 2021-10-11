@@ -69,7 +69,7 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
                         // mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           TextInternalMagazine(
-                            onClickAction: () => {tts.stop()},
+                            imagemAlt: _parseHtmlString(materiaMap['imageAlt']),
                             data: widget.revist.mes + '-' + widget.revist.ano,
                             autor: autors,
                             edition: widget.revist.numberEdition.toString(),
@@ -84,16 +84,6 @@ class _InternalMagazinePageState extends State<InternalMagazinePage> {
                                 )
                               : Text(""),
                           SizedBox(height: 7),
-                          Text(
-                            _parseHtmlString(materiaMap['imageAlt']),
-                            style: TextStyle(
-                              fontFamily: 'Piaui',
-                              fontSize: 10,
-                              fontWeight: FontWeight.w500,
-                              color: Theme.of(context).primaryColor,
-                            ),
-                            textAlign: TextAlign.center,
-                          ),
                           SizedBox(height: 22),
                           ListInternalArticles(rendered: conteudo),
                         ],
