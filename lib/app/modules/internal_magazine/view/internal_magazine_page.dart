@@ -133,7 +133,13 @@ class _InternalMagazinePageState
               ),
             );
           } else {
-            return CircularProgressIndicator();
+            return Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[CircularProgressIndicator()],
+              ),
+            );
           }
         });
   }

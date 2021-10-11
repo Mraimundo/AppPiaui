@@ -98,7 +98,15 @@ class _InsideArticleButtonState
               ),
             );
           } else {
-            return CircularProgressIndicator();
+            return Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  CircularProgressIndicator(),
+                ],
+              ),
+            );
           }
         });
   }

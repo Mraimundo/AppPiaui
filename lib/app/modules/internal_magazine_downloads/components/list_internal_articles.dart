@@ -38,7 +38,6 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
             children: [
               Column(
                 children: [
-                  Text('teste'),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16),
                     child: Text(
