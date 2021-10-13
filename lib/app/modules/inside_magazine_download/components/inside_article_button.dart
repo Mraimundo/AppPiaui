@@ -69,7 +69,10 @@ class _makeListSubjects extends StatelessWidget {
     // TODO: implement build
     List<dynamic> jsonData = revist.materias;
     Map<String, dynamic> materiaMap = jsonData[pos];
-    var _bytes = base64.decode(materiaMap["image"].split(',').last);
+    var _bytes = materiaMap["image"].split(',').last != "" &&
+            materiaMap["image"].split(',').last != []
+        ? base64.decode(materiaMap["image"].split(',').last)
+        : "";
 
     return Card(
       elevation: 0,
@@ -85,8 +88,10 @@ class _makeListSubjects extends StatelessWidget {
                 height: 100,
                 color: Colors.black.withOpacity(1),
                 child: Container(
-                  child: Image.memory(
-                      _bytes) /* Image.network(materiaMap['image'], fit: BoxFit.fill) */,
+                  child: _bytes != "" && _bytes != []
+                      ? Image.memory(_bytes)
+                      : Text(
+                          "") /* Image.network(materiaMap['image'], fit: BoxFit.fill) */,
                 ),
               ),
               /* Positioned(

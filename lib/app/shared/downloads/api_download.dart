@@ -11,8 +11,9 @@ class ApiDownload {
   }
 
   Future<String> materias(id) async {
-    final _url =
-        '/wp-json/customRest/v1/materias-revista?edicao=' + id.toString();
+    final _url = '/wp-json/customRest/v1/materias-revista?edicao=' +
+        id.toString() +
+        '&perpage=0';
 
     var dio = CustomDio().instance;
     var response = await dio.get(_url);

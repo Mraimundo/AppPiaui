@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
+import 'package:html/parser.dart';
+
+String _parseHtmlString(String htmlString) {
+  final document = parse(htmlString);
+  final String parsedString = parse(document.body.text).documentElement.text;
+
+  return parsedString;
+}
 
 String editAutor(List<dynamic> autor) {
   String autores = '';
@@ -28,13 +36,19 @@ class TextInternalMagazine extends StatefulWidget {
   final String title;
   final String data;
   final List<dynamic> autor;
+  final String imagemAlt;
   const TextInternalMagazine(
-      {Key key, this.edition = "", this.title = "", this.autor, this.data})
+      {Key key,
+      this.edition = "",
+      this.title = "",
+      this.autor,
+      this.data,
+      this.imagemAlt = "Testeeee"})
       : super(key: key);
 
   @override
   _TextInternalMagazineState createState() =>
-      _TextInternalMagazineState(edition, title, autor, data);
+      _TextInternalMagazineState(edition, title, autor, data, imagemAlt);
 }
 
 class _TextInternalMagazineState extends State<TextInternalMagazine> {
@@ -42,7 +56,9 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
   String title;
   List<dynamic> autor;
   String data;
-  _TextInternalMagazineState(this.edition, this.title, this.autor, this.data);
+  String imagemAlt;
+  _TextInternalMagazineState(
+      this.edition, this.title, this.autor, this.data, this.imagemAlt);
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +90,43 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                   ),
                 ),
               ),
+              /* Padding(
+                padding: const EdgeInsets.only(bottom: 10, top: 10, left: 10),
+                child: Row(
+                  children: [
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_outlined,
+                          color: AppColors.orangePiaui,
+                          size: 35,
+                        ),
+                        onPressed: () {
+                          onClickAction();
+                          Navigator.of(context).pop();
+                        }),
+                    Text(
+                      'anterior',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        color: AppColors.orangePiaui,
+                      ),
+                    )
+                  ],
+                ),
+              ), */
+              Padding(
+                padding: const EdgeInsets.only(left: 28, right: 32),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                          color: AppColors.internalBorderColor, width: 0.9),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 21),
               SizedBox(height: 21),
               SizedBox(height: 11),
               Text(
@@ -81,6 +134,18 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 style: TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColor,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: 10),
+              SizedBox(height: 7),
+              Text(
+                imagemAlt,
+                style: TextStyle(
+                  fontFamily: 'TradeGothic',
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
                   color: Theme.of(context).primaryColor,
                 ),
                 textAlign: TextAlign.center,

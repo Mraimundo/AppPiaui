@@ -74,9 +74,9 @@ dev_dependencies:
 
 
 flutter_icons:
-  image_path: "assets/images/play_store_512.png"
-  image_path_android: "assets/images/play_store_512.png"
-  image_path_ios: "assets/images/play_store_512.png"
+  image_path: "assets/images/Icone_piaui.png"
+  image_path_android: "assets/images/Icone_piaui.png"
+  image_path_ios: "assets/images/Icone_piaui.png"
   android: true
   ios: true
 
@@ -124,6 +124,7 @@ flutter:
     - assets/images/Seta.png
     - assets/images/Play.png
     - assets/images/Stop.png
+    - assets/images/Icone_piaui.png
     
   fonts:
     - family: Piaui

@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:piaui_app/app/shared/utils/constants.dart';
 
 class CustomDio {
   var _dio;
 
   BaseOptions _options = BaseOptions(
-    baseUrl: 'https://piaui.folha.uol.com.br/',
+    baseUrl: URL_BASE,
     connectTimeout: 30000,
     receiveTimeout: 30000,
   );

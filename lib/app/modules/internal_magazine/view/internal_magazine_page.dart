@@ -5,6 +5,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/list_internal_articles.dart';
 import 'package:piaui_app/app/modules/internal_magazine/components/text_internal_magazine.dart';
 import 'package:piaui_app/app/modules/internal_magazine/controller/internal_magazine_controller.dart';
+import 'package:piaui_app/app/modules/tts/tts.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/core/custom_dio.dart';
 import 'package:html/parser.dart';
@@ -59,11 +60,15 @@ class _InternalMagazinePageState
 
   @override
   Widget build(context) {
-    // print(idMateria);
+    Tts tts = new Tts();
+
     return FutureBuilder<String>(
         future: conteudo(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
+            print("AAAAAAAAAAAAA");
+            print(jsonDecode(snapshot.data)["acf"]["autor"]);
+            print("AAAAAAAAAAAAA");
             return Scaffold(
               appBar: PreferredAppBarWidget(height: 56),
               body: Column(
@@ -84,7 +89,11 @@ class _InternalMagazinePageState
                                   TextInternalMagazine(
                                     data: data,
                                     autor: jsonDecode(snapshot.data)["acf"]
-                                        ["autor"],
+                                                ["autor"] !=
+                                            ""
+                                        ? jsonDecode(snapshot.data)["acf"]
+                                            ["autor"]
+                                        : [],
                                     edition: edition,
                                     title: _parseHtmlString(
                                             jsonDecode(snapshot.data)["title"]
@@ -93,10 +102,10 @@ class _InternalMagazinePageState
                                         .toUpperCase(),
                                     imagemAlt: imagemAlt,
                                   ),
-                                  Image.network(
-                                    imagemUrl,
-                                    fit: BoxFit.fill,
-                                  ),
+                                  imagemUrl != "false"
+                                      ? Image.network(imagemUrl,
+                                          fit: BoxFit.fill)
+                                      : Text(""),
                                   SizedBox(height: 7),
                                   // Text(
                                   //   _parseHtmlString(imagemAlt),
@@ -127,7 +136,13 @@ class _InternalMagazinePageState
               ),
             );
           } else {
-            return CircularProgressIndicator();
+            return Padding(
+              padding: const EdgeInsets.all(50.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[CircularProgressIndicator()],
+              ),
+            );
           }
         });
   }

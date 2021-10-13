@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
-import 'package:piaui_app/app/shared/core/custom_dio.dart';
-
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
 String editAutor(List<dynamic> autor) {
   String autores = '';
-
-  if (autor.length == 1) {
-    return autor[0]["post_title"].toString().toUpperCase();
-  } else if (autor.length == 2) {
-    autores = autor[0]["post_title"] + ' e ' + autor[1]["post_title"];
-    return autores.toUpperCase();
+  print("MERDA" + autor.toString());
+  if (autor == null) {
+    return autores;
   } else {
-    for (var i = 0; i < autor.length; i++) {
-      if (i == 0) {
-        autores += autor[i]["post_title"];
-      } else if (i == 1) {
-        autores += ', ' + autor[i]["post_title"];
-      } else {
-        autores += ' e ' + autor[i]["post_title"];
+    if (autor.length == 1) {
+      return autor[0]["post_title"].toString().toUpperCase();
+    } else if (autor.length == 2) {
+      autores = autor[0]["post_title"] + ' e ' + autor[1]["post_title"];
+      return autores.toUpperCase();
+    } else {
+      for (var i = 0; i < autor.length; i++) {
+        if (i == 0) {
+          autores += autor[i]["post_title"];
+        } else if (i == 1) {
+          autores += ', ' + autor[i]["post_title"];
+        } else {
+          autores += ' e ' + autor[i]["post_title"];
+        }
       }
+      return autores.toUpperCase();
     }
-    return autores.toUpperCase();
   }
 }
 
@@ -64,7 +66,9 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
 
   @override
   Widget build(BuildContext context) {
-    print(imagemAlt);
+    print("autor");
+    print(autor);
+    print("autor");
     return Padding(
       padding: const EdgeInsets.only(top: 35),
       child: Align(
@@ -93,8 +97,42 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                   ),
                 ),
               ),
+              /* Padding(
+                padding: const EdgeInsets.only(bottom: 10, top: 10, left: 10),
+                child: Row(
+                  children: [
+                    IconButton(
+                        icon: Icon(
+                          Icons.arrow_back_outlined,
+                          color: AppColors.orangePiaui,
+                          size: 35,
+                        ),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        }),
+                    Text(
+                      'anterior',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.normal,
+                        color: AppColors.orangePiaui,
+                      ),
+                    )
+                  ],
+                ),
+              ), */
+              Padding(
+                padding: const EdgeInsets.only(left: 28, right: 32),
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                          color: AppColors.internalBorderColor, width: 0.9),
+                    ),
+                  ),
+                ),
+              ),
               SizedBox(height: 21),
-              SizedBox(height: 11),
               Text(
                 title,
                 style: TextStyle(
@@ -120,7 +158,9 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
               ),
               SizedBox(height: 15),
               Text(
-                editAutor(autor) + ' | Edição ' + edition + ', ' + data,
+                autor != []
+                    ? editAutor(autor) + ' | Edição ' + edition + ', ' + data
+                    : ' | Edição ' + edition + ', ' + data,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.bold,

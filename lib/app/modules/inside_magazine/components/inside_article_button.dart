@@ -16,7 +16,7 @@ Future<dynamic> readUser() async {
 Future<String> materias(url) async {
   final _url = url;
   var dio = CustomDio().instance;
-  var response = await dio.get(_url);
+  var response = await dio.get(_url + "&perpage=0");
   return response.toString();
 }
 
@@ -98,7 +98,15 @@ class _InsideArticleButtonState
               ),
             );
           } else {
-            return CircularProgressIndicator();
+            return Padding(
+              padding: const EdgeInsets.all(40.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  CircularProgressIndicator(),
+                ],
+              ),
+            );
           }
         });
   }
@@ -120,10 +128,13 @@ class _InsideArticleButtonState
                 height: 100,
                 color: Colors.black.withOpacity(1),
                 child: Container(
-                  child: Image.network(
-                      jsonData[(pos + 1).toString()]["imagemcapa"]["url"]
-                          .toString(),
-                      fit: BoxFit.fill),
+                  child: jsonData[(pos + 1).toString()]["imagemcapa"]["url"] !=
+                          false
+                      ? Image.network(
+                          jsonData[(pos + 1).toString()]["imagemcapa"]["url"]
+                              .toString(),
+                          fit: BoxFit.fill)
+                      : Text(""),
                 ),
               ),
               Positioned(
