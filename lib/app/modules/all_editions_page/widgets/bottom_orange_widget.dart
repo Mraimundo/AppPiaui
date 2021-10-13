@@ -44,7 +44,7 @@ class _ButtomOrangeWidgetState extends State<ButtomOrangeWidget> {
           child: Text(
             'Ler agora',
             style: TextStyle(
-              fontFamily: 'Piaui',
+              fontFamily: 'TradeGothic',
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 16,

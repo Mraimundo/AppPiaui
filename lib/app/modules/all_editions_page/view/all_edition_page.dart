@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:piaui_app/app/modules/all_editions_page/widgets/border_top_widget.dart';
 import 'package:piaui_app/app/modules/all_editions_page/widgets/list_magazine.dart';
 import 'package:piaui_app/app/modules/download_editions_page/view/download_edition_page.dart';
 import 'package:piaui_app/app/shared/components/app_bar/login/model/auth_user.dart';

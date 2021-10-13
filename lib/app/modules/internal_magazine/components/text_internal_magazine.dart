@@ -104,18 +104,21 @@ class _TextInternalMagazineState extends State<TextInternalMagazine> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(height: 7),
-              Text(
-                _parseHtmlString(imagemAlt),
-                style: TextStyle(
-                  fontFamily: 'TradeGothic',
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                  color: Theme.of(context).primaryColor,
+              SizedBox(height: 13),
+              Padding(
+                padding: const EdgeInsets.only(left: 25, right: 25),
+                child: Text(
+                  _parseHtmlString(imagemAlt),
+                  style: TextStyle(
+                    fontFamily: 'TradeGothic',
+                    fontSize: 15,
+                    // fontWeight: FontWeight.w500,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  textAlign: TextAlign.justify,
                 ),
-                textAlign: TextAlign.center,
               ),
-              SizedBox(height: 10),
+              SizedBox(height: 15),
               Text(
                 editAutor(autor) + ' | Edição ' + edition + ', ' + data,
                 style: TextStyle(

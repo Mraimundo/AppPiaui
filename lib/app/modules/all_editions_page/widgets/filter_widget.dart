@@ -90,7 +90,7 @@ void _modalBottomYear(context) {
                     child: Text(
                       'Todos os anos',
                       style: TextStyle(
-                        fontFamily: ' Piaui',
+                        fontFamily: 'Piaui',
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                         color: AppColors.textColorModal,
@@ -102,7 +102,7 @@ void _modalBottomYear(context) {
                 Text(
                   'Selecione o ano',
                   style: TextStyle(
-                    fontFamily: ' Piaui',
+                    fontFamily: 'Piaui',
                     fontSize: 14,
                     fontWeight: FontWeight.normal,
                     color: AppColors.textColorModal,
@@ -184,7 +184,7 @@ void _modalBottomMonth(context) {
                           child: Text(
                             'Fechar',
                             style: TextStyle(
-                              fontFamily: ' Piaui',
+                              fontFamily: 'Piaui',
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
                               color: AppColors.orangePiaui,

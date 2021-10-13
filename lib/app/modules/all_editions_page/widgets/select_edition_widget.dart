@@ -23,10 +23,10 @@ class SelectEditionWidget extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  'Selecione a edição',
+                  'Selecione a edição que desejar',
                   style: TextStyle(
                     height: 1.3,
-                    fontFamily: 'Palatino',
+                    fontFamily: 'TradeGothic',
                     fontSize: 11,
                     fontWeight: FontWeight.bold,
                     color: AppColors.orangePiaui,

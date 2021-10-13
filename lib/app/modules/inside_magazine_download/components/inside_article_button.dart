@@ -1,13 +1,8 @@
 import 'dart:convert';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_session/flutter_session.dart';
-import 'package:piaui_app/app/shared/downloads/model/materia.dart';
 import 'package:piaui_app/app/shared/downloads/model/revist_download.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
-import 'package:piaui_app/app/modules/inside_magazine_download/controller/inside_magazine_controller.dart';
 import 'package:html/parser.dart';
 
 String _parseHtmlString(String htmlString) {

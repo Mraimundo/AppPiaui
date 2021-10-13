@@ -69,22 +69,25 @@ class _LastEditionWidgetState
                                   Padding(
                                     padding: const EdgeInsets.only(left: 18),
                                     child: Text(
-                                      '-${edicoes.numberEdition}',
+                                      '_${edicoes.numberEdition}',
                                       style: TextStyle(
                                         fontFamily: 'TradeGothic',
-                                        fontSize: 62,
+                                        fontSize: 58,
                                         fontWeight: FontWeight.bold,
                                         color: AppColors.textColorWhite,
                                       ),
                                     ),
                                   ),
-                                  Text(
-                                    '${edicoes.mes}  ${edicoes.ano}',
-                                    style: TextStyle(
-                                      fontFamily: 'TradeGothic',
-                                      fontSize: 25,
-                                      // fontWeight: FontWeight.bold,
-                                      color: AppColors.textColorWhite,
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 22),
+                                    child: Text(
+                                      '${edicoes.mes}  ${edicoes.ano}',
+                                      style: TextStyle(
+                                        fontFamily: 'TradeGothic',
+                                        fontSize: 20,
+                                        // fontWeight: FontWeight.bold,
+                                        color: AppColors.textColorWhite,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -120,10 +123,10 @@ class _LastEditionWidgetState
                                         child: Text(
                                           'Ler agora',
                                           style: TextStyle(
-                                            fontFamily: 'Piaui',
+                                            fontFamily: 'TradeGothic',
                                             color: AppColors.textColorBold,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 16,
+                                            fontSize: 18,
                                           ),
                                         ),
                                         alignment: Alignment.center,
@@ -179,10 +182,10 @@ class _LastEditionWidgetState
                                         child: Text(
                                           'Fazer download',
                                           style: TextStyle(
-                                            fontFamily: 'Piaui',
+                                            fontFamily: 'TradeGothic',
                                             color: AppColors.textColorWhite,
                                             fontWeight: FontWeight.bold,
-                                            fontSize: 16,
+                                            fontSize: 18,
                                           ),
                                         ),
                                         alignment: Alignment.center,

@@ -268,7 +268,7 @@ class _ListMagazine extends State<ListMagazine> {
                                                                   style:
                                                                       TextStyle(
                                                                     fontFamily:
-                                                                        ' Piaui',
+                                                                        'Piaui',
                                                                     fontSize:
                                                                         16,
                                                                     fontWeight:
@@ -294,8 +294,7 @@ class _ListMagazine extends State<ListMagazine> {
                                                         child: Text(
                                                           'Todos os meses',
                                                           style: TextStyle(
-                                                            fontFamily:
-                                                                ' Piaui',
+                                                            fontFamily: 'Piaui',
                                                             fontSize: 14,
                                                             fontWeight:
                                                                 FontWeight
@@ -378,15 +377,17 @@ class _ListMagazine extends State<ListMagazine> {
                                               Text(
                                                 mes,
                                                 style: TextStyle(
-                                                  fontFamily: 'Palatino',
+                                                  fontFamily: 'TradeGothic',
                                                   fontSize: 11,
                                                   fontWeight: FontWeight.bold,
-                                                  color: AppColors.dark,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
                                                 ),
                                               ),
                                               Icon(
                                                 Icons.keyboard_arrow_down,
-                                                color: AppColors.textColorBlack,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
                                                 size: 22,
                                               )
                                             ],
@@ -604,15 +605,17 @@ class _ListMagazine extends State<ListMagazine> {
                                               Text(
                                                 ano,
                                                 style: TextStyle(
-                                                  fontFamily: 'Palatino',
+                                                  fontFamily: 'TradeGothic',
                                                   fontSize: 11,
                                                   fontWeight: FontWeight.bold,
-                                                  color: AppColors.dark,
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
                                                 ),
                                               ),
                                               Icon(
                                                 Icons.keyboard_arrow_down,
-                                                color: AppColors.textColorBlack,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
                                                 size: 22,
                                               )
                                             ],
