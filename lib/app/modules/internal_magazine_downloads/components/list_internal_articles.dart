@@ -29,7 +29,20 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
   double _tamFonte = 13;
   @override
   Widget build(BuildContext context) {
-    return new Padding(
+
+    return new WillPopScope(
+        onWillPop: () async {
+          setState(() {
+            if (!isPlay) {
+              tts.stop();
+              isPlay = true;
+            }
+          });
+          // You can do some work here.
+          // Returning true allows the pop to happen, returning false prevents it.
+          return true;
+        },
+        child: new Padding(
       padding: const EdgeInsets.only(left: 26, right: 29),
       child: Column(
         children: [
@@ -270,6 +283,6 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
           AutorInternalArticle(autor: widget.rendered['Colaboradores']),
         ],
       ),
-    );
+    ));
   }
 }

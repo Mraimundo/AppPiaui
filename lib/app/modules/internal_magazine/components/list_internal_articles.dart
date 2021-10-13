@@ -45,7 +45,19 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
 
   @override
   Widget build(BuildContext context) {
-    return new FutureBuilder<String>(
+    return new WillPopScope(
+        onWillPop: () async {
+          setState(() {
+            if (!isPlay) {
+              tts.stop();
+              isPlay = true;
+            }
+          });
+          // You can do some work here.
+          // Returning true allows the pop to happen, returning false prevents it.
+          return true;
+        },
+        child: new FutureBuilder<String>(
         future: post(idMateria),
         builder: (context, AsyncSnapshot<String> snapshot) {
           if (snapshot.hasData) {
@@ -312,6 +324,6 @@ class _ListInternalArticlesState extends State<ListInternalArticles> {
           } else {
             return CircularProgressIndicator();
           }
-        });
+        }));
   }
 }
