@@ -48,10 +48,10 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.piaui_example.piaui_app"
+        applicationId "com.revista_piaui.piaui_app"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 3
+        versionCode 9
         versionName 'Version 1.1.0'
     }
 
