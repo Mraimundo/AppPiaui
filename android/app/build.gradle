@@ -51,7 +51,7 @@ android {
         applicationId "com.revista_piaui.piaui_app"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 9
+        versionCode 15
         versionName 'Version 1.1.0'
     }
 
@@ -100,5 +100,4 @@ flutter {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
-
 }
