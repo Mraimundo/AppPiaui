@@ -53,22 +53,7 @@ android {
         targetSdkVersion 30
         versionCode 19
         versionName 'Version 1.1.0'
-    }
-
-    // signingConfigs {
-    //     debug {
-    //         keyAlias 'androiddebugkey'
-    //         keyPassword 'senha@2021'
-    //         storeFile file('mykey.jks')
-    //         storePassword 'senha@2021'
-    //     }
-    // }
-    // buildTypes {
-    //     debug {
-    //         signingConfig signingConfigs.debug
-    //     }
-    // }
-   
+    }   
     signingConfigs {
         release {
             keyAlias 'realeasekey'

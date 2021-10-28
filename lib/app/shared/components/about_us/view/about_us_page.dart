@@ -94,7 +94,8 @@ class _AboutUsPageState extends ModularState<AboutUsPage, ConfigController> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 22, top: 20),
+                        padding:
+                            const EdgeInsets.only(left: 22, right: 20, top: 20),
                         child: Align(
                           alignment: Alignment.topLeft,
                           child: Text(
@@ -148,7 +149,7 @@ class _AboutUsPageState extends ModularState<AboutUsPage, ConfigController> {
                       ),
                       SizedBox(height: 18),
                       Padding(
-                        padding: const EdgeInsets.only(left: 22),
+                        padding: const EdgeInsets.only(left: 22, right: 20),
                         child: Align(
                           alignment: Alignment.topLeft,
                           child: Text(
