@@ -51,7 +51,7 @@ android {
         applicationId "com.revista_piaui.piaui_app"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 9
+        versionCode 19
         versionName 'Version 1.1.0'
     }
 

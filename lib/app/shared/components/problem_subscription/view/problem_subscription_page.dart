@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:piaui_app/app/app_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/configuration/controller/configuration_controller.dart';
-import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/back_to_menu_widget.dart';
-import 'package:piaui_app/app/shared/components/app_bar/configuration/widgets/text_config_widget.dart';
 import 'package:piaui_app/app/shared/components/app_bar/preferred_app_bar_widget.dart';
 import 'package:piaui_app/app/shared/layout/colors.dart';
 
@@ -39,7 +36,7 @@ class _ProblemSubscriptionPageState
                   Padding(
                     padding: const EdgeInsets.only(right: 10),
                     child:
-                        Image.asset('assets/images/arrow-left.png', scale: 0.9),
+                        Image.asset('assets/images/arrow-left.png', scale: 1.5),
                   ),
                   Text(
                     'Voltar para menu',
@@ -84,27 +81,9 @@ class _ProblemSubscriptionPageState
             padding: const EdgeInsets.only(left: 20, right: 16),
             child: RichText(
               text: TextSpan(
-                text: 'Ligue para ',
-                style: TextStyle(
-                  fontFamily: 'TradeGothic',
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Theme.of(context).primaryColor,
-                ),
                 children: <TextSpan>[
                   TextSpan(
-                    text: '(11) 0000-0000)  ',
-                    style: TextStyle(
-                      fontFamily: 'TradeGothic',
-                      fontSize: 18,
-                      height: 1.4,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.orangePiaui,
-                      // fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  TextSpan(
-                    text: 'ou envie um e-mail detalhando o seu problema para  ',
+                    text: 'Envie um e-mail detalhando o seu problema para  ',
                     style: TextStyle(
                       fontFamily: 'TradeGothic',
                       fontSize: 18,
@@ -115,7 +94,7 @@ class _ProblemSubscriptionPageState
                     ),
                   ),
                   TextSpan(
-                    text: 'contato@piaui.com.br',
+                    text: 'assinaturadigital@revistapiaui.com.br',
                     style: TextStyle(
                       fontFamily: 'TradeGothic',
                       fontSize: 16,
