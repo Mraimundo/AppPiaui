@@ -17,6 +17,15 @@ _launchURL() async {
   }
 }
 
+_launchProblem() async {
+  var url = 'http://revistapiaui.com.br/politica-de-privacidade';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+}
+
 class MenuPage extends StatefulWidget {
   final String title;
   const MenuPage({Key key, this.title = "Menu"}) : super(key: key);
@@ -142,6 +151,49 @@ class _MenuPageState extends ModularState<MenuPage, MenuController> {
                               children: [
                                 Text(
                                   'SOBRE NÓS',
+                                  style: TextStyle(
+                                      fontSize: vFontSize,
+                                      fontWeight: FontWeight.bold,
+                                      color: Theme.of(context).cardColor),
+                                ),
+                                Image.asset(
+                                  'assets/images/Seta.png',
+                                  width: 20,
+                                  height: 12,
+                                ),
+                              ],
+                            ),
+                            Container(
+                              height: 25,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColors.internalBorderColor,
+                                    width: 1,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  TextButton(
+                    onPressed: () {
+                     _launchProblem();
+                    },
+                    child: ListTile(
+                      title: Padding(
+                        padding: const EdgeInsets.only(right: 15, left: 15),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  'POLÍTICA DE PRIVACIDADE',
                                   style: TextStyle(
                                       fontSize: vFontSize,
                                       fontWeight: FontWeight.bold,
